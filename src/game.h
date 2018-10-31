@@ -14,9 +14,21 @@ class Game {
         RenderPtr currentRender;
         RenderPtr nextRender;
 
+        void updateLogo(uint8_t frame);
+        void renderLogo(uint8_t frame);
+
     public:
         void update(uint8_t frame);
         void render(uint8_t frame);
+
+        Game(): 
+            prevUpdate(NULL),
+            currentUpdate(&Game::updateLogo),
+            nextUpdate(NULL),
+            prevRender(NULL),
+            currentRender(&Game::renderLogo),
+            nextRender(NULL)
+        {}
 };
 
 #endif

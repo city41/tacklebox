@@ -1,0 +1,9 @@
+{
+    "strings": [
+        { "key": "newGame", "value": "NEW GAME" },
+        { "key": "continue", "value": "CONTINUE" },
+        { "key": "deleteSave", "value": "DELETE SAVE" },
+        { "key": "sfxOn", "value": "SFX!" },
+        { "key": "sfxOff", "value": "SFX" }
+    ]
+}

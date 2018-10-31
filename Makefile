@@ -8,12 +8,12 @@ LOCAL_CPP_SRCS = $(wildcard src/*.cpp) $(wildcard src/entities/*.cpp)
 
 include $(ARDMK_DIR)/Arduino.mk
 
-emu: build-leonardo/ardynia.hex
-	pabe build-leonardo/ardynia.hex
+emu: build-leonardo/ardukoi.hex
+	pabe build-leonardo/ardukoi.hex
 
 bmp:
-	node ./bmptool/ --src spritePngs --dest src/spriteBitmaps.h --type combined && \
-    node ./bmptool/ --src tilePngs --dest src/tileBitmaps.h --type bitmap
+	node ./bmptool/ --src maskPngs --dest src/maskBitmaps.h --type combined && \
+    node ./bmptool/ --src nonMaskPngs --dest src/nonMaskBitmaps.h --type bitmap
 
 map:
 	node ./maptool/ -s tiled -o src
