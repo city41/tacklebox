@@ -12,9 +12,9 @@ class Entity {
         EntityCollideOtherEntityPtr collideOtherEntityPtr;
 
         int16_t x;
-        int8_t y;
+        int16_t y;
         int16_t prevX;
-        int8_t prevY;
+        int16_t prevY;
 
         Entity():
             x(0),
@@ -23,7 +23,7 @@ class Entity {
             prevY(0)
         {}
 
-        inline void moveTo(int16_t newX, int8_t newY, boolean resetPrev = false) {
+        inline void moveTo(int16_t newX, int16_t newY, boolean resetPrev = false) {
             if (resetPrev) {
                 prevX = newX;
                 prevY = newY;

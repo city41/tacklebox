@@ -32,7 +32,7 @@ class Game {
         void renderPlay(uint8_t frame);
 
         Game(): 
-            player(WIDTH / 2, HEIGHT / 2),
+            player(24 * 16, 10 * 16),
             prevUpdate(NULL),
             currentUpdate(&Game::updateLogo),
             nextUpdate(NULL),

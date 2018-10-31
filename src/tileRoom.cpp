@@ -28,15 +28,7 @@ const uint8_t PROGMEM mirroredTiles[] = {
     MIRROR_HORIZONTAL
 };
 
-void TileRoom::renderTile(uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed) {   
-    // algorithmically draw "flavor" in blank spots. this gets us flowers in the overworld
-    // without wasting a tile. Only doing this in the overworld as flavor in the dungeons
-    // doesn't look good
-    if (tileId == 0 && (seed % 7 == 1)) {
-        renderer.drawOverwrite(x, y, map_tiles, 8, seed);
-        return;
-    }
-
+void TileRoom::renderTile(int16_t x, int16_t y, uint8_t tileId) {   
     TileDef tile = (TileDef)(tileId < 8 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2));
     MirrorMode mirror = tileId < 8 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
     bool dontInvert = true;
@@ -44,24 +36,34 @@ void TileRoom::renderTile(uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed) {
     renderer.drawOverwrite(x, y, map_tiles, tile, mirror, drawMode);
 }
 
-void TileRoom::renderCenteredOn(uint8_t x, uint8_t y) {
-    uint8_t mapWidth = pgm_read_byte(TileRoom::map);
+void TileRoom::renderCenteredOn(int16_t x, int16_t y) {
+    int8_t mapWidth = pgm_read_byte(TileRoom::map);
+    int8_t mapHeight = pgm_read_byte(TileRoom::map + 1);
+    int16_t maxTile = mapWidth * mapHeight;
 
-    uint8_t tileX = (x - WIDTH / 2) / 16;
-    uint8_t tileY = (y - HEIGHT / 2) / 16;
-    uint8_t firstTileId = tileY * mapWidth + tileX;
-    uint8_t seed = 0;
+    int16_t tileX = (x - WIDTH / 2) / 16;
+    int16_t tileY = (y - HEIGHT / 2) / 16;
+    int16_t firstTileIndex = tileY * mapWidth + tileX;
+    int16_t shiftX = x % TILE_SIZE;
+    int16_t shiftY = y % TILE_SIZE;
 
 
-    for (uint8_t ty = 0; ty < 4; ++ty) {
-        uint8_t additionalRows = ty * mapWidth;
+    for (uint8_t ty = 0; ty < 5; ++ty) {
+        if (tileY + ty < 0 || tileY + ty >= mapHeight) {
+            continue;
+        }
 
-        for (uint8_t tx = 0; tx < 7; ++tx) {
-            uint8_t ti = firstTileId + additionalRows + tx;
-            uint8_t tileId = pgm_read_byte(TileRoom::map + 2 + ti);
-            seed += tileId + 1;
+        int16_t additionalRows = ty * mapWidth;
 
-            renderTile(tx * TILE_SIZE, ty * TILE_SIZE, tileId, seed);
+        for (uint8_t tx = 0; tx < 9; ++tx) {
+            if (tileX + tx < 0 || tileX + tx >= mapWidth) {
+                continue;
+            }
+
+            int16_t ti = firstTileIndex + additionalRows + tx;
+
+            int16_t tileId = pgm_read_byte(TileRoom::map + 2 + ti);
+            renderTile(tx * TILE_SIZE - shiftX, ty * TILE_SIZE - shiftY, tileId);
         }
     }
 }

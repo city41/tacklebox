@@ -33,8 +33,8 @@ struct TileRoom {
         static uint8_t x;
         static uint8_t y;
 
-        static void renderTile(uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed);
-        static void renderCenteredOn(uint8_t x, uint8_t y);
+        static void renderTile(int16_t x, int16_t y, uint8_t tileId);
+        static void renderCenteredOn(int16_t x, int16_t y);
 };
 
 #endif
