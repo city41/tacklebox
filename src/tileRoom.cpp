@@ -7,18 +7,13 @@
 extern Renderer renderer;
 
 // header consists of
-// length of the data (two bytes)
 // map width (one byte)
 // map height (one byte)
-// for a total of 4 bytes
-const uint8_t MAP_HEADER_SIZE = 4;
+const uint8_t MAP_HEADER_SIZE = 2;
 
 const uint8_t* TileRoom::map = NULL;
-uint8_t TileRoom::rooms[TILES_PER_ROOM * 2];
 uint8_t TileRoom::x = 0;
 uint8_t TileRoom::y = 0;
-uint8_t TileRoom::currentRoomOffset = 0;
-uint8_t TileRoom::nextRoomOffset = TILES_PER_ROOM;
 
 const uint8_t PROGMEM mirroredTiles[] = {
     UpperLeftCorner,
@@ -49,120 +44,25 @@ void TileRoom::renderTile(uint8_t x, uint8_t y, uint8_t tileId, uint8_t seed) {
     renderer.drawOverwrite(x, y, map_tiles, tile, mirror, drawMode);
 }
 
-uint8_t TileRoom::getRoomIndex(uint8_t rx, uint8_t ry) {
-    const uint8_t mapWidth = pgm_read_byte(TileRoom::map + 2);
+void TileRoom::renderCenteredOn(uint8_t x, uint8_t y) {
+    uint8_t mapWidth = pgm_read_byte(TileRoom::map);
 
-    return mapWidth * ry + rx;
-}
-
-TileDef TileRoom::getTileAt(uint8_t px, uint8_t py) {
-    const uint8_t targetTileIndex = (py / TILE_SIZE) * TILES_PER_ROW + (px / TILE_SIZE);
-    return (TileDef)rooms[currentRoomOffset + targetTileIndex];
-}
-
-void TileRoom::setTileAt(uint8_t px, uint8_t py, uint8_t offset, TileDef tile) {
-    const uint8_t targetTileIndex = (py / TILE_SIZE) * TILES_PER_ROW + (px / TILE_SIZE);
-    rooms[offset + targetTileIndex] = tile;
-}
-
-void TileRoom::renderRoom(uint8_t offset) {
-    uint8_t* tiles = rooms + offset;
+    uint8_t tileX = (x - WIDTH / 2) / 16;
+    uint8_t tileY = (y - HEIGHT / 2) / 16;
+    uint8_t firstTileId = tileY * mapWidth + tileX;
     uint8_t seed = 0;
 
-    for (uint8_t ti = 0; ti < TILES_PER_ROOM; ++ti) {
-        uint8_t tx = ti % TILES_PER_ROW;
-        uint8_t ty = ti / TILES_PER_ROW;
-        uint8_t tileId = tiles[ti];
-        seed += tileId + 1;
 
-        renderTile(tx * TILE_SIZE, ty * TILE_SIZE, tileId, seed);
-    }
-}
+    for (uint8_t ty = 0; ty < 4; ++ty) {
+        uint8_t additionalRows = ty * mapWidth;
 
-/**
- * Load a compressed room from progmem into RAM
- *
- * maps are compressed in two ways:
- *
- * * two tiles per byte, as there are less than 16 tiles
- * * run length encoding is employed to remove long runs of the same tile
- *
- * The RLE is done per room, and there is a header section containing the starting
- * index of each room. This is because with RLE compression, each room will have a different
- * number of bytes
- *
- * The general decompression approach:
- * 1) convert the roomX and roomY coordinate into a linear coordinate
- * 2) with linear coordinate in hand, dive into the room indices part of the header
- * and grab the starting index of the room. This starting index does NOT account for the header!
- * 3) grab the starting index of the next room, that way we can figure out how many bytes 
- * are for the current room
- * 4) iterate over the room's bytes, one nibble at a time.
- *   -- if the nibble is just a regular tile, then dump it
- *   -- if the nibble is the compression indicator (0xF, ie 16), then read the next nibble
- *      to get the count (how many times the tile will be repeated). Then read the next nibble
- *      to learn what the tile to render is
- *      dump that tile count times
- */
-void TileRoom::loadRoom(uint8_t roomX, uint8_t roomY, uint8_t offset) {
-    uint16_t lengthOfMap = pgm_read_word(map);
-    uint8_t mapWidth = pgm_read_byte(map + 2);
-    uint8_t mapHeight = pgm_read_byte(map + 3);
-    uint8_t numRooms = mapWidth * mapHeight;
+        for (uint8_t tx = 0; tx < 7; ++tx) {
+            uint8_t ti = firstTileId + additionalRows + tx;
+            uint8_t tileId = pgm_read_byte(TileRoom::map + 2 + ti);
+            seed += tileId + 1;
 
-    // how far into the map is this room?
-    uint8_t roomNumber = getRoomIndex(roomX, roomY);
-
-    // grab its starting data index out of the room indices header
-    // the stored index does not account for the headers, so tack them on
-    // numRooms * 2 -> get past the room indice words
-    // + MAP_HEADER_SIZE -> get past the map width, map height and tile size
-    uint16_t roomIndex = pgm_read_word(map + MAP_HEADER_SIZE + roomNumber * 2) + (numRooms * 2) + MAP_HEADER_SIZE;
-    uint16_t nextRoomIndex;
-
-    if (roomNumber < numRooms - 1) {
-        nextRoomIndex = pgm_read_word(map + MAP_HEADER_SIZE + (roomNumber * 2) + 2) + (numRooms * 2) + MAP_HEADER_SIZE;
-    } else {
-        nextRoomIndex = lengthOfMap;
-    }
-
-    uint8_t numNibbles = (nextRoomIndex - roomIndex) * 2;
-    uint8_t curNibbleIndex = 0;
-    uint8_t maxOffset = offset + TILES_PER_ROOM;
-
-    while (curNibbleIndex < numNibbles) {
-        uint8_t rawTileByte = pgm_read_byte(map + roomIndex + (curNibbleIndex >> 1));
-        uint8_t nibble = (curNibbleIndex & 1) ? rawTileByte & 0xF : rawTileByte >> 4;
-
-        if (nibble == Compression) {
-            uint8_t nextRawTileByte = pgm_read_byte(map + roomIndex + ((curNibbleIndex + 1) >> 1));
-
-            // a count nibble can be either at the top or bottom of a byte, basically compression treats
-            // nibbles as first class
-            uint8_t count = ((curNibbleIndex + 1) & 1) ? nextRawTileByte & 0xF : nextRawTileByte >> 4;
-            uint8_t nextNextRawTileByte = pgm_read_byte(map + roomIndex + ((curNibbleIndex + 2) >> 1));
-            uint8_t tileId = ((curNibbleIndex + 2) & 1) ? nextNextRawTileByte & 0xF : nextNextRawTileByte >> 4;
-
-            for (uint8_t c = 0; c < count + 4; ++c) {
-                rooms[offset++] = tileId;
-            }
-
-            // jump past the compression block of <compression nibble><count nibble><template nibble>
-            curNibbleIndex += 3;
-        } else {
-            // need to make sure don't go beyond the room offset in the case of when a compression
-            // run leaves a dead nibble at the end of the room, otherwise will clobber other memory
-            if (offset < maxOffset) {
-                rooms[offset++] = nibble;
-            }
-
-            curNibbleIndex += 1;
+            renderTile(tx * TILE_SIZE, ty * TILE_SIZE, tileId, seed);
         }
     }
 }
 
-void TileRoom::swapRooms() {
-    uint8_t temp = currentRoomOffset;
-    currentRoomOffset = nextRoomOffset;
-    nextRoomOffset = temp;
-}

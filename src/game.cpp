@@ -29,7 +29,6 @@ void Game::pop() {
 void Game::updateLogo(uint8_t frame) {
     if (frame == 1) {
         TileRoom::map = overworld_map;
-        TileRoom::loadRoom(0, 0, 0);
         push(&Game::updatePlay, &Game::renderPlay);
     }
 }
@@ -43,7 +42,7 @@ void Game::updatePlay(uint8_t frame) {
 }
 
 void Game::renderPlay(uint8_t frame) {
-    TileRoom::renderRoom(0);
+    TileRoom::renderCenteredOn(player.x + 4, player.y + 8);
     player.render(frame);
 }
 
