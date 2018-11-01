@@ -23,16 +23,7 @@ enum TileDef: uint8_t {
     Compression = 15
 };
 
-const uint8_t TILE_SIZE = 16;
-const uint8_t TILES_PER_ROW = (WIDTH - 16) / TILE_SIZE;
-const uint8_t TILES_PER_COLUMN = HEIGHT / TILE_SIZE;
-const uint8_t TILES_PER_ROOM = TILES_PER_ROW * TILES_PER_COLUMN;
-
 struct TileFloor {
-    static const uint8_t* map;
-    static uint8_t x;
-    static uint8_t y;
-
     static void renderTile(int16_t x, int16_t y, uint8_t tileId);
     static void renderCenteredOn(int16_t x, int16_t y);
 

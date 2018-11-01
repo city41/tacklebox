@@ -3,17 +3,9 @@
 #include "util.h"
 #include "drawBitmap.h"
 #include "renderer.h"
+#include "overworld.h"
 
 extern Renderer renderer;
-
-// header consists of
-// map width (one byte)
-// map height (one byte)
-const uint8_t MAP_HEADER_SIZE = 2;
-
-const uint8_t* TileFloor::map = NULL;
-uint8_t TileFloor::x = 0;
-uint8_t TileFloor::y = 0;
 
 const uint8_t PROGMEM mirroredTiles[] = {
     UpperLeftCorner,
@@ -31,10 +23,9 @@ const uint8_t PROGMEM mirroredTiles[] = {
 TileDef TileFloor::getTileAt(int16_t x, int16_t y) {
     int16_t tileX = x / TILE_SIZE;
     int16_t tileY = y / TILE_SIZE;
-    int8_t mapWidth = pgm_read_byte(TileFloor::map);
-    int16_t firstTileIndex = tileY * mapWidth + tileX;
+    int16_t firstTileIndex = tileY * MAP_WIDTH_TILES + tileX;
 
-    return (TileDef)pgm_read_byte(map + 2 + firstTileIndex);
+    return (TileDef)pgm_read_byte(overworld_map + firstTileIndex);
 }
 
 void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId) {   
@@ -46,32 +37,30 @@ void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId) {
 }
 
 void TileFloor::renderCenteredOn(int16_t x, int16_t y) {
-    int8_t mapWidth = pgm_read_byte(TileFloor::map);
-    int8_t mapHeight = pgm_read_byte(TileFloor::map + 1);
-    int16_t maxTile = mapWidth * mapHeight;
+    int16_t maxTile = MAP_WIDTH_TILES * MAP_HEIGHT_TILES;
 
     int16_t tileX = (x - WIDTH / 2) / TILE_SIZE;
     int16_t tileY = (y - HEIGHT / 2) / TILE_SIZE;
-    int16_t firstTileIndex = tileY * mapWidth + tileX;
+    int16_t firstTileIndex = tileY * MAP_WIDTH_TILES + tileX;
     int16_t shiftX = x % TILE_SIZE;
     int16_t shiftY = y % TILE_SIZE;
 
 
     for (uint8_t ty = 0; ty < 5; ++ty) {
-        if (tileY + ty < 0 || tileY + ty >= mapHeight) {
+        if (tileY + ty < 0 || tileY + ty >= MAP_HEIGHT_TILES) {
             continue;
         }
 
-        int16_t additionalRows = ty * mapWidth;
+        int16_t additionalRows = ty * MAP_WIDTH_TILES;
 
         for (uint8_t tx = 0; tx < 9; ++tx) {
-            if (tileX + tx < 0 || tileX + tx >= mapWidth) {
+            if (tileX + tx < 0 || tileX + tx >= MAP_WIDTH_TILES) {
                 continue;
             }
 
             int16_t ti = firstTileIndex + additionalRows + tx;
 
-            int16_t tileId = pgm_read_byte(TileFloor::map + 2 + ti);
+            int16_t tileId = pgm_read_byte(overworld_map + ti);
             renderTile(tx * TILE_SIZE - shiftX, ty * TILE_SIZE - shiftY, tileId);
         }
     }

@@ -30,7 +30,6 @@ void Game::pop() {
 
 void Game::updateLogo(uint8_t frame) {
     if (frame == 1) {
-        TileFloor::map = overworld_map;
         push(&Game::updateTitle, &Game::renderTitle);
     }
 }
@@ -86,7 +85,10 @@ void Game::updatePlay(uint8_t frame) {
 }
 
 void Game::renderPlay(uint8_t frame) {
-    TileFloor::renderCenteredOn(player.x, player.y);
+    int16_t centerX = min(max(WIDTH / 2, player.x), MAP_WIDTH_PX - WIDTH / 2);
+    int16_t centerY = min(max(HEIGHT / 2, player.y), MAP_HEIGHT_PX - HEIGHT / 2);
+
+    TileFloor::renderCenteredOn(centerX, centerY);
     player.render(frame);
 
     renderer.translateX = WIDTH - 24;
