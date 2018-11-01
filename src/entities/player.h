@@ -7,8 +7,11 @@
 
 class Player: public Entity {
     public:
+        bool movedThisFrame;
+
         Player(int16_t px, int16_t py):
-            Entity()
+            Entity(),
+            movedThisFrame(false)
         {
             moveTo(px, py);
         }
