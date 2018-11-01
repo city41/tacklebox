@@ -5,6 +5,7 @@
 #include "maskBitmaps.h"
 #include "tileFloor.h"
 #include "overworld.h"
+#include "hud.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -44,6 +45,9 @@ void Game::updatePlay(uint8_t frame) {
 void Game::renderPlay(uint8_t frame) {
     TileFloor::renderCenteredOn(player.x, player.y);
     player.render(frame);
+
+    renderer.translateX = WIDTH - 24;
+    Hud::render(player);
 }
 
 void Game::update(uint8_t frame) {
