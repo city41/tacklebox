@@ -4,6 +4,16 @@
         { "key": "continue", "value": "CONTINUE" },
         { "key": "deleteSave", "value": "DELETE SAVE" },
         { "key": "sfxOn", "value": "SFX!" },
-        { "key": "sfxOff", "value": "SFX" }
+        { "key": "sfxOff", "value": "SFX" },
+        { "key": "digit0", "value": "0" },
+        { "key": "digit1", "value": "1" },
+        { "key": "digit2", "value": "2" },
+        { "key": "digit3", "value": "3" },
+        { "key": "digit4", "value": "4" },
+        { "key": "digit5", "value": "5" },
+        { "key": "digit6", "value": "6" },
+        { "key": "digit7", "value": "7" },
+        { "key": "digit8", "value": "8" },
+        { "key": "digit9", "value": "9" }
     ]
 }
