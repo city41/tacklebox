@@ -1,5 +1,5 @@
-#ifndef tileRoom_h
-#define tileRoom_h
+#ifndef tileFloor_h
+#define tileFloor_h
 
 #include <Arduino.h>
 #include <Arduboy2.h>
@@ -28,7 +28,7 @@ const uint8_t TILES_PER_ROW = (WIDTH - 16) / TILE_SIZE;
 const uint8_t TILES_PER_COLUMN = HEIGHT / TILE_SIZE;
 const uint8_t TILES_PER_ROOM = TILES_PER_ROW * TILES_PER_COLUMN;
 
-struct TileRoom {
+struct TileFloor {
         static const uint8_t* map;
         static uint8_t x;
         static uint8_t y;

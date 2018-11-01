@@ -1,4 +1,4 @@
-#include "tileRoom.h"
+#include "tileFloor.h"
 #include "nonMaskBitmaps.h"
 #include "util.h"
 #include "drawBitmap.h"
@@ -11,9 +11,9 @@ extern Renderer renderer;
 // map height (one byte)
 const uint8_t MAP_HEADER_SIZE = 2;
 
-const uint8_t* TileRoom::map = NULL;
-uint8_t TileRoom::x = 0;
-uint8_t TileRoom::y = 0;
+const uint8_t* TileFloor::map = NULL;
+uint8_t TileFloor::x = 0;
+uint8_t TileFloor::y = 0;
 
 const uint8_t PROGMEM mirroredTiles[] = {
     UpperLeftCorner,
@@ -28,7 +28,7 @@ const uint8_t PROGMEM mirroredTiles[] = {
     MIRROR_HORIZONTAL
 };
 
-void TileRoom::renderTile(int16_t x, int16_t y, uint8_t tileId) {   
+void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId) {   
     TileDef tile = (TileDef)(tileId < 8 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2));
     MirrorMode mirror = tileId < 8 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
     bool dontInvert = true;
@@ -36,9 +36,9 @@ void TileRoom::renderTile(int16_t x, int16_t y, uint8_t tileId) {
     renderer.drawOverwrite(x, y, map_tiles, tile, mirror, drawMode);
 }
 
-void TileRoom::renderCenteredOn(int16_t x, int16_t y) {
-    int8_t mapWidth = pgm_read_byte(TileRoom::map);
-    int8_t mapHeight = pgm_read_byte(TileRoom::map + 1);
+void TileFloor::renderCenteredOn(int16_t x, int16_t y) {
+    int8_t mapWidth = pgm_read_byte(TileFloor::map);
+    int8_t mapHeight = pgm_read_byte(TileFloor::map + 1);
     int16_t maxTile = mapWidth * mapHeight;
 
     int16_t tileX = (x - WIDTH / 2) / 16;
@@ -62,7 +62,7 @@ void TileRoom::renderCenteredOn(int16_t x, int16_t y) {
 
             int16_t ti = firstTileIndex + additionalRows + tx;
 
-            int16_t tileId = pgm_read_byte(TileRoom::map + 2 + ti);
+            int16_t tileId = pgm_read_byte(TileFloor::map + 2 + ti);
             renderTile(tx * TILE_SIZE - shiftX, ty * TILE_SIZE - shiftY, tileId);
         }
     }

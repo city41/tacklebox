@@ -3,7 +3,7 @@
 #include "renderer.h"
 #include "nonMaskBitmaps.h"
 #include "maskBitmaps.h"
-#include "tileRoom.h"
+#include "tileFloor.h"
 #include "overworld.h"
 
 extern Renderer renderer;
@@ -28,7 +28,7 @@ void Game::pop() {
 
 void Game::updateLogo(uint8_t frame) {
     if (frame == 1) {
-        TileRoom::map = overworld_map;
+        TileFloor::map = overworld_map;
         push(&Game::updatePlay, &Game::renderPlay);
     }
 }
@@ -42,7 +42,7 @@ void Game::updatePlay(uint8_t frame) {
 }
 
 void Game::renderPlay(uint8_t frame) {
-    TileRoom::renderCenteredOn(player.x + 4, player.y + 8);
+    TileFloor::renderCenteredOn(player.x + 4, player.y + 8);
     player.render(frame);
 }
 
