@@ -18,6 +18,7 @@ class Player: public Entity {
 
         void render(uint8_t frame);
         void update(uint8_t frame);
+        bool isOnSolidTile(void);
 };
 
 #endif

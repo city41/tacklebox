@@ -1,5 +1,6 @@
 #include "player.h"
 #include "../renderer.h"
+#include "../tileFloor.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -33,6 +34,12 @@ void Player::render(uint8_t frame) {
     renderer.drawPlusMask(WIDTH / 2 - 4, HEIGHT / 2 - 8, player_plus_mask, spriteIndex, mirror);
 }
 
+bool Player::isOnSolidTile() {
+    TileDef tile = TileFloor::getTileAt(x, y);
+
+    return tile == Stone || tile == Water;
+}
+
 void Player::update(uint8_t frame) {
     int16_t newX = x, newY = y;
 
@@ -53,6 +60,10 @@ void Player::update(uint8_t frame) {
     }
 
     moveTo(newX, newY);
+
+    if (isOnSolidTile()) {
+        undoMove();
+    }
 
     movedThisFrame = x != prevX || y != prevY;
 }

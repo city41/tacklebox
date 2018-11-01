@@ -28,6 +28,15 @@ const uint8_t PROGMEM mirroredTiles[] = {
     MIRROR_HORIZONTAL
 };
 
+TileDef TileFloor::getTileAt(int16_t x, int16_t y) {
+    int16_t tileX = x / TILE_SIZE;
+    int16_t tileY = y / TILE_SIZE;
+    int8_t mapWidth = pgm_read_byte(TileFloor::map);
+    int16_t firstTileIndex = tileY * mapWidth + tileX;
+
+    return (TileDef)pgm_read_byte(map + 2 + firstTileIndex);
+}
+
 void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId) {   
     TileDef tile = (TileDef)(tileId < 8 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2));
     MirrorMode mirror = tileId < 8 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
@@ -41,8 +50,8 @@ void TileFloor::renderCenteredOn(int16_t x, int16_t y) {
     int8_t mapHeight = pgm_read_byte(TileFloor::map + 1);
     int16_t maxTile = mapWidth * mapHeight;
 
-    int16_t tileX = (x - WIDTH / 2) / 16;
-    int16_t tileY = (y - HEIGHT / 2) / 16;
+    int16_t tileX = (x - WIDTH / 2) / TILE_SIZE;
+    int16_t tileY = (y - HEIGHT / 2) / TILE_SIZE;
     int16_t firstTileIndex = tileY * mapWidth + tileX;
     int16_t shiftX = x % TILE_SIZE;
     int16_t shiftY = y % TILE_SIZE;

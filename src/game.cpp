@@ -42,7 +42,7 @@ void Game::updatePlay(uint8_t frame) {
 }
 
 void Game::renderPlay(uint8_t frame) {
-    TileFloor::renderCenteredOn(player.x + 4, player.y + 8);
+    TileFloor::renderCenteredOn(player.x, player.y);
     player.render(frame);
 }
 

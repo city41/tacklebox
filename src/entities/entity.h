@@ -58,6 +58,11 @@ class Entity {
 
             dir = determineDirection(prevX, prevY, x, y, dir);
         }
+
+        inline void undoMove() {
+            x = prevX;
+            y = prevY;
+        }
 };
 
 #endif
