@@ -61,15 +61,15 @@ const uint8_t deleteSave_string[12] PROGMEM = {
 };
 
 
-// "SFX!"
-const uint8_t sfxOn_string[5] PROGMEM = {
-    22, 15, 27, 28, 0xFF
+// "SFX ON"
+const uint8_t sfxOn_string[7] PROGMEM = {
+    22, 15, 27, 0, 21, 20, 0xFF
 };
 
 
-// "SFX"
-const uint8_t sfxOff_string[4] PROGMEM = {
-    22, 15, 27, 0xFF
+// "SFX OFF"
+const uint8_t sfxOff_string[8] PROGMEM = {
+    22, 15, 27, 0, 21, 15, 15, 0xFF
 };
 
 

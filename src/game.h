@@ -7,7 +7,7 @@ class Game {
     typedef void (Game::*UpdatePtr)(uint8_t);
     typedef void (Game::*RenderPtr)(uint8_t);
 
-    private:
+    public:
         Player player;
 
         UpdatePtr prevUpdate;
@@ -21,12 +21,15 @@ class Game {
         void push(UpdatePtr newUpdate, RenderPtr newRender);
         void pop();
 
+        void update(uint8_t frame);
+        void render(uint8_t frame);
+
         void updateLogo(uint8_t frame);
         void renderLogo(uint8_t frame);
 
-    public:
-        void update(uint8_t frame);
-        void render(uint8_t frame);
+        void updateTitle(uint8_t frame);
+        void renderTitle(uint8_t frame);
+        uint8_t titleRow;
 
         void updatePlay(uint8_t frame);
         void renderPlay(uint8_t frame);
@@ -38,7 +41,8 @@ class Game {
             nextUpdate(NULL),
             prevRender(NULL),
             currentRender(&Game::renderLogo),
-            nextRender(NULL)
+            nextRender(NULL),
+            titleRow(0)
         {}
 };
 
