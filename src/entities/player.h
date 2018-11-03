@@ -60,6 +60,9 @@ class Player {
         void updateReel(uint8_t frame);
         void renderReel(uint8_t frame);
 
+        void updateGetFish(uint8_t frame);
+        void renderGetFish(uint8_t frame);
+
         bool isOnSolidTile(void);
         void onGetWorm(Worm& worm);
 

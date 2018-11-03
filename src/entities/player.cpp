@@ -147,6 +147,21 @@ void Player::renderCast(uint8_t frame) {
 }
 
 void Player::updateReel(uint8_t frame) {
+    if (frame % 30 == 0) {
+        reelLevel = max(reelLevel - 7, 0);
+    }
+
+    if (arduboy.justPressed(A_BUTTON)) {
+        reelLevel = min(WIDTH - 2, reelLevel + 5);
+    }
+
+    if (reelLevel == 0) {
+        currentUpdate = &Player::updateWalk;
+        currentRender = &Player::renderWalk;
+    } else if (reelLevel == WIDTH - 2) {
+        currentUpdate = &Player::updateGetFish;
+        currentRender = &Player::renderGetFish;
+    }
 }
 
 void Player::renderReel(uint8_t frame) {
@@ -164,6 +179,12 @@ void Player::renderReel(uint8_t frame) {
     renderer.drawRect(0, HEIGHT - 4, WIDTH, 4, BLACK);
 
     renderer.popTranslate();
+}
+
+void Player::updateGetFish(uint8_t frame) {}
+
+void Player::renderGetFish(uint8_t frame) {
+    renderPlay(frame);
 }
 
 void Player::update(uint8_t frame) {
