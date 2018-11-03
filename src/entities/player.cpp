@@ -1,4 +1,5 @@
 #include "player.h"
+#include "../state.h"
 #include "../maskBitmaps.h"
 #include "../nonMaskBitmaps.h"
 #include "../renderer.h"
@@ -29,7 +30,7 @@ bool Player::isOnSolidTile() {
 }
 
 void Player::updateWalk(uint8_t frame) {
-    if (wormCount > 0 && arduboy.pressed(A_BUTTON)) {
+    if (State::gameState.wormCount > 0 && arduboy.pressed(A_BUTTON)) {
         cursorX = x;
         cursorY = y + 18;
         currentUpdate = &Player::updateScanning;
@@ -130,7 +131,9 @@ void Player::updateCast(uint8_t frame) {
     castCount += 1;
 
     if (castCount == 60) {
-        wormCount -= 1;
+        State::gameState.wormCount -= 1;
+        State::saveToEEPROM();
+
         reelLevel = WIDTH / 2;
         currentUpdate = &Player::updateReel;
         currentRender = &Player::renderReel;
@@ -155,7 +158,9 @@ void Player::updateReel(uint8_t frame) {
         currentUpdate = &Player::updateWalk;
         currentRender = &Player::renderWalk;
     } else if (reelLevel == WIDTH - 2) {
-        fishCount += 1;
+        State::gameState.fishCount += 1;
+        State::saveToEEPROM();
+
         currentUpdate = &Player::updateGetFish;
         currentRender = &Player::renderGetFish;
     }
@@ -197,7 +202,8 @@ void Player::render(uint8_t frame) {
 
 void Player::onGetWorm(Worm& worm) {
     if (worm.isSpawned) {
-        wormCount +=1;
+        State::gameState.wormCount +=1;
+        State::saveToEEPROM();
     }
 }
 

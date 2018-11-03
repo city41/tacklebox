@@ -1,5 +1,4 @@
-#ifndef gameScene_h
-#define gameScene_h
+#pragma once
 
 #include "entities/player.h"
 #include "entities/worm.h"
@@ -22,6 +21,8 @@ class Game {
         RenderPtr prevRender;
         RenderPtr currentRender;
         RenderPtr nextRender;
+
+        void loadSave();
 
         void push(UpdatePtr newUpdate, RenderPtr newRender);
         void pop();
@@ -51,6 +52,4 @@ class Game {
             titleRow(0)
         {}
 };
-
-#endif
 
