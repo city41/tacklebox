@@ -21,7 +21,7 @@ const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     3, 0
 };
 
-void Player::render(uint8_t frame) {
+void Player::renderWalk(uint8_t frame) {
     const uint8_t* offset = playerSpriteIndexAndMirror + (dir * 2);
     uint8_t spriteIndex = pgm_read_byte(offset);
     MirrorMode mirror = (MirrorMode)pgm_read_byte(offset + 1);
@@ -47,7 +47,7 @@ bool Player::isOnSolidTile() {
     return tile == Stone || tile == Water;
 }
 
-void Player::update(uint8_t frame) {
+void Player::updateWalk(uint8_t frame) {
 
     if (arduboy.pressed(A_BUTTON)) {
         if (holdACount == 49) {
@@ -95,8 +95,54 @@ void Player::update(uint8_t frame) {
 
 }
 
+void Player::update(uint8_t frame) {
+    (this->*currentUpdate)(frame);
+}
+
+void Player::render(uint8_t frame) {
+    (this->*currentRender)(frame);
+}
+
 void Player::onGetWorm(Worm& worm) {
     if (worm.isSpawned) {
         wormCount +=1;
     }
+}
+
+Direction Player::determineDirection(int16_t px, int16_t py, int16_t x, int16_t y, Direction prevDir) {
+    if (px == x && py == y) {
+        return prevDir;
+    }
+
+    if (px == x) {
+        if (py > y) {
+            return UP;
+        }
+        return DOWN;
+    } else {
+        if (px > x) {
+            return LEFT;
+        }
+        return RIGHT;
+    }
+}
+
+void Player::moveTo(int16_t newX, int16_t newY, boolean resetPrev) {
+    if (resetPrev) {
+        prevX = newX;
+        prevY = newY;
+    } else if (prevX != x || prevY != y) {
+        prevX = x;
+        prevY = y;
+    }
+
+    x = newX;
+    y = newY;
+
+    dir = determineDirection(prevX, prevY, x, y, dir);
+}
+
+void Player::undoMove() {
+    x = prevX;
+    y = prevY;
 }
