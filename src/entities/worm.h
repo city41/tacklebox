@@ -15,7 +15,7 @@ class Worm {
         {}
 
     void update(uint8_t frame, bool isActive, bool justBecameActive);
-    void render(uint8_t frame, int16_t cornerX, int16_t cornerY);
+    void render(uint8_t frame);
     void onGrabbedByPlayer();
 };
 

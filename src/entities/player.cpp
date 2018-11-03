@@ -21,7 +21,7 @@ const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     3, 0
 };
 
-void Player::render(uint8_t frame, int16_t cornerX, int16_t cornerY) {
+void Player::render(uint8_t frame) {
     const uint8_t* offset = playerSpriteIndexAndMirror + (dir * 2);
     uint8_t spriteIndex = pgm_read_byte(offset);
     MirrorMode mirror = (MirrorMode)pgm_read_byte(offset + 1);
@@ -34,28 +34,10 @@ void Player::render(uint8_t frame, int16_t cornerX, int16_t cornerY) {
         }
     }
 
-    int16_t renderX, renderY;
-
-    if (x < WIDTH / 2) {
-        renderX = x;
-    } else if (x > MAP_WIDTH_PX - WIDTH / 2) {
-        renderX = x - (MAP_WIDTH_PX - WIDTH);
-    } else {
-        renderX = WIDTH / 2;
-    }
-
-    if (y < HEIGHT / 2) {
-        renderY = y;
-    } else if (y > MAP_HEIGHT_PX - HEIGHT / 2) {
-        renderY = y - (MAP_HEIGHT_PX - HEIGHT);
-    } else {
-        renderY = HEIGHT / 2;
-    }
-
-    renderer.drawPlusMask(renderX - 8, renderY - 8, player_plus_mask, spriteIndex, mirror);
+    renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, mirror);
 
     if (scanning) {
-        renderer.drawOverwrite(cursorX - cornerX, cursorY - cornerY, cursor_tiles, 0, 0, Xor);
+        renderer.drawOverwrite(cursorX, cursorY, cursor_tiles, 0, 0, Xor);
     }
 }
 

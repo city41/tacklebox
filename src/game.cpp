@@ -118,20 +118,42 @@ void Game::renderPlay(uint8_t frame) {
 
     TileFloor::renderCenteredOn(centerX, centerY);
 
-    int16_t cornerX = player.x - WIDTH / 2;
-    int16_t cornerY = player.y - HEIGHT / 2;
+    // translate the renderer based on the player's location
+    // essentially the same as translating a camera in a 3d game
+    int16_t translateX;
+    int16_t translateY;
+
+    if (player.x < WIDTH / 2) {
+        translateX = 0;
+    } else if (player.x > MAP_WIDTH_PX - WIDTH / 2) {
+        translateX = WIDTH - MAP_WIDTH_PX;
+    } else {
+        translateX = -player.x + WIDTH / 2;
+    }
+
+    if (player.y < HEIGHT / 2) {
+        translateY = 0;
+    } else if (player.y > MAP_HEIGHT_PX - HEIGHT / 2) {
+        translateY = HEIGHT - MAP_HEIGHT_PX;
+    } else {
+        translateY = -player.y + HEIGHT / 2;
+    }
+
+    renderer.translateX = translateX;
+    renderer.translateY = translateY;
 
     for (uint8_t w = 0; w < MAX_WORMS; ++w) {
         bool isActive = isOnScreen(player.x, player.y, worms[w].x, worms[w].y);
 
         if (isActive) {
-            worms[w].render(frame, cornerX, cornerY);
+            worms[w].render(frame);
         }
     }
 
-    player.render(frame, cornerX, cornerY);
+    player.render(frame);
 
     renderer.translateX = WIDTH - 24;
+    renderer.translateY = 0;
     Hud::render(player);
 }
 

@@ -9,9 +9,9 @@ void Worm::update(uint8_t frame, bool isActive, bool justBecameActive) {
     isSpawned = isSpawned || justBecameActive;
 }
 
-void Worm::render(uint8_t frame, int16_t cornerX, int16_t cornerY) {
+void Worm::render(uint8_t frame) {
     if (isSpawned) {
-        renderer.drawOverwrite(x - cornerX, y - cornerY, worm_tiles, 0);
+        renderer.drawOverwrite(x, y, worm_tiles, 0);
     }
 }
 

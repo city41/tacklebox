@@ -33,7 +33,7 @@ class Player {
             moveTo(px, py);
         }
 
-        void render(uint8_t frame, int16_t cornerX, int16_t cornerY);
+        void render(uint8_t frame);
         void update(uint8_t frame);
         bool isOnSolidTile(void);
         void onGetWorm(Worm& worm);
