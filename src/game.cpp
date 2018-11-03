@@ -118,15 +118,18 @@ void Game::renderPlay(uint8_t frame) {
 
     TileFloor::renderCenteredOn(centerX, centerY);
 
+    int16_t cornerX = player.x - WIDTH / 2;
+    int16_t cornerY = player.y - HEIGHT / 2;
+
     for (uint8_t w = 0; w < MAX_WORMS; ++w) {
         bool isActive = isOnScreen(player.x, player.y, worms[w].x, worms[w].y);
 
         if (isActive) {
-            worms[w].render(frame, player.x - WIDTH / 2, player.y - HEIGHT / 2);
+            worms[w].render(frame, cornerX, cornerY);
         }
     }
 
-    player.render(frame);
+    player.render(frame, cornerX, cornerY);
 
     renderer.translateX = WIDTH - 24;
     Hud::render(player);

@@ -3,7 +3,6 @@
 #include <Arduboy2.h>
 #include <Arduino.h>
 #include "direction.h"
-#include "../maskBitmaps.h"
 #include "worm.h"
 
 class Player {
@@ -15,6 +14,10 @@ class Player {
         int16_t prevY;
         Direction dir;
         bool movedThisFrame;
+        bool scanning;
+        uint8_t holdACount;
+        int16_t cursorX;
+        int16_t cursorY;
 
         Player(int16_t px, int16_t py):
             wormCount(0),
@@ -23,12 +26,14 @@ class Player {
             prevX(0),
             prevY(0),
             dir(DOWN),
-            movedThisFrame(false)
+            movedThisFrame(false),
+            scanning(false),
+            holdACount(0)
         {
             moveTo(px, py);
         }
 
-        void render(uint8_t frame);
+        void render(uint8_t frame, int16_t cornerX, int16_t cornerY);
         void update(uint8_t frame);
         bool isOnSolidTile(void);
         void onGetWorm(Worm& worm);

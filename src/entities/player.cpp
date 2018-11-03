@@ -1,4 +1,6 @@
 #include "player.h"
+#include "../maskBitmaps.h"
+#include "../nonMaskBitmaps.h"
 #include "../renderer.h"
 #include "../tileFloor.h"
 #include "../overworld.h"
@@ -19,7 +21,7 @@ const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     3, 0
 };
 
-void Player::render(uint8_t frame) {
+void Player::render(uint8_t frame, int16_t cornerX, int16_t cornerY) {
     const uint8_t* offset = playerSpriteIndexAndMirror + (dir * 2);
     uint8_t spriteIndex = pgm_read_byte(offset);
     MirrorMode mirror = (MirrorMode)pgm_read_byte(offset + 1);
@@ -51,6 +53,10 @@ void Player::render(uint8_t frame) {
     }
 
     renderer.drawPlusMask(renderX - 8, renderY - 8, player_plus_mask, spriteIndex, mirror);
+
+    if (scanning) {
+        renderer.drawOverwrite(cursorX - cornerX, cursorY - cornerY, cursor_tiles, 0, 0, Xor);
+    }
 }
 
 bool Player::isOnSolidTile() {
@@ -60,7 +66,22 @@ bool Player::isOnSolidTile() {
 }
 
 void Player::update(uint8_t frame) {
-    int16_t newX = x, newY = y;
+
+    if (arduboy.pressed(A_BUTTON)) {
+        if (holdACount == 49) {
+            cursorX = x;
+            cursorY = y + 18;
+        }
+
+        holdACount = min(holdACount + 1, 50);
+    } else {
+        holdACount = 0;
+    }
+
+    scanning = holdACount == 50;
+
+    int16_t newX = scanning ? cursorX : x;
+    int16_t newY = scanning ? cursorY : y;
 
     if (arduboy.pressed(DOWN_BUTTON)) {
         newY += PLAYER_VELOCITY;
@@ -78,13 +99,18 @@ void Player::update(uint8_t frame) {
         newX += PLAYER_VELOCITY;
     }
 
-    moveTo(newX, newY);
+    if (scanning) {
+        cursorX = newX;
+        cursorY = newY;
+    } else {
+        moveTo(newX, newY);
 
-    if (isOnSolidTile()) {
-        undoMove();
+        if (isOnSolidTile()) {
+            undoMove();
+        }
+        movedThisFrame = x != prevX || y != prevY;
     }
 
-    movedThisFrame = x != prevX || y != prevY;
 }
 
 void Player::onGetWorm(Worm& worm) {
