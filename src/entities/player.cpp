@@ -29,7 +29,7 @@ bool Player::isOnSolidTile() {
 }
 
 void Player::updateWalk(uint8_t frame) {
-    if (arduboy.pressed(A_BUTTON)) {
+    if (wormCount > 0 && arduboy.pressed(A_BUTTON)) {
         holdACount += 1;
         if (holdACount == 50) {
             cursorX = x;
@@ -135,6 +135,7 @@ void Player::updateCast(uint8_t frame) {
     castCount += 1;
 
     if (castCount == 60) {
+        wormCount -= 1;
         reelLevel = WIDTH / 2;
         currentUpdate = &Player::updateReel;
         currentRender = &Player::renderReel;
@@ -159,6 +160,7 @@ void Player::updateReel(uint8_t frame) {
         currentUpdate = &Player::updateWalk;
         currentRender = &Player::renderWalk;
     } else if (reelLevel == WIDTH - 2) {
+        fishCount += 1;
         currentUpdate = &Player::updateGetFish;
         currentRender = &Player::renderGetFish;
     }
@@ -181,10 +183,13 @@ void Player::renderReel(uint8_t frame) {
     renderer.popTranslate();
 }
 
-void Player::updateGetFish(uint8_t frame) {}
+void Player::updateGetFish(uint8_t frame) {
+    currentUpdate = &Player::updateWalk;
+    currentRender = &Player::renderWalk;
+}
 
 void Player::renderGetFish(uint8_t frame) {
-    renderPlay(frame);
+    renderWalk(frame);
 }
 
 void Player::update(uint8_t frame) {

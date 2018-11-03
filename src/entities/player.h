@@ -11,6 +11,7 @@ class Player {
 
     public:
         uint8_t wormCount;
+        uint8_t fishCount;
         int16_t x;
         int16_t y;
         int16_t prevX;
@@ -29,6 +30,7 @@ class Player {
 
         Player(int16_t px, int16_t py):
             wormCount(0),
+            fishCount(0),
             x(0),
             y(0),
             prevX(0),
