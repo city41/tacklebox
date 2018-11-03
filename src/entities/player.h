@@ -47,6 +47,12 @@ class Player {
         void updateWalk(uint8_t frame);
         void renderWalk(uint8_t frame);
 
+        void updateScanning(uint8_t frame);
+        void renderScanning(uint8_t frame);
+
+        void updateCast(uint8_t frame);
+        void renderCast(uint8_t frame);
+
         bool isOnSolidTile(void);
         void onGetWorm(Worm& worm);
 

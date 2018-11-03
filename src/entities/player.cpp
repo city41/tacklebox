@@ -21,25 +21,6 @@ const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     3, 0
 };
 
-void Player::renderWalk(uint8_t frame) {
-    const uint8_t* offset = playerSpriteIndexAndMirror + (dir * 2);
-    uint8_t spriteIndex = pgm_read_byte(offset);
-    MirrorMode mirror = (MirrorMode)pgm_read_byte(offset + 1);
-
-    if (movedThisFrame && ((frame / 6) % 2) == 0) {
-        if (dir == LEFT || dir == RIGHT) {
-            ++spriteIndex;
-        } else {
-            mirror = MIRROR_HORIZONTAL;
-        }
-    }
-
-    renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, mirror);
-
-    if (scanning) {
-        renderer.drawOverwrite(cursorX, cursorY, cursor_tiles, 0, 0, Xor);
-    }
-}
 
 bool Player::isOnSolidTile() {
     TileDef tile = TileFloor::getTileAt(x, y);
@@ -48,22 +29,21 @@ bool Player::isOnSolidTile() {
 }
 
 void Player::updateWalk(uint8_t frame) {
-
     if (arduboy.pressed(A_BUTTON)) {
-        if (holdACount == 49) {
+        holdACount += 1;
+        if (holdACount == 50) {
             cursorX = x;
             cursorY = y + 18;
+            currentUpdate = &Player::updateScanning;
+            currentRender = &Player::renderScanning;
+            return;
         }
-
-        holdACount = min(holdACount + 1, 50);
     } else {
         holdACount = 0;
     }
 
-    scanning = holdACount == 50;
-
-    int16_t newX = scanning ? cursorX : x;
-    int16_t newY = scanning ? cursorY : y;
+    int16_t newX = x;
+    int16_t newY = y;
 
     if (arduboy.pressed(DOWN_BUTTON)) {
         newY += PLAYER_VELOCITY;
@@ -81,18 +61,80 @@ void Player::updateWalk(uint8_t frame) {
         newX += PLAYER_VELOCITY;
     }
 
-    if (scanning) {
-        cursorX = newX;
-        cursorY = newY;
-    } else {
-        moveTo(newX, newY);
+    moveTo(newX, newY);
 
-        if (isOnSolidTile()) {
-            undoMove();
-        }
-        movedThisFrame = x != prevX || y != prevY;
+    if (isOnSolidTile()) {
+        undoMove();
     }
 
+    movedThisFrame = x != prevX || y != prevY;
+}
+
+void Player::renderWalk(uint8_t frame) {
+    const uint8_t* offset = playerSpriteIndexAndMirror + (dir * 2);
+    uint8_t spriteIndex = pgm_read_byte(offset);
+    MirrorMode mirror = (MirrorMode)pgm_read_byte(offset + 1);
+
+    if (movedThisFrame && ((frame / 6) % 2) == 0) {
+        if (dir == LEFT || dir == RIGHT) {
+            ++spriteIndex;
+        } else {
+            mirror = MIRROR_HORIZONTAL;
+        }
+    }
+
+    renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, mirror);
+}
+
+void Player::updateScanning(uint8_t frame) {
+    if (!arduboy.pressed(A_BUTTON)) {
+        TileDef tile = TileFloor::getTileAt(cursorX + 4, cursorY + 4);
+
+        if (tile == Water) {
+            currentUpdate = &Player::updateCast;
+            currentRender = &Player::renderCast;
+        } else {
+            currentUpdate = &Player::updateWalk;
+            currentRender = &Player::renderWalk;
+        }
+
+        return;
+    }
+
+    if (arduboy.pressed(DOWN_BUTTON)) {
+        cursorY += PLAYER_VELOCITY;
+    }
+
+    if (arduboy.pressed(UP_BUTTON)) {
+        cursorY -= PLAYER_VELOCITY;
+    }
+
+    if (arduboy.pressed(LEFT_BUTTON)) {
+        cursorX -= PLAYER_VELOCITY;
+    }
+
+    if (arduboy.pressed(RIGHT_BUTTON)) {
+        cursorX += PLAYER_VELOCITY;
+    }
+}
+
+void Player::renderScanning(uint8_t frame) {
+    renderWalk(frame);
+    renderer.drawOverwrite(cursorX, cursorY, cursor_tiles, 0, 0, Xor);
+}
+
+void Player::updateCast(uint8_t frame) {
+    if (arduboy.justPressed(B_BUTTON)) {
+        currentUpdate = &Player::updateWalk;
+        currentRender = &Player::renderWalk;
+
+        return;
+    }
+}
+
+void Player::renderCast(uint8_t frame) {
+    renderWalk(frame);
+    renderer.drawOverwrite(cursorX, cursorY, bobber_tiles, 0, 0, Xor);
 }
 
 void Player::update(uint8_t frame) {
