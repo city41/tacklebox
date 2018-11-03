@@ -2,13 +2,18 @@
 #define gameScene_h
 
 #include "entities/player.h"
+#include "entities/worm.h"
+
+const uint8_t MAX_WORMS = 1;
 
 class Game {
     typedef void (Game::*UpdatePtr)(uint8_t);
     typedef void (Game::*RenderPtr)(uint8_t);
 
     public:
+        bool firstPlayFrame;
         Player player;
+        Worm worms[MAX_WORMS];
 
         UpdatePtr prevUpdate;
         UpdatePtr currentUpdate;
@@ -36,6 +41,7 @@ class Game {
 
         Game(): 
             player(24 * 16, 10 * 16),
+            worms({ Worm(25 * 16, 10 * 16)}),
             prevUpdate(NULL),
             currentUpdate(&Game::updateLogo),
             nextUpdate(NULL),

@@ -86,3 +86,9 @@ void Player::update(uint8_t frame) {
 
     movedThisFrame = x != prevX || y != prevY;
 }
+
+void Player::onGetWorm(Worm& worm) {
+    if (worm.isSpawned) {
+        wormCount +=1;
+    }
+}

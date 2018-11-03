@@ -4,9 +4,11 @@
 #include <Arduino.h>
 #include "direction.h"
 #include "../maskBitmaps.h"
+#include "worm.h"
 
 class Player {
     public:
+        uint8_t wormCount;
         int16_t x;
         int16_t y;
         int16_t prevX;
@@ -15,6 +17,7 @@ class Player {
         bool movedThisFrame;
 
         Player(int16_t px, int16_t py):
+            wormCount(0),
             x(0),
             y(0),
             prevX(0),
@@ -28,6 +31,7 @@ class Player {
         void render(uint8_t frame);
         void update(uint8_t frame);
         bool isOnSolidTile(void);
+        void onGetWorm(Worm& worm);
 
         Direction determineDirection(int16_t px, int16_t py, int16_t x, int16_t y, Direction prevDir) {
             if (px == x && py == y) {

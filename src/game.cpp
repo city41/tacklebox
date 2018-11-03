@@ -46,6 +46,7 @@ void Game::updateTitle(uint8_t frame) {
     if (arduboy.justPressed(A_BUTTON)) {
         if (titleRow == PLAY_GAME) {
             /* loadSave(); */
+            firstPlayFrame = true;
             push(&Game::updatePlay, &Game::renderPlay);
         /* } else if (titleRow == DELETE_SAVE) { */
         /*     titleRow = 0; */
@@ -80,8 +81,35 @@ void Game::renderTitle(uint8_t frame) {
     renderer.drawOverwrite(34,42 + titleRow * 8, squareIcon_tiles, 2);
 }
 
+bool isOnScreen(int16_t refX, int16_t refY, int16_t x, int16_t y) {
+    return (refX - WIDTH / 2 <= x && refX + WIDTH / 2 >= x) &&
+        (refY - HEIGHT / 2 <= y && refY + HEIGHT / 2 >= y);
+}
+
+bool overlap(Player& player, Worm& worm) {
+    return !(
+        worm.x     >= player.x + 16  ||
+        worm.x + 8 <= player.x       ||
+        worm.y     >= player.y + 16  ||
+        worm.y + 8 <= player.y
+    );
+}
+
 void Game::updatePlay(uint8_t frame) {
     player.update(frame);
+
+    for (uint8_t w = 0; w < MAX_WORMS; ++w) {
+        bool isActive = isOnScreen(player.x, player.y, worms[w].x, worms[w].y);
+        bool justBecameActive = firstPlayFrame || !isOnScreen(player.prevX, player.prevY, worms[w].x, worms[w].y);
+        worms[w].update(frame, isActive, justBecameActive);
+
+        if (overlap(player, worms[w])) {
+            player.onGetWorm(worms[w]);
+            worms[w].onGrabbedByPlayer();
+        }
+    }
+
+    firstPlayFrame = false;
 }
 
 void Game::renderPlay(uint8_t frame) {
@@ -89,6 +117,15 @@ void Game::renderPlay(uint8_t frame) {
     int16_t centerY = min(max(HEIGHT / 2, player.y), MAP_HEIGHT_PX - HEIGHT / 2);
 
     TileFloor::renderCenteredOn(centerX, centerY);
+
+    for (uint8_t w = 0; w < MAX_WORMS; ++w) {
+        bool isActive = isOnScreen(player.x, player.y, worms[w].x, worms[w].y);
+
+        if (isActive) {
+            worms[w].render(frame, player.x - WIDTH / 2, player.y - HEIGHT / 2);
+        }
+    }
+
     player.render(frame);
 
     renderer.translateX = WIDTH - 24;
