@@ -17,7 +17,43 @@
          "draworder":"topdown",
          "id":2,
          "name":"entities",
-         "objects":[],
+         "objects":[
+                {
+                 "height":0,
+                 "id":236,
+                 "name":"worm spawn",
+                 "point":true,
+                 "rotation":0,
+                 "type":"WORM_SPAWN",
+                 "visible":true,
+                 "width":0,
+                 "x":374.667,
+                 "y":39.3333
+                }, 
+                {
+                 "height":0,
+                 "id":237,
+                 "name":"worm spawn",
+                 "point":true,
+                 "rotation":0,
+                 "type":"WORM_SPAWN",
+                 "visible":true,
+                 "width":0,
+                 "x":68.6667,
+                 "y":102.667
+                }, 
+                {
+                 "height":0,
+                 "id":238,
+                 "name":"worm spawn",
+                 "point":true,
+                 "rotation":0,
+                 "type":"WORM_SPAWN",
+                 "visible":true,
+                 "width":0,
+                 "x":389.333,
+                 "y":341.333
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -432,7 +468,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":236,
+ "nextobjectid":239,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"2018.08.06",
@@ -440,7 +476,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "source":"overworld.tsx"
+         "source":"world.tsx"
         }],
  "tilewidth":16,
  "type":"map",

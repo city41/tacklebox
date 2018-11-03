@@ -6,9 +6,10 @@
 #include "maskBitmaps.h"
 #include "strings.h"
 #include "tileFloor.h"
-#include "overworld.h"
+#include "world.h"
 #include "hud.h"
 #include "shop.h"
+#include "worms.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;

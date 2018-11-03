@@ -3,7 +3,7 @@ const path = require("path");
 const program = require("commander");
 const packageJson = require("./package.json");
 const buildMapArray = require("./buildMapArray");
-const buildEntityArray = require("./buildEntityArray");
+const buildWorms = require("./buildWorms");
 
 function findLayer(layers, prop) {
     return layers.find(l => !!l[prop]);
@@ -32,6 +32,20 @@ if (!program.src) {
     process.exit(1);
 }
 
+function createWormsFile(tiledJson, outDir) {
+    const entityLayer = findEntityLayer(tiledJson.layers);
+    const wormData = buildWorms(entityLayer);
+    const fileData = "#pragma once\n\n" + wormData;
+
+    if (outDir) {
+        const destPath = path.join(outDir, "worms.h");
+        fs.writeFileSync(destPath, fileData);
+        console.log("wrote: ", destPath);
+    } else {
+        console.log(wormData);
+    }
+}
+
 function createHeaderFile(tiledJson, baseName, outDir) {
     const mapArrayString = buildMapArray(
         baseName,
@@ -47,26 +61,9 @@ function createHeaderFile(tiledJson, baseName, outDir) {
         );
     }
 
-    const entityArrayString = buildEntityArray(
-        baseName,
-        entityLayer,
-        tiledJson.width,
-        tiledJson.height,
-        tiledJson.tilewidth
-    );
+    const pragma = "#pragma once";
 
-    const ifndef = `#ifndef ${baseName}_h\n#define ${baseName}_h`;
-    const endif = "#endif";
-
-    const finalFile =
-        ifndef +
-        "\n\n" +
-        '#include "emptyRoom.h"\n' +
-        mapArrayString +
-        "\n\n" +
-        entityArrayString +
-        "\n\n" +
-        endif;
+    const finalFile = pragma + "\n\n" + mapArrayString;
 
     if (outDir) {
         const destPath = path.join(outDir, baseName + ".h");
@@ -103,6 +100,7 @@ tiledJsonFiles.forEach(file => {
         const tiledJson = require(fullPath);
         const baseName = path.basename(file, ".json");
         createHeaderFile(tiledJson, baseName, outDir);
+        createWormsFile(tiledJson, outDir);
     }
 });
 

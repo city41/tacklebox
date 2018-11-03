@@ -4,7 +4,6 @@
 #include "../nonMaskBitmaps.h"
 #include "../renderer.h"
 #include "../tileFloor.h"
-#include "../overworld.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="42" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="236">
- <tileset firstgid="1" source="overworld.tsx"/>
+<map version="1.0" tiledversion="2018.08.06" orientation="orthogonal" renderorder="right-down" width="42" height="24" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="239">
+ <tileset firstgid="1" source="world.tsx"/>
  <layer id="10" name="Tile Layer 1" width="42" height="24">
   <data encoding="csv">
 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,7,7,7,7,
@@ -29,8 +29,18 @@
 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,7,7,7
 </data>
  </layer>
- <objectgroup id="2" name="entities"/>
- <objectgroup id="6" name="guidelines">
+ <objectgroup id="2" name="entities">
+  <object id="236" name="worm spawn" type="WORM_SPAWN" x="374.667" y="39.3333">
+   <point/>
+  </object>
+  <object id="237" name="worm spawn" type="WORM_SPAWN" x="68.6667" y="102.667">
+   <point/>
+  </object>
+  <object id="238" name="worm spawn" type="WORM_SPAWN" x="389.333" y="341.333">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="guidelines" locked="1">
   <object id="21" x="0" y="0" width="112" height="64"/>
   <object id="22" x="112" y="0" width="112" height="64"/>
   <object id="23" x="224" y="0" width="112" height="64"/>
