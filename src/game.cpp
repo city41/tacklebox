@@ -99,6 +99,11 @@ bool overlap(Player& player, Worm& worm) {
 void Game::updatePlay(uint8_t frame) {
     player.update(frame);
 
+    if (TileFloor::getTileAt(player.x, player.y)) {
+        push(&Game::updateShop, &Game::renderShop);
+        return;
+    }
+
     for (uint8_t w = 0; w < MAX_WORMS; ++w) {
         bool isActive = isOnScreen(player.x, player.y, worms[w].x, worms[w].y);
         bool justBecameActive = firstPlayFrame || !isOnScreen(player.prevX, player.prevY, worms[w].x, worms[w].y);
@@ -156,6 +161,16 @@ void Game::renderPlay(uint8_t frame) {
     renderer.translateX = WIDTH - 24;
     renderer.translateY = 0;
     Hud::render(player);
+}
+
+void Game::updateShop(uint8_t frame) {
+    if (arduboy.justPressed(B_BUTTON)) {
+        player.moveTo(player.x, player.y + 16);
+        pop();
+    }
+}
+
+void Game::renderShop(uint8_t frame) {
 }
 
 void Game::update(uint8_t frame) {

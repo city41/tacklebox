@@ -40,6 +40,9 @@ class Game {
         void updatePlay(uint8_t frame);
         void renderPlay(uint8_t frame);
 
+        void updateShop(uint8_t frame);
+        void renderShop(uint8_t frame);
+
         Game(): 
             player(24 * 16, 10 * 16),
             worms({ Worm(25 * 16, 10 * 16)}),
