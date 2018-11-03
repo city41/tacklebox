@@ -30,16 +30,11 @@ bool Player::isOnSolidTile() {
 
 void Player::updateWalk(uint8_t frame) {
     if (wormCount > 0 && arduboy.pressed(A_BUTTON)) {
-        holdACount += 1;
-        if (holdACount == 50) {
-            cursorX = x;
-            cursorY = y + 18;
-            currentUpdate = &Player::updateScanning;
-            currentRender = &Player::renderScanning;
-            return;
-        }
-    } else {
-        holdACount = 0;
+        cursorX = x;
+        cursorY = y + 18;
+        currentUpdate = &Player::updateScanning;
+        currentRender = &Player::renderScanning;
+        return;
     }
 
     int16_t newX = x;

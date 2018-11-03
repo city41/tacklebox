@@ -19,7 +19,6 @@ class Player {
         Direction dir;
         bool movedThisFrame;
         bool scanning;
-        uint8_t holdACount;
         int16_t cursorX;
         int16_t cursorY;
         uint8_t castCount;
@@ -38,7 +37,6 @@ class Player {
             dir(DOWN),
             movedThisFrame(false),
             scanning(false),
-            holdACount(0),
             castCount(0),
             reelLevel(0),
             currentUpdate(&Player::updateWalk),
