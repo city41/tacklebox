@@ -16,22 +16,26 @@ const uint8_t PROGMEM font_tiles[] =  {
     0xe,0x2e,0x2e,0x0,
     // '9' and 'A'
     0x8,0xaa,0xaa,0x0,
-    // 'C' and 'D'
-    0x0,0x66,0x66,0x96,
-    // 'E' and 'F'
-    0x0,0xa4,0xa4,0xe6,
-    // 'G' and 'I'
-    0x60,0x6,0x66,0xf2,
+    // 'B' and 'C'
+    0x0,0x64,0x64,0x61,
+    // 'D' and 'E'
+    0x0,0x46,0x46,0x69,
+    // 'F' and 'G'
+    0x0,0x6a,0x6a,0x2e,
+    // 'H' and 'I'
+    0x60,0xb,0x6b,0xf0,
     // 'L' and 'M'
     0x0,0xe7,0xc7,0x7,
     // 'N' and 'O'
     0x0,0x6d,0x6b,0x0,
-    // 'S' and 'T'
-    0xe4,0x4,0xe2,0xe2,
-    // 'U' and 'V'
-    0x80,0x77,0x77,0x80,
-    // 'W' and 'X'
-    0x60,0x97,0x93,0x60,
+    // 'R' and 'S'
+    0x40,0x4a,0x22,0x28,
+    // 'T' and 'U'
+    0xe,0x70,0x7e,0xe,
+    // 'V' and 'W'
+    0x8,0x77,0x37,0x8,
+    // 'X' and 'Y'
+    0x86,0x39,0xb9,0x86,
 };
 
 const uint8_t PROGMEM font_tiles_upper_mask[] = {
@@ -45,31 +49,55 @@ const uint8_t PROGMEM font_tiles_lower_mask[] = {
 
 // "NEW GAME"
 const uint8_t newGame_string[9] PROGMEM = {
-    20, 14, 26, 0, 16, 11, 19, 14, 0xFF
+    22, 15, 29, 0, 17, 11, 21, 15, 0xFF
 };
 
 
 // "CONTINUE"
 const uint8_t continue_string[9] PROGMEM = {
-    12, 21, 20, 23, 17, 20, 24, 14, 0xFF
+    13, 23, 22, 26, 19, 22, 27, 15, 0xFF
 };
 
 
 // "DELETE SAVE"
 const uint8_t deleteSave_string[12] PROGMEM = {
-    13, 14, 18, 14, 23, 14, 0, 22, 11, 25, 14, 0xFF
+    14, 15, 20, 15, 26, 15, 0, 25, 11, 28, 15, 0xFF
 };
 
 
 // "SFX ON"
 const uint8_t sfxOn_string[7] PROGMEM = {
-    22, 15, 27, 0, 21, 20, 0xFF
+    25, 16, 30, 0, 23, 22, 0xFF
 };
 
 
 // "SFX OFF"
 const uint8_t sfxOff_string[8] PROGMEM = {
-    22, 15, 27, 0, 21, 15, 15, 0xFF
+    25, 16, 30, 0, 23, 16, 16, 0xFF
+};
+
+
+// "BUY"
+const uint8_t buy_string[4] PROGMEM = {
+    12, 27, 31, 0xFF
+};
+
+
+// "SELL"
+const uint8_t sell_string[5] PROGMEM = {
+    25, 15, 20, 20, 0xFF
+};
+
+
+// "BUY STUFF HERE"
+const uint8_t tempBuy_string[15] PROGMEM = {
+    12, 27, 31, 0, 25, 26, 27, 16, 16, 0, 18, 15, 24, 15, 0xFF
+};
+
+
+// "SELL STUFF HERE"
+const uint8_t tempSell_string[16] PROGMEM = {
+    25, 15, 20, 20, 0, 25, 26, 27, 16, 16, 0, 18, 15, 24, 15, 0xFF
 };
 
 

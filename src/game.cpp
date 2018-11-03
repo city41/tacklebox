@@ -8,6 +8,7 @@
 #include "tileFloor.h"
 #include "overworld.h"
 #include "hud.h"
+#include "shop.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -164,13 +165,16 @@ void Game::renderPlay(uint8_t frame) {
 }
 
 void Game::updateShop(uint8_t frame) {
-    if (arduboy.justPressed(B_BUTTON)) {
+    if (arduboy.justPressed(B_BUTTON) && Shop::currentUpdate == &Shop::updateMainMenu) {
         player.moveTo(player.x, player.y + 16);
         pop();
+    } else {
+        Shop::update(frame);
     }
 }
 
 void Game::renderShop(uint8_t frame) {
+    Shop::render(frame);
 }
 
 void Game::update(uint8_t frame) {
