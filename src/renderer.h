@@ -18,7 +18,12 @@ class Renderer {
         {}
 
         int16_t translateX;
-        int8_t translateY;
+        int16_t translateY;
+        int16_t prevTranslateX;
+        int16_t prevTranslateY;
+
+        void pushTranslate(int16_t newTranslateX, int16_t newTranslateY);
+        void popTranslate();
 
         void fillRect(int16_t x, int16_t y, uint8_t w, uint8_t h, uint8_t color = WHITE);
         void drawRect(int16_t x, int16_t y, uint8_t w, uint8_t h, uint8_t color = WHITE);

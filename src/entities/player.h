@@ -21,6 +21,8 @@ class Player {
         uint8_t holdACount;
         int16_t cursorX;
         int16_t cursorY;
+        uint8_t castCount;
+        uint8_t reelLevel;
 
         UpdatePtr currentUpdate;
         RenderPtr currentRender;
@@ -35,6 +37,8 @@ class Player {
             movedThisFrame(false),
             scanning(false),
             holdACount(0),
+            castCount(0),
+            reelLevel(0),
             currentUpdate(&Player::updateWalk),
             currentRender(&Player::renderWalk)
         {
@@ -52,6 +56,9 @@ class Player {
 
         void updateCast(uint8_t frame);
         void renderCast(uint8_t frame);
+
+        void updateReel(uint8_t frame);
+        void renderReel(uint8_t frame);
 
         bool isOnSolidTile(void);
         void onGetWorm(Worm& worm);

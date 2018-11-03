@@ -1,6 +1,19 @@
 #include "renderer.h"
 #include "strings.h"
 
+void Renderer::pushTranslate(int16_t newTranslateX, int16_t newTranslateY) {
+    prevTranslateX = translateX;
+    prevTranslateY = translateY;
+
+    translateX = newTranslateX;
+    translateY = newTranslateY;
+}
+
+void Renderer::popTranslate() {
+    translateX = prevTranslateX;
+    translateY = prevTranslateY;
+}
+
 void Renderer::fillRect(int16_t x, int16_t y, uint8_t w, uint8_t h, uint8_t color) {
     arduboy.fillRect(x + translateX, y + translateY, w, h, color);
 }

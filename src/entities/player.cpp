@@ -91,6 +91,7 @@ void Player::updateScanning(uint8_t frame) {
         TileDef tile = TileFloor::getTileAt(cursorX + 4, cursorY + 4);
 
         if (tile == Water) {
+            castCount = 0;
             currentUpdate = &Player::updateCast;
             currentRender = &Player::renderCast;
         } else {
@@ -130,11 +131,39 @@ void Player::updateCast(uint8_t frame) {
 
         return;
     }
+
+    castCount += 1;
+
+    if (castCount == 60) {
+        reelLevel = WIDTH / 2;
+        currentUpdate = &Player::updateReel;
+        currentRender = &Player::renderReel;
+    }
 }
 
 void Player::renderCast(uint8_t frame) {
     renderWalk(frame);
     renderer.drawOverwrite(cursorX, cursorY, bobber_tiles, 0, 0, Xor);
+}
+
+void Player::updateReel(uint8_t frame) {
+}
+
+void Player::renderReel(uint8_t frame) {
+    renderWalk(frame);
+
+    renderer.pushTranslate(0, 0);
+
+    // white background to get rid of anything else there
+    renderer.fillRect(0, HEIGHT - 4, WIDTH, 4, WHITE);
+
+    // black progress bar at the current reel level
+    renderer.fillRect(0, HEIGHT - 4, reelLevel, 4, BLACK);
+
+    // border to frame it all
+    renderer.drawRect(0, HEIGHT - 4, WIDTH, 4, BLACK);
+
+    renderer.popTranslate();
 }
 
 void Player::update(uint8_t frame) {
