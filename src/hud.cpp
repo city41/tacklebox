@@ -12,6 +12,10 @@ const uint8_t clockY = 0;
 void drawClock() {
     uint8_t hour = State::gameState.minute / 60;
 
+    if (hour == 0) {
+        hour = 12;
+    }
+
     if (hour > 12) {
         hour -= 12;
         renderer.drawPlusMask(44, clockY, pm_plus_mask, 0);
@@ -39,7 +43,7 @@ void Hud::render(uint8_t frame, Player& player) {
     renderer.fillRect(0, 0, 50, 5, BLACK);
 
     /* renderer.drawOverwrite(3, -1, worm_tiles, 0, 0, Invert); */
-    renderer.drawNumber(13, 0, State::gameState.wormCount);
+    renderer.drawNumber(10, 0, State::gameState.wormCount);
 
     drawClock();
 }
