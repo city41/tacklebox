@@ -105,11 +105,13 @@ void Game::updatePlay(uint8_t frame) {
 
         if (seconds == SECONDS_PER_HOUR) {
             seconds = 0;
-            hour += 1;
+            State::gameState.hour += 1;
 
-            if (hour == 24) {
-                hour = 0;
+            if (State::gameState.hour == 24) {
+                State::gameState.hour = 0;
             }
+
+            State::saveToEEPROM();
         }
     }
 
@@ -136,7 +138,7 @@ void Game::renderPlay(uint8_t frame) {
     int16_t centerX = min(max(WIDTH / 2, player.x), MAP_WIDTH_PX - WIDTH / 2);
     int16_t centerY = min(max(HEIGHT / 2, player.y), MAP_HEIGHT_PX - HEIGHT / 2);
 
-    TileFloor::renderCenteredOn(centerX, centerY, hour >= 15);
+    TileFloor::renderCenteredOn(centerX, centerY);
 
     // translate the renderer based on the player's location
     // essentially the same as translating a camera in a 3d game
@@ -174,7 +176,7 @@ void Game::renderPlay(uint8_t frame) {
 
     renderer.translateX = WIDTH - 25;
     renderer.translateY = 0;
-    Hud::render(frame, player, hour);
+    Hud::render(frame, player);
 }
 
 void Game::updateShop(uint8_t frame) {

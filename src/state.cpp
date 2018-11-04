@@ -18,6 +18,7 @@ void State::load() {
     if (hasUserSaved()) {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
+        gameState.hour = 12;
         gameState.wormCount = 0;
         gameState.fishCount = 0;
     }

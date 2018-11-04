@@ -19,7 +19,6 @@ class Game {
         RenderPtr nextRender;
 
         uint8_t titleRow;
-        uint8_t hour;        // what hour the game is at
         uint8_t seconds;     // actual seconds. 1 game hour = SECONDS_PER_HOUR real seconds
 
 
@@ -52,7 +51,6 @@ class Game {
             currentRender(&Game::renderLogo),
             nextRender(NULL),
             titleRow(0),
-            hour(12),
             seconds(0)
         {}
 };

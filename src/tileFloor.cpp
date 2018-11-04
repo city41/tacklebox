@@ -4,6 +4,7 @@
 #include "drawBitmap.h"
 #include "renderer.h"
 #include "world.h"
+#include "state.h"
 
 extern Renderer renderer;
 
@@ -28,15 +29,15 @@ TileDef TileFloor::getTileAt(int16_t x, int16_t y) {
     return (TileDef)pgm_read_byte(world_map + firstTileIndex);
 }
 
-void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId, bool isNight) {   
+void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId) {   
     TileDef tile = (TileDef)(tileId < 8 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2));
     MirrorMode mirror = tileId < 8 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
     bool dontInvert = true;
-    DrawMode drawMode = isNight ? Invert : Normal;
+    DrawMode drawMode = State::gameState.hour >= DAY_NIGHT_BOUNDARY_HOUR ? Invert : Normal;
     renderer.drawOverwrite(x, y, map_tiles, tile, mirror, drawMode);
 }
 
-void TileFloor::renderCenteredOn(int16_t x, int16_t y, bool isNight) {
+void TileFloor::renderCenteredOn(int16_t x, int16_t y) {
     int16_t maxTile = MAP_WIDTH_TILES * MAP_HEIGHT_TILES;
 
     int16_t tileX = (x - WIDTH / 2) / TILE_SIZE;
@@ -53,7 +54,7 @@ void TileFloor::renderCenteredOn(int16_t x, int16_t y, bool isNight) {
             int16_t ti = firstTileIndex + additionalRows + tx;
 
             int16_t tileId = pgm_read_byte(world_map + ti);
-            renderTile(tx * TILE_SIZE - shiftX, ty * TILE_SIZE - shiftY, tileId, isNight);
+            renderTile(tx * TILE_SIZE - shiftX, ty * TILE_SIZE - shiftY, tileId);
         }
     }
 }
