@@ -5,22 +5,46 @@
 #include <Arduboy2.h>
 
 enum TileDef: uint8_t {
+    // begin - walkable tiles
     Blank = 0,
-    UpperLeftCorner = 1,
-    LeftWall = 2,
-    LowerWall = 3,
-    Stone = 4,
-    Ladder = 5,
-    Water = 6,
-    Door = 7,
+    FloorFlavor1,
+    FloorFlavor2,
+    ShopDoor,
+    Sand,
+    SandGrassBoundary,
+    OceanSandBoundary,
+    // end - walkable tiles
 
-    // these tiles are mirrors of the above sprites
-    LowerLeftCorner = 8,
-    UpperRightCorner = 9,
-    LowerRightCorner = 10,
-    UpperWall = 11,
-    RightWall = 12,
-    Compression = 15
+    // begin- solid tiles
+    // begin -fishable tiles
+    PondLowerLeftCorner,
+    PondLowerRightCorner,
+    PondUpperLeftCorner,
+    PondUpperRightCorner,
+    PondMiddle,
+    PondMiddleDeep,
+    PondLowerBoundary,
+    PondUpperBoundary,
+    PondLeftBoundary,
+    PondRightBoundary,
+    PondInnerCorner,
+    Ocean,
+    // end - fishable tiles
+    BushWallLeft,
+    BushWallRight,
+    BushWallTop,
+    BushWallBottom,
+    BushWallLowerLeftCorner,
+    BushWallLowerRightCorner,
+    BushWallUpperLeftCorner,
+    BushWallUpperRightCorner,
+    BushLeft,
+    BushRight,
+    ShopLeftWall,
+    ShopRightWall,
+    ShopLeftSign,
+    ShopRightSign
+    // end - walkable tiles
 };
 
 struct TileFloor {
@@ -28,6 +52,14 @@ struct TileFloor {
     static void renderCenteredOn(int16_t x, int16_t y);
 
     static TileDef getTileAt(int16_t x, int16_t y);
+
+    static bool isWalkable(TileDef tile) {
+        return tile <= OceanSandBoundary;
+    }
+
+    static bool isFishable(TileDef tile) {
+        return tile >= PondLowerLeftCorner && tile <= Ocean;
+    }
 };
 
 #endif

@@ -21,11 +21,8 @@ const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     3, 0
 };
 
-
 bool Player::isOnSolidTile() {
-    TileDef tile = TileFloor::getTileAt(x, y);
-
-    return tile == Stone || tile == Water;
+    return !TileFloor::isWalkable(TileFloor::getTileAt(x, y));
 }
 
 void Player::updateWalk(uint8_t frame) {
@@ -85,7 +82,7 @@ void Player::updateScanning(uint8_t frame) {
     if (!arduboy.pressed(A_BUTTON)) {
         TileDef tile = TileFloor::getTileAt(cursorX + 4, cursorY + 4);
 
-        if (tile == Water) {
+        if (TileFloor::isFishable(tile)) {
             castCount = 0;
             currentUpdate = &Player::updateCast;
             currentRender = &Player::renderCast;

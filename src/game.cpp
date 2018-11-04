@@ -118,7 +118,7 @@ void Game::updatePlay(uint8_t frame) {
 
     player.update(frame);
 
-    if (TileFloor::getTileAt(player.x, player.y)) {
+    if (TileFloor::getTileAt(player.x, player.y) == ShopDoor) {
         push(&Game::updateShop, &Game::renderShop);
         return;
     }

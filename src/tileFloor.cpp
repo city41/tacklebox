@@ -8,19 +8,6 @@
 
 extern Renderer renderer;
 
-const uint8_t PROGMEM mirroredTiles[] = {
-    UpperLeftCorner,
-    MIRROR_VERTICAL,
-    UpperLeftCorner,
-    MIRROR_HORIZONTAL,
-    UpperLeftCorner,
-    MIRROR_HORIZONTAL | MIRROR_VERTICAL,
-    LowerWall,
-    MIRROR_VERTICAL,
-    LeftWall,
-    MIRROR_HORIZONTAL
-};
-
 TileDef TileFloor::getTileAt(int16_t x, int16_t y) {
     int16_t tileX = x / TILE_SIZE;
     int16_t tileY = y / TILE_SIZE;
@@ -30,10 +17,8 @@ TileDef TileFloor::getTileAt(int16_t x, int16_t y) {
 }
 
 void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId) {   
-    TileDef tile = (TileDef)(tileId < 8 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2));
-    MirrorMode mirror = tileId < 8 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
     DrawMode drawMode = State::isDay() ? Normal : Invert;
-    renderer.drawOverwrite(x, y, map_tiles, tile, mirror, drawMode);
+    renderer.drawOverwrite(x, y, map_tiles, tileId, 0, drawMode);
 }
 
 void TileFloor::renderCenteredOn(int16_t x, int16_t y) {
