@@ -13,6 +13,15 @@ enum TileDef: uint8_t {
     Sand,
     SandGrassBoundary,
     OceanSandBoundary,
+    IslandLowerLeftCorner,
+    IslandLowerRightCorner,
+    IslandUpperLeftCorner,
+    IslandUpperRightCorner,
+    IslandRight,
+    IslandLeft,
+    IslandUpper,
+    IslandLower,
+    Pier,
     // end - walkable tiles
 
     // begin- solid tiles
@@ -29,6 +38,7 @@ enum TileDef: uint8_t {
     PondRightBoundary,
     PondInnerCorner,
     Ocean,
+
     // end - fishable tiles
     BushWallLeft,
     BushWallRight,
@@ -55,7 +65,7 @@ struct TileFloor {
     static TileDef getTileAt(int16_t x, int16_t y);
 
     static bool isWalkable(TileDef tile) {
-        return tile <= OceanSandBoundary;
+        return tile <= Pier;
     }
 
     static bool isFishable(TileDef tile) {
