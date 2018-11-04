@@ -43,7 +43,7 @@ class Game {
         void renderShop(uint8_t frame);
 
         Game(): 
-            player(24 * 16, 10 * 16),
+            player(26 * 16, 2 * 16),
             prevUpdate(NULL),
             currentUpdate(&Game::updateLogo),
             nextUpdate(NULL),

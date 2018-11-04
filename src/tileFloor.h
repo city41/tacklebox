@@ -43,8 +43,9 @@ enum TileDef: uint8_t {
     ShopLeftWall,
     ShopRightWall,
     ShopLeftSign,
+    ShopCenterSign,
     ShopRightSign
-    // end - walkable tiles
+    // end - solid tiles
 };
 
 struct TileFloor {
