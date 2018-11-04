@@ -18,6 +18,7 @@ void setup() {
     arduboy.boot();
     arduboy.audio.begin();
     Sfx::init(&tones);
+    randomSeed(analogRead(0));
 
 #ifdef SERIAL_LOG
     Serial.begin(9600);

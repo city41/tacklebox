@@ -49,7 +49,6 @@ void Game::updateTitle(uint8_t frame) {
     if (arduboy.justPressed(A_BUTTON)) {
         if (titleRow == PLAY_GAME) {
             State::load();
-            firstPlayFrame = true;
             push(&Game::updatePlay, &Game::renderPlay);
         } else if (titleRow == DELETE_SAVE) {
             titleRow = 0;
@@ -108,7 +107,7 @@ void Game::updatePlay(uint8_t frame) {
 
     for (uint8_t w = 0; w < MAX_WORMS; ++w) {
         bool isActive = isOnScreen(player.x, player.y, worms[w].x, worms[w].y);
-        bool justBecameActive = firstPlayFrame || !isOnScreen(player.prevX, player.prevY, worms[w].x, worms[w].y);
+        bool justBecameActive = isActive && !isOnScreen(player.prevX, player.prevY, worms[w].x, worms[w].y);
         worms[w].update(frame, isActive, justBecameActive);
 
         if (overlap(player, worms[w])) {
@@ -116,8 +115,6 @@ void Game::updatePlay(uint8_t frame) {
             worms[w].onGrabbedByPlayer();
         }
     }
-
-    firstPlayFrame = false;
 }
 
 void Game::renderPlay(uint8_t frame) {

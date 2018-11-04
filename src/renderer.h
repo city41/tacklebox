@@ -30,7 +30,7 @@ class Renderer {
         void drawOverwrite(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame, MirrorMode mirror = 0, DrawMode drawMode = Normal);
         void drawPlusMask(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t frame, MirrorMode mirror = 0, DrawMode drawMode = Normal);
         void drawString(int8_t x, int8_t y, const uint8_t* str);
-        void drawNumber(int8_t x, int8_t y, int16_t number);
+        void drawNumber(int8_t x, int8_t y, uint16_t number);
 };
 
 #endif

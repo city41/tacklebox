@@ -8,7 +8,6 @@ class Game {
     typedef void (Game::*RenderPtr)(uint8_t);
 
     public:
-        bool firstPlayFrame;
         Player player;
 
         UpdatePtr prevUpdate;

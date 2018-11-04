@@ -58,7 +58,7 @@ const uint8_t* const PROGMEM number_strings[] = {
     digit9_string
 };
 
-void Renderer::drawNumber(int8_t x, int8_t y, int16_t number) {
+void Renderer::drawNumber(int8_t x, int8_t y, uint16_t number) {
     if (number == 0) {
         Renderer::drawString(x, y, digit0_string);
         return;
