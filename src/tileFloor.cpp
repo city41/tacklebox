@@ -47,17 +47,9 @@ void TileFloor::renderCenteredOn(int16_t x, int16_t y) {
 
 
     for (uint8_t ty = 0; ty < 5; ++ty) {
-        if (tileY + ty < 0 || tileY + ty >= MAP_HEIGHT_TILES) {
-            continue;
-        }
-
         int16_t additionalRows = ty * MAP_WIDTH_TILES;
 
         for (uint8_t tx = 0; tx < 9; ++tx) {
-            if (tileX + tx < 0 || tileX + tx >= MAP_WIDTH_TILES) {
-                continue;
-            }
-
             int16_t ti = firstTileIndex + additionalRows + tx;
 
             int16_t tileId = pgm_read_byte(world_map + ti);
