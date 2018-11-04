@@ -22,7 +22,7 @@ const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
 };
 
 bool Player::isOnSolidTile() {
-    return !TileFloor::isWalkable(TileFloor::getTileAt(x, y));
+    return !TileFloor::isWalkable(TileFloor::getTileAt(x + 8, y + 8));
 }
 
 void Player::updateWalk(uint8_t frame) {
