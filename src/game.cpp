@@ -14,7 +14,8 @@
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
 
-const uint8_t SECONDS_PER_HOUR = 16;
+const uint8_t SECONDS_PER_MINUTE = 1;
+const uint16_t MINUTES_IN_A_DAY = 24 * 60;
 
 /**
  * push a game state onto the "stack". The stack can only go two deep.
@@ -103,12 +104,12 @@ void Game::updatePlay(uint8_t frame) {
     if (frame == 60) {
         seconds += 1;
 
-        if (seconds == SECONDS_PER_HOUR) {
+        if (seconds == SECONDS_PER_MINUTE) {
             seconds = 0;
-            State::gameState.hour += 1;
+            State::gameState.minute += 1;
 
-            if (State::gameState.hour == 24) {
-                State::gameState.hour = 0;
+            if (State::gameState.minute == MINUTES_IN_A_DAY) {
+                State::gameState.minute = 0;
             }
 
             State::saveToEEPROM();
@@ -174,7 +175,7 @@ void Game::renderPlay(uint8_t frame) {
 
     player.render(frame);
 
-    renderer.translateX = WIDTH - 25;
+    renderer.translateX = WIDTH - 50;
     renderer.translateY = 0;
     Hud::render(frame, player);
 }

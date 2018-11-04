@@ -32,8 +32,7 @@ TileDef TileFloor::getTileAt(int16_t x, int16_t y) {
 void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId) {   
     TileDef tile = (TileDef)(tileId < 8 ? tileId : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2));
     MirrorMode mirror = tileId < 8 ? 0 : pgm_read_byte(mirroredTiles + (tileId - LowerLeftCorner) * 2 + 1);
-    bool dontInvert = true;
-    DrawMode drawMode = State::gameState.hour >= DAY_NIGHT_BOUNDARY_HOUR ? Invert : Normal;
+    DrawMode drawMode = State::isDay() ? Normal : Invert;
     renderer.drawOverwrite(x, y, map_tiles, tile, mirror, drawMode);
 }
 

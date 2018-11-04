@@ -18,7 +18,8 @@ void State::load() {
     if (hasUserSaved()) {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
-        gameState.hour = 12;
+        // start the game at 3pm
+        gameState.minute = 16 * 60;
         gameState.wormCount = 0;
         gameState.fishCount = 0;
     }
@@ -29,3 +30,8 @@ void State::clearEEPROM() {
     load();
 }
 
+bool State::isDay() {
+    uint8_t hour = gameState.minute / 60;
+
+    return hour >= 5 && hour < 19;
+}

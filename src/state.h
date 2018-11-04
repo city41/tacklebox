@@ -6,10 +6,8 @@
 const uint8_t GAME_ID = 90;
 const uint8_t EEPROM_START = 64;
 
-const uint8_t DAY_NIGHT_BOUNDARY_HOUR = 15;
-
 struct GameState {
-    uint8_t hour;
+    uint16_t minute;
     uint8_t wormCount;
     uint8_t fishCount;
 };
@@ -22,5 +20,7 @@ class State {
         static void saveToEEPROM();
         static void clearEEPROM();
         static void load();
+
+        static bool isDay();
 };
 
