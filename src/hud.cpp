@@ -2,12 +2,18 @@
 #include "state.h"
 #include "renderer.h"
 #include "strings.h"
+#include "nonMaskBitmaps.h"
 
 extern Renderer renderer;
 
-void Hud::render(Player& player) {
-    renderer.fillRect(0, 0, 24, 16, BLACK);
-    renderer.drawNumber(2, 2, State::gameState.wormCount);
-    renderer.drawNumber(2, 8, State::gameState.fishCount);
+void Hud::render(uint8_t frame, Player& player, uint8_t hour) {
+    renderer.fillRect(0, 0, 25, 21, BLACK);
+
+    renderer.drawOverwrite(3, 1, worm_tiles, 0, 0, Invert);
+    renderer.drawNumber(13, 3, State::gameState.wormCount);
+
+    // day night gauge
+    renderer.drawOverwrite(1, 13, dayNightGauge_tiles, 0);
+    renderer.drawOverwrite(hour, 11, dayNightNeedle_tiles, 0, 0, Xor);
 }
 

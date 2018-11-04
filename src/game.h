@@ -18,6 +18,11 @@ class Game {
         RenderPtr currentRender;
         RenderPtr nextRender;
 
+        uint8_t titleRow;
+        uint8_t hour;        // what hour the game is at
+        uint8_t seconds;     // actual seconds. 1 game hour = SECONDS_PER_HOUR real seconds
+
+
         void loadSave();
 
         void push(UpdatePtr newUpdate, RenderPtr newRender);
@@ -31,7 +36,6 @@ class Game {
 
         void updateTitle(uint8_t frame);
         void renderTitle(uint8_t frame);
-        uint8_t titleRow;
 
         void updatePlay(uint8_t frame);
         void renderPlay(uint8_t frame);
@@ -47,7 +51,9 @@ class Game {
             prevRender(NULL),
             currentRender(&Game::renderLogo),
             nextRender(NULL),
-            titleRow(0)
+            titleRow(0),
+            hour(12),
+            seconds(0)
         {}
 };
 

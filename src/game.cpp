@@ -14,6 +14,8 @@
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
 
+const uint8_t SECONDS_PER_HOUR = 16;
+
 /**
  * push a game state onto the "stack". The stack can only go two deep.
  * This is used to go from play -> inGameMenu, for example.
@@ -98,6 +100,19 @@ bool overlap(Player& player, Worm& worm) {
 }
 
 void Game::updatePlay(uint8_t frame) {
+    if (frame == 60) {
+        seconds += 1;
+
+        if (seconds == SECONDS_PER_HOUR) {
+            seconds = 0;
+            hour += 1;
+
+            if (hour == 24) {
+                hour = 0;
+            }
+        }
+    }
+
     player.update(frame);
 
     if (TileFloor::getTileAt(player.x, player.y)) {
@@ -121,7 +136,7 @@ void Game::renderPlay(uint8_t frame) {
     int16_t centerX = min(max(WIDTH / 2, player.x), MAP_WIDTH_PX - WIDTH / 2);
     int16_t centerY = min(max(HEIGHT / 2, player.y), MAP_HEIGHT_PX - HEIGHT / 2);
 
-    TileFloor::renderCenteredOn(centerX, centerY);
+    TileFloor::renderCenteredOn(centerX, centerY, hour >= 15);
 
     // translate the renderer based on the player's location
     // essentially the same as translating a camera in a 3d game
@@ -157,9 +172,9 @@ void Game::renderPlay(uint8_t frame) {
 
     player.render(frame);
 
-    renderer.translateX = WIDTH - 24;
+    renderer.translateX = WIDTH - 25;
     renderer.translateY = 0;
-    Hud::render(player);
+    Hud::render(frame, player, hour);
 }
 
 void Game::updateShop(uint8_t frame) {

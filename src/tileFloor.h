@@ -24,8 +24,8 @@ enum TileDef: uint8_t {
 };
 
 struct TileFloor {
-    static void renderTile(int16_t x, int16_t y, uint8_t tileId);
-    static void renderCenteredOn(int16_t x, int16_t y);
+    static void renderTile(int16_t x, int16_t y, uint8_t tileId, bool isNight);
+    static void renderCenteredOn(int16_t x, int16_t y, bool isNight);
 
     static TileDef getTileAt(int16_t x, int16_t y);
 };

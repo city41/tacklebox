@@ -3,8 +3,8 @@
 #include <Arduino.h>
 #include "entities/player.h"
 
-class Hud {
+struct Hud {
     public:
-        static void render(Player& player);
+        static void render(uint8_t frame, Player& player, uint8_t hour);
 };
 
