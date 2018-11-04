@@ -8,8 +8,8 @@ LOCAL_CPP_SRCS = $(wildcard src/*.cpp) $(wildcard src/entities/*.cpp)
 
 include $(ARDMK_DIR)/Arduino.mk
 
-emu: build-leonardo/ardukoi.hex
-	pabe build-leonardo/ardukoi.hex
+emu: build-leonardo/tacklebox.hex
+	pabe build-leonardo/tacklebox.hex
 
 bmp:
 	node ./bmptool/ --src maskPngs --dest src/maskBitmaps.h --type combined && \
