@@ -1,0 +1,26 @@
+{
+    "fish": [
+        {
+            "name": "GOLDFISH",
+            "bait": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 1
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "value": 1
+        },
+        {
+            "name": "SHARK",
+            "bait": {
+                "WORM": 0,
+                "GRUB": 0,
+                "SHRIMP": 1
+            },
+            "activeHours": [5, 19],
+            "habitats": ["OCEAN_ISLAND"],
+            "value": 100
+        }
+    ]
+}
