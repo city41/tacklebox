@@ -4,6 +4,16 @@
 #include <Arduino.h>
 #include "direction.h"
 #include "worm.h"
+#include "fishType.h"
+#include "fish.h"
+#include "baitType.h"
+
+struct FishDiceRoll {
+    FishType type;
+    uint8_t points;
+};
+
+const int8_t MAX_FISH_IN_ROLL = static_cast<int8_t>(FishType::NUM_FISH);
 
 class Player {
     typedef void (Player::*UpdatePtr)(uint8_t);
@@ -21,6 +31,10 @@ class Player {
         int16_t cursorY;
         uint8_t castCount;
         uint8_t reelLevel;
+
+        Fish currentFish;
+        BaitType currentBait;
+        FishDiceRoll fishDiceRoll[MAX_FISH_IN_ROLL];
 
         UpdatePtr currentUpdate;
         RenderPtr currentRender;
@@ -66,5 +80,7 @@ class Player {
         void moveTo(int16_t newX, int16_t newY, boolean resetPrev = false);
         void undoMove();
 
+        FishType getFishThatBit();
+        uint8_t getPointsForFish(Fish& fish);
 };
 

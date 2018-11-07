@@ -9,6 +9,7 @@ extern Renderer renderer;
 extern Arduboy2Base arduboy;
 
 const uint8_t PLAYER_VELOCITY = 2;
+const uint8_t CAST_TIMEOUT = 120;
 
 const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     // LEFT
@@ -139,11 +140,69 @@ void Player::updateCast(uint8_t frame) {
 
     FishType fishType = getFishThatBit();
 
-    if (fishType !== FishType::UNSET) {
-        currentFish = loadFish(fishType);
+    if (fishType != FishType::UNSET) {
+        Fish::loadFish(fishType, currentFish);
         reelLevel = WIDTH / 2;
         currentUpdate = &Player::updateReel;
         currentRender = &Player::renderReel;
+    }
+}
+
+uint8_t Player::getPointsForFish(Fish& fish) {
+    uint8_t hour = State::getCurrentHour();
+
+    if (hour < fish.minHour || hour > fish.maxHour) {
+        return 0;
+    }
+
+    if (x < fish.minX || x > fish.maxX) {
+        return 0;
+    }
+
+    if (fish.baitPreferences[static_cast<uint8_t>(currentBait)] == 0) {
+        return 0;
+    }
+
+    return fish.ratio;
+}
+
+FishType Player::getFishThatBit() {
+    Fish fish;
+    uint8_t diceRollIndex = 0;
+    uint8_t maxPoints = 0;
+    uint8_t candidateFishes = 0;
+
+    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::NUM_FISH); ++f) {
+        FishType fishType = static_cast<FishType>(f);
+
+        Fish::loadFish(fishType, fish);
+
+        uint8_t points = getPointsForFish(fish);
+
+        if (points > 0) {
+            maxPoints += points;
+            candidateFishes += 1;
+            fishDiceRoll[diceRollIndex++].type = fishType;
+            fishDiceRoll[diceRollIndex++].points = points;
+        }
+    }
+
+
+    // TODO: the +5 is the "no fish bites buffer"
+    // this buffer needs to scale with the size of maxPoints
+    uint8_t roll = random(0, maxPoints + 5);
+    
+    if (roll >= maxPoints) {
+        return FishType::UNSET;
+    }
+
+
+    uint8_t currentPoints = 0;
+    for (uint8_t fr = 0; fr < candidateFishes; ++fr) {
+        if (roll >= currentPoints && roll < currentPoints + fishDiceRoll[fr].points) {
+            return fishDiceRoll[fr].type;
+        }
+        currentPoints += fishDiceRoll[fr].points;
     }
 }
 

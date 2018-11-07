@@ -31,7 +31,11 @@ void State::clearEEPROM() {
 }
 
 bool State::isDay() {
-    uint8_t hour = gameState.minute / 60;
+    uint8_t hour = getCurrentHour();
 
     return hour >= 5 && hour < 19;
+}
+
+uint8_t State::getCurrentHour() {
+    return gameState.minute / 60;
 }
