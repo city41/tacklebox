@@ -83,7 +83,7 @@ void Game::renderTitle(uint8_t frame) {
         renderer.drawString(42, 58, deleteSave_string);
     }
 
-    renderer.drawOverwrite(34,42 + titleRow * 8, squareIcon_tiles, 2);
+    renderer.drawOverwrite(34,42 + titleRow * 8, squareIcon_tiles, 0);
 }
 
 bool isOnScreen(int16_t refX, int16_t refY, int16_t x, int16_t y) {

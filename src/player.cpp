@@ -37,6 +37,12 @@ void Player::updateWalk(uint8_t frame) {
         return;
     }
 
+    if (arduboy.justPressed(B_BUTTON)) {
+        currentUpdate = &Player::updateMenu;
+        currentRender = &Player::renderMenu;
+        return;
+    }
+
     int16_t newX = x;
     int16_t newY = y;
 
@@ -79,6 +85,21 @@ void Player::renderWalk(uint8_t frame) {
     }
 
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, mirror);
+}
+
+void Player::updateMenu(uint8_t frame) {
+    if (arduboy.justPressed(B_BUTTON)) {
+        currentUpdate = &Player::updateWalk;
+        currentRender = &Player::renderWalk;
+    }
+}
+
+void Player::renderMenu(uint8_t frame) {
+    renderer.pushTranslate(WIDTH / 2 + 10, 10);
+    renderer.fillRect(0, 0, WIDTH / 2 - 20, HEIGHT - 20, BLACK);
+    renderer.drawString(6, 2, save_string);
+    renderer.drawOverwrite(2, 2,  squareIcon_tiles, 0);
+    renderer.popTranslate();
 }
 
 void Player::updateScanning(uint8_t frame) {

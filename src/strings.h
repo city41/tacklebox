@@ -172,4 +172,10 @@ const uint8_t shark_string[6] PROGMEM = {
     26, 18, 11, 25, 20, 0xFF
 };
 
+
+// "SAVE"
+const uint8_t save_string[5] PROGMEM = {
+    26, 11, 29, 15, 0xFF
+};
+
 #endif

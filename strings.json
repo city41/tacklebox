@@ -20,6 +20,7 @@
         { "key": "digit8", "value": "8" },
         { "key": "digit9", "value": "9" },
         { "key": "goldfish", "value": "GOLDFISH" },
-        { "key": "shark", "value": "SHARK" }
+        { "key": "shark", "value": "SHARK" },
+        { "key": "save", "value": "SAVE" }
     ]
 }

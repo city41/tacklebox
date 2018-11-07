@@ -117,10 +117,6 @@ const uint8_t PROGMEM squareIcon_tiles[] = {
     // width, height,
     3, 8,
     // frame 0
-    0x00,0x00,0x00,
-    // frame 1
-    0x07,0x05,0x07,
-    // frame 2
     0x07,0x07,0x07,
 };
 
