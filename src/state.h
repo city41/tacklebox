@@ -22,5 +22,6 @@ class State {
         static void load();
 
         static bool isDay();
+        static uint8_t getCurrentHour();
 };
 

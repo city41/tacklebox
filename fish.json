@@ -9,6 +9,7 @@
             },
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
+            "ratio": 10,
             "value": 1
         },
         {
@@ -20,6 +21,7 @@
             },
             "activeHours": [5, 19],
             "habitats": ["OCEAN_ISLAND"],
+            "ratio": 1,
             "value": 100
         }
     ]
