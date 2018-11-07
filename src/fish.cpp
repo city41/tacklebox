@@ -4,6 +4,8 @@
 #include "baitType.h"
 
 void Fish::loadFish(FishType fishType, Fish& fish) {
+    fish.type = fishType;
+
     const uint8_t* offset = fish_templates_u8t + static_cast<int8_t>(fishType) * NUM_U8T_PROPS;
     fish.minHour = pgm_read_byte(offset);
     fish.maxHour = pgm_read_byte(offset + 1);

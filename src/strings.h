@@ -24,18 +24,18 @@ const uint8_t PROGMEM font_tiles[] =  {
     0x0,0x6a,0x6a,0x2e,
     // 'H' and 'I'
     0x60,0xb,0x6b,0xf0,
-    // 'L' and 'M'
-    0x0,0xe7,0xc7,0x7,
-    // 'N' and 'O'
-    0x0,0x6d,0x6b,0x0,
-    // 'R' and 'S'
-    0x40,0x4a,0x22,0x28,
-    // 'T' and 'U'
-    0xe,0x70,0x7e,0xe,
-    // 'V' and 'W'
-    0x8,0x77,0x37,0x8,
-    // 'X' and 'Y'
-    0x86,0x39,0xb9,0x86,
+    // 'K' and 'L'
+    0x0,0x7d,0x7a,0x76,
+    // 'M' and 'N'
+    0x0,0xde,0xbc,0x0,
+    // 'O' and 'R'
+    0x0,0xa6,0x26,0x80,
+    // 'S' and 'T'
+    0xe4,0x4,0xe2,0xe2,
+    // 'U' and 'V'
+    0x80,0x77,0x77,0x80,
+    // 'W' and 'X'
+    0x60,0x97,0x93,0x60,
 };
 
 const uint8_t PROGMEM font_tiles_upper_mask[] = {
@@ -49,55 +49,55 @@ const uint8_t PROGMEM font_tiles_lower_mask[] = {
 
 // "NEW GAME"
 const uint8_t newGame_string[9] PROGMEM = {
-    22, 15, 29, 0, 17, 11, 21, 15, 0xFF
+    23, 15, 30, 0, 17, 11, 22, 15, 0xFF
 };
 
 
 // "CONTINUE"
 const uint8_t continue_string[9] PROGMEM = {
-    13, 23, 22, 26, 19, 22, 27, 15, 0xFF
+    13, 24, 23, 27, 19, 23, 28, 15, 0xFF
 };
 
 
 // "DELETE SAVE"
 const uint8_t deleteSave_string[12] PROGMEM = {
-    14, 15, 20, 15, 26, 15, 0, 25, 11, 28, 15, 0xFF
+    14, 15, 21, 15, 27, 15, 0, 26, 11, 29, 15, 0xFF
 };
 
 
 // "SFX ON"
 const uint8_t sfxOn_string[7] PROGMEM = {
-    25, 16, 30, 0, 23, 22, 0xFF
+    26, 16, 31, 0, 24, 23, 0xFF
 };
 
 
 // "SFX OFF"
 const uint8_t sfxOff_string[8] PROGMEM = {
-    25, 16, 30, 0, 23, 16, 16, 0xFF
+    26, 16, 31, 0, 24, 16, 16, 0xFF
 };
 
 
 // "BUY"
 const uint8_t buy_string[4] PROGMEM = {
-    12, 27, 31, 0xFF
+    12, 28, 32, 0xFF
 };
 
 
 // "SELL"
 const uint8_t sell_string[5] PROGMEM = {
-    25, 15, 20, 20, 0xFF
+    26, 15, 21, 21, 0xFF
 };
 
 
 // "BUY STUFF HERE"
 const uint8_t tempBuy_string[15] PROGMEM = {
-    12, 27, 31, 0, 25, 26, 27, 16, 16, 0, 18, 15, 24, 15, 0xFF
+    12, 28, 32, 0, 26, 27, 28, 16, 16, 0, 18, 15, 25, 15, 0xFF
 };
 
 
 // "SELL STUFF HERE"
 const uint8_t tempSell_string[16] PROGMEM = {
-    25, 15, 20, 20, 0, 25, 26, 27, 16, 16, 0, 18, 15, 24, 15, 0xFF
+    26, 15, 21, 21, 0, 26, 27, 28, 16, 16, 0, 18, 15, 25, 15, 0xFF
 };
 
 
@@ -158,6 +158,18 @@ const uint8_t digit8_string[2] PROGMEM = {
 // "9"
 const uint8_t digit9_string[2] PROGMEM = {
     10, 0xFF
+};
+
+
+// "GOLDFISH"
+const uint8_t goldfish_string[9] PROGMEM = {
+    17, 24, 21, 14, 16, 19, 26, 18, 0xFF
+};
+
+
+// "SHARK"
+const uint8_t shark_string[6] PROGMEM = {
+    26, 18, 11, 25, 20, 0xFF
 };
 
 #endif

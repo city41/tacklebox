@@ -5,6 +5,7 @@
 #include "baitType.h"
 
 struct Fish {
+    FishType type;
     uint8_t minHour;
     uint8_t maxHour;
     int16_t minX;

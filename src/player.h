@@ -35,6 +35,7 @@ class Player {
         Fish currentFish;
         BaitType currentBait;
         FishDiceRoll fishDiceRoll[MAX_FISH_IN_ROLL];
+        uint8_t announceFishCount;
 
         UpdatePtr currentUpdate;
         RenderPtr currentRender;

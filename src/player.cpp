@@ -2,14 +2,16 @@
 #include "state.h"
 #include "maskBitmaps.h"
 #include "nonMaskBitmaps.h"
+#include "strings.h"
 #include "renderer.h"
 #include "tileFloor.h"
+#include "util.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
 
 const uint8_t PLAYER_VELOCITY = 2;
-const uint8_t CAST_TIMEOUT = 120;
+const uint8_t CAST_TIMEOUT = 8;
 
 const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     // LEFT
@@ -125,15 +127,15 @@ void Player::updateCast(uint8_t frame) {
         return;
     }
 
-    if (frame % 10 != 0) {
+    if (frame != 60) {
         return;
     }
 
     castCount += 1;
 
     if (castCount == CAST_TIMEOUT) {
-        State::gameState.wormCount -= 1;
-        State::saveToEEPROM();
+        /* State::gameState.wormCount -= 1; */
+        /* State::saveToEEPROM(); */
 
         currentUpdate = &Player::updateWalk;
         currentRender = &Player::renderWalk;
@@ -145,6 +147,7 @@ void Player::updateCast(uint8_t frame) {
     FishType fishType = getFishThatBit();
 
     if (fishType != FishType::UNSET) {
+        LOGV(static_cast<int8_t>(fishType));
         Fish::loadFish(fishType, currentFish);
         reelLevel = WIDTH / 2;
         currentUpdate = &Player::updateReel;
@@ -231,6 +234,7 @@ void Player::updateReel(uint8_t frame) {
         State::gameState.fishCount += 1;
         State::saveToEEPROM();
 
+        announceFishCount = 60;
         currentUpdate = &Player::updateGetFish;
         currentRender = &Player::renderGetFish;
     }
@@ -254,12 +258,27 @@ void Player::renderReel(uint8_t frame) {
 }
 
 void Player::updateGetFish(uint8_t frame) {
-    currentUpdate = &Player::updateWalk;
-    currentRender = &Player::renderWalk;
+    announceFishCount -= 1;
+
+    if (announceFishCount == 0) {
+        currentUpdate = &Player::updateWalk;
+        currentRender = &Player::renderWalk;
+    }
 }
+
+const uint8_t* const PROGMEM fishStrings[] = {
+    goldfish_string,
+    shark_string
+};
 
 void Player::renderGetFish(uint8_t frame) {
     renderWalk(frame);
+    const uint8_t* fishString = static_cast<const uint8_t*>(pgm_read_ptr(fishStrings + static_cast<int8_t>(currentFish.type)));
+
+    renderer.pushTranslate(0, 0);
+    renderer.fillRect(0, HEIGHT- 6, WIDTH, 6, BLACK);
+    renderer.drawString(0, HEIGHT - 5, fishString);
+    renderer.popTranslate();
 }
 
 void Player::update(uint8_t frame) {
