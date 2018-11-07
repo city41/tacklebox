@@ -1,9 +1,9 @@
 #include "player.h"
-#include "../state.h"
-#include "../maskBitmaps.h"
-#include "../nonMaskBitmaps.h"
-#include "../renderer.h"
-#include "../tileFloor.h"
+#include "state.h"
+#include "maskBitmaps.h"
+#include "nonMaskBitmaps.h"
+#include "renderer.h"
+#include "tileFloor.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;

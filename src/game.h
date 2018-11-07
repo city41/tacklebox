@@ -1,7 +1,7 @@
 #pragma once
 
-#include "entities/player.h"
-#include "entities/worm.h"
+#include "player.h"
+#include "worm.h"
 
 class Game {
     typedef void (Game::*UpdatePtr)(uint8_t);

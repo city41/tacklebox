@@ -1,6 +1,6 @@
 #include "worm.h"
-#include "../renderer.h"
-#include "../nonMaskBitmaps.h"
+#include "renderer.h"
+#include "nonMaskBitmaps.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;

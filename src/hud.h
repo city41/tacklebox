@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Arduino.h>
-#include "entities/player.h"
+#include "player.h"
 
 struct Hud {
     public:
