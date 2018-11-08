@@ -10,7 +10,6 @@ const uint8_t EEPROM_START = 64;
 struct GameState {
     uint16_t minute;
     uint8_t wormCount;
-    uint8_t fishCount;
     bool acquiredFish[static_cast<int8_t>(FishType::NUM_FISH)];
     uint8_t currentFishCount[static_cast<int8_t>(FishType::NUM_FISH)];
 };
