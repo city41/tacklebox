@@ -111,8 +111,6 @@ void Game::updatePlay(uint8_t frame) {
             if (State::gameState.minute == MINUTES_IN_A_DAY) {
                 State::gameState.minute = 0;
             }
-
-            State::saveToEEPROM();
         }
     }
 

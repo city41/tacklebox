@@ -155,8 +155,7 @@ void Player::updateCast(uint8_t frame) {
     castCount += 1;
 
     if (castCount == CAST_TIMEOUT) {
-        /* State::gameState.wormCount -= 1; */
-        /* State::saveToEEPROM(); */
+        State::gameState.wormCount -= 1;
 
         currentUpdate = &Player::updateWalk;
         currentRender = &Player::renderWalk;
@@ -254,8 +253,7 @@ void Player::updateReel(uint8_t frame) {
         currentUpdate = &Player::updateWalk;
         currentRender = &Player::renderWalk;
     } else if (reelLevel == WIDTH - 2) {
-        State::gameState.fishCount += 1;
-        State::saveToEEPROM();
+        State::setFishAcquired(currentFish.type);
 
         announceFishCount = 60;
         currentUpdate = &Player::updateGetFish;
