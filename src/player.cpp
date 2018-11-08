@@ -210,8 +210,9 @@ FishType Player::getFishThatBit() {
         if (points > 0) {
             maxPoints += points;
             candidateFishes += 1;
-            fishDiceRoll[diceRollIndex++].type = fishType;
-            fishDiceRoll[diceRollIndex++].points = points;
+            fishDiceRoll[diceRollIndex].type = fishType;
+            fishDiceRoll[diceRollIndex].points = points;
+            diceRollIndex += 1;
         }
     }
 
@@ -244,7 +245,8 @@ void Player::updateReel(uint8_t frame) {
         reelLevel = max(reelLevel - 7, 0);
     }
 
-    if (arduboy.justPressed(A_BUTTON)) {
+    /* if (arduboy.justPressed(A_BUTTON)) { */
+    if (arduboy.pressed(A_BUTTON)) {
         reelLevel = min(WIDTH - 2, reelLevel + 5);
     }
 
