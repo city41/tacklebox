@@ -39,7 +39,7 @@ void Shop::updateMainMenu(uint8_t frame) {
 }
 
 void Shop::renderMainMenu(uint8_t frame) {
-    renderer.drawOverwrite(34, 10 + Shop::mainMenuCurrentRow * 10, squareIcon_tiles, 2);
+    renderer.drawOverwrite(34, 10 + Shop::mainMenuCurrentRow * 10, squareIcon_tiles, 0);
     renderer.drawString(40, 10, buy_string);
     renderer.drawString(40, 20, sell_string);
 }
