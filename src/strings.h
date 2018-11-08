@@ -95,9 +95,9 @@ const uint8_t tempBuy_string[15] PROGMEM = {
 };
 
 
-// "SELL STUFF HERE"
-const uint8_t tempSell_string[16] PROGMEM = {
-    26, 15, 21, 21, 0, 26, 27, 28, 16, 16, 0, 18, 15, 25, 15, 0xFF
+// "SELL ALL FISH FOR"
+const uint8_t tempSell_string[18] PROGMEM = {
+    26, 15, 21, 21, 0, 11, 21, 21, 0, 16, 19, 26, 18, 0, 16, 24, 25, 0xFF
 };
 
 

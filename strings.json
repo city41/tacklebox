@@ -8,7 +8,7 @@
         { "key": "buy", "value": "BUY" },
         { "key": "sell", "value": "SELL" },
         { "key": "tempBuy", "value": "BUY STUFF HERE" },
-        { "key": "tempSell", "value": "SELL STUFF HERE" },
+        { "key": "tempSell", "value": "SELL ALL FISH FOR" },
         { "key": "digit0", "value": "0" },
         { "key": "digit1", "value": "1" },
         { "key": "digit2", "value": "2" },

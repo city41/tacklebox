@@ -2,6 +2,9 @@
 #include "renderer.h"
 #include "strings.h"
 #include "nonMaskBitmaps.h"
+#include "fishType.h"
+#include "fish.h"
+#include "state.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -63,5 +66,14 @@ void Shop::updateSell(uint8_t frame) {
 }
 
 void Shop::renderSell(uint8_t frame) {
-    renderer.drawString(40, 20, tempSell_string);
+    uint16_t moneyAmount = 0;
+
+    Fish fish;
+    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::NUM_FISH); ++f) {
+        Fish::loadFish(static_cast<FishType>(f), fish);
+        moneyAmount += State::gameState.currentFishCount[f] * fish.value;
+    }
+
+    renderer.drawString(20, 20, tempSell_string);
+    renderer.drawNumber(20, 30, moneyAmount);
 }
