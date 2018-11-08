@@ -22,7 +22,15 @@ void State::load() {
         gameState.minute = 16 * 60;
         gameState.wormCount = 0;
         gameState.fishCount = 0;
+
+        for (int8_t i = 0; i < static_cast<int8_t>(FishType::NUM_FISH); ++i) {
+            gameState.acquiredFish[i] = false;
+        }
     }
+}
+
+void State::setFishAcquired(FishType fishType) {
+    gameState.acquiredFish[static_cast<int8_t>(fishType)] = true;
 }
 
 void State::clearEEPROM() {
