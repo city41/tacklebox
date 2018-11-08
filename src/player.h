@@ -31,6 +31,7 @@ class Player {
         int16_t cursorY;
         uint8_t castCount;
         uint8_t reelLevel;
+        int8_t menuRow;
 
         Fish currentFish;
         BaitType currentBait;
@@ -50,6 +51,7 @@ class Player {
             scanning(false),
             castCount(0),
             reelLevel(0),
+            menuRow(0),
             currentUpdate(&Player::updateWalk),
             currentRender(&Player::renderWalk)
         {
@@ -64,6 +66,9 @@ class Player {
         
         void updateMenu(uint8_t frame);
         void renderMenu(uint8_t frame);
+
+        void updateCollection(uint8_t frame);
+        void renderCollection(uint8_t frame);
 
         void updateScanning(uint8_t frame);
         void renderScanning(uint8_t frame);

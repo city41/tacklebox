@@ -21,6 +21,7 @@
         { "key": "digit9", "value": "9" },
         { "key": "goldfish", "value": "GOLDFISH" },
         { "key": "shark", "value": "SHARK" },
-        { "key": "save", "value": "SAVE" }
+        { "key": "save", "value": "SAVE" },
+        { "key": "collection", "value": "FISH" }
     ]
 }

@@ -178,4 +178,10 @@ const uint8_t save_string[5] PROGMEM = {
     26, 11, 29, 15, 0xFF
 };
 
+
+// "FISH"
+const uint8_t collection_string[5] PROGMEM = {
+    16, 19, 26, 18, 0xFF
+};
+
 #endif

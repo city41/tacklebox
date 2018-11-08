@@ -13,6 +13,9 @@ extern Arduboy2Base arduboy;
 const uint8_t PLAYER_VELOCITY = 2;
 const uint8_t CAST_TIMEOUT = 8;
 
+const uint8_t SAVE_ROW = 0;
+const uint8_t COLLECTION_ROW = 1;
+
 const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     // LEFT
     0, 0,
@@ -22,6 +25,12 @@ const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     2, 0,
     // DOWN
     3, 0
+};
+
+// TODO: generate this with the js fish tool from fish.json
+const uint8_t* const PROGMEM fishStrings[] = {
+    goldfish_string,
+    shark_string
 };
 
 bool Player::isOnSolidTile() {
@@ -92,14 +101,58 @@ void Player::updateMenu(uint8_t frame) {
         currentUpdate = &Player::updateWalk;
         currentRender = &Player::renderWalk;
     }
+
+    if (arduboy.justPressed(DOWN_BUTTON)) {
+        menuRow = min(1, menuRow + 1);
+    }
+    
+    if (arduboy.justPressed(UP_BUTTON)) {
+        menuRow = max(0, menuRow - 1);
+    }
+
+    if (arduboy.justPressed(A_BUTTON)) {
+        switch (menuRow) {
+            case SAVE_ROW:
+                State::saveToEEPROM();
+                currentUpdate = &Player::updateWalk;
+                currentRender = &Player::renderWalk;
+                break;
+            case COLLECTION_ROW:
+                currentUpdate = &Player::updateCollection;
+                currentRender = &Player::renderCollection;
+                break;
+        }
+    }
 }
 
 void Player::renderMenu(uint8_t frame) {
     renderer.pushTranslate(WIDTH / 2 + 10, 10);
     renderer.fillRect(0, 0, WIDTH / 2 - 20, HEIGHT - 20, BLACK);
+
     renderer.drawString(6, 2, save_string);
-    renderer.drawOverwrite(2, 2,  squareIcon_tiles, 0);
+    renderer.drawString(6, 7, collection_string);
+
+    renderer.drawOverwrite(2, 2 + menuRow * 5,  squareIcon_tiles, 0);
     renderer.popTranslate();
+}
+
+void Player::updateCollection(uint8_t frame) {
+    if (arduboy.justPressed(B_BUTTON)) {
+        currentUpdate = &Player::updateWalk;
+        currentRender = &Player::renderWalk;
+    }
+}
+
+void Player::renderCollection(uint8_t frame) {
+    renderer.pushTranslate(0, 0);
+    renderer.fillRect(10, 5, WIDTH - 20, HEIGHT - 10, BLACK);
+
+    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::NUM_FISH); ++f) {
+        if (State::gameState.acquiredFish[f]) {
+            const uint8_t* fishString = static_cast<const uint8_t*>(pgm_read_ptr(fishStrings + f));
+            renderer.drawString(12, 7 + 5 * f, fishString);
+        }
+    }
 }
 
 void Player::updateScanning(uint8_t frame) {
@@ -287,10 +340,6 @@ void Player::updateGetFish(uint8_t frame) {
     }
 }
 
-const uint8_t* const PROGMEM fishStrings[] = {
-    goldfish_string,
-    shark_string
-};
 
 void Player::renderGetFish(uint8_t frame) {
     renderWalk(frame);
