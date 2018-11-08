@@ -1,4 +1,5 @@
 #include "state.h"
+#include "fish.h"
 
 GameState State::gameState = {};
 
@@ -21,6 +22,7 @@ void State::load() {
         // start the game at 3pm
         gameState.minute = 16 * 60;
         gameState.wormCount = 0;
+        gameState.money = 0;
 
         for (int8_t i = 0; i < static_cast<int8_t>(FishType::NUM_FISH); ++i) {
             gameState.acquiredFish[i] = false;
@@ -39,6 +41,15 @@ void State::incrementCurrentCount(FishType fishType) {
 
 void State::decreaseCurrentCount(FishType fishType, uint8_t count) {
     gameState.currentFishCount[static_cast<int8_t>(fishType)] -= count;
+}
+
+void State::sellAllFish() {
+    Fish fish;
+    for (uint8_t f = 0; f < static_cast<uint8_t>(FishType::NUM_FISH); ++f) {
+        Fish::loadFish(static_cast<FishType>(f), fish);
+        gameState.money += gameState.currentFishCount[f] * fish.value;
+        gameState.currentFishCount[f] = 0;
+    }
 }
 
 void State::clearEEPROM() {

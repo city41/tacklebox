@@ -133,6 +133,8 @@ void Player::renderMenu(uint8_t frame) {
     renderer.drawString(6, 7, collection_string);
 
     renderer.drawOverwrite(2, 2 + menuRow * 5,  squareIcon_tiles, 0);
+
+    renderer.drawNumber(2, 2 + 25, State::gameState.money);
     renderer.popTranslate();
 }
 

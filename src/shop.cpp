@@ -63,6 +63,12 @@ void Shop::updateSell(uint8_t frame) {
         Shop::currentUpdate = &Shop::updateMainMenu;
         Shop::currentRender = &Shop::renderMainMenu;
     }
+
+    if (arduboy.justPressed(A_BUTTON)) {
+        State::sellAllFish();
+        Shop::currentUpdate = &Shop::updateMainMenu;
+        Shop::currentRender = &Shop::renderMainMenu;
+    }
 }
 
 void Shop::renderSell(uint8_t frame) {
