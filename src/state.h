@@ -12,6 +12,7 @@ struct GameState {
     uint8_t wormCount;
     uint8_t fishCount;
     bool acquiredFish[static_cast<int8_t>(FishType::NUM_FISH)];
+    uint8_t currentFishCount[static_cast<int8_t>(FishType::NUM_FISH)];
 };
 
 class State {
@@ -19,6 +20,8 @@ class State {
         static GameState gameState;
 
         static void setFishAcquired(FishType fishType);
+        static void incrementCurrentCount(FishType fishType);
+        static void decreaseCurrentCount(FishType fishType, uint8_t count);
 
         static bool hasUserSaved();
         static void saveToEEPROM();

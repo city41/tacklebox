@@ -10,6 +10,15 @@ const uint8_t PROGMEM colon_plus_mask[] = {
     0x09,
 };
 
+const uint8_t PROGMEM goldfish_plus_mask[] = {
+    // width, height,
+    8, 8,
+    // frame 0 
+    0x00,0x00,0x08,0x00,0x00,0x00,0x00,0x00,
+    // mask 0 
+    0x08,0x18,0x1c,0x1c,0x1c,0x1c,0x08,0x1c,
+};
+
 const uint8_t PROGMEM player_plus_mask[] = {
     // width, height,
     16, 16,

@@ -150,7 +150,8 @@ void Player::renderCollection(uint8_t frame) {
     for (uint8_t f = 0; f < static_cast<int8_t>(FishType::NUM_FISH); ++f) {
         if (State::gameState.acquiredFish[f]) {
             const uint8_t* fishString = static_cast<const uint8_t*>(pgm_read_ptr(fishStrings + f));
-            renderer.drawString(12, 7 + 5 * f, fishString);
+            renderer.drawNumber(12, 7 + 5 * f, State::gameState.currentFishCount[f]);
+            renderer.drawString(24, 7 + 5 * f, fishString);
         }
     }
 }
@@ -307,6 +308,7 @@ void Player::updateReel(uint8_t frame) {
         currentRender = &Player::renderWalk;
     } else if (reelLevel == WIDTH - 2) {
         State::setFishAcquired(currentFish.type);
+        State::incrementCurrentCount(currentFish.type);
 
         announceFishCount = 60;
         currentUpdate = &Player::updateGetFish;

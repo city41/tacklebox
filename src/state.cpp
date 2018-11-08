@@ -25,12 +25,21 @@ void State::load() {
 
         for (int8_t i = 0; i < static_cast<int8_t>(FishType::NUM_FISH); ++i) {
             gameState.acquiredFish[i] = false;
+            gameState.currentFishCount[i] = 0;
         }
     }
 }
 
 void State::setFishAcquired(FishType fishType) {
     gameState.acquiredFish[static_cast<int8_t>(fishType)] = true;
+}
+
+void State::incrementCurrentCount(FishType fishType) {
+    gameState.currentFishCount[static_cast<int8_t>(fishType)] += 1;
+}
+
+void State::decreaseCurrentCount(FishType fishType, uint8_t count) {
+    gameState.currentFishCount[static_cast<int8_t>(fishType)] -= count;
 }
 
 void State::clearEEPROM() {
