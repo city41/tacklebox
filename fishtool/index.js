@@ -3,6 +3,7 @@ const path = require("path");
 const program = require("commander");
 const packageJson = require("./package.json");
 const buildEightBitArray = require("./buildEightBitArray");
+const buildSixteenBitArray = require("./buildSixteenBitArray");
 
 program
     .version(packageJson.version)
@@ -23,9 +24,9 @@ if (!program.src) {
 const fishJson = require(path.join(process.cwd(), program.src));
 
 const eightBitData = buildEightBitArray(fishJson.fish);
-// const sixteenBitData = buildSixteenBitArray(fishJson.fish);
+const sixteenBitData = buildSixteenBitArray(fishJson.fish);
 
-const fileData = "#pragma once\n\n" + eightBitData;
+const fileData = "#pragma once\n\n" + eightBitData + "\n\n" + sixteenBitData;
 
 const outDir = program.dest ? path.join(process.cwd(), program.dest) : null;
 
