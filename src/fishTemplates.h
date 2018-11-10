@@ -1,6 +1,8 @@
 #pragma once
 
 
+#include "maskBitmaps.h"
+
 const uint8_t NUM_U8T_PROPS = 8;
 const uint8_t NUM_16T_PROPS = 3;
 
@@ -48,9 +50,11 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(GOLDFISH_string),
+    reinterpret_cast<int16_t>(GOLDFISH_plus_mask),
 
     // SHARK
     640, // min X
     736, // max X
     reinterpret_cast<int16_t>(SHARK_string),
+    reinterpret_cast<int16_t>(SHARK_plus_mask),
 };

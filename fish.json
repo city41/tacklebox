@@ -2,7 +2,6 @@
     "fish": [
         {
             "name": "GOLDFISH",
-            "png": "goldfish_8x8.png",
             "baitPreference": {
                 "WORM": 1,
                 "GRUB": 1,
@@ -16,7 +15,6 @@
         },
         {
             "name": "SHARK",
-            "png": "shark_24x8.png",
             "baitPreference": {
                 "WORM": 1,
                 "GRUB": 0,

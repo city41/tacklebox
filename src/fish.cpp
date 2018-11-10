@@ -24,4 +24,5 @@ void Fish::loadFish(FishType fishType, Fish& fish) {
     fish.maxX = pgm_read_word(offset16 + 1);
 
     fish.nameString = reinterpret_cast<const uint8_t*>(pgm_read_word(offset16 + 2));
+    fish.bmp = reinterpret_cast<const uint8_t*>(pgm_read_word(offset16 + 3));
 }
