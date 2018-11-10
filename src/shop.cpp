@@ -2,6 +2,7 @@
 #include "renderer.h"
 #include "strings.h"
 #include "nonMaskBitmaps.h"
+#include "maskBitmaps.h"
 #include "fishType.h"
 #include "fish.h"
 #include "state.h"
@@ -42,9 +43,18 @@ void Shop::updateMainMenu(uint8_t frame) {
 }
 
 void Shop::renderMainMenu(uint8_t frame) {
-    renderer.drawOverwrite(34, 10 + Shop::mainMenuCurrentRow * 10, squareIcon_tiles, 0);
-    renderer.drawString(40, 10, buy_string);
-    renderer.drawString(40, 20, sell_string);
+    renderer.fillRect(0, 0, WIDTH, HEIGHT, WHITE);
+    renderer.fillRect(10, 18, WIDTH - 20, HEIGHT - 20, BLACK);
+    renderer.drawPlusMask(12, 1, shopOwner_plus_mask, 0);
+
+    renderer.fillRect(20, 19, 97, 1, WHITE);
+    renderer.fillRect(116, 19, 1, 42, WHITE);
+    renderer.fillRect(11, 19, 1, 42, WHITE);
+    renderer.fillRect(11, HEIGHT - 4, 106, 1, WHITE);
+
+    renderer.drawOverwrite(34, 30 + Shop::mainMenuCurrentRow * 10, squareIcon_tiles, 0);
+    renderer.drawString(40, 30, buy_string);
+    renderer.drawString(40, 40, sell_string);
 }
 
 void Shop::updateBuy(uint8_t frame) {
