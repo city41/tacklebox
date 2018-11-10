@@ -26,12 +26,22 @@ const fishJson = require(path.join(process.cwd(), program.src));
 const eightBitData = buildEightBitArray(fishJson.fish);
 const sixteenBitData = buildSixteenBitArray(fishJson.fish);
 
-const fileData = "#pragma once\n\n" + eightBitData + "\n\n" + sixteenBitData;
+const constants = `
+const uint8_t NUM_U8T_PROPS = 8;
+const uint8_t NUM_16T_PROPS = 3;
+`;
 
-const outDir = program.dest ? path.join(process.cwd(), program.dest) : null;
+const fileData =
+    "#pragma once\n\n" +
+    constants +
+    "\n\n" +
+    eightBitData +
+    "\n\n" +
+    sixteenBitData;
 
-if (outDir) {
-    const destPath = path.join(process.cwd(), "fishTemplates.h");
+const destPath = program.dest ? path.join(process.cwd(), program.dest) : null;
+
+if (destPath) {
     fs.writeFileSync(destPath, fileData);
     console.log("wrote: ", destPath);
 } else {

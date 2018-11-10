@@ -6,6 +6,7 @@
 #include "renderer.h"
 #include "tileFloor.h"
 #include "util.h"
+#include "fishTemplates.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -25,12 +26,6 @@ const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     2, 0,
     // DOWN
     3, 0
-};
-
-// TODO: generate this with the js fish tool from fish.json
-const uint8_t* const PROGMEM fishStrings[] = {
-    goldfish_string,
-    shark_string
 };
 
 bool Player::isOnSolidTile() {
@@ -151,7 +146,7 @@ void Player::renderCollection(uint8_t frame) {
 
     for (uint8_t f = 0; f < static_cast<int8_t>(FishType::NUM_FISH); ++f) {
         if (State::gameState.acquiredFish[f]) {
-            const uint8_t* fishString = static_cast<const uint8_t*>(pgm_read_ptr(fishStrings + f));
+            const uint8_t* fishString = static_cast<const uint8_t*>(pgm_read_ptr(allFishNameStrings + f));
             renderer.drawNumber(12, 7 + 5 * f, State::gameState.currentFishCount[f]);
             renderer.drawString(24, 7 + 5 * f, fishString);
         }
@@ -223,7 +218,6 @@ void Player::updateCast(uint8_t frame) {
     FishType fishType = getFishThatBit();
 
     if (fishType != FishType::UNSET) {
-        LOGV(static_cast<int8_t>(fishType));
         Fish::loadFish(fishType, currentFish);
         reelLevel = WIDTH / 2;
         currentUpdate = &Player::updateReel;
@@ -347,11 +341,10 @@ void Player::updateGetFish(uint8_t frame) {
 
 void Player::renderGetFish(uint8_t frame) {
     renderWalk(frame);
-    const uint8_t* fishString = static_cast<const uint8_t*>(pgm_read_ptr(fishStrings + static_cast<int8_t>(currentFish.type)));
 
     renderer.pushTranslate(0, 0);
     renderer.fillRect(0, HEIGHT- 6, WIDTH, 6, BLACK);
-    renderer.drawString(0, HEIGHT - 5, fishString);
+    renderer.drawString(0, HEIGHT - 5, currentFish.nameString);
     renderer.popTranslate();
 }
 

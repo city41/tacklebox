@@ -18,14 +18,14 @@
             "name": "SHARK",
             "png": "shark_24x8.png",
             "baitPreference": {
-                "WORM": 0,
+                "WORM": 1,
                 "GRUB": 0,
                 "SHRIMP": 0,
                 "MEAT": 1
             },
             "activeHours": [5, 19],
             "habitats": ["OCEAN_ISLAND"],
-            "ratio": 1,
+            "ratio": 10,
             "value": 100
         }
     ]
