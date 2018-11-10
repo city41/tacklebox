@@ -2,9 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const Canvas = require("canvas");
 const Image = Canvas.Image;
-const tinyFontMap = require("./tinyFontTileMap");
+const tinyFontMap = require("./encoding");
 
-const fontPng = path.join(__dirname, "tinyfont_digits_spaceA_Zexclamation.png");
+const fontPng = path.join(__dirname, "tinyfont_space_digits_A_Z.png");
 const fileData = fs.readFileSync(fontPng);
 const img = new Image();
 img.src = fileData;
