@@ -216,6 +216,7 @@ void Player::updateCast(uint8_t frame) {
 
 
     FishType fishType = getFishThatBit();
+    LOGV(static_cast<int8_t>(fishType));
 
     if (fishType != FishType::UNSET) {
         Fish::loadFish(fishType, currentFish);

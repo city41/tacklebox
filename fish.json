@@ -22,7 +22,7 @@
                 "MEAT": 1
             },
             "activeHours": [5, 19],
-            "habitats": ["OCEAN_ISLAND"],
+            "habitats": ["BEGINNER", "OCEAN_ISLAND"],
             "ratio": 10,
             "value": 100
         }
