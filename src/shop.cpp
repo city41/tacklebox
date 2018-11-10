@@ -44,12 +44,12 @@ void Shop::updateMainMenu(uint8_t frame) {
 
 void Shop::renderMainMenu(uint8_t frame) {
     // white frame
-    renderer.fillRect(11, 19, 106, 1, WHITE);
-    renderer.fillRect(116, 19, 1, 42, WHITE);
-    renderer.fillRect(11, 19, 1, 42, WHITE);
-    renderer.fillRect(11, HEIGHT - 4, 106, 1, WHITE);
+    renderer.fillRect(13, 19, 103, 1, WHITE);
+    renderer.fillRect(116, 20, 1, 40, WHITE);
+    renderer.fillRect(12, 20, 1, 40, WHITE);
+    renderer.fillRect(13, HEIGHT - 4, 103, 1, WHITE);
 
-    renderer.drawOverwrite(16, 2, shopOwner_tiles, 0);
+    renderer.drawOverwrite(20, 2, shopOwner_tiles, 0);
 
     renderer.drawOverwrite(34, 30 + Shop::mainMenuCurrentRow * 10, squareIcon_tiles, 0);
     renderer.drawString(40, 30, buy_string);
