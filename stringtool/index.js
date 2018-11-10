@@ -2,10 +2,11 @@ const path = require("path");
 const fs = require("fs");
 const program = require("commander");
 const packageJson = require("./package.json");
-const getUsedCharacters = require("./getUsedCharacters");
-const buildEncoding = require("./buildEncoding");
+const customEncoding = require("./encoding");
 const buildFontArray = require("./buildFontArray");
 const buildStringArrays = require("./buildStringArrays");
+
+console.log("encoding", customEncoding);
 
 program
     .version(packageJson.version)
@@ -20,9 +21,6 @@ const jsonPath = path.join(process.cwd(), program.src);
 const jsonInput = require(jsonPath);
 const destPath = program.dest && path.join(process.cwd(), program.dest);
 const destBaseName = program.dest ? path.basename(destPath, ".h") : "fontdiet";
-
-const usedCharacters = getUsedCharacters(jsonInput.strings);
-const customEncoding = buildEncoding(usedCharacters);
 
 const fontArray = buildFontArray(customEncoding);
 const stringArrays = buildStringArrays(jsonInput.strings, customEncoding);

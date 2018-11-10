@@ -13,6 +13,9 @@ struct Fish {
     uint8_t baitPreferences[static_cast<uint8_t>(BaitType::NUM_BAITS)];
     uint8_t ratio;
     uint8_t value;
+    
+    const uint8_t* nameString;
+    const uint8_t* bmp;
 
     static void loadFish(FishType fishType, Fish& fish);
 };

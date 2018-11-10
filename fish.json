@@ -2,10 +2,11 @@
     "fish": [
         {
             "name": "GOLDFISH",
-            "bait": {
+            "baitPreference": {
                 "WORM": 1,
                 "GRUB": 1,
-                "SHRIMP": 1
+                "SHRIMP": 1,
+                "MEAT": 1
             },
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
@@ -14,14 +15,15 @@
         },
         {
             "name": "SHARK",
-            "bait": {
-                "WORM": 0,
+            "baitPreference": {
+                "WORM": 1,
                 "GRUB": 0,
-                "SHRIMP": 1
+                "SHRIMP": 0,
+                "MEAT": 1
             },
             "activeHours": [5, 19],
-            "habitats": ["OCEAN_ISLAND"],
-            "ratio": 1,
+            "habitats": ["BEGINNER", "OCEAN_ISLAND"],
+            "ratio": 10,
             "value": 100
         }
     ]

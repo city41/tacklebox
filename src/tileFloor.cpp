@@ -22,8 +22,6 @@ void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId) {
 }
 
 void TileFloor::renderCenteredOn(int16_t x, int16_t y) {
-    int16_t maxTile = MAP_WIDTH_TILES * MAP_HEIGHT_TILES;
-
     int16_t tileX = (x - WIDTH / 2) / TILE_SIZE;
     int16_t tileY = (y - HEIGHT / 2) / TILE_SIZE;
     int16_t firstTileIndex = tileY * MAP_WIDTH_TILES + tileX;

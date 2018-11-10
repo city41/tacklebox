@@ -20,3 +20,6 @@ map:
 
 strings:
 	node ./stringtool/ -s strings.json -o src/strings.h
+
+fish:
+	node ./fishtool/ -s fish.json -o src
