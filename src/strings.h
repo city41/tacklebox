@@ -59,9 +59,9 @@ const uint8_t save_string[5] PROGMEM = {
 };
 
 
-// "FISH"
-const uint8_t collection_string[5] PROGMEM = {
-    16, 19, 29, 18, 0xFF
+// "MY FISH"
+const uint8_t collection_string[8] PROGMEM = {
+    23, 35, 0, 16, 19, 29, 18, 0xFF
 };
 
 
