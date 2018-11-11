@@ -155,7 +155,7 @@ void Player::renderMenu(uint8_t frame) {
 
     renderer.drawOverwrite(2, 2 + menuRow * 6,  squareIcon_tiles, 0);
 
-    renderer.drawPlusMask(6, 38, currencySymbol_plus_mask, 0);
+    renderer.drawPlusMask(6, 37, currencySymbol_plus_mask, 0);
     renderer.drawNumber(12, 38, State::gameState.money);
     renderer.popTranslate();
 }
