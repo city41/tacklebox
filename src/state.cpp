@@ -21,7 +21,7 @@ void State::load() {
     } else {
         gameState.shake = true;
         // start the game at 3pm
-        gameState.minute = 20 * 60;
+        gameState.minute = 16 * 60;
         gameState.wormCount = 0;
         gameState.money = 0;
 
