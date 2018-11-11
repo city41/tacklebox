@@ -1,6 +1,5 @@
 #include <Arduboy2.h>
 #include "game.h"
-#include "state.h"
 #include "renderer.h"
 #include "nonMaskBitmaps.h"
 #include "maskBitmaps.h"
@@ -34,56 +33,16 @@ void Game::pop() {
     nextRender = prevRender;
 }
 
-void Game::updateLogo(uint8_t frame) {
-    if (frame == 1) {
-        push(&Game::updateTitle, &Game::renderTitle);
-    }
-}
-
-void Game::renderLogo(uint8_t frame) {
-    renderer.drawOverwrite(WIDTH / 2 - 8, HEIGHT / 2 - 4, city41Logo_tiles, 0);
-}
-
-const uint8_t PLAY_GAME = 0;
-const uint8_t SFX_ON_OFF = 1;
-const uint8_t DELETE_SAVE = 2;
-
 void Game::updateTitle(uint8_t frame) {
-    if (arduboy.justPressed(A_BUTTON)) {
-        if (titleRow == PLAY_GAME) {
-            State::load();
-            push(&Game::updatePlay, &Game::renderPlay);
-        } else if (titleRow == DELETE_SAVE) {
-            titleRow = 0;
-            State::clearEEPROM();
-        } else if (titleRow == SFX_ON_OFF) {
-            Arduboy2Audio::toggle();
-            Arduboy2Audio::saveOnOff();
-        }
-    }
-
-    uint8_t rows = State::hasUserSaved() ? 2 : 1;
-
-    if (arduboy.justPressed(UP_BUTTON)) {
-        titleRow = max(titleRow - 1, 0);
-    }
-
-    if (arduboy.justPressed(DOWN_BUTTON)) {
-        titleRow = min(titleRow + 1, rows);
+    titleCount += 1;
+    if (titleCount == 120) {
+        push(&Game::updatePlay, &Game::renderPlay);
     }
 }
 
 void Game::renderTitle(uint8_t frame) {
-    const uint8_t* startGameLabel = State::hasUserSaved() ? continue_string : newGame_string;
-
-    renderer.drawString(42, 42, startGameLabel);
-    renderer.drawString(42, 50, Arduboy2Audio::enabled() ? sfxOn_string : sfxOff_string);
-
-    if (State::hasUserSaved()) {
-        renderer.drawString(42, 58, deleteSave_string);
-    }
-
-    renderer.drawOverwrite(34,42 + titleRow * 8, squareIcon_tiles, 0);
+    renderer.drawOverwrite(20, 16, logo_tiles, 0);
+    renderer.drawOverwrite(WIDTH - 24, HEIGHT - 8, city41Logo_tiles, 0);
 }
 
 bool isOnScreen(int16_t refX, int16_t refY, int16_t x, int16_t y) {

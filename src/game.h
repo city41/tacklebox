@@ -2,6 +2,7 @@
 
 #include "player.h"
 #include "worm.h"
+#include "state.h"
 
 class Game {
     typedef void (Game::*UpdatePtr)(uint8_t);
@@ -18,7 +19,7 @@ class Game {
         RenderPtr currentRender;
         RenderPtr nextRender;
 
-        uint8_t titleRow;
+        uint8_t titleCount;
         uint8_t seconds;     // actual seconds. 1 game hour = SECONDS_PER_HOUR real seconds
 
 
@@ -29,9 +30,6 @@ class Game {
 
         void update(uint8_t frame);
         void render(uint8_t frame);
-
-        void updateLogo(uint8_t frame);
-        void renderLogo(uint8_t frame);
 
         void updateTitle(uint8_t frame);
         void renderTitle(uint8_t frame);
@@ -45,13 +43,15 @@ class Game {
         Game(): 
             player(26 * 16, 2 * 16),
             prevUpdate(NULL),
-            currentUpdate(&Game::updateLogo),
+            currentUpdate(&Game::updateTitle),
             nextUpdate(NULL),
             prevRender(NULL),
-            currentRender(&Game::renderLogo),
+            currentRender(&Game::renderTitle),
             nextRender(NULL),
-            titleRow(0),
+            titleCount(0),
             seconds(0)
-        {}
+        {
+            State::load();
+        }
 };
 
