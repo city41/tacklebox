@@ -143,17 +143,17 @@ void Player::renderMenu(uint8_t frame) {
     renderer.fillRect(0, 0, WIDTH / 2 - 20, HEIGHT - 20, BLACK);
 
     renderer.drawString(6, 2, collection_string);
-    renderer.drawString(6, 8, save_string);
+    renderer.drawString(6, 9, save_string);
 
     const uint8_t* sfxString = Arduboy2Audio::enabled() ? sfxOn_string : sfxOff_string;
-    renderer.drawString(6, 14, sfxString);
+    renderer.drawString(6, 16, sfxString);
 
     const uint8_t* shakeString = State::gameState.shake ? shakeOn_string : shakeOff_string;
-    renderer.drawString(6, 20, shakeString);
+    renderer.drawString(6, 23, shakeString);
 
-    renderer.drawString(6, 26, deleteSave_string);
+    renderer.drawString(6, 30, deleteSave_string);
 
-    renderer.drawOverwrite(2, 2 + menuRow * 6,  squareIcon_tiles, 0);
+    renderer.drawOverwrite(2, 2 + menuRow * 7,  squareIcon_tiles, 0);
 
     renderer.drawPlusMask(6, 37, currencySymbol_plus_mask, 0);
     renderer.drawNumber(12, 38, State::gameState.money);
