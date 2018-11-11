@@ -86,7 +86,7 @@ void Player::renderWalk(uint8_t frame) {
     uint8_t spriteIndex = pgm_read_byte(offset);
     MirrorMode mirror = (MirrorMode)pgm_read_byte(offset + 1);
 
-    if (movedThisFrame && ((frame / 6) % 2) == 0) {
+    if (movedThisFrame && ((frame / 10) % 2) == 0) {
         if (dir == LEFT || dir == RIGHT) {
             ++spriteIndex;
         } else {
