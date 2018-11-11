@@ -360,7 +360,6 @@ void Player::render(uint8_t frame) {
 void Player::onGetWorm(Worm& worm) {
     if (worm.isSpawned && State::gameState.wormCount < 99) {
         State::gameState.wormCount +=1;
-        State::saveToEEPROM();
     }
 }
 
