@@ -15,6 +15,18 @@ struct FishDiceRoll {
 
 const int8_t MAX_FISH_IN_ROLL = static_cast<int8_t>(FishType::NUM_FISH);
 
+const int16_t STARTING_X = 26 * 16;
+const int16_t STARTING_Y = 2 * 16;
+
+enum class MenuRow: int8_t {
+    COLLECTION,
+    SAVE,
+    SFX,
+    SHAKE,
+    DELETE,
+    NUM_ROWS
+};
+
 class Player {
     typedef void (Player::*UpdatePtr)(uint8_t);
     typedef void (Player::*RenderPtr)(uint8_t);
@@ -32,6 +44,7 @@ class Player {
         uint8_t castCount;
         uint8_t reelLevel;
         int8_t menuRow;
+        bool areYouSure;
 
         Fish currentFish;
         BaitType currentBait;
@@ -41,7 +54,7 @@ class Player {
         UpdatePtr currentUpdate;
         RenderPtr currentRender;
 
-        Player(int16_t px, int16_t py):
+        Player():
             x(0),
             y(0),
             prevX(0),
@@ -52,11 +65,14 @@ class Player {
             castCount(0),
             reelLevel(0),
             menuRow(0),
+            areYouSure(false),
             currentUpdate(&Player::updateWalk),
             currentRender(&Player::renderWalk)
         {
-            moveTo(px, py);
+            reset();
         }
+
+        void reset();
 
         void render(uint8_t frame);
         void update(uint8_t frame);
@@ -66,6 +82,9 @@ class Player {
         
         void updateMenu(uint8_t frame);
         void renderMenu(uint8_t frame);
+
+        void updateAreYouSure(uint8_t frame);
+        void renderAreYouSure(uint8_t frame);
 
         void updateCollection(uint8_t frame);
         void renderCollection(uint8_t frame);

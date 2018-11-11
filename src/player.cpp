@@ -1,3 +1,4 @@
+#include <Arduboy2.h>
 #include "player.h"
 #include "state.h"
 #include "maskBitmaps.h"
@@ -14,8 +15,6 @@ extern Arduboy2Base arduboy;
 const uint8_t PLAYER_VELOCITY = 2;
 const uint8_t CAST_TIMEOUT = 8;
 
-const uint8_t SAVE_ROW = 0;
-const uint8_t COLLECTION_ROW = 1;
 
 const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     // LEFT
@@ -27,6 +26,11 @@ const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
     // DOWN
     3, 0
 };
+
+void Player::reset() {
+    moveTo(STARTING_X, STARTING_Y);
+    currentBait = BaitType::WORM;
+}
 
 bool Player::isOnSolidTile() {
     return !TileFloor::isWalkable(TileFloor::getTileAt(x + 8, y + 8));
@@ -42,6 +46,8 @@ void Player::updateWalk(uint8_t frame) {
     }
 
     if (arduboy.justPressed(B_BUTTON)) {
+        areYouSure = false;
+        menuRow = 0;
         currentUpdate = &Player::updateMenu;
         currentRender = &Player::renderMenu;
         return;
@@ -95,10 +101,11 @@ void Player::updateMenu(uint8_t frame) {
     if (arduboy.justPressed(B_BUTTON)) {
         currentUpdate = &Player::updateWalk;
         currentRender = &Player::renderWalk;
+        return;
     }
 
     if (arduboy.justPressed(DOWN_BUTTON)) {
-        menuRow = min(1, menuRow + 1);
+        menuRow = min(static_cast<int8_t>(MenuRow::NUM_ROWS) - 1, menuRow + 1);
     }
     
     if (arduboy.justPressed(UP_BUTTON)) {
@@ -106,15 +113,26 @@ void Player::updateMenu(uint8_t frame) {
     }
 
     if (arduboy.justPressed(A_BUTTON)) {
-        switch (menuRow) {
-            case SAVE_ROW:
+        switch (static_cast<MenuRow>(menuRow)) {
+            case MenuRow::COLLECTION:
+                currentUpdate = &Player::updateCollection;
+                currentRender = &Player::renderCollection;
+                break;
+            case MenuRow::SAVE:
                 State::saveToEEPROM();
                 currentUpdate = &Player::updateWalk;
                 currentRender = &Player::renderWalk;
                 break;
-            case COLLECTION_ROW:
-                currentUpdate = &Player::updateCollection;
-                currentRender = &Player::renderCollection;
+            case MenuRow::SFX:
+                Arduboy2Audio::toggle();
+                Arduboy2Audio::saveOnOff();
+                break;
+            case MenuRow::SHAKE:
+                State::toggleShake();
+                break;
+            case MenuRow::DELETE:
+                currentUpdate = &Player::updateAreYouSure;
+                currentRender = &Player::renderAreYouSure;
                 break;
         }
     }
@@ -124,12 +142,64 @@ void Player::renderMenu(uint8_t frame) {
     renderer.pushTranslate(WIDTH / 2 + 10, 10);
     renderer.fillRect(0, 0, WIDTH / 2 - 20, HEIGHT - 20, BLACK);
 
-    renderer.drawString(6, 2, save_string);
-    renderer.drawString(6, 7, collection_string);
+    renderer.drawString(6, 2, collection_string);
+    renderer.drawString(6, 8, save_string);
 
-    renderer.drawOverwrite(2, 2 + menuRow * 5,  squareIcon_tiles, 0);
+    const uint8_t* sfxString = Arduboy2Audio::enabled() ? sfxOn_string : sfxOff_string;
+    renderer.drawString(6, 14, sfxString);
 
-    renderer.drawNumber(2, 2 + 25, State::gameState.money);
+    const uint8_t* shakeString = State::gameState.shake ? shakeOn_string : shakeOff_string;
+    renderer.drawString(6, 20, shakeString);
+
+    renderer.drawString(6, 26, deleteSave_string);
+
+    renderer.drawOverwrite(2, 2 + menuRow * 6,  squareIcon_tiles, 0);
+
+    renderer.drawPlusMask(6, 38, currencySymbol_plus_mask, 0);
+    renderer.drawNumber(12, 38, State::gameState.money);
+    renderer.popTranslate();
+}
+
+void Player::updateAreYouSure(uint8_t frame) {
+    if (arduboy.justPressed(B_BUTTON)) {
+        currentUpdate = &Player::updateWalk;
+        currentRender = &Player::renderWalk;
+        return;
+    }
+
+    if (arduboy.justPressed(DOWN_BUTTON)) {
+        areYouSure = true;
+    }
+    
+    if (arduboy.justPressed(UP_BUTTON)) {
+        areYouSure = false;
+    }
+
+    if (arduboy.justPressed(A_BUTTON)) {
+        if (areYouSure) {
+            State::clearEEPROM();
+            State::load();
+            moveTo(STARTING_X, STARTING_Y);
+            currentUpdate = &Player::updateWalk;
+            currentRender = &Player::renderWalk;
+        } else {
+            currentUpdate = &Player::updateWalk;
+            currentRender = &Player::renderWalk;
+        }
+    }
+}
+
+void Player::renderAreYouSure(uint8_t frame) {
+    renderer.pushTranslate(WIDTH / 2 + 10, 10);
+    renderer.fillRect(0, 0, WIDTH / 2 - 20, HEIGHT - 20, BLACK);
+
+    renderer.drawString(2, 2, areYouSure_string);
+
+    renderer.drawString(6, 14, no_string);
+    renderer.drawString(6, 20, yes_string);
+
+    renderer.drawOverwrite(2, 14 + static_cast<int8_t>(areYouSure) * 6,  squareIcon_tiles, 0);
+
     renderer.popTranslate();
 }
 

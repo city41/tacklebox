@@ -19,6 +19,7 @@ void State::load() {
     if (hasUserSaved()) {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
+        gameState.shake = true;
         // start the game at 3pm
         gameState.minute = 16 * 60;
         gameState.wormCount = 0;
@@ -66,3 +67,9 @@ bool State::isDay() {
 uint8_t State::getCurrentHour() {
     return gameState.minute / 60;
 }
+
+void State::toggleShake() {
+    gameState.shake = !gameState.shake;
+    saveToEEPROM();
+}
+

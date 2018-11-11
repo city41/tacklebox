@@ -53,33 +53,51 @@ const uint8_t PROGMEM font_tiles_lower_mask[] = {
 };
 
 
-// "NEW GAME"
-const uint8_t newGame_string[9] PROGMEM = {
-    24, 15, 33, 0, 17, 11, 23, 15, 0xFF
+// "DELETE"
+const uint8_t deleteSave_string[7] PROGMEM = {
+    14, 15, 22, 15, 30, 15, 0xFF
 };
 
 
-// "CONTINUE"
-const uint8_t continue_string[9] PROGMEM = {
-    13, 25, 24, 30, 19, 24, 31, 15, 0xFF
+// "R U SURE"
+const uint8_t areYouSure_string[9] PROGMEM = {
+    28, 0, 31, 0, 29, 31, 28, 15, 0xFF
 };
 
 
-// "DELETE SAVE"
-const uint8_t deleteSave_string[12] PROGMEM = {
-    14, 15, 22, 15, 30, 15, 0, 29, 11, 32, 15, 0xFF
+// "YES"
+const uint8_t yes_string[4] PROGMEM = {
+    35, 15, 29, 0xFF
 };
 
 
-// "SFX ON"
-const uint8_t sfxOn_string[7] PROGMEM = {
-    29, 16, 34, 0, 25, 24, 0xFF
+// "NO"
+const uint8_t no_string[3] PROGMEM = {
+    24, 25, 0xFF
 };
 
 
-// "SFX OFF"
-const uint8_t sfxOff_string[8] PROGMEM = {
-    29, 16, 34, 0, 25, 16, 16, 0xFF
+// "SFX   *"
+const uint8_t sfxOn_string[8] PROGMEM = {
+    29, 16, 34, 0, 0, 0, 37, 0xFF
+};
+
+
+// "SFX"
+const uint8_t sfxOff_string[4] PROGMEM = {
+    29, 16, 34, 0xFF
+};
+
+
+// "SHAKE *"
+const uint8_t shakeOn_string[8] PROGMEM = {
+    29, 18, 11, 21, 15, 0, 37, 0xFF
+};
+
+
+// "SHAKE"
+const uint8_t shakeOff_string[6] PROGMEM = {
+    29, 18, 11, 21, 15, 0xFF
 };
 
 

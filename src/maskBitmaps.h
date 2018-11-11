@@ -28,6 +28,15 @@ const uint8_t PROGMEM colon_plus_mask[] = {
     0x09,
 };
 
+const uint8_t PROGMEM currencySymbol_plus_mask[] = {
+    // width, height,
+    4, 8,
+    // frame 0 
+    0x1e,0x12,0x3f,0x12,
+    // mask 0 
+    0x1e,0x12,0x3f,0x12,
+};
+
 const uint8_t PROGMEM player_plus_mask[] = {
     // width, height,
     16, 16,

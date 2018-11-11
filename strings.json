@@ -1,10 +1,13 @@
 {
     "strings": [
-        { "key": "newGame", "value": "NEW GAME" },
-        { "key": "continue", "value": "CONTINUE" },
-        { "key": "deleteSave", "value": "DELETE SAVE" },
-        { "key": "sfxOn", "value": "SFX ON" },
-        { "key": "sfxOff", "value": "SFX OFF" },
+        { "key": "deleteSave", "value": "DELETE" },
+        { "key": "areYouSure", "value": "R U SURE" },
+        { "key": "yes", "value": "YES" },
+        { "key": "no", "value": "NO" },
+        { "key": "sfxOn", "value": "SFX   *" },
+        { "key": "sfxOff", "value": "SFX" },
+        { "key": "shakeOn", "value": "SHAKE *" },
+        { "key": "shakeOff", "value": "SHAKE" },
         { "key": "buy", "value": "BUY" },
         { "key": "sell", "value": "SELL" },
         { "key": "tempBuy", "value": "BUY STUFF HERE" },
