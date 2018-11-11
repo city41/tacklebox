@@ -214,12 +214,18 @@ void Player::renderCollection(uint8_t frame) {
     renderer.pushTranslate(0, 0);
     renderer.fillRect(10, 5, WIDTH - 20, HEIGHT - 10, BLACK);
 
+    bool hasAFish = false;
     for (uint8_t f = 0; f < static_cast<int8_t>(FishType::NUM_FISH); ++f) {
         if (State::gameState.acquiredFish[f]) {
+            hasAFish = true;
             const uint8_t* fishString = static_cast<const uint8_t*>(pgm_read_ptr(allFishNameStrings + f));
             renderer.drawNumber(12, 7 + 5 * f, State::gameState.currentFishCount[f]);
             renderer.drawString(24, 7 + 5 * f, fishString);
         }
+    }
+
+    if (!hasAFish) {
+        renderer.drawString(20, HEIGHT / 2 - 2, noFishInCollection_string);
     }
 }
 

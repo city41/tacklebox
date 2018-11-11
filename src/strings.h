@@ -53,6 +53,18 @@ const uint8_t PROGMEM font_tiles_lower_mask[] = {
 };
 
 
+// "SAVE"
+const uint8_t save_string[5] PROGMEM = {
+    29, 11, 32, 15, 0xFF
+};
+
+
+// "FISH"
+const uint8_t collection_string[5] PROGMEM = {
+    16, 19, 29, 18, 0xFF
+};
+
+
 // "DELETE"
 const uint8_t deleteSave_string[7] PROGMEM = {
     14, 15, 22, 15, 30, 15, 0xFF
@@ -185,27 +197,9 @@ const uint8_t digit9_string[2] PROGMEM = {
 };
 
 
-// "GOLDFISH"
-const uint8_t goldfish_string[9] PROGMEM = {
-    17, 25, 22, 14, 16, 19, 29, 18, 0xFF
-};
-
-
-// "SHARK"
-const uint8_t shark_string[6] PROGMEM = {
-    29, 18, 11, 28, 21, 0xFF
-};
-
-
-// "SAVE"
-const uint8_t save_string[5] PROGMEM = {
-    29, 11, 32, 15, 0xFF
-};
-
-
-// "FISH"
-const uint8_t collection_string[5] PROGMEM = {
-    16, 19, 29, 18, 0xFF
+// "NO FISH CAUGHT YET"
+const uint8_t noFishInCollection_string[19] PROGMEM = {
+    24, 25, 0, 16, 19, 29, 18, 0, 13, 11, 31, 17, 18, 30, 0, 35, 15, 30, 0xFF
 };
 
 #endif
