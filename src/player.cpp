@@ -263,7 +263,31 @@ void Player::updateScanning(uint8_t frame) {
 }
 
 void Player::renderScanning(uint8_t frame) {
-    renderWalk(frame);
+    uint8_t spriteIndex;
+    MirrorMode mirror = NO_MIRROR;
+    int16_t poleX;
+    int16_t poleY;
+
+    switch (dir) {
+        case LEFT:
+            spriteIndex = 4;
+            poleY = y - 4;
+            poleX = x + 14;
+            break;
+        case RIGHT:
+            spriteIndex = 4;
+            mirror = MIRROR_HORIZONTAL;
+            break;
+        case UP:
+            spriteIndex = 6;
+            break;
+        case DOWN:
+            spriteIndex = 2;
+            break;
+    }
+
+    renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, mirror);
+    renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, 0, mirror);
     renderer.drawOverwrite(cursorX, cursorY, cursor_tiles, 0, 0, Xor);
 }
 
@@ -362,7 +386,32 @@ FishType Player::getFishThatBit() {
 }
 
 void Player::renderCast(uint8_t frame) {
-    renderWalk(frame);
+    uint8_t spriteIndex;
+    MirrorMode playerMirror = NO_MIRROR;
+    MirrorMode poleMirror = NO_MIRROR;
+    int16_t poleX;
+    int16_t poleY;
+
+    switch (dir) {
+        case LEFT:
+            spriteIndex = 5;
+            poleY = y;
+            poleX = x - 10;
+            poleMirror = MIRROR_HORIZONTAL;
+            break;
+        case RIGHT:
+            spriteIndex = 4;
+            break;
+        case UP:
+            spriteIndex = 6;
+            break;
+        case DOWN:
+            spriteIndex = 2;
+            break;
+    }
+
+    renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, 0, poleMirror);
+    renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, playerMirror);
     renderer.drawOverwrite(cursorX, cursorY, bobber_tiles, 0, 0, Xor);
 }
 

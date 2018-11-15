@@ -6,6 +6,7 @@
 typedef uint8_t MirrorMode;
 
 // these are bit masks, not enums
+const MirrorMode NO_MIRROR = 0;
 const MirrorMode MIRROR_HORIZONTAL = 1;
 const MirrorMode MIRROR_VERTICAL = 2;
 
