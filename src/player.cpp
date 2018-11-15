@@ -288,7 +288,7 @@ void Player::renderScanning(uint8_t frame) {
 
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, mirror);
     renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, 0, mirror);
-    renderer.drawOverwrite(cursorX, cursorY, cursor_tiles, 0, 0, Xor);
+    renderer.drawOverwrite(cursorX, cursorY, cursor_tiles, 0, 0);
 }
 
 void Player::updateCast(uint8_t frame) {
