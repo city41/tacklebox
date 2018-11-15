@@ -412,7 +412,7 @@ void Player::renderCast(uint8_t frame) {
 
     renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, 0, poleMirror);
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, playerMirror);
-    renderer.drawOverwrite(cursorX, cursorY, bobber_tiles, 0, 0, Xor);
+    renderer.drawOverwrite(cursorX, cursorY, bobber_tiles, static_cast<uint8_t>(frame > 30), 0, Xor);
 }
 
 void Player::updateReel(uint8_t frame) {
