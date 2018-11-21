@@ -330,10 +330,12 @@ uint8_t Player::getPointsForFish(Fish& fish) {
     uint8_t hour = State::getCurrentHour();
 
     if (hour < fish.minHour || hour > fish.maxHour) {
+        LOG("hour out of range");
         return 0;
     }
 
-    if (x < fish.minX || x > fish.maxX) {
+    if (cursorX < fish.minX || cursorX > fish.maxX) {
+        LOG("x out of range");
         return 0;
     }
 
@@ -356,6 +358,7 @@ FishType Player::getFishThatBit() {
         Fish::loadFish(fishType, fish);
 
         uint8_t points = getPointsForFish(fish);
+        LOGV(points);
 
         if (points > 0) {
             maxPoints += points;
@@ -443,14 +446,14 @@ void Player::renderReel(uint8_t frame) {
 
     renderer.pushTranslate(0, 0);
 
-    // white background to get rid of anything else there
-    renderer.fillRect(0, HEIGHT - 4, WIDTH, 4, WHITE);
+    // black background to serve as the frame
+    renderer.fillRect(29, HEIGHT - 21, WIDTH - 58, 8, BLACK);
+
+    // white background to serve as the empty part
+    renderer.fillRect(30, HEIGHT - 20, WIDTH - 60, 6, WHITE);
 
     // black progress bar at the current reel level
-    renderer.fillRect(0, HEIGHT - 4, reelLevel, 4, BLACK);
-
-    // border to frame it all
-    renderer.drawRect(0, HEIGHT - 4, WIDTH, 4, BLACK);
+    renderer.fillRect(32, HEIGHT - 19, reelLevel / 2, 4, BLACK);
 
     renderer.popTranslate();
 }
