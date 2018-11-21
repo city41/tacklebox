@@ -18,6 +18,9 @@ void Fish::loadFish(FishType fishType, Fish& fish) {
     fish.ratio = pgm_read_byte(offset + 6);
     fish.value = pgm_read_byte(offset + 7);
 
+    fish.nameLength = pgm_read_byte(offset + 8);
+    fish.bmpWidth = pgm_read_byte(offset + 9);
+
     const int16_t* offset16 = fish_templates_16t + static_cast<int8_t>(fishType) * NUM_16T_PROPS;
 
     fish.minX = pgm_read_word(offset16);

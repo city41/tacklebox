@@ -3,7 +3,7 @@
 
 #include "maskBitmaps.h"
 
-const uint8_t NUM_U8T_PROPS = 8;
+const uint8_t NUM_U8T_PROPS = 10;
 const uint8_t NUM_16T_PROPS = 4;
 
 
@@ -18,6 +18,8 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     1,  // baitPreference MEAT
     10,  // ratio
     1,  // value
+    8, // nameLength
+    8, // bmpWidth
 
     // SHARK
     5,  // minHour
@@ -28,6 +30,8 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     1,  // baitPreference MEAT
     10,  // ratio
     100,  // value
+    5, // nameLength
+    24, // bmpWidth
 };
 
 

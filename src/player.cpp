@@ -14,6 +14,7 @@ extern Arduboy2Base arduboy;
 
 const uint8_t PLAYER_VELOCITY = 2;
 const uint8_t CAST_TIMEOUT = 8;
+const uint8_t ANNOUNCE_FISH_COUNT = 120;
 
 
 const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
@@ -435,7 +436,7 @@ void Player::updateReel(uint8_t frame) {
         State::setFishAcquired(currentFish.type);
         State::incrementCurrentCount(currentFish.type);
 
-        announceFishCount = 120;
+        announceFishCount = ANNOUNCE_FISH_COUNT;
         currentUpdate = &Player::updateGetFish;
         currentRender = &Player::renderGetFish;
     }
@@ -498,12 +499,31 @@ void Player::updateGetFish(uint8_t frame) {
 }
 
 
-void Player::renderGetFish(uint8_t frame) {
-    renderer.drawPlusMask(x, y - 10, currentFish.bmp, 0);
-    renderer.drawPlusMask(x, y, player_plus_mask, 8);
+const uint8_t GET_FISH_FRAME_SIZE = 42;
 
-    renderer.fillRect(x - 16, y + 18, 64, 6, BLACK);
-    renderer.drawString(x - 15, y + 19, currentFish.nameString);
+void Player::renderGetFish(uint8_t frame) {
+    renderer.fillRect(x - 13, y - 12, GET_FISH_FRAME_SIZE, GET_FISH_FRAME_SIZE, BLACK);
+    renderer.fillRect(x - 12, y, GET_FISH_FRAME_SIZE - 2, 17, WHITE);
+
+
+    renderer.drawPlusMask(
+        x - 13 + (GET_FISH_FRAME_SIZE / 2 - currentFish.bmpWidth / 2),
+        y - 10,
+        currentFish.bmp,
+        0,
+        0,
+        Invert
+    );
+
+    // TODO: make this an Animation
+    uint8_t spriteIndex = (announceFishCount > ANNOUNCE_FISH_COUNT - 20 || announceFishCount < 30) ? 8 : 9;
+    renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex);
+
+    renderer.drawString(
+        x - 13 + (GET_FISH_FRAME_SIZE / 2 - currentFish.nameLength * 5 / 2),
+        y + 22,
+        currentFish.nameString
+    );
 }
 
 void Player::update(uint8_t frame) {

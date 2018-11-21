@@ -1,3 +1,13 @@
+const fs = require("fs");
+
+function getFishWidth(name) {
+    const files = fs.readdirSync("./maskPngs");
+    const file = files.find(f => f.startsWith(name));
+
+    // GOLDFISH_8x8 -> ['GOLDFISH', '8x8'] -> 8
+    return parseInt(file.split("_")[1], 10);
+}
+
 module.exports = function buildEightBitArray(fishes) {
     const entries = fishes.map(fish => {
         return `
@@ -9,7 +19,9 @@ module.exports = function buildEightBitArray(fishes) {
     ${fish.baitPreference.SHRIMP},  // baitPreference SHRIMP
     ${fish.baitPreference.MEAT},  // baitPreference MEAT
     ${fish.ratio},  // ratio
-    ${fish.value},  // value`;
+    ${fish.value},  // value
+    ${fish.name.length}, // nameLength
+    ${getFishWidth(fish.name)}, // bmpWidth`;
     });
 
     return `const uint8_t PROGMEM fish_templates_u8t[] = {

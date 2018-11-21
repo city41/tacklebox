@@ -17,6 +17,9 @@ struct Fish {
     const uint8_t* nameString;
     const uint8_t* bmp;
 
+    uint8_t nameLength;
+    uint8_t bmpWidth;
+
     static void loadFish(FishType fishType, Fish& fish);
 };
 
