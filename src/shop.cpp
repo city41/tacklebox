@@ -6,6 +6,7 @@
 #include "fishType.h"
 #include "fish.h"
 #include "state.h"
+#include "animation.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -13,6 +14,17 @@ extern Arduboy2Base arduboy;
 uint8_t Shop::mainMenuCurrentRow = 0;
 Shop::UpdatePtr Shop::currentUpdate = &Shop::updateMainMenu;
 Shop::RenderPtr Shop::currentRender = &Shop::renderMainMenu;
+
+
+const uint8_t PROGMEM shopOwnerDurations[] = {
+    20, 0, 5, 1, 5, 2, 5, 3, 255
+};
+
+Animation shopOwnerAnimation(shopOwnerDurations);
+
+void Shop::onEnter() {
+    shopOwnerAnimation.reset();
+}
 
 void Shop::update(uint8_t frame) {
     Shop::currentUpdate(frame);
@@ -23,6 +35,8 @@ void Shop::render(uint8_t frame) {
 }
 
 void Shop::updateMainMenu(uint8_t frame) {
+    shopOwnerAnimation.update();
+
     if (arduboy.justPressed(DOWN_BUTTON)) {
         Shop::mainMenuCurrentRow = 1;
     }
@@ -49,7 +63,7 @@ void Shop::renderMainMenu(uint8_t frame) {
     renderer.fillRect(12, 20, 1, 40, WHITE);
     renderer.fillRect(13, HEIGHT - 4, 103, 1, WHITE);
 
-    renderer.drawOverwrite(20, 2, shopOwner_tiles, 0);
+    renderer.drawOverwrite(20, 2, shopOwner_tiles, shopOwnerAnimation.currentFrame);
 
     renderer.drawOverwrite(34, 30 + Shop::mainMenuCurrentRow * 10, squareIcon_tiles, 0);
     renderer.drawString(40, 30, buy_string);

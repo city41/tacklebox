@@ -9,6 +9,8 @@ struct Shop {
     static UpdatePtr currentUpdate;
     static RenderPtr currentRender;
 
+    static void onEnter();
+
     static void update(uint8_t frame);
     static void render(uint8_t frame);
 
