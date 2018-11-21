@@ -30,7 +30,7 @@ void Renderer::drawPlusMask(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t
     drawBitmap(x + translateX, y + translateY, bitmap, NULL, true, frame, mirror, drawMode);
 }
 
-void Renderer::drawString(int8_t x, int8_t y, const uint8_t* str) {
+void Renderer::drawString(int16_t x, int16_t y, const uint8_t* str) {
     uint8_t ch = pgm_read_byte(str++);
 
     while (ch != 0xFF) {
@@ -58,7 +58,7 @@ const uint8_t* const PROGMEM number_strings[] = {
     digit9_string
 };
 
-void Renderer::drawNumber(int8_t x, int8_t y, uint16_t number) {
+void Renderer::drawNumber(int16_t x, int16_t y, uint16_t number) {
     if (number == 0) {
         Renderer::drawString(x, y, digit0_string);
         return;

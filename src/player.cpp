@@ -435,25 +435,55 @@ void Player::updateReel(uint8_t frame) {
         State::setFishAcquired(currentFish.type);
         State::incrementCurrentCount(currentFish.type);
 
-        announceFishCount = 60;
+        announceFishCount = 120;
         currentUpdate = &Player::updateGetFish;
         currentRender = &Player::renderGetFish;
     }
 }
 
 void Player::renderReel(uint8_t frame) {
-    renderWalk(frame);
+    uint8_t spriteIndex;
+    MirrorMode playerMirror = NO_MIRROR;
+    MirrorMode poleMirror = NO_MIRROR;
+    int16_t poleX;
+    int16_t poleY;
+
+    switch (dir) {
+        case LEFT:
+            spriteIndex = 5;
+            poleY = y;
+            poleX = x - 10;
+            poleMirror = MIRROR_HORIZONTAL;
+
+            if (frame > 50) {
+                spriteIndex = 7;
+                poleX += 1;
+            }
+            break;
+        case RIGHT:
+            spriteIndex = 4;
+            break;
+        case UP:
+            spriteIndex = 6;
+            break;
+        case DOWN:
+            spriteIndex = 2;
+            break;
+    }
+
+    renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, playerMirror);
+    renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, 1, poleMirror);
 
     renderer.pushTranslate(0, 0);
 
     // black background to serve as the frame
-    renderer.fillRect(29, HEIGHT - 21, WIDTH - 58, 8, BLACK);
+    renderer.fillRect(29, HEIGHT - 14, WIDTH - 58, 8, BLACK);
 
     // white background to serve as the empty part
-    renderer.fillRect(30, HEIGHT - 20, WIDTH - 60, 6, WHITE);
+    renderer.fillRect(30, HEIGHT - 13, WIDTH - 60, 6, WHITE);
 
     // black progress bar at the current reel level
-    renderer.fillRect(32, HEIGHT - 19, reelLevel / 2, 4, BLACK);
+    renderer.fillRect(32, HEIGHT - 12, reelLevel / 2, 4, BLACK);
 
     renderer.popTranslate();
 }
@@ -469,12 +499,11 @@ void Player::updateGetFish(uint8_t frame) {
 
 
 void Player::renderGetFish(uint8_t frame) {
-    renderWalk(frame);
+    renderer.drawPlusMask(x, y - 10, currentFish.bmp, 0);
+    renderer.drawPlusMask(x, y, player_plus_mask, 8);
 
-    renderer.pushTranslate(0, 0);
-    renderer.fillRect(0, HEIGHT- 6, WIDTH, 6, BLACK);
-    renderer.drawString(0, HEIGHT - 5, currentFish.nameString);
-    renderer.popTranslate();
+    renderer.fillRect(x - 16, y + 18, 64, 6, BLACK);
+    renderer.drawString(x - 15, y + 19, currentFish.nameString);
 }
 
 void Player::update(uint8_t frame) {
