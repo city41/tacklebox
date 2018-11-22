@@ -27,7 +27,7 @@ void State::load() {
         gameState.baitCounts[3] = 0;
         gameState.money = 0;
 
-        for (int8_t i = 0; i < static_cast<int8_t>(FishType::NUM_FISH); ++i) {
+        for (int8_t i = 0; i < static_cast<int8_t>(FishType::COUNT); ++i) {
             gameState.acquiredFish[i] = false;
             gameState.currentFishCount[i] = 0;
         }
@@ -48,7 +48,7 @@ void State::decreaseCurrentCount(FishType fishType, uint8_t count) {
 
 void State::sellAllFish() {
     Fish fish;
-    for (uint8_t f = 0; f < static_cast<uint8_t>(FishType::NUM_FISH); ++f) {
+    for (uint8_t f = 0; f < static_cast<uint8_t>(FishType::COUNT); ++f) {
         Fish::loadFish(static_cast<FishType>(f), fish);
         gameState.money += gameState.currentFishCount[f] * fish.value;
         gameState.currentFishCount[f] = 0;

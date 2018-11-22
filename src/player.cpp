@@ -232,6 +232,14 @@ void Player::renderAreYouSure(uint8_t frame) {
 }
 
 void Player::updateCollection(uint8_t frame) {
+    if (arduboy.justPressed(DOWN_BUTTON)) {
+        currentCollectionRow = min(static_cast<int8_t>(FishType::COUNT) - 2, currentCollectionRow + 1);
+    }
+
+    if (arduboy.justPressed(UP_BUTTON)) {
+        currentCollectionRow = max(0, currentCollectionRow - 1);
+    }
+
     if (arduboy.justPressed(B_BUTTON)) {
         currentUpdate = &Player::updateWalk;
         currentRender = &Player::renderWalk;
@@ -243,22 +251,30 @@ void Player::renderCollection(uint8_t frame) {
     renderer.fillRect(18, 5, WIDTH - 36, HEIGHT - 10, BLACK);
 
     const uint8_t spacing = 18;
+    const uint8_t startY = 5;
 
-    bool hasAFish = false;
-    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::NUM_FISH); ++f) {
+    for (uint8_t f = currentCollectionRow; f < static_cast<int8_t>(FishType::COUNT) && f < currentCollectionRow + 3; ++f) {
+        uint8_t offset = f - currentCollectionRow;
+        renderer.drawNumber(22, startY + spacing * offset + 7, f + 1);
+
         if (State::gameState.acquiredFish[f]) {
-            hasAFish = true;
             const uint8_t* fishString = static_cast<const uint8_t*>(pgm_read_ptr(fish_templates_16t + f * NUM_16T_PROPS + 2));
             const uint8_t* fishBmp = static_cast<const uint8_t*>(pgm_read_ptr(fish_templates_16t + f * NUM_16T_PROPS + 3));
 
-            renderer.drawNumber(84, 7 + spacing * f + 7, State::gameState.currentFishCount[f]);
-            renderer.drawPlusMask(32, 7 + spacing * f, fishBmp, 0, 0, Invert);
-            renderer.drawString(32, 7 + spacing * f + 9, fishString);
+            renderer.drawNumber(92, startY + spacing * offset + 9, State::gameState.currentFishCount[f]);
+            renderer.drawPlusMask(44, startY + spacing * offset, fishBmp, 0, 0, Invert);
+            renderer.drawString(44, startY + spacing * offset + 9, fishString);
+        } else {
+            renderer.drawOverwrite(44, startY + spacing * offset + 7, questionMark_tiles, 0);
         }
     }
 
-    if (!hasAFish) {
-        renderer.drawString(20, HEIGHT / 2 - 2, noFishInCollection_string);
+    if (currentCollectionRow > 0) {
+        renderer.drawPlusMask(21, startY, arrow_plus_mask, 1);
+    }
+
+    if (currentCollectionRow < static_cast<int8_t>(FishType::COUNT) - 2) {
+        renderer.drawPlusMask(21, HEIGHT - 10, arrow_plus_mask, 0);
     }
 }
 
@@ -385,7 +401,7 @@ FishType Player::getFishThatBit() {
     uint8_t maxPoints = 0;
     uint8_t candidateFishes = 0;
 
-    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::NUM_FISH); ++f) {
+    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::COUNT); ++f) {
         FishType fishType = static_cast<FishType>(f);
 
         Fish::loadFish(fishType, fish);

@@ -11,8 +11,8 @@ struct GameState {
     uint16_t minute;
     uint8_t baitCounts[4];
     uint8_t money;
-    bool acquiredFish[static_cast<int8_t>(FishType::NUM_FISH)];
-    uint8_t currentFishCount[static_cast<int8_t>(FishType::NUM_FISH)];
+    bool acquiredFish[static_cast<int8_t>(FishType::COUNT)];
+    uint8_t currentFishCount[static_cast<int8_t>(FishType::COUNT)];
 };
 
 class State {

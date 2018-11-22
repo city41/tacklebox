@@ -13,7 +13,7 @@ struct FishDiceRoll {
     uint8_t points;
 };
 
-const int8_t MAX_FISH_IN_ROLL = static_cast<int8_t>(FishType::NUM_FISH);
+const int8_t MAX_FISH_IN_ROLL = static_cast<int8_t>(FishType::COUNT);
 
 const int16_t STARTING_X = 26 * 16;
 const int16_t STARTING_Y = 2 * 16;
@@ -45,6 +45,7 @@ class Player {
         MenuRow menuRow;
         bool areYouSure;
         uint8_t saveToastCount;
+        int8_t currentCollectionRow;
 
         Fish currentFish;
         BaitType currentBait;
@@ -65,6 +66,8 @@ class Player {
             castCount(0),
             reelLevel(0),
             menuRow(MenuRow::COLLECTION),
+            saveToastCount(0),
+            currentCollectionRow(0),
             areYouSure(false),
             currentUpdate(&Player::updateWalk),
             currentRender(&Player::renderWalk)

@@ -4,7 +4,7 @@ module.exports = function buildFishTypes(fishes) {
     });
 
     entries.unshift("    UNSET = -1");
-    entries.push(`    NUM_FISH = ${fishes.length}`);
+    entries.push(`    COUNT = ${fishes.length}`);
 
     return `#pragma once
 

@@ -107,7 +107,7 @@ void Shop::renderSell(uint8_t frame) {
     uint16_t moneyAmount = 0;
 
     Fish fish;
-    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::NUM_FISH); ++f) {
+    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::COUNT); ++f) {
         Fish::loadFish(static_cast<FishType>(f), fish);
         moneyAmount += State::gameState.currentFishCount[f] * fish.value;
     }
