@@ -9,6 +9,13 @@ extern Renderer renderer;
 
 const uint8_t clockY = 2;
 
+const uint8_t* const PROGMEM baitBmps[] = {
+    worm_plus_mask,
+    grub_plus_mask,
+    shrimp_plus_mask,
+    meat_plus_mask
+};
+
 void drawClock() {
     uint8_t hour = State::gameState.minute / 60;
 
@@ -45,8 +52,10 @@ void drawClock() {
 void Hud::render(uint8_t frame, Player& player) {
     renderer.fillRect(0, 0, 50, 8, BLACK);
 
-    renderer.drawPlusMask(2, 0, worm_plus_mask, 0, 0, Invert);
-    renderer.drawNumber(11, clockY, State::gameState.wormCount);
+    const uint8_t* baitBmp = reinterpret_cast<const uint8_t*>(pgm_read_ptr(baitBmps + static_cast<int8_t>(player.currentBait)));
+
+    renderer.drawPlusMask(1, 0, baitBmp, 0, 0, Invert);
+    renderer.drawNumber(12, clockY, State::gameState.baitCounts[static_cast<int8_t>(player.currentBait)]);
 
     drawClock();
 }

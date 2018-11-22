@@ -38,7 +38,7 @@ bool Player::isOnSolidTile() {
 }
 
 void Player::updateWalk(uint8_t frame) {
-    if (State::gameState.wormCount > 0 && arduboy.pressed(A_BUTTON)) {
+    if (State::gameState.baitCounts[static_cast<int8_t>(currentBait)] > 0 && arduboy.pressed(A_BUTTON)) {
         cursorX = x;
         cursorY = y + 18;
         currentUpdate = &Player::updateScanning;
@@ -113,6 +113,19 @@ void Player::updateMenu(uint8_t frame) {
         menuRow = max(0, menuRow - 1);
     }
 
+
+    if (arduboy.justPressed(RIGHT_BUTTON)) {
+        currentBait = static_cast<BaitType>((static_cast<int8_t>(currentBait) + 1) % 4);
+    }
+
+    if (arduboy.justPressed(LEFT_BUTTON)) {
+        if (static_cast<int8_t>(currentBait) == 0) {
+            currentBait = BaitType::MEAT;
+        } else {
+            currentBait = static_cast<BaitType>(static_cast<int8_t>(currentBait) - 1);
+        }
+    }
+
     if (arduboy.justPressed(A_BUTTON)) {
         switch (static_cast<MenuRow>(menuRow)) {
             case MenuRow::COLLECTION:
@@ -137,21 +150,36 @@ void Player::updateMenu(uint8_t frame) {
 }
 
 void Player::renderMenu(uint8_t frame) {
-    renderer.pushTranslate(WIDTH / 2 + 10, 10);
-    renderer.fillRect(0, 0, WIDTH / 2 - 20, HEIGHT - 20, BLACK);
+    renderer.pushTranslate(10, 0);
+    renderer.fillRect(0, 0, WIDTH / 2 - 20, HEIGHT, BLACK);
 
-    renderer.drawString(6, 2, collection_string);
-    renderer.drawString(6, 9, save_string);
+    // bait
+    const uint8_t baitY = 4;
+    renderer.drawPlusMask(2, baitY, worm_plus_mask, 0, 0, Invert);
+    renderer.drawPlusMask(12, baitY, grub_plus_mask, 0, 0, Invert);
+    renderer.drawPlusMask(22, baitY, shrimp_plus_mask, 0, 0, Invert);
+    renderer.drawPlusMask(32, baitY, meat_plus_mask, 0, 0, Invert);
+
+    // bait cursor
+    renderer.drawOverwrite(4 + static_cast<int8_t>(currentBait) * 10, baitY + 10,  squareIcon_tiles, 0);
+
+    // menu items
+    const uint8_t startY = 24;
+    const uint8_t spacing = 7;
+
+    renderer.drawString(6, startY, collection_string);
+    renderer.drawString(6, startY + spacing * 1, save_string);
 
     const uint8_t* sfxString = Arduboy2Audio::enabled() ? sfxOn_string : sfxOff_string;
-    renderer.drawString(6, 16, sfxString);
+    renderer.drawString(6, startY + spacing * 2, sfxString);
 
-    renderer.drawString(6, 23, deleteSave_string);
+    renderer.drawString(6, startY + spacing * 3, deleteSave_string);
 
-    renderer.drawOverwrite(2, 2 + menuRow * 7,  squareIcon_tiles, 0);
+    renderer.drawOverwrite(1, startY + menuRow * spacing,  squareIcon_tiles, 0);
 
-    renderer.drawPlusMask(6, 37, currencySymbol_plus_mask, 0);
-    renderer.drawNumber(12, 38, State::gameState.money);
+    // money
+    renderer.drawPlusMask(6, startY + spacing * 4 + 3, currencySymbol_plus_mask, 0);
+    renderer.drawNumber(12, startY + spacing * 4 + 4, State::gameState.money);
     renderer.popTranslate();
 }
 
@@ -301,7 +329,7 @@ void Player::updateCast(uint8_t frame) {
     castCount += 1;
 
     if (castCount == CAST_TIMEOUT) {
-        State::gameState.wormCount -= 1;
+        State::gameState.baitCounts[static_cast<int8_t>(currentBait)] -= 1;
 
         currentUpdate = &Player::updateWalk;
         currentRender = &Player::renderWalk;
@@ -529,8 +557,8 @@ void Player::render(uint8_t frame) {
 }
 
 void Player::onGetWorm(Worm& worm) {
-    if (worm.isSpawned && State::gameState.wormCount < 99) {
-        State::gameState.wormCount +=1;
+    if (worm.isSpawned && State::gameState.baitCounts[0] < 99) {
+        State::gameState.baitCounts[0] +=1;
     }
 }
 

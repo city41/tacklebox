@@ -21,7 +21,10 @@ void State::load() {
     } else {
         // start the game at 4pm
         gameState.minute = 16 * 60;
-        gameState.wormCount = 0;
+        gameState.baitCounts[0] = 0;
+        gameState.baitCounts[1] = 0;
+        gameState.baitCounts[2] = 0;
+        gameState.baitCounts[3] = 0;
         gameState.money = 0;
 
         for (int8_t i = 0; i < static_cast<int8_t>(FishType::NUM_FISH); ++i) {
