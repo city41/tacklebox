@@ -8,6 +8,7 @@
 #include "state.h"
 #include "animation.h"
 #include "enumUtils.h"
+#include "baitType.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -38,6 +39,13 @@ void Shop::render(uint8_t frame) {
     // user's current money in upper corner
     renderer.drawPlusMask(WIDTH - 40, 0, currencySymbol_plus_mask, 0);
     renderer.drawNumber(WIDTH - 34, 1, State::gameState.money);
+
+    // user's current grub and shrimp count for reference
+    renderer.drawPlusMask(WIDTH - 60, 8, grub_plus_mask, 0, 0, Invert);
+    renderer.drawNumber(WIDTH - 48, 10, State::gameState.baitCounts[static_cast<int8_t>(BaitType::Grub)]);
+
+    renderer.drawPlusMask(WIDTH - 40, 8, shrimp_plus_mask, 0, 0, Invert);
+    renderer.drawNumber(WIDTH - 28, 10, State::gameState.baitCounts[static_cast<int8_t>(BaitType::Shrimp)]);
 }
 
 void Shop::updateMainMenu(uint8_t frame) {
@@ -165,6 +173,8 @@ void Shop::updateSell(uint8_t frame) {
 }
 
 void Shop::renderSell(uint8_t frame) {
+    renderFrame();
+
     uint16_t moneyAmount = 0;
 
     Fish fish;
@@ -173,6 +183,17 @@ void Shop::renderSell(uint8_t frame) {
         moneyAmount += State::gameState.currentFishCount[f] * fish.value;
     }
 
-    renderer.drawString(20, 20, tempSell_string);
-    renderer.drawNumber(20, 30, moneyAmount);
+    if (moneyAmount == 0) {
+        renderer.drawString(24, 30, youHaveNoFish_string);
+        renderer.drawString(24, 38, toSellMe_string);
+    } else {
+        renderer.drawString(20, 30, sellFor_string);
+
+        renderer.drawPlusMask(43, 39, currencySymbol_plus_mask, 0);
+        renderer.drawNumber(49, 40, moneyAmount);
+        renderer.drawRect(38, 37, 50, 10, WHITE);
+    }
+
+    renderer.drawOverwrite(54, 50, squareIcon_tiles, 0);
+    renderer.drawString(60, 50, ok_string);
 }

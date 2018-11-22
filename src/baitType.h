@@ -2,10 +2,10 @@
 
 enum class BaitType: int8_t {
     UNSET = -1,
-    WORM = 0,
-    GRUB,
-    SHRIMP,
-    MEAT,
+    Worm = 0,
+    Grub,
+    Shrimp,
+    Meat,
     COUNT
 };
 

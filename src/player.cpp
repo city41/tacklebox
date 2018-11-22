@@ -31,7 +31,7 @@ const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
 
 void Player::reset() {
     moveTo(STARTING_X, STARTING_Y);
-    currentBait = BaitType::WORM;
+    currentBait = BaitType::Worm;
     currentCollectionRow = 0;
 }
 

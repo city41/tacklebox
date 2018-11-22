@@ -10,10 +10,10 @@ void Fish::loadFish(FishType fishType, Fish& fish) {
     fish.minHour = pgm_read_byte(offset);
     fish.maxHour = pgm_read_byte(offset + 1);
 
-    fish.baitPreferences[static_cast<int8_t>(BaitType::WORM)] = pgm_read_byte(offset + 2);
-    fish.baitPreferences[static_cast<int8_t>(BaitType::GRUB)] = pgm_read_byte(offset + 3);
-    fish.baitPreferences[static_cast<int8_t>(BaitType::SHRIMP)] = pgm_read_byte(offset + 4);
-    fish.baitPreferences[static_cast<int8_t>(BaitType::MEAT)] = pgm_read_byte(offset + 5);
+    fish.baitPreferences[static_cast<int8_t>(BaitType::Worm)] = pgm_read_byte(offset + 2);
+    fish.baitPreferences[static_cast<int8_t>(BaitType::Grub)] = pgm_read_byte(offset + 3);
+    fish.baitPreferences[static_cast<int8_t>(BaitType::Shrimp)] = pgm_read_byte(offset + 4);
+    fish.baitPreferences[static_cast<int8_t>(BaitType::Meat)] = pgm_read_byte(offset + 5);
 
     fish.ratio = pgm_read_byte(offset + 6);
     fish.value = pgm_read_byte(offset + 7);

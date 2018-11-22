@@ -95,6 +95,12 @@ const uint8_t no_string[3] PROGMEM = {
 };
 
 
+// "OK"
+const uint8_t ok_string[3] PROGMEM = {
+    25, 21, 0xFF
+};
+
+
 // "SFX   *"
 const uint8_t sfxOn_string[8] PROGMEM = {
     29, 16, 34, 0, 0, 0, 37, 0xFF
@@ -125,15 +131,21 @@ const uint8_t chat_string[5] PROGMEM = {
 };
 
 
-// "BUY STUFF HERE"
-const uint8_t tempBuy_string[15] PROGMEM = {
-    12, 31, 35, 0, 29, 30, 31, 16, 16, 0, 18, 15, 28, 15, 0xFF
+// "SELL ALL FISH FOR"
+const uint8_t sellFor_string[18] PROGMEM = {
+    29, 15, 22, 22, 0, 11, 22, 22, 0, 16, 19, 29, 18, 0, 16, 25, 28, 0xFF
 };
 
 
-// "SELL ALL FISH FOR"
-const uint8_t tempSell_string[18] PROGMEM = {
-    29, 15, 22, 22, 0, 11, 22, 22, 0, 16, 19, 29, 18, 0, 16, 25, 28, 0xFF
+// "YOU HAVE NO FISH"
+const uint8_t youHaveNoFish_string[17] PROGMEM = {
+    35, 25, 31, 0, 18, 11, 32, 15, 0, 24, 25, 0, 16, 19, 29, 18, 0xFF
+};
+
+
+// "TO SELL TO ME"
+const uint8_t toSellMe_string[14] PROGMEM = {
+    30, 25, 0, 29, 15, 22, 22, 0, 30, 25, 0, 23, 15, 0xFF
 };
 
 
