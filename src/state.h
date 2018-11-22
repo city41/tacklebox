@@ -13,6 +13,8 @@ struct GameState {
     uint16_t money;
     bool acquiredFish[static_cast<int8_t>(FishType::COUNT)];
     uint8_t currentFishCount[static_cast<int8_t>(FishType::COUNT)];
+    bool hasProPole;
+    bool hasOars;
 };
 
 class State {

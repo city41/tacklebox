@@ -9,6 +9,14 @@ enum class ShopMainMenu: uint8_t {
     COUNT
 };
 
+enum class BuyMenu: uint8_t {
+    Grub,
+    Shrimp,
+    ProPole,
+    Oars,
+    COUNT
+};
+
 struct Shop {
     typedef void (*UpdatePtr)(uint8_t);
     typedef void (*RenderPtr)(uint8_t);
@@ -22,6 +30,7 @@ struct Shop {
     static void render(uint8_t frame);
 
     static ShopMainMenu mainMenuCurrentRow;
+    static BuyMenu buyMenuCurrentRow;
     static void updateMainMenu(uint8_t frame);
     static void renderMainMenu(uint8_t frame);
 

@@ -26,6 +26,8 @@ void State::load() {
         gameState.baitCounts[2] = 0;
         gameState.baitCounts[3] = 0;
         gameState.money = 0;
+        gameState.hasProPole = false;
+        gameState.hasOars = false;
 
         for (int8_t i = 0; i < static_cast<int8_t>(FishType::COUNT); ++i) {
             gameState.acquiredFish[i] = false;
