@@ -43,11 +43,6 @@ const uint8_t SHARK_string[6] PROGMEM = {
     29, 18, 11, 28, 21, 0xFF
 };
 
-const uint8_t* const PROGMEM allFishNameStrings[] = {
-    GOLDFISH_string,
-    SHARK_string
-};
-
 const int16_t PROGMEM fish_templates_16t[] = {
 
     // GOLDFISH

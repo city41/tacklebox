@@ -28,18 +28,9 @@ function buildNames(fishes) {
     return nameArrays.join("\n\n");
 }
 
-function buildAllFishNameStrings(fishes) {
-    const entries = fishes.map(f => `    ${f.name}_string`);
-
-    return `const uint8_t* const PROGMEM allFishNameStrings[] = {
-${entries.join(",\n")}
-};`;
-}
-
 module.exports = function buildSixteenBitArray(fishes) {
     const names = buildNames(fishes);
-    const allFishNameStrings = buildAllFishNameStrings(fishes);
     const sixteenBitArray = buildActualSixteenBitArray(fishes);
 
-    return names + "\n\n" + allFishNameStrings + "\n\n" + sixteenBitArray;
+    return names + "\n\n" + sixteenBitArray;
 };

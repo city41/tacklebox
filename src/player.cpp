@@ -243,15 +243,20 @@ void Player::updateCollection(uint8_t frame) {
 
 void Player::renderCollection(uint8_t frame) {
     renderer.pushTranslate(0, 0);
-    renderer.fillRect(10, 5, WIDTH - 20, HEIGHT - 10, BLACK);
+    renderer.fillRect(18, 5, WIDTH - 36, HEIGHT - 10, BLACK);
+
+    const uint8_t spacing = 18;
 
     bool hasAFish = false;
     for (uint8_t f = 0; f < static_cast<int8_t>(FishType::NUM_FISH); ++f) {
         if (State::gameState.acquiredFish[f]) {
             hasAFish = true;
-            const uint8_t* fishString = static_cast<const uint8_t*>(pgm_read_ptr(allFishNameStrings + f));
-            renderer.drawNumber(12, 7 + 5 * f, State::gameState.currentFishCount[f]);
-            renderer.drawString(24, 7 + 5 * f, fishString);
+            const uint8_t* fishString = static_cast<const uint8_t*>(pgm_read_ptr(fish_templates_16t + f * NUM_16T_PROPS + 2));
+            const uint8_t* fishBmp = static_cast<const uint8_t*>(pgm_read_ptr(fish_templates_16t + f * NUM_16T_PROPS + 3));
+
+            renderer.drawNumber(84, 7 + spacing * f + 7, State::gameState.currentFishCount[f]);
+            renderer.drawPlusMask(32, 7 + spacing * f, fishBmp, 0, 0, Invert);
+            renderer.drawString(32, 7 + spacing * f + 9, fishString);
         }
     }
 
