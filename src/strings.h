@@ -232,10 +232,4 @@ const uint8_t boatOars_string[5] PROGMEM = {
     25, 11, 28, 29, 0xFF
 };
 
-
-// "CMNG SOON"
-const uint8_t comingSoon_string[10] PROGMEM = {
-    13, 23, 24, 17, 0, 29, 25, 25, 24, 0xFF
-};
-
 #endif

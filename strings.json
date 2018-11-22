@@ -29,7 +29,6 @@
         { "key": "grub", "value": "GRUB" },
         { "key": "shrimp", "value": "SHRIMP" },
         { "key": "proPole", "value": "PRO POLE" },
-        { "key": "boatOars", "value": "OARS" },
-        { "key": "comingSoon", "value": "CMNG SOON" }
+        { "key": "boatOars", "value": "OARS" }
     ]
 }
