@@ -44,6 +44,7 @@ class Player {
         uint8_t reelLevel;
         int8_t menuRow;
         bool areYouSure;
+        uint8_t saveToastCount;
 
         Fish currentFish;
         BaitType currentBait;

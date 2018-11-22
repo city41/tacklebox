@@ -1,6 +1,7 @@
 {
     "strings": [
         { "key": "save", "value": "SAVE" },
+        { "key": "gameSaved", "value": "GAME SAVED" },
         { "key": "collection", "value": "MY FISH" },
         { "key": "deleteSave", "value": "DELETE" },
         { "key": "areYouSure", "value": "R U SURE" },

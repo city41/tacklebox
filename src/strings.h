@@ -59,6 +59,12 @@ const uint8_t save_string[5] PROGMEM = {
 };
 
 
+// "GAME SAVED"
+const uint8_t gameSaved_string[11] PROGMEM = {
+    17, 11, 23, 15, 0, 29, 11, 32, 15, 14, 0xFF
+};
+
+
 // "MY FISH"
 const uint8_t collection_string[8] PROGMEM = {
     23, 35, 0, 16, 19, 29, 18, 0xFF

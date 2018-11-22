@@ -96,6 +96,13 @@ void Player::renderWalk(uint8_t frame) {
     }
 
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, mirror);
+
+    if (saveToastCount > 0) {
+        saveToastCount -= 1;
+        renderer.pushTranslate(0, 0);
+        renderer.fillRect(0, HEIGHT - 5, WIDTH, 5, BLACK);
+        renderer.drawString(0, HEIGHT - 4, gameSaved_string);
+    }
 }
 
 void Player::updateMenu(uint8_t frame) {
@@ -134,6 +141,7 @@ void Player::updateMenu(uint8_t frame) {
                 break;
             case MenuRow::SAVE:
                 State::saveToEEPROM();
+                saveToastCount = 60;
                 currentUpdate = &Player::updateWalk;
                 currentRender = &Player::renderWalk;
                 break;

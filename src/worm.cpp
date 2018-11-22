@@ -12,7 +12,7 @@ void Worm::update(uint8_t frame, bool isActive, bool justBecameActive) {
 
 void Worm::render(uint8_t frame) {
     if (isSpawned) {
-        renderer.drawPlusMask(x, y, worm_plus_mask, 0, static_cast<MirrorMode>(frame > 50), Xor);
+         renderer.drawPlusMask(x, y, worm_plus_mask, 0, static_cast<MirrorMode>(frame > 50), Xor);
     }
 }
 
