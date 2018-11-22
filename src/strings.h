@@ -197,9 +197,33 @@ const uint8_t digit9_string[2] PROGMEM = {
 };
 
 
-// "NO FISH CAUGHT YET"
-const uint8_t noFishInCollection_string[19] PROGMEM = {
-    24, 25, 0, 16, 19, 29, 18, 0, 13, 11, 31, 17, 18, 30, 0, 35, 15, 30, 0xFF
+// "GRUB"
+const uint8_t grub_string[5] PROGMEM = {
+    17, 28, 31, 12, 0xFF
+};
+
+
+// "SHRIMP"
+const uint8_t shrimp_string[7] PROGMEM = {
+    29, 18, 28, 19, 23, 26, 0xFF
+};
+
+
+// "PRO POLE"
+const uint8_t proPole_string[9] PROGMEM = {
+    26, 28, 25, 0, 26, 25, 22, 15, 0xFF
+};
+
+
+// "OARS"
+const uint8_t boatOars_string[5] PROGMEM = {
+    25, 11, 28, 29, 0xFF
+};
+
+
+// "CMNG SOON"
+const uint8_t comingSoon_string[10] PROGMEM = {
+    13, 23, 24, 17, 0, 29, 25, 25, 24, 0xFF
 };
 
 #endif

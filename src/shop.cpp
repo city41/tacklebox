@@ -33,6 +33,10 @@ void Shop::update(uint8_t frame) {
 
 void Shop::render(uint8_t frame) {
     Shop::currentRender(frame);
+
+    // user's current money in upper corner
+    renderer.drawPlusMask(WIDTH - 40, 0, currencySymbol_plus_mask, 0);
+    renderer.drawNumber(WIDTH - 34, 1, State::gameState.money);
 }
 
 void Shop::updateMainMenu(uint8_t frame) {
@@ -46,10 +50,6 @@ void Shop::updateMainMenu(uint8_t frame) {
         Shop::mainMenuCurrentRow = next(Shop::mainMenuCurrentRow);
     }
 
-    /* if (arduboy.justPressed(UP_BUTTON)) { */
-    /*     Shop::mainMenuCurrentRow = 0; */
-    /* } */
-
     if (arduboy.justPressed(A_BUTTON)) {
         if (Shop::mainMenuCurrentRow == ShopMainMenu::Buy) {
             Shop::currentUpdate = &Shop::updateBuy;
@@ -61,7 +61,7 @@ void Shop::updateMainMenu(uint8_t frame) {
     }
 }
 
-void Shop::renderMainMenu(uint8_t frame) {
+void renderFrame() {
     // white frame
     renderer.fillRect(13, 19, 103, 1, WHITE);
     renderer.fillRect(116, 20, 1, 40, WHITE);
@@ -69,6 +69,10 @@ void Shop::renderMainMenu(uint8_t frame) {
     renderer.fillRect(13, HEIGHT - 4, 103, 1, WHITE);
 
     renderer.drawOverwrite(20, 2, shopOwner_tiles, shopOwnerAnimation.currentFrame);
+}
+
+void Shop::renderMainMenu(uint8_t frame) {
+    renderFrame();
 
     const uint8_t startY = 28;
     const uint8_t spacing = 10;
@@ -86,8 +90,52 @@ void Shop::updateBuy(uint8_t frame) {
     }
 }
 
+const uint8_t BUY_MENU_ITEMS_COUNT = 4;
+const uint8_t BUY_MENU_ITEM_PROPS_COUNT = 3;
+
+const uint16_t PROGMEM buyMenuItems[BUY_MENU_ITEMS_COUNT * BUY_MENU_ITEM_PROPS_COUNT] = {
+    reinterpret_cast<int16_t>(grub_plus_mask),
+    reinterpret_cast<int16_t>(grub_string),
+    1,
+    reinterpret_cast<int16_t>(shrimp_plus_mask),
+    reinterpret_cast<int16_t>(shrimp_string),
+    4,
+    reinterpret_cast<int16_t>(proPole_plus_mask),
+    reinterpret_cast<int16_t>(proPole_string),
+    200,
+    reinterpret_cast<int16_t>(boatOar_plus_mask),
+    reinterpret_cast<int16_t>(boatOars_string),
+    200
+};
+
 void Shop::renderBuy(uint8_t frame) {
-    renderer.drawString(40, 20, tempBuy_string);
+    renderFrame();
+
+    const uint8_t startY = 22;
+    const uint8_t startX = 24;
+    const uint8_t spacing = 10;
+
+    for (uint8_t i = 0; i < BUY_MENU_ITEMS_COUNT; ++i) {
+        const uint8_t y = startY + spacing * i;
+
+        // icon
+        const uint8_t* bmp = reinterpret_cast<const uint8_t*>(pgm_read_ptr(buyMenuItems + i * BUY_MENU_ITEM_PROPS_COUNT));
+        renderer.drawPlusMask(startX, y, bmp, 0, 0, Invert);
+
+        // name
+        const uint8_t* str = reinterpret_cast<const uint8_t*>(pgm_read_ptr(buyMenuItems + i * BUY_MENU_ITEM_PROPS_COUNT + 1));
+        renderer.drawString(startX + 21, y + 1, str);
+
+        // currency symbol
+        renderer.drawPlusMask(startX + 68, y, currencySymbol_plus_mask, 0);
+        
+        // price
+        const int16_t price = static_cast<int16_t>(pgm_read_word(buyMenuItems + i * BUY_MENU_ITEM_PROPS_COUNT + 2));
+        renderer.drawNumber(startX + 74, y + 1, price);
+
+    }
+
+    renderer.drawOverwrite(startX - 7, startY + 3,  squareIcon_tiles, 0);
 }
 
 void Shop::updateSell(uint8_t frame) {

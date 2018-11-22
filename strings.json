@@ -24,6 +24,10 @@
         { "key": "digit7", "value": "7" },
         { "key": "digit8", "value": "8" },
         { "key": "digit9", "value": "9" },
-        { "key": "noFishInCollection", "value": "NO FISH CAUGHT YET" }
+        { "key": "grub", "value": "GRUB" },
+        { "key": "shrimp", "value": "SHRIMP" },
+        { "key": "proPole", "value": "PRO POLE" },
+        { "key": "boatOars", "value": "OARS" },
+        { "key": "comingSoon", "value": "CMNG SOON" }
     ]
 }
