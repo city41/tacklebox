@@ -27,6 +27,19 @@
             "value": 1
         },
         {
+            "name": "EEL",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 6
+        },
+        {
             "name": "LOBSTER",
             "baitPreference": {
                 "WORM": 1,
@@ -37,7 +50,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 1
+            "value": 20
         },
         {
             "name": "SHARK",

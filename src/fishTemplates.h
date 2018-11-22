@@ -33,6 +33,18 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     5, // nameLength
     8, // bmpWidth
 
+    // EEL
+    0,  // minHour
+    23,  // maxHour
+    1,  // baitPreference WORM
+    1,  // baitPreference GRUB
+    0,  // baitPreference SHRIMP
+    0,  // baitPreference MEAT
+    10,  // ratio
+    6,  // value
+    3, // nameLength
+    16, // bmpWidth
+
     // LOBSTER
     0,  // minHour
     23,  // maxHour
@@ -41,7 +53,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     10,  // ratio
-    1,  // value
+    20,  // value
     7, // nameLength
     8, // bmpWidth
 
@@ -67,6 +79,10 @@ const uint8_t GUPPY_string[6] PROGMEM = {
     17, 31, 26, 26, 35, 0xFF
 };
 
+const uint8_t EEL_string[4] PROGMEM = {
+    15, 15, 22, 0xFF
+};
+
 const uint8_t LOBSTER_string[8] PROGMEM = {
     22, 25, 12, 29, 30, 15, 28, 0xFF
 };
@@ -88,6 +104,12 @@ const int16_t PROGMEM fish_templates_16t[] = {
     432, // max X
     reinterpret_cast<int16_t>(GUPPY_string),
     reinterpret_cast<int16_t>(GUPPY_plus_mask),
+
+    // EEL
+    368, // min X
+    432, // max X
+    reinterpret_cast<int16_t>(EEL_string),
+    reinterpret_cast<int16_t>(EEL_plus_mask),
 
     // LOBSTER
     368, // min X
