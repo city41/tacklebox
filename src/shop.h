@@ -2,6 +2,13 @@
 
 #include <Arduino.h>
 
+enum class ShopMainMenu: uint8_t {
+    Buy,
+    Sell,
+    Chat,
+    COUNT
+};
+
 struct Shop {
     typedef void (*UpdatePtr)(uint8_t);
     typedef void (*RenderPtr)(uint8_t);
@@ -14,7 +21,7 @@ struct Shop {
     static void update(uint8_t frame);
     static void render(uint8_t frame);
 
-    static uint8_t mainMenuCurrentRow;
+    static ShopMainMenu mainMenuCurrentRow;
     static void updateMainMenu(uint8_t frame);
     static void renderMainMenu(uint8_t frame);
 

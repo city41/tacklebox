@@ -8,6 +8,7 @@
 #include "tileFloor.h"
 #include "util.h"
 #include "fishTemplates.h"
+#include "enumUtils.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -48,7 +49,7 @@ void Player::updateWalk(uint8_t frame) {
 
     if (arduboy.justPressed(B_BUTTON)) {
         areYouSure = false;
-        menuRow = 0;
+        menuRow = MenuRow::COLLECTION;
         currentUpdate = &Player::updateMenu;
         currentRender = &Player::renderMenu;
         return;
@@ -113,24 +114,20 @@ void Player::updateMenu(uint8_t frame) {
     }
 
     if (arduboy.justPressed(DOWN_BUTTON)) {
-        menuRow = min(static_cast<int8_t>(MenuRow::NUM_ROWS) - 1, menuRow + 1);
+        menuRow = next(menuRow);
     }
     
     if (arduboy.justPressed(UP_BUTTON)) {
-        menuRow = max(0, menuRow - 1);
+        menuRow = prev(menuRow);
     }
 
 
     if (arduboy.justPressed(RIGHT_BUTTON)) {
-        currentBait = static_cast<BaitType>((static_cast<int8_t>(currentBait) + 1) % 4);
+        currentBait = next(currentBait);
     }
 
     if (arduboy.justPressed(LEFT_BUTTON)) {
-        if (static_cast<int8_t>(currentBait) == 0) {
-            currentBait = BaitType::MEAT;
-        } else {
-            currentBait = static_cast<BaitType>(static_cast<int8_t>(currentBait) - 1);
-        }
+        currentBait = prev(currentBait);
     }
 
     if (arduboy.justPressed(A_BUTTON)) {
@@ -183,7 +180,7 @@ void Player::renderMenu(uint8_t frame) {
 
     renderer.drawString(6, startY + spacing * 3, deleteSave_string);
 
-    renderer.drawOverwrite(1, startY + menuRow * spacing,  squareIcon_tiles, 0);
+    renderer.drawOverwrite(1, startY + static_cast<int8_t>(menuRow) * spacing,  squareIcon_tiles, 0);
 
     // money
     renderer.drawPlusMask(6, startY + spacing * 4 + 3, currencySymbol_plus_mask, 0);

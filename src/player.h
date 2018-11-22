@@ -23,7 +23,7 @@ enum class MenuRow: int8_t {
     SAVE,
     SFX,
     DELETE,
-    NUM_ROWS
+    COUNT
 };
 
 class Player {
@@ -42,7 +42,7 @@ class Player {
         int16_t cursorY;
         uint8_t castCount;
         uint8_t reelLevel;
-        int8_t menuRow;
+        MenuRow menuRow;
         bool areYouSure;
         uint8_t saveToastCount;
 
@@ -64,7 +64,7 @@ class Player {
             scanning(false),
             castCount(0),
             reelLevel(0),
-            menuRow(0),
+            menuRow(MenuRow::COLLECTION),
             areYouSure(false),
             currentUpdate(&Player::updateWalk),
             currentRender(&Player::renderWalk)

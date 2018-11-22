@@ -119,6 +119,12 @@ const uint8_t sell_string[5] PROGMEM = {
 };
 
 
+// "CHAT"
+const uint8_t chat_string[5] PROGMEM = {
+    13, 18, 11, 30, 0xFF
+};
+
+
 // "BUY STUFF HERE"
 const uint8_t tempBuy_string[15] PROGMEM = {
     12, 31, 35, 0, 29, 30, 31, 16, 16, 0, 18, 15, 28, 15, 0xFF

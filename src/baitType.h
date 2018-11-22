@@ -6,6 +6,6 @@ enum class BaitType: int8_t {
     GRUB,
     SHRIMP,
     MEAT,
-    NUM_BAITS
+    COUNT
 };
 

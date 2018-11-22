@@ -11,6 +11,7 @@
         { "key": "sfxOff", "value": "SFX" },
         { "key": "buy", "value": "BUY" },
         { "key": "sell", "value": "SELL" },
+        { "key": "chat", "value": "CHAT" },
         { "key": "tempBuy", "value": "BUY STUFF HERE" },
         { "key": "tempSell", "value": "SELL ALL FISH FOR" },
         { "key": "digit0", "value": "0" },

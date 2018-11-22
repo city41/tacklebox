@@ -7,11 +7,12 @@
 #include "fish.h"
 #include "state.h"
 #include "animation.h"
+#include "enumUtils.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
 
-uint8_t Shop::mainMenuCurrentRow = 0;
+ShopMainMenu Shop::mainMenuCurrentRow = ShopMainMenu::Buy;
 Shop::UpdatePtr Shop::currentUpdate = &Shop::updateMainMenu;
 Shop::RenderPtr Shop::currentRender = &Shop::renderMainMenu;
 
@@ -37,16 +38,20 @@ void Shop::render(uint8_t frame) {
 void Shop::updateMainMenu(uint8_t frame) {
     shopOwnerAnimation.update();
 
-    if (arduboy.justPressed(DOWN_BUTTON)) {
-        Shop::mainMenuCurrentRow = 1;
+    if (arduboy.justPressed(UP_BUTTON)) {
+        Shop::mainMenuCurrentRow = prev(Shop::mainMenuCurrentRow);
     }
 
-    if (arduboy.justPressed(UP_BUTTON)) {
-        Shop::mainMenuCurrentRow = 0;
+    if (arduboy.justPressed(DOWN_BUTTON)) {
+        Shop::mainMenuCurrentRow = next(Shop::mainMenuCurrentRow);
     }
+
+    /* if (arduboy.justPressed(UP_BUTTON)) { */
+    /*     Shop::mainMenuCurrentRow = 0; */
+    /* } */
 
     if (arduboy.justPressed(A_BUTTON)) {
-        if (Shop::mainMenuCurrentRow == 0) {
+        if (Shop::mainMenuCurrentRow == ShopMainMenu::Buy) {
             Shop::currentUpdate = &Shop::updateBuy;
             Shop::currentRender = &Shop::renderBuy;
         } else {
@@ -65,9 +70,13 @@ void Shop::renderMainMenu(uint8_t frame) {
 
     renderer.drawOverwrite(20, 2, shopOwner_tiles, shopOwnerAnimation.currentFrame);
 
-    renderer.drawOverwrite(34, 30 + Shop::mainMenuCurrentRow * 10, squareIcon_tiles, 0);
-    renderer.drawString(40, 30, buy_string);
-    renderer.drawString(40, 40, sell_string);
+    const uint8_t startY = 28;
+    const uint8_t spacing = 10;
+
+    renderer.drawOverwrite(34, startY + static_cast<uint8_t>(Shop::mainMenuCurrentRow) * spacing, squareIcon_tiles, 0);
+    renderer.drawString(40, startY + spacing * 0, buy_string);
+    renderer.drawString(40, startY + spacing * 1, sell_string);
+    renderer.drawString(40, startY + spacing * 2, chat_string);
 }
 
 void Shop::updateBuy(uint8_t frame) {
