@@ -155,7 +155,7 @@ void Player::renderMenu(uint8_t frame) {
 
     // bait
     const uint8_t baitY = 4;
-    renderer.drawPlusMask(2, baitY, worm_plus_mask, 0, 0, Invert);
+    renderer.drawPlusMask(2, baitY, wormIcon_plus_mask, 0, 0, Invert);
     renderer.drawPlusMask(12, baitY, grub_plus_mask, 0, 0, Invert);
     renderer.drawPlusMask(22, baitY, shrimp_plus_mask, 0, 0, Invert);
     renderer.drawPlusMask(32, baitY, meat_plus_mask, 0, 0, Invert);

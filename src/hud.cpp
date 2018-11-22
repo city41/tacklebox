@@ -10,7 +10,7 @@ extern Renderer renderer;
 const uint8_t clockY = 2;
 
 const uint8_t* const PROGMEM baitBmps[] = {
-    worm_plus_mask,
+    wormIcon_plus_mask,
     grub_plus_mask,
     shrimp_plus_mask,
     meat_plus_mask
