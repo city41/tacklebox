@@ -8,8 +8,6 @@
         { "key": "no", "value": "NO" },
         { "key": "sfxOn", "value": "SFX   *" },
         { "key": "sfxOff", "value": "SFX" },
-        { "key": "shakeOn", "value": "SHAKE *" },
-        { "key": "shakeOff", "value": "SHAKE" },
         { "key": "buy", "value": "BUY" },
         { "key": "sell", "value": "SELL" },
         { "key": "tempBuy", "value": "BUY STUFF HERE" },
