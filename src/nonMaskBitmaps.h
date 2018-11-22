@@ -142,11 +142,4 @@ const uint8_t PROGMEM squareIcon_tiles[] = {
     0x07,0x07,0x07,
 };
 
-const uint8_t PROGMEM worm_tiles[] = {
-    // width, height,
-    8, 8,
-    // frame 0
-    0xb3,0xad,0x1e,0x32,0x06,0xb5,0xdb,0xbf,
-};
-
 #endif

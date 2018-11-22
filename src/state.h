@@ -8,7 +8,6 @@ const uint8_t GAME_ID = 90;
 const uint8_t EEPROM_START = 64;
 
 struct GameState {
-    bool shake;
     uint16_t minute;
     uint8_t wormCount;
     uint8_t money;
@@ -32,7 +31,5 @@ class State {
 
         static bool isDay();
         static uint8_t getCurrentHour();
-
-        static void toggleShake();
 };
 

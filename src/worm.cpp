@@ -1,6 +1,6 @@
 #include "worm.h"
 #include "renderer.h"
-#include "nonMaskBitmaps.h"
+#include "maskBitmaps.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -11,7 +11,7 @@ void Worm::update(uint8_t frame, bool isActive, bool justBecameActive) {
 
 void Worm::render(uint8_t frame) {
     if (isSpawned) {
-        renderer.drawOverwrite(x, y, worm_tiles, 0);
+        renderer.drawPlusMask(x, y, worm_plus_mask, 0, static_cast<MirrorMode>(frame > 50));
     }
 }
 

@@ -128,9 +128,6 @@ void Player::updateMenu(uint8_t frame) {
                 Arduboy2Audio::toggle();
                 Arduboy2Audio::saveOnOff();
                 break;
-            case MenuRow::SHAKE:
-                State::toggleShake();
-                break;
             case MenuRow::DELETE:
                 currentUpdate = &Player::updateAreYouSure;
                 currentRender = &Player::renderAreYouSure;
@@ -149,10 +146,7 @@ void Player::renderMenu(uint8_t frame) {
     const uint8_t* sfxString = Arduboy2Audio::enabled() ? sfxOn_string : sfxOff_string;
     renderer.drawString(6, 16, sfxString);
 
-    const uint8_t* shakeString = State::gameState.shake ? shakeOn_string : shakeOff_string;
-    renderer.drawString(6, 23, shakeString);
-
-    renderer.drawString(6, 30, deleteSave_string);
+    renderer.drawString(6, 23, deleteSave_string);
 
     renderer.drawOverwrite(2, 2 + menuRow * 7,  squareIcon_tiles, 0);
 

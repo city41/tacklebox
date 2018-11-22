@@ -22,7 +22,6 @@ enum class MenuRow: int8_t {
     COLLECTION,
     SAVE,
     SFX,
-    SHAKE,
     DELETE,
     NUM_ROWS
 };

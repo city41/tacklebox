@@ -101,18 +101,6 @@ const uint8_t sfxOff_string[4] PROGMEM = {
 };
 
 
-// "SHAKE *"
-const uint8_t shakeOn_string[8] PROGMEM = {
-    29, 18, 11, 21, 15, 0, 37, 0xFF
-};
-
-
-// "SHAKE"
-const uint8_t shakeOff_string[6] PROGMEM = {
-    29, 18, 11, 21, 15, 0xFF
-};
-
-
 // "BUY"
 const uint8_t buy_string[4] PROGMEM = {
     12, 31, 35, 0xFF
