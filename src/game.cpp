@@ -9,6 +9,7 @@
 #include "hud.h"
 #include "shop.h"
 #include "worms.h"
+#include "girl.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -75,6 +76,10 @@ void Game::updatePlay(uint8_t frame) {
 
     player.update(frame);
 
+    bool isActive = isOnScreen(player.x, player.y, Girl::x, Girl::y);
+    bool justBecameActive = isActive && !isOnScreen(player.prevX, player.prevY, Girl::x, Girl::y);
+    Girl::update(isActive, justBecameActive);
+
     if (TileFloor::getTileAt(player.x, player.y) == ShopDoor) {
         Shop::onEnter();
         push(&Game::updateShop, &Game::renderShop);
@@ -82,8 +87,8 @@ void Game::updatePlay(uint8_t frame) {
     }
 
     for (uint8_t w = 0; w < MAX_WORMS; ++w) {
-        bool isActive = isOnScreen(player.x, player.y, worms[w].x, worms[w].y);
-        bool justBecameActive = isActive && !isOnScreen(player.prevX, player.prevY, worms[w].x, worms[w].y);
+        isActive = isOnScreen(player.x, player.y, worms[w].x, worms[w].y);
+        justBecameActive = isActive && !isOnScreen(player.prevX, player.prevY, worms[w].x, worms[w].y);
         worms[w].update(frame, isActive, justBecameActive);
 
         if (overlap(player, worms[w])) {
@@ -132,6 +137,7 @@ void Game::renderPlay(uint8_t frame) {
     }
 
     player.render(frame);
+    Girl::render(frame);
 
     renderer.translateX = WIDTH - 50;
     renderer.translateY = 0;
