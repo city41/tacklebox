@@ -50,7 +50,7 @@ void drawClock() {
 }
 
 void Hud::render(Player& player) {
-    renderer.fillRect(0, 0, 64, 8, BLACK);
+    renderer.fillRect(0, 0, 64, 9, BLACK);
 
     const uint8_t* baitBmp = reinterpret_cast<const uint8_t*>(pgm_read_ptr(baitBmps + static_cast<int8_t>(player.currentBait)));
 

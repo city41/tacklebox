@@ -31,7 +31,7 @@ void State::load() {
         gameState.adviceLevel = 0;
 
         for (int8_t i = 0; i < static_cast<int8_t>(FishType::COUNT); ++i) {
-            gameState.acquiredFish[i] = false;
+            gameState.acquiredFish[i] = true;
             gameState.currentFishCount[i] = 0;
         }
     }
