@@ -11,6 +11,7 @@
 #include "worms.h"
 #include "girl.h"
 #include "boat.h"
+#include "util.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -71,6 +72,22 @@ bool Game::isOnShopDoor() {
     );
 }
 
+bool Game::isOnBoat() {
+    if (Boat::currentDock == Dock::Beach) {
+        return (
+            player.dir == UP &&
+            player.x >= Boat::x &&
+            player.y >= Boat::y
+        );
+    } else {
+        return (
+            player.dir == UP &&
+            player.x <= Boat::x &&
+            player.y >= Boat::y
+        );
+    }
+}
+
 void Game::updatePlay(uint8_t frame) {
     if (frame == 60) {
         seconds += 1;
@@ -94,6 +111,12 @@ void Game::updatePlay(uint8_t frame) {
     if (isOnShopDoor() && Shop::isOpen()) {
         Shop::onEnter();
         push(&Game::updateShop, &Game::renderShop);
+        return;
+    }
+
+    if (isOnBoat() && State::gameState.hasOars) {
+        Boat::onEnter();
+        push(&Game::updateBoatTravel, &Game::renderBoatTravel);
         return;
     }
 
@@ -172,6 +195,54 @@ void Game::updateShop(uint8_t frame) {
 
 void Game::renderShop(uint8_t frame) {
     Shop::render(frame);
+}
+
+void Game::updateBoatTravel(uint8_t frame) {
+    Boat::update(frame);
+
+    if (Boat::arrived) {
+        if (Boat::currentDock == Dock::Island) {
+            player.moveTo(Boat::x + 8, Boat::y + 16, true);
+            player.dir = RIGHT;
+        } else {
+            player.moveTo(Boat::x, Boat::y + 16, true);
+            player.dir = LEFT;
+        }
+        pop();
+    }
+}
+
+void Game::renderBoatTravel(uint8_t frame) {
+    const int16_t boatX = Boat::x + 2;
+    const int16_t boatY = Boat::y + 16;
+
+    TileFloor::renderCenteredOn(boatX, boatY);
+
+    int16_t translateX;
+    int16_t translateY;
+
+    // TODO: this only needs to account for the right side of the map
+    if (boatX < WIDTH / 2) {
+        translateX = 0;
+    } else if (boatX > MAP_WIDTH_PX - WIDTH / 2) {
+        translateX = WIDTH - MAP_WIDTH_PX;
+    } else {
+        translateX = -boatX + WIDTH / 2;
+    }
+
+    if (boatY < HEIGHT / 2) {
+        translateY = 0;
+    } else if (boatY > MAP_HEIGHT_PX - HEIGHT / 2) {
+        translateY = HEIGHT - MAP_HEIGHT_PX;
+    } else {
+        translateY = -boatY + HEIGHT / 2;
+    }
+
+    renderer.translateX = translateX;
+    renderer.translateY = translateY;
+    LOGV(Boat::x);
+    LOGV(Boat::y);
+    Boat::render(frame);
 }
 
 void Game::update(uint8_t frame) {

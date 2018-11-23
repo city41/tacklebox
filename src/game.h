@@ -42,6 +42,9 @@ class Game {
         void updateShop(uint8_t frame);
         void renderShop(uint8_t frame);
 
+        void updateBoatTravel(uint8_t frame);
+        void renderBoatTravel(uint8_t frame);
+
         Game(): 
             player(),
             prevUpdate(NULL),
