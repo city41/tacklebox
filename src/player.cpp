@@ -316,6 +316,14 @@ void Player::updateScanning(uint8_t frame) {
     if (arduboy.pressed(RIGHT_BUTTON)) {
         cursorX += PLAYER_VELOCITY;
     }
+
+    // if the player only has the beginner pole, it has a limited casting range
+    // the pro pole can cast anywhere on the screen
+    // why? only pro pole can cast into deep water
+    if (!State::gameState.hasProPole) {
+        cursorY = min(max(cursorY, y - 16), y + 24);
+        cursorX = min(max(cursorX, x - 16), x + 24);
+    }
 }
 
 void Player::renderScanning(uint8_t frame) {
