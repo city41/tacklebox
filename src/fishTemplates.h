@@ -58,8 +58,8 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     8, // bmpWidth
 
     // SHARK
-    5,  // minHour
-    19,  // maxHour
+    0,  // minHour
+    23,  // maxHour
     1,  // baitPreference WORM
     0,  // baitPreference GRUB
     0,  // baitPreference SHRIMP

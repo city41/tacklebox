@@ -286,4 +286,10 @@ const uint8_t advice8_string[17] PROGMEM = {
     29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
 };
 
+
+// "I HAVE NO MORE ADVICE"
+const uint8_t noMoreAdvice_string[22] PROGMEM = {
+    19, 0, 18, 11, 32, 15, 0, 24, 25, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+};
+
 #endif

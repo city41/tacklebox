@@ -60,7 +60,7 @@
                 "SHRIMP": 0,
                 "MEAT": 1
             },
-            "activeHours": [5, 19],
+            "activeHours": [0, 23],
             "habitats": ["BEGINNER", "OCEAN_ISLAND"],
             "ratio": 10,
             "value": 100
