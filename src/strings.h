@@ -72,14 +72,14 @@ const uint8_t collection_string[8] PROGMEM = {
 
 
 // "DELETE"
-const uint8_t deleteSave_string[7] PROGMEM = {
+const uint8_t delete_string[7] PROGMEM = {
     14, 15, 22, 15, 30, 15, 0xFF
 };
 
 
-// "R U SURE"
-const uint8_t areYouSure_string[9] PROGMEM = {
-    28, 0, 31, 0, 29, 31, 28, 15, 0xFF
+// "REALLY"
+const uint8_t really_string[7] PROGMEM = {
+    28, 15, 11, 22, 22, 35, 0xFF
 };
 
 
@@ -287,9 +287,9 @@ const uint8_t advice8_string[9] PROGMEM = {
 };
 
 
-// "I HAVE NO MORE ADVICE"
-const uint8_t noMoreAdvice_string[22] PROGMEM = {
-    19, 0, 18, 11, 32, 15, 0, 24, 25, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+// "YOU KNOW IT ALL"
+const uint8_t noMoreAdvice_string[16] PROGMEM = {
+    35, 25, 31, 0, 21, 24, 25, 33, 0, 19, 30, 0, 11, 22, 22, 0xFF
 };
 
 #endif

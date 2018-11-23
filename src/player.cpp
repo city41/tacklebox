@@ -179,7 +179,7 @@ void Player::renderMenu(uint8_t frame) {
     const uint8_t* sfxString = Arduboy2Audio::enabled() ? sfxOn_string : sfxOff_string;
     renderer.drawString(6, startY + spacing * 2, sfxString);
 
-    renderer.drawString(6, startY + spacing * 3, deleteSave_string);
+    renderer.drawString(6, startY + spacing * 3, delete_string);
 
     renderer.drawOverwrite(1, startY + static_cast<int8_t>(menuRow) * spacing,  squareIcon_tiles, 0);
 
@@ -219,15 +219,18 @@ void Player::updateAreYouSure(uint8_t frame) {
 }
 
 void Player::renderAreYouSure(uint8_t frame) {
-    renderer.pushTranslate(WIDTH / 2 + 10, 10);
-    renderer.fillRect(0, 0, WIDTH / 2 - 20, HEIGHT - 20, BLACK);
+    renderer.pushTranslate(10, 0);
+    renderer.fillRect(0, 0, WIDTH / 2 - 20, HEIGHT, BLACK);
 
-    renderer.drawString(2, 2, areYouSure_string);
+    renderer.drawString(6, 20, really_string);
+    renderer.drawString(6, 26, delete_string);
+    renderer.drawString(6, 32, save_string);
+    renderer.drawOverwrite(27, 32, questionMark_tiles, 0);
 
-    renderer.drawString(6, 14, no_string);
-    renderer.drawString(6, 20, yes_string);
+    renderer.drawString(10, 44, no_string);
+    renderer.drawString(10, 50, yes_string);
 
-    renderer.drawOverwrite(2, 14 + static_cast<int8_t>(areYouSure) * 6,  squareIcon_tiles, 0);
+    renderer.drawOverwrite(6, 44 + static_cast<int8_t>(areYouSure) * 6,  squareIcon_tiles, 0);
 
     renderer.popTranslate();
 }
