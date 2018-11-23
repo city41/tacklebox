@@ -239,51 +239,51 @@ const uint8_t boatOars_string[5] PROGMEM = {
 };
 
 
-// "CHAT WITH THE OTHER FISHERS"
-const uint8_t advice1_string[28] PROGMEM = {
-    13, 18, 11, 30, 0, 33, 19, 30, 18, 0, 30, 18, 15, 0, 25, 30, 18, 15, 28, 0, 16, 19, 29, 18, 15, 28, 29, 0xFF
+// "ADVICE 1"
+const uint8_t advice1_string[9] PROGMEM = {
+    11, 14, 32, 19, 13, 15, 0, 2, 0xFF
 };
 
 
-// "TROUT BITE AT NIGHT"
-const uint8_t advice2_string[20] PROGMEM = {
-    30, 28, 25, 31, 30, 0, 12, 19, 30, 15, 0, 11, 30, 0, 24, 19, 17, 18, 30, 0xFF
+// "ADVICE 2"
+const uint8_t advice2_string[9] PROGMEM = {
+    11, 14, 32, 19, 13, 15, 0, 3, 0xFF
 };
 
 
-// "SOME MORE ADVICE"
-const uint8_t advice3_string[17] PROGMEM = {
-    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+// "ADVICE 3"
+const uint8_t advice3_string[9] PROGMEM = {
+    11, 14, 32, 19, 13, 15, 0, 4, 0xFF
 };
 
 
-// "SOME MORE ADVICE"
-const uint8_t advice4_string[17] PROGMEM = {
-    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+// "ADVICE 4"
+const uint8_t advice4_string[9] PROGMEM = {
+    11, 14, 32, 19, 13, 15, 0, 5, 0xFF
 };
 
 
-// "SOME MORE ADVICE"
-const uint8_t advice5_string[17] PROGMEM = {
-    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+// "ADVICE 5"
+const uint8_t advice5_string[9] PROGMEM = {
+    11, 14, 32, 19, 13, 15, 0, 6, 0xFF
 };
 
 
-// "SOME MORE ADVICE"
-const uint8_t advice6_string[17] PROGMEM = {
-    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+// "ADVICE 6"
+const uint8_t advice6_string[9] PROGMEM = {
+    11, 14, 32, 19, 13, 15, 0, 7, 0xFF
 };
 
 
-// "SOME MORE ADVICE"
-const uint8_t advice7_string[17] PROGMEM = {
-    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+// "ADVICE 7"
+const uint8_t advice7_string[9] PROGMEM = {
+    11, 14, 32, 19, 13, 15, 0, 8, 0xFF
 };
 
 
-// "SOME MORE ADVICE"
-const uint8_t advice8_string[17] PROGMEM = {
-    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+// "ADVICE 8"
+const uint8_t advice8_string[9] PROGMEM = {
+    11, 14, 32, 19, 13, 15, 0, 9, 0xFF
 };
 
 

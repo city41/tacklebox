@@ -17,7 +17,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     10,  // ratio
-    1,  // value
+    255,  // value
     8, // nameLength
     8, // bmpWidth
 
@@ -29,7 +29,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     10,  // ratio
-    1,  // value
+    255,  // value
     5, // nameLength
     8, // bmpWidth
 
@@ -41,7 +41,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     10,  // ratio
-    6,  // value
+    255,  // value
     3, // nameLength
     16, // bmpWidth
 
@@ -53,7 +53,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     10,  // ratio
-    20,  // value
+    255,  // value
     7, // nameLength
     8, // bmpWidth
 
@@ -65,7 +65,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // baitPreference SHRIMP
     1,  // baitPreference MEAT
     10,  // ratio
-    100,  // value
+    255,  // value
     5, // nameLength
     24, // bmpWidth
 };

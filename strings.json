@@ -31,14 +31,14 @@
         { "key": "shrimp", "value": "SHRIMP" },
         { "key": "proPole", "value": "PRO POLE" },
         { "key": "boatOars", "value": "OARS" },
-        { "key": "advice1", "value": "CHAT WITH THE OTHER FISHERS" },
-        { "key": "advice2", "value": "TROUT BITE AT NIGHT" },
-        { "key": "advice3", "value": "SOME MORE ADVICE" },
-        { "key": "advice4", "value": "SOME MORE ADVICE" },
-        { "key": "advice5", "value": "SOME MORE ADVICE" },
-        { "key": "advice6", "value": "SOME MORE ADVICE" },
-        { "key": "advice7", "value": "SOME MORE ADVICE" },
-        { "key": "advice8", "value": "SOME MORE ADVICE" },
-        { "key": "noMoreAdvice", "value": "I HAVE NO MORE ADVICE" }
+        { "key": "advice1", "value": "ADVICE 1" },
+        { "key": "advice2", "value": "ADVICE 2" },
+        { "key": "advice3", "value": "ADVICE 3" },
+        { "key": "advice4", "value": "ADVICE 4" },
+        { "key": "advice5", "value": "ADVICE 5" },
+        { "key": "advice6", "value": "ADVICE 6" },
+        { "key": "advice7", "value": "ADVICE 7" },
+        { "key": "advice8", "value": "ADVICE 8" },
+        { "key": "noMoreAdvice", "value": "YOU KNOW IT ALL" }
     ]
 }

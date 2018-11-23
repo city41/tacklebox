@@ -294,7 +294,7 @@ void Shop::updateAdvice(uint8_t frame) {
 void Shop::renderAdvice(uint8_t frame) {
     renderFrame();
 
-    if (State::gameState.adviceLevel == 8) {
+    if (State::gameState.adviceLevel == 8 && !showAdvice) {
         renderer.drawString(20, 30, noMoreAdvice_string);
     } else if (showAdvice) {
         const uint8_t* str = static_cast<const uint8_t*>(pgm_read_ptr(adviceStrings + State::gameState.adviceLevel));
