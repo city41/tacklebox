@@ -285,6 +285,9 @@ void Player::updateScanning(uint8_t frame) {
 
         if (TileFloor::isFishable(tile)) {
             castCount = 0;
+
+            State::gameState.baitCounts[static_cast<int8_t>(currentBait)] -= 1;
+
             currentUpdate = &Player::updateCast;
             currentRender = &Player::renderCast;
         } else {
@@ -356,8 +359,6 @@ void Player::updateCast(uint8_t frame) {
     castCount += 1;
 
     if (castCount == CAST_TIMEOUT) {
-        State::gameState.baitCounts[static_cast<int8_t>(currentBait)] -= 1;
-
         currentUpdate = &Player::updateWalk;
         currentRender = &Player::renderWalk;
 
@@ -371,6 +372,7 @@ void Player::updateCast(uint8_t frame) {
     if (fishType != FishType::UNSET) {
         Fish::loadFish(fishType, currentFish);
         reelLevel = WIDTH / 2;
+
         currentUpdate = &Player::updateReel;
         currentRender = &Player::renderReel;
     }
