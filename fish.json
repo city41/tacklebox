@@ -27,6 +27,149 @@
             "value": 255
         },
         {
+            "name": "MINNOW",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "BETA",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "TROUT",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "BASS",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "BLUEGILL",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "CATFISH",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "FLOUNDER",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "CRAB",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "OCTOPUS",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "GROUPER",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "SEAHORSE",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
             "name": "EEL",
             "baitPreference": {
                 "WORM": 1,
@@ -40,7 +183,59 @@
             "value": 255
         },
         {
+            "name": "SARDINE",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "CRAWFISH",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "FANGTOOTH",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
             "name": "LOBSTER",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 1,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER"],
+            "ratio": 10,
+            "value": 255
+        },
+        {
+            "name": "MARLIN",
             "baitPreference": {
                 "WORM": 1,
                 "GRUB": 1,

@@ -597,7 +597,7 @@ void Player::updateGetFish(uint8_t frame) {
 }
 
 
-const uint8_t GET_FISH_FRAME_SIZE = 42;
+const uint8_t GET_FISH_FRAME_SIZE = 48;
 
 void Player::renderGetFish(uint8_t frame) {
     renderer.fillRect(x - 13, y - 12, GET_FISH_FRAME_SIZE, GET_FISH_FRAME_SIZE, BLACK);
