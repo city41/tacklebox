@@ -12,7 +12,6 @@ enum TileDef: uint8_t {
     ShopDoor,
     Sand,
     SandGrassBoundary,
-    OceanSandBoundary,
     IslandLowerLeftCorner,
     IslandLowerRightCorner,
     IslandUpperLeftCorner,
@@ -40,6 +39,7 @@ enum TileDef: uint8_t {
     Ocean,
 
     // end - fishable tiles
+    OceanSandBoundary,
     BushWallLeft,
     BushWallRight,
     BushWallTop,
