@@ -107,7 +107,7 @@ const PROGMEM uint8_t boomerang_sfx[] = {
 
 const uint8_t* Sfx::boomerang = boomerang_sfx;
 
-const PROGMEM uint8_t playerDamage_sfx[] = {
+const PROGMEM uint8_t buzz_sfx[] = {
     startNote(0),
     MIDDLE_A - 45,
     delayHigh(0),
@@ -116,7 +116,7 @@ const PROGMEM uint8_t playerDamage_sfx[] = {
     endOfScore
 };
 
-const uint8_t* Sfx::playerDamage = playerDamage_sfx;
+const uint8_t* Sfx::buzz = buzz_sfx;
 
 const PROGMEM uint8_t successJingle_sfx[] = {
     startNote(0),

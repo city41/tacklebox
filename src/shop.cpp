@@ -9,6 +9,7 @@
 #include "animation.h"
 #include "enumUtils.h"
 #include "baitType.h"
+#include "sfx.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -21,6 +22,29 @@ Shop::RenderPtr Shop::currentRender = &Shop::renderMainMenu;
 
 const uint8_t PROGMEM shopOwnerDurations[] = {
     20, 0, 5, 1, 5, 2, 5, 3, 255
+};
+
+const uint16_t GRUB_PRICE = 1;
+const uint16_t SHRIMP_PRICE = 3;
+const uint16_t PRO_POLE_PRICE = 200;
+const uint16_t OARS_PRICE = 400;
+
+const uint8_t BUY_MENU_ITEMS_COUNT = 4;
+const uint8_t BUY_MENU_ITEM_PROPS_COUNT = 3;
+
+const uint16_t PROGMEM buyMenuItems[BUY_MENU_ITEMS_COUNT * BUY_MENU_ITEM_PROPS_COUNT] = {
+    reinterpret_cast<int16_t>(grub_plus_mask),
+    reinterpret_cast<int16_t>(grub_string),
+    GRUB_PRICE,
+    reinterpret_cast<int16_t>(shrimp_plus_mask),
+    reinterpret_cast<int16_t>(shrimp_string),
+    SHRIMP_PRICE,
+    reinterpret_cast<int16_t>(proPole_plus_mask),
+    reinterpret_cast<int16_t>(proPole_string),
+    PRO_POLE_PRICE,
+    reinterpret_cast<int16_t>(boatOar_plus_mask),
+    reinterpret_cast<int16_t>(boatOars_string),
+    OARS_PRICE
 };
 
 Animation shopOwnerAnimation(shopOwnerDurations);
@@ -92,6 +116,49 @@ void Shop::renderMainMenu(uint8_t frame) {
     renderer.drawString(40, startY + spacing * 2, chat_string);
 }
 
+void buy(BuyMenu itemToBuy) {
+    bool buzz = false;
+
+    switch (itemToBuy) {
+        case BuyMenu::Grub:
+            if (State::gameState.money >= GRUB_PRICE) {
+                State::gameState.money -= GRUB_PRICE;
+                State::gameState.baitCounts[static_cast<int8_t>(BaitType::Grub)] += 1;
+            } else {
+                buzz = true;
+            }
+            break;
+        case BuyMenu::Shrimp:
+            if (State::gameState.money >= SHRIMP_PRICE) {
+                State::gameState.money -= SHRIMP_PRICE;
+                State::gameState.baitCounts[static_cast<int8_t>(BaitType::Shrimp)] += 1;
+            } else {
+                buzz = true;
+            }
+            break;
+        case BuyMenu::ProPole:
+            if (State::gameState.money >= PRO_POLE_PRICE && !State::gameState.hasProPole) {
+                State::gameState.money -= PRO_POLE_PRICE;
+                State::gameState.hasProPole = true;
+            } else {
+                buzz = true;
+            }
+            break;
+        case BuyMenu::Oars:
+            if (State::gameState.money >= OARS_PRICE && !State::gameState.hasOars) {
+                State::gameState.money -= OARS_PRICE;
+                State::gameState.hasOars = true;
+            } else {
+                buzz = true;
+            }
+            break;
+    }
+
+    if (buzz) {
+        Sfx::play(Sfx::buzz);
+    }
+}
+
 void Shop::updateBuy(uint8_t frame) {
     if (arduboy.justPressed(B_BUTTON)) {
         Shop::currentUpdate = &Shop::updateMainMenu;
@@ -105,25 +172,13 @@ void Shop::updateBuy(uint8_t frame) {
     if (arduboy.justPressed(UP_BUTTON)) {
         buyMenuCurrentRow = prev(buyMenuCurrentRow);
     }
+
+    if (arduboy.justPressed(A_BUTTON)) {
+        buy(buyMenuCurrentRow);
+    }
 }
 
-const uint8_t BUY_MENU_ITEMS_COUNT = 4;
-const uint8_t BUY_MENU_ITEM_PROPS_COUNT = 3;
 
-const uint16_t PROGMEM buyMenuItems[BUY_MENU_ITEMS_COUNT * BUY_MENU_ITEM_PROPS_COUNT] = {
-    reinterpret_cast<int16_t>(grub_plus_mask),
-    reinterpret_cast<int16_t>(grub_string),
-    1,
-    reinterpret_cast<int16_t>(shrimp_plus_mask),
-    reinterpret_cast<int16_t>(shrimp_string),
-    4,
-    reinterpret_cast<int16_t>(proPole_plus_mask),
-    reinterpret_cast<int16_t>(proPole_string),
-    200,
-    reinterpret_cast<int16_t>(boatOar_plus_mask),
-    reinterpret_cast<int16_t>(boatOars_string),
-    200
-};
 
 void Shop::renderBuy(uint8_t frame) {
     renderFrame();
