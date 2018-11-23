@@ -452,10 +452,11 @@ FishType Player::getFishThatBit() {
 
 void Player::renderCast(uint8_t frame) {
     uint8_t spriteIndex;
+    uint8_t poleIndex = 0;
     MirrorMode playerMirror = NO_MIRROR;
     MirrorMode poleMirror = NO_MIRROR;
-    int16_t poleX;
-    int16_t poleY;
+    int16_t poleX = -200;
+    int16_t poleY = -200;
 
     switch (dir) {
         case LEFT:
@@ -465,17 +466,28 @@ void Player::renderCast(uint8_t frame) {
             poleMirror = MIRROR_HORIZONTAL;
             break;
         case RIGHT:
-            spriteIndex = 4;
+            spriteIndex = 5;
+            playerMirror = MIRROR_HORIZONTAL;
+            poleY = y;
+            poleX = x + 10;
             break;
         case UP:
             spriteIndex = 6;
+            poleIndex = 2;
+            poleMirror = MIRROR_HORIZONTAL;
+            poleY = y - 10;
+            poleX = x + 6;
             break;
         case DOWN:
-            spriteIndex = 2;
+            spriteIndex = 3;
+            poleIndex = 2;
+            poleMirror = MIRROR_VERTICAL;
+            poleY = y + 10;
+            poleX = x - 1;
             break;
     }
 
-    renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, 0, poleMirror);
+    renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, poleIndex, poleMirror);
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, playerMirror);
     renderer.drawOverwrite(cursorX, cursorY, bobber_tiles, static_cast<uint8_t>(frame > 30), 0, Xor);
 }
@@ -505,6 +517,7 @@ void Player::updateReel(uint8_t frame) {
 
 void Player::renderReel(uint8_t frame) {
     uint8_t spriteIndex;
+    uint8_t poleIndex = 1;
     MirrorMode playerMirror = NO_MIRROR;
     MirrorMode poleMirror = NO_MIRROR;
     int16_t poleX;
@@ -523,18 +536,39 @@ void Player::renderReel(uint8_t frame) {
             }
             break;
         case RIGHT:
-            spriteIndex = 4;
+            spriteIndex = 5;
+            playerMirror = MIRROR_HORIZONTAL;
+            poleY = y;
+            poleX = x + 12;
+            if (frame > 50) {
+                spriteIndex = 7;
+                poleX -= 1;
+            }
             break;
         case UP:
             spriteIndex = 6;
+            poleIndex = 2;
+            poleMirror = MIRROR_HORIZONTAL;
+            poleY = y - 10;
+            poleX = x + 5;
+            if (frame > 50) {
+                poleX += 1;
+            }
             break;
         case DOWN:
-            spriteIndex = 2;
+            spriteIndex = 3;
+            poleIndex = 2;
+            poleMirror = MIRROR_VERTICAL;
+            poleY = y + 10;
+            poleX = x - 1;
+            if (frame > 50) {
+                poleX += 1;
+            }
             break;
     }
 
+    renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, poleIndex, poleMirror);
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, playerMirror);
-    renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, 1, poleMirror);
 
     renderer.pushTranslate(0, 0);
 
