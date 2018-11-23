@@ -18,6 +18,7 @@ ShopMainMenu Shop::mainMenuCurrentRow = ShopMainMenu::Buy;
 BuyMenu Shop::buyMenuCurrentRow = BuyMenu::Grub;
 Shop::UpdatePtr Shop::currentUpdate = &Shop::updateMainMenu;
 Shop::RenderPtr Shop::currentRender = &Shop::renderMainMenu;
+bool Shop::showAdvice = false;
 
 
 const uint8_t PROGMEM shopOwnerDurations[] = {
@@ -45,6 +46,18 @@ const uint16_t PROGMEM buyMenuItems[BUY_MENU_ITEMS_COUNT * BUY_MENU_ITEM_PROPS_C
     reinterpret_cast<int16_t>(boatOar_plus_mask),
     reinterpret_cast<int16_t>(boatOars_string),
     OARS_PRICE
+};
+
+const uint8_t* const PROGMEM adviceStrings[] = {
+    NULL,
+    advice1_string,
+    advice2_string,
+    advice3_string,
+    advice4_string,
+    advice5_string,
+    advice6_string,
+    advice7_string,
+    advice8_string
 };
 
 Animation shopOwnerAnimation(shopOwnerDurations);
@@ -84,12 +97,16 @@ void Shop::updateMainMenu(uint8_t frame) {
     }
 
     if (arduboy.justPressed(A_BUTTON)) {
-        if (Shop::mainMenuCurrentRow == ShopMainMenu::Buy) {
-            Shop::currentUpdate = &Shop::updateBuy;
-            Shop::currentRender = &Shop::renderBuy;
+        if (mainMenuCurrentRow == ShopMainMenu::Buy) {
+            currentUpdate = &Shop::updateBuy;
+            currentRender = &Shop::renderBuy;
+        } else if (mainMenuCurrentRow == ShopMainMenu::Sell) {
+            currentUpdate = &Shop::updateSell;
+            currentRender = &Shop::renderSell;
         } else {
-            Shop::currentUpdate = &Shop::updateSell;
-            Shop::currentRender = &Shop::renderSell;
+            showAdvice = false;
+            currentUpdate = &Shop::updateAdvice;
+            currentRender = &Shop::renderAdvice;
         }
     }
 }
@@ -113,7 +130,7 @@ void Shop::renderMainMenu(uint8_t frame) {
     renderer.drawOverwrite(34, startY + static_cast<uint8_t>(Shop::mainMenuCurrentRow) * spacing, squareIcon_tiles, 0);
     renderer.drawString(40, startY + spacing * 0, buy_string);
     renderer.drawString(40, startY + spacing * 1, sell_string);
-    renderer.drawString(40, startY + spacing * 2, chat_string);
+    renderer.drawString(40, startY + spacing * 2, advice_string);
 }
 
 void buy(BuyMenu itemToBuy) {
@@ -251,4 +268,45 @@ void Shop::renderSell(uint8_t frame) {
 
     renderer.drawOverwrite(54, 50, squareIcon_tiles, 0);
     renderer.drawString(60, 50, ok_string);
+}
+
+void Shop::updateAdvice(uint8_t frame) {
+    if (arduboy.justPressed(B_BUTTON)) {
+        Shop::currentUpdate = &Shop::updateMainMenu;
+        Shop::currentRender = &Shop::renderMainMenu;
+    }
+
+    if (!showAdvice && arduboy.justPressed(A_BUTTON)) {
+        if (
+            State::gameState.adviceLevel < 8 &&
+            State::gameState.money >= (1 << State::gameState.adviceLevel)
+        ) {
+            State::gameState.money -= (1 << State::gameState.adviceLevel);
+
+            State::gameState.adviceLevel += 1;
+            showAdvice = true;
+        } else {
+            Sfx::play(Sfx::buzz);
+        }
+    }
+}
+
+void Shop::renderAdvice(uint8_t frame) {
+    renderFrame();
+
+    if (showAdvice) {
+        const uint8_t* str = static_cast<const uint8_t*>(pgm_read_ptr(adviceStrings + State::gameState.adviceLevel));
+        renderer.drawString(20, 30, str);
+    } else {
+        uint16_t moneyAmount = (1 << State::gameState.adviceLevel);
+
+        renderer.drawString(20, 30, adviceFor_string);
+
+        renderer.drawPlusMask(43, 39, currencySymbol_plus_mask, 0);
+        renderer.drawNumber(49, 40, moneyAmount);
+        renderer.drawRect(38, 37, 50, 10, WHITE);
+
+        renderer.drawOverwrite(54, 50, squareIcon_tiles, 0);
+        renderer.drawString(60, 50, ok_string);
+    }
 }

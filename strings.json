@@ -12,8 +12,9 @@
         { "key": "sfxOff", "value": "SFX" },
         { "key": "buy", "value": "BUY" },
         { "key": "sell", "value": "SELL" },
-        { "key": "chat", "value": "CHAT" },
+        { "key": "advice", "value": "ADVICE" },
         { "key": "sellFor", "value": "SELL ALL FISH FOR" },
+        { "key": "adviceFor", "value": "HELPFUL ADVICE FOR" },
         { "key": "youHaveNoFish", "value": "YOU HAVE NO FISH" },
         { "key": "toSellMe", "value": "TO SELL TO ME" },
         { "key": "digit0", "value": "0" },
@@ -29,6 +30,14 @@
         { "key": "grub", "value": "GRUB" },
         { "key": "shrimp", "value": "SHRIMP" },
         { "key": "proPole", "value": "PRO POLE" },
-        { "key": "boatOars", "value": "OARS" }
+        { "key": "boatOars", "value": "OARS" },
+        { "key": "advice1", "value": "CHAT WITH THE OTHER FISHERS" },
+        { "key": "advice2", "value": "TROUT BITE AT NIGHT" },
+        { "key": "advice3", "value": "SOME MORE ADVICE" },
+        { "key": "advice4", "value": "SOME MORE ADVICE" },
+        { "key": "advice5", "value": "SOME MORE ADVICE" },
+        { "key": "advice6", "value": "SOME MORE ADVICE" },
+        { "key": "advice7", "value": "SOME MORE ADVICE" },
+        { "key": "advice8", "value": "SOME MORE ADVICE" }
     ]
 }

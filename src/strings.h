@@ -125,15 +125,21 @@ const uint8_t sell_string[5] PROGMEM = {
 };
 
 
-// "CHAT"
-const uint8_t chat_string[5] PROGMEM = {
-    13, 18, 11, 30, 0xFF
+// "ADVICE"
+const uint8_t advice_string[7] PROGMEM = {
+    11, 14, 32, 19, 13, 15, 0xFF
 };
 
 
 // "SELL ALL FISH FOR"
 const uint8_t sellFor_string[18] PROGMEM = {
     29, 15, 22, 22, 0, 11, 22, 22, 0, 16, 19, 29, 18, 0, 16, 25, 28, 0xFF
+};
+
+
+// "HELPFUL ADVICE FOR"
+const uint8_t adviceFor_string[19] PROGMEM = {
+    18, 15, 22, 26, 16, 31, 22, 0, 11, 14, 32, 19, 13, 15, 0, 16, 25, 28, 0xFF
 };
 
 
@@ -230,6 +236,54 @@ const uint8_t proPole_string[9] PROGMEM = {
 // "OARS"
 const uint8_t boatOars_string[5] PROGMEM = {
     25, 11, 28, 29, 0xFF
+};
+
+
+// "CHAT WITH THE OTHER FISHERS"
+const uint8_t advice1_string[28] PROGMEM = {
+    13, 18, 11, 30, 0, 33, 19, 30, 18, 0, 30, 18, 15, 0, 25, 30, 18, 15, 28, 0, 16, 19, 29, 18, 15, 28, 29, 0xFF
+};
+
+
+// "TROUT BITE AT NIGHT"
+const uint8_t advice2_string[20] PROGMEM = {
+    30, 28, 25, 31, 30, 0, 12, 19, 30, 15, 0, 11, 30, 0, 24, 19, 17, 18, 30, 0xFF
+};
+
+
+// "SOME MORE ADVICE"
+const uint8_t advice3_string[17] PROGMEM = {
+    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+};
+
+
+// "SOME MORE ADVICE"
+const uint8_t advice4_string[17] PROGMEM = {
+    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+};
+
+
+// "SOME MORE ADVICE"
+const uint8_t advice5_string[17] PROGMEM = {
+    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+};
+
+
+// "SOME MORE ADVICE"
+const uint8_t advice6_string[17] PROGMEM = {
+    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+};
+
+
+// "SOME MORE ADVICE"
+const uint8_t advice7_string[17] PROGMEM = {
+    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
+};
+
+
+// "SOME MORE ADVICE"
+const uint8_t advice8_string[17] PROGMEM = {
+    29, 25, 23, 15, 0, 23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0xFF
 };
 
 #endif

@@ -5,7 +5,7 @@
 enum class ShopMainMenu: uint8_t {
     Buy,
     Sell,
-    Chat,
+    Advice,
     COUNT
 };
 
@@ -20,6 +20,8 @@ enum class BuyMenu: uint8_t {
 struct Shop {
     typedef void (*UpdatePtr)(uint8_t);
     typedef void (*RenderPtr)(uint8_t);
+
+    static bool showAdvice;
 
     static UpdatePtr currentUpdate;
     static RenderPtr currentRender;
@@ -39,6 +41,9 @@ struct Shop {
 
     static void updateSell(uint8_t frame);
     static void renderSell(uint8_t frame);
+
+    static void updateAdvice(uint8_t frame);
+    static void renderAdvice(uint8_t frame);
 };
 
 
