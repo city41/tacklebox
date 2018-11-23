@@ -113,6 +113,12 @@ const uint8_t sfxOff_string[4] PROGMEM = {
 };
 
 
+// "OPEN 4AM TO 10PM"
+const uint8_t openFromTo_string[17] PROGMEM = {
+    25, 26, 15, 24, 0, 5, 11, 23, 0, 30, 25, 0, 2, 1, 26, 23, 0xFF
+};
+
+
 // "BUY"
 const uint8_t buy_string[4] PROGMEM = {
     12, 31, 35, 0xFF
@@ -128,6 +134,12 @@ const uint8_t sell_string[5] PROGMEM = {
 // "ADVICE"
 const uint8_t advice_string[7] PROGMEM = {
     11, 14, 32, 19, 13, 15, 0xFF
+};
+
+
+// "HOURS"
+const uint8_t hours_string[6] PROGMEM = {
+    18, 25, 31, 28, 29, 0xFF
 };
 
 

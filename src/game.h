@@ -22,6 +22,8 @@ class Game {
         uint8_t titleCount;
         uint8_t seconds;     // actual seconds. 1 game hour = SECONDS_PER_HOUR real seconds
 
+        bool isOnShopDoor();
+        bool isOnBoat();
 
         void loadSave();
 

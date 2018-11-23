@@ -61,6 +61,16 @@ bool overlap(Player& player, Worm& worm) {
     );
 }
 
+bool Game::isOnShopDoor() {
+    return (    
+        player.dir == UP &&
+        player.y <= 20 &&
+        (
+            TileFloor::getTileAt(player.x + 8, player.y) == ShopDoor
+        )
+    );
+}
+
 void Game::updatePlay(uint8_t frame) {
     if (frame == 60) {
         seconds += 1;
@@ -81,7 +91,7 @@ void Game::updatePlay(uint8_t frame) {
     bool justBecameActive = isActive && !isOnScreen(player.prevX, player.prevY, Girl::x, Girl::y);
     Girl::update(isActive, justBecameActive);
 
-    if (TileFloor::getTileAt(player.x, player.y) == ShopDoor) {
+    if (isOnShopDoor() && Shop::isOpen()) {
         Shop::onEnter();
         push(&Game::updateShop, &Game::renderShop);
         return;
@@ -139,6 +149,11 @@ void Game::renderPlay(uint8_t frame) {
 
     Girl::render(frame);
     Boat::render(frame);
+
+    if (!Shop::isOpen()) {
+        renderer.drawOverwrite(16 * 25 - 5, 20, closed_tiles, 0);
+    }
+
     player.render(frame);
 
     renderer.translateX = WIDTH - 64;

@@ -62,6 +62,12 @@ const uint8_t* const PROGMEM adviceStrings[] = {
 
 Animation shopOwnerAnimation(shopOwnerDurations);
 
+bool Shop::isOpen() {
+    const uint8_t hour = State::getCurrentHour();
+
+    return hour >= 4 && hour <= 21;
+}
+
 void Shop::onEnter() {
     shopOwnerAnimation.reset();
 }
@@ -103,10 +109,13 @@ void Shop::updateMainMenu(uint8_t frame) {
         } else if (mainMenuCurrentRow == ShopMainMenu::Sell) {
             currentUpdate = &Shop::updateSell;
             currentRender = &Shop::renderSell;
-        } else {
+        } else if (mainMenuCurrentRow == ShopMainMenu::Advice) {
             showAdvice = false;
             currentUpdate = &Shop::updateAdvice;
             currentRender = &Shop::renderAdvice;
+        } else {
+            currentUpdate = &Shop::updateHours;
+            currentRender = &Shop::renderHours;
         }
     }
 }
@@ -124,13 +133,15 @@ void renderFrame() {
 void Shop::renderMainMenu(uint8_t frame) {
     renderFrame();
 
-    const uint8_t startY = 28;
-    const uint8_t spacing = 10;
+    const uint8_t startY = 25;
+    const uint8_t x = 48;
+    const uint8_t spacing = 9;
 
-    renderer.drawOverwrite(34, startY + static_cast<uint8_t>(Shop::mainMenuCurrentRow) * spacing, squareIcon_tiles, 0);
-    renderer.drawString(40, startY + spacing * 0, buy_string);
-    renderer.drawString(40, startY + spacing * 1, sell_string);
-    renderer.drawString(40, startY + spacing * 2, advice_string);
+    renderer.drawOverwrite(x - 6, startY + static_cast<uint8_t>(Shop::mainMenuCurrentRow) * spacing, squareIcon_tiles, 0);
+    renderer.drawString(x, startY + spacing * 0, buy_string);
+    renderer.drawString(x, startY + spacing * 1, sell_string);
+    renderer.drawString(x, startY + spacing * 2, advice_string);
+    renderer.drawString(x, startY + spacing * 3, hours_string);
 }
 
 void buy(BuyMenu itemToBuy) {
@@ -311,4 +322,17 @@ void Shop::renderAdvice(uint8_t frame) {
         renderer.drawOverwrite(54, 50, squareIcon_tiles, 0);
         renderer.drawString(60, 50, ok_string);
     }
+}
+
+void Shop::updateHours(uint8_t frame) {
+    if (arduboy.justPressed(B_BUTTON)) {
+        Shop::currentUpdate = &Shop::updateMainMenu;
+        Shop::currentRender = &Shop::renderMainMenu;
+    }
+}
+
+void Shop::renderHours(uint8_t frame) {
+    renderFrame();
+
+    renderer.drawString(25, 36, openFromTo_string);
 }

@@ -6,6 +6,7 @@ enum class ShopMainMenu: uint8_t {
     Buy,
     Sell,
     Advice,
+    Hours,
     COUNT
 };
 
@@ -26,6 +27,7 @@ struct Shop {
     static UpdatePtr currentUpdate;
     static RenderPtr currentRender;
 
+    static bool isOpen();
     static void onEnter();
 
     static void update(uint8_t frame);
@@ -44,6 +46,9 @@ struct Shop {
 
     static void updateAdvice(uint8_t frame);
     static void renderAdvice(uint8_t frame);
+
+    static void updateHours(uint8_t frame);
+    static void renderHours(uint8_t frame);
 };
 
 
