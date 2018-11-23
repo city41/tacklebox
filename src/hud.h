@@ -5,6 +5,6 @@
 
 struct Hud {
     public:
-        static void render(uint8_t frame, Player& player);
+        static void render(Player& player);
 };
 

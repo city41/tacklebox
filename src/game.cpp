@@ -139,9 +139,9 @@ void Game::renderPlay(uint8_t frame) {
     player.render(frame);
     Girl::render(frame);
 
-    renderer.translateX = WIDTH - 50;
+    renderer.translateX = WIDTH - 64;
     renderer.translateY = 0;
-    Hud::render(frame, player);
+    Hud::render(player);
 }
 
 void Game::updateShop(uint8_t frame) {

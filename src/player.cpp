@@ -584,7 +584,7 @@ void Player::render(uint8_t frame) {
 }
 
 void Player::onGetWorm(Worm& worm) {
-    if (worm.isSpawned && State::gameState.baitCounts[0] < 99) {
+    if (worm.isSpawned && State::gameState.baitCounts[0] < 254) {
         State::gameState.baitCounts[0] +=1;
     }
 }

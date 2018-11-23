@@ -74,12 +74,12 @@ void Shop::render(uint8_t frame) {
     Shop::currentRender(frame);
 
     // user's current money in upper corner
-    renderer.drawPlusMask(WIDTH - 40, 0, currencySymbol_plus_mask, 0);
-    renderer.drawNumber(WIDTH - 34, 1, State::gameState.money);
+    renderer.drawPlusMask(WIDTH - 42, 0, currencySymbol_plus_mask, 0);
+    renderer.drawNumber(WIDTH - 36, 1, State::gameState.money);
 
     // user's current grub and shrimp count for reference
-    renderer.drawPlusMask(WIDTH - 60, 8, grub_plus_mask, 0, 0, Invert);
-    renderer.drawNumber(WIDTH - 48, 10, State::gameState.baitCounts[static_cast<int8_t>(BaitType::Grub)]);
+    renderer.drawPlusMask(WIDTH - 70, 8, grub_plus_mask, 0, 0, Invert);
+    renderer.drawNumber(WIDTH - 58, 10, State::gameState.baitCounts[static_cast<int8_t>(BaitType::Grub)]);
 
     renderer.drawPlusMask(WIDTH - 40, 8, shrimp_plus_mask, 0, 0, Invert);
     renderer.drawNumber(WIDTH - 28, 10, State::gameState.baitCounts[static_cast<int8_t>(BaitType::Shrimp)]);
