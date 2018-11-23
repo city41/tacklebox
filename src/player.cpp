@@ -317,6 +317,7 @@ void Player::updateScanning(uint8_t frame) {
 
 void Player::renderScanning(uint8_t frame) {
     uint8_t spriteIndex;
+    uint8_t poleIndex = 0;
     MirrorMode mirror = NO_MIRROR;
     int16_t poleX;
     int16_t poleY;
@@ -330,17 +331,26 @@ void Player::renderScanning(uint8_t frame) {
         case RIGHT:
             spriteIndex = 4;
             mirror = MIRROR_HORIZONTAL;
+            poleY = y - 4;
+            poleX = x - 12;
             break;
         case UP:
             spriteIndex = 6;
+            poleIndex = 2;
+            poleY = y - 12;
+            poleX = x + 2;
             break;
         case DOWN:
-            spriteIndex = 2;
+            spriteIndex = 3;
+            poleIndex = 2;
+            poleY = y - 12;
+            poleX = x;
+            mirror = MIRROR_HORIZONTAL;
             break;
     }
 
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, mirror);
-    renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, 0, mirror);
+    renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, poleIndex, mirror);
     renderer.drawOverwrite(cursorX, cursorY, cursor_tiles, 0, 0);
 }
 
