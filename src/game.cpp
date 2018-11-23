@@ -10,6 +10,7 @@
 #include "shop.h"
 #include "worms.h"
 #include "girl.h"
+#include "boat.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -136,8 +137,9 @@ void Game::renderPlay(uint8_t frame) {
         }
     }
 
-    player.render(frame);
     Girl::render(frame);
+    Boat::render(frame);
+    player.render(frame);
 
     renderer.translateX = WIDTH - 64;
     renderer.translateY = 0;
