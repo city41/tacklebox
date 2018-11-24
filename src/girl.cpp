@@ -10,8 +10,10 @@ int16_t Girl::x = 16 * 5;
 int16_t Girl::y = 16 * 1 + 6;
 
 bool Girl::isActive = false;
-uint8_t Girl::startingActiveHour = 4;
-uint8_t Girl::endingActiveHour = 9;
+/* uint8_t Girl::startingActiveHour = 4; */
+uint8_t Girl::startingActiveHour = 0;
+/* uint8_t Girl::endingActiveHour = 9; */
+uint8_t Girl::endingActiveHour = 23;
 
 void Girl::update(bool isActive, bool justBecameActive) {
     uint8_t hour = State::getCurrentHour();

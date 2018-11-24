@@ -8,6 +8,7 @@
 #include "world.h"
 #include "hud.h"
 #include "shop.h"
+#include "girlDialog.h"
 #include "worms.h"
 #include "signs.h"
 #include "girl.h"
@@ -89,6 +90,11 @@ bool Game::isOnBoat() {
     }
 }
 
+bool Game::isTalkingToGirl() {
+    return player.dir == UP &&
+        overlap(player, Girl::x, Girl::y, 16, 16);
+}
+
 void Game::updatePlay(uint8_t frame) {
     if (frame == 60) {
         seconds += 1;
@@ -118,6 +124,12 @@ void Game::updatePlay(uint8_t frame) {
     if (isOnBoat() && State::gameState.hasOars) {
         Boat::onEnter();
         push(&Game::updateBoatTravel, &Game::renderBoatTravel);
+        return;
+    }
+
+    if (isTalkingToGirl()) {
+        GirlDialog::onEnter();
+        push(&Game::updateTalkToGirl, &Game::renderTalkToGirl);
         return;
     }
 
@@ -218,6 +230,19 @@ void Game::updateShop(uint8_t frame) {
 
 void Game::renderShop(uint8_t frame) {
     Shop::render(frame);
+}
+
+void Game::updateTalkToGirl(uint8_t frame) {
+    if (arduboy.justPressed(B_BUTTON)) {
+        player.moveTo(player.x, player.y + 16);
+        pop();
+    } else {
+        GirlDialog::update();
+    }
+}
+
+void Game::renderTalkToGirl(uint8_t frame) {
+    GirlDialog::render();
 }
 
 void Game::updateBoatTravel(uint8_t frame) {

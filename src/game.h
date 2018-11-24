@@ -27,6 +27,7 @@ class Game {
 
         bool isOnShopDoor();
         bool isOnBoat();
+        bool isTalkingToGirl();
 
         void loadSave();
 
@@ -47,6 +48,9 @@ class Game {
 
         void updateBoatTravel(uint8_t frame);
         void renderBoatTravel(uint8_t frame);
+
+        void updateTalkToGirl(uint8_t frame);
+        void renderTalkToGirl(uint8_t frame);
 
         Game(): 
             player(),
