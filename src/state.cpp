@@ -21,7 +21,7 @@ void State::load() {
     } else {
         // start the game at 4pm
         gameState.minute = 16 * 60;
-        gameState.baitCounts[0] = 0;
+        gameState.baitCounts[0] = 30;
         gameState.baitCounts[1] = 0;
         gameState.baitCounts[2] = 0;
         gameState.baitCounts[3] = 0;

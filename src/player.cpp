@@ -538,7 +538,7 @@ void Player::renderReel(uint8_t frame) {
         case LEFT:
             spriteIndex = 5;
             poleY = y;
-            poleX = x - 10;
+            poleX = x - 11;
             poleMirror = MIRROR_HORIZONTAL;
 
             if (frame > 50) {
@@ -550,7 +550,7 @@ void Player::renderReel(uint8_t frame) {
             spriteIndex = 5;
             playerMirror = MIRROR_HORIZONTAL;
             poleY = y;
-            poleX = x + 12;
+            poleX = x + 13;
             if (frame > 50) {
                 spriteIndex = 7;
                 poleX -= 1;
