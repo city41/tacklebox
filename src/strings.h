@@ -105,15 +105,15 @@ const uint8_t ok_string[3] PROGMEM = {
 };
 
 
-// "SFX   *"
+// "SOUND *"
 const uint8_t sfxOn_string[8] PROGMEM = {
-    29, 16, 34, 0, 0, 0, 37, 0xFF
+    29, 25, 31, 24, 14, 0, 37, 0xFF
 };
 
 
-// "SFX"
-const uint8_t sfxOff_string[4] PROGMEM = {
-    29, 16, 34, 0xFF
+// "SOUND"
+const uint8_t sfxOff_string[6] PROGMEM = {
+    29, 25, 31, 24, 14, 0xFF
 };
 
 
