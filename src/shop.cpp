@@ -65,7 +65,7 @@ Animation shopOwnerAnimation(shopOwnerDurations);
 bool Shop::isOpen() {
     const uint8_t hour = State::getCurrentHour();
 
-    return hour >= 4 && hour <= 21;
+    return hour >= 4 && hour <= 24;
 }
 
 void Shop::onEnter() {
