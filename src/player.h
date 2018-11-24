@@ -85,6 +85,8 @@ class Player {
 
         void reset();
 
+        void placeCursorBasedOnDir();
+
         void render(uint8_t frame);
         void update(uint8_t frame);
 

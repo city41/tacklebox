@@ -40,10 +40,36 @@ bool Player::isOnSolidTile() {
     return !TileFloor::isWalkable(TileFloor::getTileAt(x + 8, y + 14));
 }
 
+/**
+ * The player has just started scanning,
+ * based on the way the player is facing, start the cursor
+ * in front of the player
+ */
+void Player::placeCursorBasedOnDir() {
+    switch (dir) {
+        case UP:
+            cursorX = x + 4;
+            cursorY = y - 8;
+            break;
+        case DOWN:
+            cursorX = x + 4;
+            cursorY = y + 18;
+            break;
+        case LEFT:
+            cursorY = y + 8;
+            cursorX = x - 10;
+            break;
+        case RIGHT:
+            cursorY = y + 8;
+            cursorX = x + 18;
+            break;
+    }
+}
+
 void Player::updateWalk(uint8_t frame) {
     if (State::gameState.baitCounts[static_cast<int8_t>(currentBait)] > 0 && arduboy.pressed(A_BUTTON)) {
-        cursorX = x;
-        cursorY = y + 18;
+        placeCursorBasedOnDir();
+
         currentUpdate = &Player::updateScanning;
         currentRender = &Player::renderScanning;
         return;
@@ -361,6 +387,7 @@ void Player::renderScanning(uint8_t frame) {
     uint8_t spriteIndex;
     uint8_t poleIndex = 0;
     MirrorMode mirror = NO_MIRROR;
+    MirrorMode poleMirror = NO_MIRROR;
     int16_t poleX;
     int16_t poleY;
 
@@ -373,14 +400,16 @@ void Player::renderScanning(uint8_t frame) {
         case RIGHT:
             spriteIndex = 4;
             mirror = MIRROR_HORIZONTAL;
+            poleMirror = MIRROR_HORIZONTAL;
             poleY = y - 4;
             poleX = x - 12;
             break;
         case UP:
             spriteIndex = 6;
             poleIndex = 2;
-            poleY = y - 12;
-            poleX = x + 2;
+            poleMirror = MIRROR_VERTICAL;
+            poleY = y + 12;
+            poleX = x + 1;
             break;
         case DOWN:
             spriteIndex = 3;
@@ -388,11 +417,12 @@ void Player::renderScanning(uint8_t frame) {
             poleY = y - 12;
             poleX = x;
             mirror = MIRROR_HORIZONTAL;
+            poleMirror = MIRROR_HORIZONTAL;
             break;
     }
 
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, mirror);
-    renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, poleIndex, mirror);
+    renderer.drawPlusMask(poleX, poleY, fishingPole_plus_mask, poleIndex, poleMirror);
     renderer.drawOverwrite(cursorX, cursorY, cursor_tiles, 0, 0);
 }
 
