@@ -11,7 +11,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "GUPPY",
@@ -24,7 +25,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "MINNOW",
@@ -37,7 +39,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "BETA",
@@ -50,7 +53,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "TROUT",
@@ -63,7 +67,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "BASS",
@@ -76,7 +81,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "BLUEGILL",
@@ -89,7 +95,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "CATFISH",
@@ -102,7 +109,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "FLOUNDER",
@@ -115,7 +123,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "CRAB",
@@ -128,7 +137,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "OCTOPUS",
@@ -141,7 +151,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "GROUPER",
@@ -154,7 +165,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "SEAHORSE",
@@ -167,7 +179,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "EEL",
@@ -180,7 +193,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "SARDINE",
@@ -193,7 +207,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "CRAWFISH",
@@ -206,7 +221,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "FANGTOOTH",
@@ -219,7 +235,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "LOBSTER",
@@ -232,7 +249,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "MARLIN",
@@ -245,7 +263,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "SHARK",
@@ -258,7 +277,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER", "OCEAN_ISLAND"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "GRTWHITE",
@@ -271,7 +291,8 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER", "OCEAN_ISLAND"],
             "ratio": 10,
-            "value": 255
+            "value": 255,
+            "lengths": [1, 10]
         },
         {
             "name": "OLDBOOT",
@@ -284,7 +305,8 @@
             "activeHours": [30, 30],
             "habitats": ["BEGINNER"],
             "ratio": 0,
-            "value": 0
+            "value": 0,
+            "lengths": [1, 10]
         }
     ]
 }

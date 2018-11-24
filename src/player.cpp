@@ -244,6 +244,10 @@ void Player::updateCollection(uint8_t frame) {
         currentCollectionRow = max(0, currentCollectionRow - 1);
     }
 
+    if (arduboy.justPressed(RIGHT_BUTTON) || arduboy.justPressed(LEFT_BUTTON)) {
+        currentCollectionColumn = next(currentCollectionColumn);
+    }
+
     if (arduboy.justPressed(B_BUTTON)) {
         currentUpdate = &Player::updateWalk;
         currentRender = &Player::renderWalk;
@@ -252,10 +256,15 @@ void Player::updateCollection(uint8_t frame) {
 
 void Player::renderCollection(uint8_t frame) {
     renderer.pushTranslate(0, 0);
-    renderer.fillRect(18, 5, WIDTH - 36, HEIGHT - 10, BLACK);
+    renderer.fillRect(18, 10, WIDTH - 36, HEIGHT - 5, BLACK);
 
-    const uint8_t spacing = 18;
-    const uint8_t startY = 5;
+    const uint8_t* headerStr = currentCollectionColumn == CollectionColumn::Quantity ? quantity_string : length_string;
+    renderer.drawString(22, 12, headerStr);
+
+    const uint8_t spacing = 15;
+    const uint8_t startY = 17;
+
+    Fish fish;
 
     for (uint8_t f = currentCollectionRow; f < static_cast<int8_t>(FishType::COUNT) && f < currentCollectionRow + 3; ++f) {
         uint8_t offset = f - currentCollectionRow;
@@ -265,7 +274,21 @@ void Player::renderCollection(uint8_t frame) {
             const uint8_t* fishString = static_cast<const uint8_t*>(pgm_read_ptr(fish_templates_16t + f * NUM_16T_PROPS + 2));
             const uint8_t* fishBmp = static_cast<const uint8_t*>(pgm_read_ptr(fish_templates_16t + f * NUM_16T_PROPS + 3));
 
-            renderer.drawNumber(92, startY + spacing * offset + 9, State::gameState.currentFishCount[f]);
+            const int16_t* numArray = (
+                    currentCollectionColumn == CollectionColumn::Quantity ? State::gameState.currentFishCount
+                    : State::gameState.bestLength
+            );
+
+            // show a checkmark if the user has caught the biggest possible fish
+            if (currentCollectionColumn == CollectionColumn::Length) {
+                Fish::loadFish(static_cast<FishType>(f), fish);
+
+                if (numArray[f] >= fish.maxLength) {
+                    renderer.drawString(88, startY + spacing * offset + 7, checkmark_string);
+                }
+            }
+
+            renderer.drawNumber(92, startY + spacing * offset + 9, numArray[f]);
             renderer.drawPlusMask(44, startY + spacing * offset, fishBmp, 0, 0, Invert);
             renderer.drawString(44, startY + spacing * offset + 9, fishString);
         } else {
@@ -274,11 +297,11 @@ void Player::renderCollection(uint8_t frame) {
     }
 
     if (currentCollectionRow > 0) {
-        renderer.drawPlusMask(21, startY, arrow_plus_mask, 1);
+        renderer.drawPlusMask(WIDTH - 26, startY + 2, arrow_plus_mask, 1);
     }
 
     if (currentCollectionRow < static_cast<int8_t>(FishType::COUNT) - 2) {
-        renderer.drawPlusMask(21, HEIGHT - 10, arrow_plus_mask, 0);
+        renderer.drawPlusMask(WIDTH - 26, HEIGHT - 4, arrow_plus_mask, 0);
     }
 }
 
@@ -520,6 +543,10 @@ void Player::updateReel(uint8_t frame) {
         State::setFishAcquired(currentFish.type);
         State::incrementCurrentCount(currentFish.type);
 
+        currentFish.rollForLength();
+
+        State::setFishLength(currentFish);
+
         announceFishCount = ANNOUNCE_FISH_COUNT;
         currentUpdate = &Player::updateGetFish;
         currentRender = &Player::renderGetFish;
@@ -605,15 +632,16 @@ void Player::updateGetFish(uint8_t frame) {
 }
 
 
-const uint8_t GET_FISH_FRAME_SIZE = 48;
+const uint8_t GET_FISH_FRAME_WIDTH = 48;
+const uint8_t GET_FISH_FRAME_HEIGHT = 54;
 
 void Player::renderGetFish(uint8_t frame) {
-    renderer.fillRect(x - 13, y - 12, GET_FISH_FRAME_SIZE, GET_FISH_FRAME_SIZE, BLACK);
-    renderer.fillRect(x - 12, y, GET_FISH_FRAME_SIZE - 2, 17, WHITE);
+    renderer.fillRect(x - 13, y - 12, GET_FISH_FRAME_WIDTH, GET_FISH_FRAME_HEIGHT, BLACK);
+    renderer.fillRect(x - 12, y, GET_FISH_FRAME_WIDTH - 2, 17, WHITE);
 
 
     renderer.drawPlusMask(
-        x - 13 + (GET_FISH_FRAME_SIZE / 2 - currentFish.bmpWidth / 2),
+        x - 13 + (GET_FISH_FRAME_WIDTH / 2 - currentFish.bmpWidth / 2),
         y - 10,
         currentFish.bmp,
         0,
@@ -626,10 +654,40 @@ void Player::renderGetFish(uint8_t frame) {
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex);
 
     renderer.drawString(
-        x - 13 + (GET_FISH_FRAME_SIZE / 2 - currentFish.nameLength * 5 / 2),
-        y + 22,
+        x - 13 + (GET_FISH_FRAME_WIDTH / 2 - currentFish.nameLength * 5 / 2),
+        y + 20,
         currentFish.nameString
     );
+
+
+    if (currentFish.type != FishType::OLDBOOT) {
+        // draw the size of the fish, centered under its name
+        // a bit fiddly since the length of the fish can vary
+
+        // how many characters is the fishes length plus the "cm" label?
+        int8_t lengthChars = currentFish.length > 99 ? 5 : currentFish.length > 9 ? 4 : 3;
+        int16_t lengthStartX = x - 13 + (GET_FISH_FRAME_WIDTH / 2 - lengthChars * 5 / 2);
+
+        renderer.drawNumber(
+                lengthStartX,
+                y + 26,
+                currentFish.length
+                );
+
+        renderer.drawString(
+                lengthStartX + lengthChars * (5 - 2) + 1,
+                y + 26,
+                cm_string
+                );
+
+        if (currentFish.length == currentFish.maxLength) {
+            renderer.drawString(
+                    lengthStartX + lengthChars * 5 + 4,
+                    y + 26,
+                    checkmark_string
+                    );
+        }
+    }
 }
 
 void Player::update(uint8_t frame) {

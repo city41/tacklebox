@@ -31,7 +31,7 @@ const constants = `
 #include "maskBitmaps.h"
 
 const uint8_t NUM_U8T_PROPS = 10;
-const uint8_t NUM_16T_PROPS = 4;
+const uint8_t NUM_16T_PROPS = 6;
 `;
 
 const fileData =

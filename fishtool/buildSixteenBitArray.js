@@ -8,7 +8,9 @@ function buildActualSixteenBitArray(fishes) {
     ${getMinX(fish.habitats)}, // min X
     ${getMaxX(fish.habitats)}, // max X
     reinterpret_cast<int16_t>(${fish.name}_string),
-    reinterpret_cast<int16_t>(${fish.name}_plus_mask),`;
+    reinterpret_cast<int16_t>(${fish.name}_plus_mask),
+    ${fish.lengths[0]}, // minLength;
+    ${fish.lengths[1]}, // maxLength`;
     });
 
     return `const int16_t PROGMEM fish_templates_16t[] = {

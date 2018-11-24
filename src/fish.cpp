@@ -21,6 +21,7 @@ void Fish::loadFish(FishType fishType, Fish& fish) {
     fish.nameLength = pgm_read_byte(offset + 8);
     fish.bmpWidth = pgm_read_byte(offset + 9);
 
+
     const int16_t* offset16 = fish_templates_16t + static_cast<int8_t>(fishType) * NUM_16T_PROPS;
 
     fish.minX = pgm_read_word(offset16);
@@ -28,4 +29,11 @@ void Fish::loadFish(FishType fishType, Fish& fish) {
 
     fish.nameString = reinterpret_cast<const uint8_t*>(pgm_read_word(offset16 + 2));
     fish.bmp = reinterpret_cast<const uint8_t*>(pgm_read_word(offset16 + 3));
+
+    fish.minLength = pgm_read_byte(offset16 + 4);
+    fish.maxLength = pgm_read_byte(offset16 + 5);
+}
+
+void Fish::rollForLength() {
+    length = random(minLength, maxLength + 1);
 }

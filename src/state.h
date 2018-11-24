@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include <EEPROM.h>
 #include "fishType.h"
+#include "fish.h"
 
 const uint8_t GAME_ID = 90;
 const uint8_t EEPROM_START = 64;
@@ -13,6 +14,7 @@ struct GameState {
     uint16_t money;
     bool acquiredFish[static_cast<int8_t>(FishType::COUNT)];
     int16_t currentFishCount[static_cast<int8_t>(FishType::COUNT)];
+    int16_t bestLength[static_cast<int8_t>(FishType::COUNT)];
     bool hasProPole;
     bool hasOars;
     bool canBuyMeat;
@@ -26,6 +28,7 @@ class State {
         static void setFishAcquired(FishType fishType);
         static void incrementCurrentCount(FishType fishType);
         static void decreaseCurrentCount(FishType fishType, uint8_t count);
+        static void setFishLength(Fish& fish);
         static void sellAllFish();
 
         static bool hasUserSaved();

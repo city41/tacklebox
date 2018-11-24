@@ -26,6 +26,12 @@ enum class MenuRow: int8_t {
     COUNT
 };
 
+enum class CollectionColumn: int8_t {
+    Quantity,
+    Length,
+    COUNT
+};
+
 class Player {
     typedef void (Player::*UpdatePtr)(uint8_t);
     typedef void (Player::*RenderPtr)(uint8_t);
@@ -46,6 +52,7 @@ class Player {
         bool areYouSure;
         uint8_t saveToastCount;
         int8_t currentCollectionRow;
+        CollectionColumn currentCollectionColumn;
 
         Fish currentFish;
         BaitType currentBait;
@@ -68,6 +75,7 @@ class Player {
             menuRow(MenuRow::COLLECTION),
             saveToastCount(0),
             currentCollectionRow(0),
+            currentCollectionColumn(CollectionColumn::Quantity),
             areYouSure(false),
             currentUpdate(&Player::updateWalk),
             currentRender(&Player::renderWalk)

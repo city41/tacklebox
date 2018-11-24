@@ -34,6 +34,7 @@ void State::load() {
         for (int8_t i = 0; i < static_cast<int8_t>(FishType::COUNT); ++i) {
             gameState.acquiredFish[i] = false;
             gameState.currentFishCount[i] = 0;
+            gameState.bestLength[i] = 0;
         }
     }
 }
@@ -48,6 +49,12 @@ void State::incrementCurrentCount(FishType fishType) {
 
 void State::decreaseCurrentCount(FishType fishType, uint8_t count) {
     gameState.currentFishCount[static_cast<int8_t>(fishType)] -= count;
+}
+
+void State::setFishLength(Fish& fish) {
+    int8_t index = static_cast<int8_t>(fish.type);
+    int16_t currentLength = gameState.bestLength[index];
+    gameState.bestLength[index] = max(currentLength, fish.length);
 }
 
 void State::sellAllFish() {

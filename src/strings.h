@@ -75,6 +75,30 @@ const uint8_t collection_string[8] PROGMEM = {
 };
 
 
+// "CURRENT QUANTITY"
+const uint8_t quantity_string[17] PROGMEM = {
+    13, 31, 28, 28, 15, 24, 30, 0, 27, 31, 11, 24, 30, 19, 30, 35, 0xFF
+};
+
+
+// "BEST LENGTH CM"
+const uint8_t length_string[15] PROGMEM = {
+    12, 15, 29, 30, 0, 22, 15, 24, 17, 30, 18, 0, 13, 23, 0xFF
+};
+
+
+// "CM"
+const uint8_t cm_string[3] PROGMEM = {
+    13, 23, 0xFF
+};
+
+
+// "*"
+const uint8_t checkmark_string[2] PROGMEM = {
+    37, 0xFF
+};
+
+
 // "DELETE"
 const uint8_t delete_string[7] PROGMEM = {
     14, 15, 22, 15, 30, 15, 0xFF
