@@ -9,6 +9,7 @@
 #include "util.h"
 #include "fishTemplates.h"
 #include "enumUtils.h"
+#include "world.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -350,6 +351,10 @@ void Player::updateScanning(uint8_t frame) {
         cursorY = min(max(cursorY, y - 16), y + 24);
         cursorX = min(max(cursorX, x - 16), x + 24);
     }
+
+    // make sure cursor doesn't leave the map
+    cursorX = max(min(MAP_WIDTH_PX - 16, cursorX), 0);
+    cursorY = max(min(MAP_HEIGHT_PX - 8, cursorY), 0);
 }
 
 void Player::renderScanning(uint8_t frame) {
