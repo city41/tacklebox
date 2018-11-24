@@ -46,7 +46,7 @@ void Game::updateTitle(uint8_t frame) {
 }
 
 void Game::renderTitle(uint8_t frame) {
-    renderer.drawOverwrite(20, 16, logo_tiles, 0);
+    renderer.drawOverwrite(17, 16, logo_tiles, 0);
     renderer.drawOverwrite(WIDTH - 24, HEIGHT - 8, city41Logo_tiles, 0);
 }
 
