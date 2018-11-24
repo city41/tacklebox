@@ -261,14 +261,19 @@ void Shop::renderSell(uint8_t frame) {
     uint16_t moneyAmount = 0;
 
     Fish fish;
-    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::COUNT); ++f) {
+    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::OLDBOOT); ++f) {
         Fish::loadFish(static_cast<FishType>(f), fish);
         moneyAmount += State::gameState.currentFishCount[f] * fish.value;
     }
 
     if (moneyAmount == 0) {
-        renderer.drawString(24, 30, youHaveNoFish_string);
-        renderer.drawString(24, 38, toSellMe_string);
+        const uint8_t* str = youHaveNoFish_string;
+
+        if (State::gameState.currentFishCount[static_cast<int8_t>(FishType::OLDBOOT)] > 0) {
+            str = notBuyingBoots_string;
+        }
+
+        renderer.drawString(24, 30, str);
     } else {
         renderer.drawString(20, 30, sellFor_string);
 

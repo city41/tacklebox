@@ -272,6 +272,19 @@
             "habitats": ["BEGINNER", "OCEAN_ISLAND"],
             "ratio": 10,
             "value": 255
+        },
+        {
+            "name": "OLDBOOT",
+            "baitPreference": {
+                "WORM": 0,
+                "GRUB": 0,
+                "SHRIMP": 0,
+                "MEAT": 0
+            },
+            "activeHours": [30, 30],
+            "habitats": ["BEGINNER"],
+            "ratio": 0,
+            "value": 0
         }
     ]
 }

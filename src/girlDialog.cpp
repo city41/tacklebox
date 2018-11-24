@@ -49,7 +49,7 @@ void GirlDialog::update() {
         State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= 5 &&
         arduboy.justPressed(A_BUTTON)
     ) {
-        State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] -= 5;
+        State::decreaseCurrentCount(FishType::LOBSTER, 5);
         State::gameState.canBuyMeat = true;
     }
     else if (

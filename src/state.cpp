@@ -52,7 +52,7 @@ void State::decreaseCurrentCount(FishType fishType, uint8_t count) {
 
 void State::sellAllFish() {
     Fish fish;
-    for (uint8_t f = 0; f < static_cast<uint8_t>(FishType::COUNT); ++f) {
+    for (uint8_t f = 0; f < static_cast<uint8_t>(FishType::OLDBOOT); ++f) {
         Fish::loadFish(static_cast<FishType>(f), fish);
         gameState.money += gameState.currentFishCount[f] * fish.value;
         gameState.currentFishCount[f] = 0;

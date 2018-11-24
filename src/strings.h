@@ -159,15 +159,15 @@ const uint8_t adviceFor_string[19] PROGMEM = {
 };
 
 
-// "YOU HAVE NO FISH"
-const uint8_t youHaveNoFish_string[17] PROGMEM = {
-    35, 25, 31, 0, 18, 11, 32, 15, 0, 24, 25, 0, 16, 19, 29, 18, 0xFF
+// "YOU HAVE NO FISH\nTO SELL ME"
+const uint8_t youHaveNoFish_string[28] PROGMEM = {
+    35, 25, 31, 0, 18, 11, 32, 15, 0, 24, 25, 0, 16, 19, 29, 18, 40, 30, 25, 0, 29, 15, 22, 22, 0, 23, 15, 0xFF
 };
 
 
-// "TO SELL TO ME"
-const uint8_t toSellMe_string[14] PROGMEM = {
-    30, 25, 0, 29, 15, 22, 22, 0, 30, 25, 0, 23, 15, 0xFF
+// "I AM NOT BUYING\nTHOSE CRUSTY BOOTS"
+const uint8_t notBuyingBoots_string[35] PROGMEM = {
+    19, 0, 11, 23, 0, 24, 25, 30, 0, 12, 31, 35, 19, 24, 17, 40, 30, 18, 25, 29, 15, 0, 13, 28, 31, 29, 30, 35, 0, 12, 25, 25, 30, 29, 0xFF
 };
 
 
