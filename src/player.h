@@ -15,8 +15,8 @@ struct FishDiceRoll {
 
 const int8_t MAX_FISH_IN_ROLL = static_cast<int8_t>(FishType::COUNT);
 
-const int16_t STARTING_X = 26 * 16;
-const int16_t STARTING_Y = 2 * 16;
+const int16_t STARTING_X = 25 * 16;
+const int16_t STARTING_Y = 17 * 16;
 
 enum class MenuRow: int8_t {
     COLLECTION,

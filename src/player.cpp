@@ -36,7 +36,7 @@ void Player::reset() {
 }
 
 bool Player::isOnSolidTile() {
-    return !TileFloor::isWalkable(TileFloor::getTileAt(x + 8, y + 8));
+    return !TileFloor::isWalkable(TileFloor::getTileAt(x + 8, y + 14));
 }
 
 void Player::updateWalk(uint8_t frame) {

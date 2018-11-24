@@ -1,5 +1,7 @@
 #pragma once
 
+#include "worm.h"
+
 const uint8_t MAX_WORMS = 12;
 
 Worm worms[MAX_WORMS] = {

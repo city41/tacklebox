@@ -9,6 +9,7 @@
 #include "hud.h"
 #include "shop.h"
 #include "worms.h"
+#include "signs.h"
 #include "girl.h"
 #include "boat.h"
 #include "util.h"
@@ -53,12 +54,12 @@ bool isOnScreen(int16_t refX, int16_t refY, int16_t x, int16_t y) {
         (refY - HEIGHT / 2 <= y && refY + HEIGHT / 2 >= y);
 }
 
-bool overlap(Player& player, Worm& worm) {
+bool overlap(Player& player, const int16_t otherX, const int16_t otherY, const int8_t otherW, const int8_t otherH) {
     return !(
-        worm.x     >= player.x + 16  ||
-        worm.x + 8 <= player.x       ||
-        worm.y     >= player.y + 16  ||
-        worm.y + 8 <= player.y
+        otherX          >= player.x + 16  ||
+        otherX + otherW <= player.x       ||
+        otherY          >= player.y + 16  ||
+        otherY + otherH <= player.y
     );
 }
 
@@ -76,13 +77,13 @@ bool Game::isOnBoat() {
     if (Boat::currentDock == Dock::Beach) {
         return (
             player.dir == UP &&
-            player.x >= Boat::x &&
+            player.x >= Boat::x - 4 &&
             player.y >= Boat::y
         );
     } else {
         return (
             player.dir == UP &&
-            player.x <= Boat::x &&
+            player.x <= Boat::x + 4 &&
             player.y >= Boat::y
         );
     }
@@ -125,10 +126,24 @@ void Game::updatePlay(uint8_t frame) {
         justBecameActive = isActive && !isOnScreen(player.prevX, player.prevY, worms[w].x, worms[w].y);
         worms[w].update(frame, isActive, justBecameActive);
 
-        if (overlap(player, worms[w])) {
+        if (overlap(player, worms[w].x, worms[w].y, 8, 8)) {
             player.onGetWorm(worms[w]);
             worms[w].onGrabbedByPlayer();
         }
+    }
+
+
+
+    for (uint8_t s = 0; s < MAX_SIGNS; ++s) {
+        if (overlap(player, signs[s].x, signs[s].y, 12, 6)) {
+            player.undoMove();
+            currentSignMessage = signs[s].message;
+            currentSignMessageCount = 90;
+        }
+    }
+
+    if (currentSignMessageCount > 0) {
+        currentSignMessageCount -= 1;
     }
 }
 
@@ -163,11 +178,11 @@ void Game::renderPlay(uint8_t frame) {
     renderer.translateY = translateY;
 
     for (uint8_t w = 0; w < MAX_WORMS; ++w) {
-        bool isActive = isOnScreen(player.x, player.y, worms[w].x, worms[w].y);
+        worms[w].render(frame);
+    }
 
-        if (isActive) {
-            worms[w].render(frame);
-        }
+    for (uint8_t s = 0; s < MAX_SIGNS; ++s) {
+        signs[s].render();
     }
 
     Girl::render(frame);
@@ -182,6 +197,14 @@ void Game::renderPlay(uint8_t frame) {
     renderer.translateX = WIDTH - 64;
     renderer.translateY = 0;
     Hud::render(player);
+
+    if (currentSignMessageCount > 0) {
+        renderer.translateX = 0;
+        renderer.translateY = 0;
+        renderer.fillRect(0, HEIGHT - 6, WIDTH, 6, BLACK);
+        renderer.drawString(1, HEIGHT - 5, currentSignMessage);
+    }
+
 }
 
 void Game::updateShop(uint8_t frame) {
@@ -218,6 +241,7 @@ void Game::renderBoatTravel(uint8_t frame) {
 
     TileFloor::renderCenteredOn(boatX, boatY);
 
+
     int16_t translateX;
     int16_t translateY;
 
@@ -240,8 +264,11 @@ void Game::renderBoatTravel(uint8_t frame) {
 
     renderer.translateX = translateX;
     renderer.translateY = translateY;
-    LOGV(Boat::x);
-    LOGV(Boat::y);
+
+    for (uint8_t s = 0; s < MAX_SIGNS; ++s) {
+        signs[s].render();
+    }
+
     Boat::render(frame);
 }
 

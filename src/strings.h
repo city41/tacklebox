@@ -304,4 +304,22 @@ const uint8_t noMoreAdvice_string[16] PROGMEM = {
     35, 25, 31, 0, 21, 24, 25, 33, 0, 19, 30, 0, 11, 22, 22, 0xFF
 };
 
+
+// "HELP AT CITY41*GAMES*TB"
+const uint8_t signGameManual_string[24] PROGMEM = {
+    18, 15, 22, 26, 0, 11, 30, 0, 13, 19, 30, 35, 5, 2, 37, 17, 11, 23, 15, 29, 37, 30, 12, 0xFF
+};
+
+
+// "WARNING SHARKS"
+const uint8_t signSharkWarning_string[15] PROGMEM = {
+    33, 11, 28, 24, 19, 24, 17, 0, 29, 18, 11, 28, 21, 29, 0xFF
+};
+
+
+// "OCEAN FISH SPIT OUT WORMS"
+const uint8_t signOceanFish_string[26] PROGMEM = {
+    25, 13, 15, 11, 24, 0, 16, 19, 29, 18, 0, 29, 26, 19, 30, 0, 25, 31, 30, 0, 33, 25, 28, 23, 29, 0xFF
+};
+
 #endif
