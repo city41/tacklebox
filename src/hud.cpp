@@ -19,9 +19,8 @@ const uint8_t* const PROGMEM baitBmps[] = {
 void drawClock() {
     uint8_t hour = State::gameState.minute / 60;
 
-    if (hour >= 12) {
-        renderer.drawPlusMask(60, clockY, pm_plus_mask, 0);
-    }
+    const uint8_t* amPmBmp = hour >= 12 ? pm_plus_mask : am_plus_mask;
+    renderer.drawPlusMask(60, clockY, amPmBmp, 0);
 
     if (hour == 0) {
         hour = 12;

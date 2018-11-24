@@ -1,6 +1,15 @@
 #ifndef maskBitmaps_h
 #define maskBitmaps_h
 
+const uint8_t PROGMEM am_plus_mask[] = {
+    // width, height,
+    3, 8,
+    // frame 0 
+    0x0f,0x05,0x0f,
+    // mask 0 
+    0x0f,0x05,0x0f,
+};
+
 const uint8_t PROGMEM arrow_plus_mask[] = {
     // width, height,
     5, 8,
