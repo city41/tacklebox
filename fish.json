@@ -259,6 +259,19 @@
             "habitats": ["BEGINNER", "OCEAN_ISLAND"],
             "ratio": 10,
             "value": 255
+        },
+        {
+            "name": "GRTWHITE",
+            "baitPreference": {
+                "WORM": 1,
+                "GRUB": 0,
+                "SHRIMP": 0,
+                "MEAT": 1
+            },
+            "activeHours": [0, 23],
+            "habitats": ["BEGINNER", "OCEAN_ISLAND"],
+            "ratio": 10,
+            "value": 255
         }
     ]
 }
