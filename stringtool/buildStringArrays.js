@@ -7,7 +7,7 @@ module.exports = function buildStringArrays(stringEntries, encoding) {
         const actualBytes = getBytesForString(s.value, encoding);
 
         return `
-// "${s.value}"
+// "${s.value.replace(/\n/g, "\\n")}"
 const uint8_t ${s.key}_string[${actualBytes.length + 1}] PROGMEM = {
     ${actualBytes.join(", ")}, 0xFF
 };`;

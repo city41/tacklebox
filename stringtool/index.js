@@ -28,6 +28,8 @@ const stringArrays = buildStringArrays(jsonInput.strings, customEncoding);
 const cppSource = `#ifndef ${destBaseName}_h
 #define ${destBaseName}_h
 
+const uint8_t NEW_LINE = ${customEncoding["\n"]};
+
 ${fontArray}
 
 ${stringArrays}

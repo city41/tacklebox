@@ -31,17 +31,24 @@ void Renderer::drawPlusMask(int16_t x, int16_t y, const uint8_t* bitmap, uint8_t
 }
 
 void Renderer::drawString(int16_t x, int16_t y, const uint8_t* str) {
+    int16_t ogx = x;
     uint8_t ch = pgm_read_byte(str++);
 
     while (ch != 0xFF) {
-        const uint8_t frame = ch >> 1;
-        const int8_t offset = ch & 1 ? -4 : 0; 
-        const uint8_t* mask = offset ? font_tiles_lower_mask : font_tiles_upper_mask;
+        if (ch == NEW_LINE) {
+            y += 6;
+            x = ogx;
+        } else {
+            const uint8_t frame = ch >> 1;
+            const int8_t offset = ch & 1 ? -4 : 0; 
+            const uint8_t* mask = offset ? font_tiles_lower_mask : font_tiles_upper_mask;
 
-        drawBitmap(x + translateX, y + offset + translateY, font_tiles, mask, false, frame, 0, Invert, 0);
+            drawBitmap(x + translateX, y + offset + translateY, font_tiles, mask, false, frame, 0, Invert, 0);
+
+            x += 5;
+        }
 
         ch = pgm_read_byte(str++);
-        x += 5;
     }
 }
 

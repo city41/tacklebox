@@ -1,6 +1,8 @@
 #ifndef strings_h
 #define strings_h
 
+const uint8_t NEW_LINE = 40;
+
 const uint8_t PROGMEM font_tiles[] =  {
     // width, height
     4, 8,
@@ -42,6 +44,8 @@ const uint8_t PROGMEM font_tiles[] =  {
     0x86,0x39,0xb9,0x86,
     // 'Z' and '*'
     0xb6,0x72,0xb4,0xd6,
+    // '.' and '/'
+    0x7f,0xb7,0xdf,0xef,
 };
 
 const uint8_t PROGMEM font_tiles_upper_mask[] = {
@@ -113,9 +117,9 @@ const uint8_t sfxOff_string[4] PROGMEM = {
 };
 
 
-// "OPEN 4AM TO 10PM"
-const uint8_t openFromTo_string[17] PROGMEM = {
-    25, 26, 15, 24, 0, 5, 11, 23, 0, 30, 25, 0, 2, 1, 26, 23, 0xFF
+// "SHOP HOURS\n4AM TO MIDNIGHT"
+const uint8_t openFromTo_string[27] PROGMEM = {
+    29, 18, 25, 26, 0, 18, 25, 31, 28, 29, 40, 5, 11, 23, 0, 30, 25, 0, 23, 19, 14, 24, 19, 17, 18, 30, 0xFF
 };
 
 
@@ -305,9 +309,9 @@ const uint8_t noMoreAdvice_string[16] PROGMEM = {
 };
 
 
-// "HELP AT CITY41*GAMES*TB"
-const uint8_t signGameManual_string[24] PROGMEM = {
-    18, 15, 22, 26, 0, 11, 30, 0, 13, 19, 30, 35, 5, 2, 37, 17, 11, 23, 15, 29, 37, 30, 12, 0xFF
+// "HELP AT CITY41.GAMES/TBOX"
+const uint8_t signGameManual_string[26] PROGMEM = {
+    18, 15, 22, 26, 0, 11, 30, 0, 13, 19, 30, 35, 5, 2, 38, 17, 11, 23, 15, 29, 39, 30, 12, 25, 34, 0xFF
 };
 
 

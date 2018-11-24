@@ -6,7 +6,7 @@
  * where TACKLE_BOX_STRING is a constexpr that converts the string to this encoding, eliminating needing
  * stringtool at all
  */
-module.exports = " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ*"
+module.exports = " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ*./\n"
     .split("")
     .reduce((encoding, ch, index) => {
         encoding[ch] = index;

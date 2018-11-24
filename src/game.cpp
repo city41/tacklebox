@@ -138,7 +138,7 @@ void Game::updatePlay(uint8_t frame) {
         if (overlap(player, signs[s].x, signs[s].y, 12, 6)) {
             player.undoMove();
             currentSignMessage = signs[s].message;
-            currentSignMessageCount = 90;
+            currentSignMessageCount = 150;
         }
     }
 
