@@ -448,7 +448,7 @@ FishType Player::getFishThatBit() {
     uint8_t roll = random(0, maxPoints + maxPoints * 3);
     
     if (roll >= maxPoints) {
-        return FishType::UNSET;
+        return FishType::OLDBOOT;
     }
 
 
@@ -622,7 +622,7 @@ void Player::renderGetFish(uint8_t frame) {
     );
 
     // TODO: make this an Animation
-    uint8_t spriteIndex = (announceFishCount > ANNOUNCE_FISH_COUNT - 20 || announceFishCount < 30) ? 8 : 9;
+    uint8_t spriteIndex = (announceFishCount > ANNOUNCE_FISH_COUNT - 20 || announceFishCount < 30) ? 8 : currentFish.type == FishType::OLDBOOT ? 10 : 9;
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex);
 
     renderer.drawString(
