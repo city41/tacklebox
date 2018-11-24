@@ -60,7 +60,7 @@ void GirlDialog::update() {
             State::gameState.money -= MEAT_PRICE;
             State::gameState.baitCounts[static_cast<int8_t>(BaitType::Meat)] += 1;
         } else {
-            Sfx::play(Sfx::buzz);
+            Sfx::buzz();
         }
     }
 }

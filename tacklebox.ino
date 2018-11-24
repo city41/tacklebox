@@ -1,6 +1,5 @@
 #include <EEPROM.h>
 #include <Arduboy2.h>
-#include <ArduboyPlaytune.h>
 #include <math.h>
 
 #include "src/game.h"
@@ -9,7 +8,6 @@
 #include "src/sfx.h"
 
 Arduboy2Base arduboy;
-ArduboyPlaytune tones(arduboy.audio.enabled);
 
 Renderer renderer(arduboy);
 Game game;
@@ -17,7 +15,7 @@ Game game;
 void setup() {
     arduboy.boot();
     arduboy.audio.begin();
-    Sfx::init(&tones);
+    BeepPin1::begin();
     randomSeed(analogRead(0));
 
 #ifdef SERIAL_LOG
@@ -42,6 +40,7 @@ void loop() {
 
     arduboy.clear();
     arduboy.pollButtons();
+    BeepPin1::timer();
     
     game.update(loopCounter);
     game.render(loopCounter);

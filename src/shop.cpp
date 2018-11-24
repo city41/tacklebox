@@ -183,7 +183,9 @@ void buy(BuyMenu itemToBuy) {
     }
 
     if (buzz) {
-        Sfx::play(Sfx::buzz);
+        Sfx::buzz();
+    } else {
+        Sfx::purchase();
     }
 }
 
@@ -212,6 +214,7 @@ void Shop::renderBuy(uint8_t frame) {
     renderFrame();
 
     const uint8_t startY = 22;
+    
     const uint8_t startX = 24;
     const uint8_t spacing = 10;
 
@@ -249,7 +252,12 @@ void Shop::updateSell(uint8_t frame) {
     }
 
     if (arduboy.justPressed(A_BUTTON)) {
-        State::sellAllFish();
+        bool soldSomething = State::sellAllFish();
+
+        if (soldSomething) {
+            Sfx::purchase();
+        }
+
         Shop::currentUpdate = &Shop::updateMainMenu;
         Shop::currentRender = &Shop::renderMainMenu;
     }
@@ -301,8 +309,10 @@ void Shop::updateAdvice(uint8_t frame) {
 
             State::gameState.adviceLevel += 1;
             showAdvice = true;
+
+            Sfx::purchase();
         } else {
-            Sfx::play(Sfx::buzz);
+            Sfx::buzz();
         }
     }
 }

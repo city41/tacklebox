@@ -238,14 +238,17 @@ void Player::renderAreYouSure(uint8_t frame) {
 void Player::updateCollection(uint8_t frame) {
     if (arduboy.justPressed(DOWN_BUTTON)) {
         currentCollectionRow = min(static_cast<int8_t>(FishType::COUNT) - 2, currentCollectionRow + 1);
+        Sfx::menuTick();
     }
 
     if (arduboy.justPressed(UP_BUTTON)) {
         currentCollectionRow = max(0, currentCollectionRow - 1);
+        Sfx::menuTick();
     }
 
     if (arduboy.justPressed(RIGHT_BUTTON) || arduboy.justPressed(LEFT_BUTTON)) {
         currentCollectionColumn = next(currentCollectionColumn);
+        Sfx::menuTick();
     }
 
     if (arduboy.justPressed(B_BUTTON)) {
@@ -531,9 +534,10 @@ void Player::updateReel(uint8_t frame) {
         reelLevel = max(reelLevel - 7, 0);
     }
 
-    /* if (arduboy.justPressed(A_BUTTON)) { */
-    if (arduboy.pressed(A_BUTTON)) {
-        reelLevel = min(WIDTH - 2, reelLevel + 5);
+    if (arduboy.justPressed(A_BUTTON)) {
+        Sfx::menuTick();
+        uint8_t pullLevel = State::gameState.hasProPole ? 15 : 10;
+        reelLevel = min(WIDTH - 2, reelLevel + pullLevel);
     }
 
     if (reelLevel == 0) {
@@ -548,6 +552,13 @@ void Player::updateReel(uint8_t frame) {
         State::setFishLength(currentFish);
 
         announceFishCount = ANNOUNCE_FISH_COUNT;
+
+        if (currentFish.type == FishType::OLDBOOT) {
+            Sfx::buzz();
+        } else {
+            Sfx::gotFish();
+        }
+
         currentUpdate = &Player::updateGetFish;
         currentRender = &Player::renderGetFish;
     }
@@ -701,6 +712,7 @@ void Player::render(uint8_t frame) {
 void Player::onGetWorm(Worm& worm) {
     if (worm.isSpawned && State::gameState.baitCounts[0] < 254) {
         State::gameState.baitCounts[0] +=1;
+        Sfx::purchase();
     }
 }
 

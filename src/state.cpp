@@ -25,7 +25,7 @@ void State::load() {
         gameState.baitCounts[1] = 0;
         gameState.baitCounts[2] = 0;
         gameState.baitCounts[3] = 0;
-        gameState.money = 0;
+        gameState.money = 500;
         gameState.hasProPole = false;
         gameState.hasOars = true;
         gameState.canBuyMeat = false;
@@ -57,13 +57,20 @@ void State::setFishLength(Fish& fish) {
     gameState.bestLength[index] = max(currentLength, fish.length);
 }
 
-void State::sellAllFish() {
+bool State::sellAllFish() {
     Fish fish;
+    bool soldSomething = false;
+
     for (uint8_t f = 0; f < static_cast<uint8_t>(FishType::OLDBOOT); ++f) {
         Fish::loadFish(static_cast<FishType>(f), fish);
+
+        soldSomething = soldSomething || gameState.currentFishCount[f] > 0;
+
         gameState.money += gameState.currentFishCount[f] * fish.value;
         gameState.currentFishCount[f] = 0;
     }
+
+    return soldSomething;
 }
 
 void State::clearEEPROM() {

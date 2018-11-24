@@ -29,7 +29,7 @@ class State {
         static void incrementCurrentCount(FishType fishType);
         static void decreaseCurrentCount(FishType fishType, uint8_t count);
         static void setFishLength(Fish& fish);
-        static void sellAllFish();
+        static bool sellAllFish();
 
         static bool hasUserSaved();
         static void saveToEEPROM();
