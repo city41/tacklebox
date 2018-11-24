@@ -13,6 +13,7 @@ class Fish {
         uint8_t ratio;
         uint8_t value;
         uint8_t pull;
+        bool deepWater;
         
         int16_t minX;
         int16_t maxX;

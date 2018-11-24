@@ -3,15 +3,15 @@ const minXes = {
     ADVANCED: 6 * 16,
     BEGINNER: 23 * 16,
     OCEAN: 37 * 16,
-    OCEAN_ISLAND: 40 * 16
+    OCEAN_ISLAND: 42 * 16
 };
 
 const maxXes = {
     CORNER: 5 * 16,
     ADVANCED: 20 * 16,
-    BEGINNER: 27 * 16,
-    OCEAN: 39 * 16,
-    OCEAN_ISLAND: 46 * 16
+    BEGINNER: 28 * 16,
+    OCEAN: 41 * 16,
+    OCEAN_ISLAND: 50 * 16
 };
 
 module.exports = {

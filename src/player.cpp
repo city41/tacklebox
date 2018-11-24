@@ -412,8 +412,9 @@ void Player::updateCast(uint8_t frame) {
         return;
     }
 
+    TileDef tileBeingFished = TileFloor::getTileAt(cursorX + 4, cursorY + 4);
 
-    FishType fishType = getFishThatBit();
+    FishType fishType = getFishThatBit(tileBeingFished == TileDef::PondMiddleDeep);
     LOGV(static_cast<int8_t>(fishType));
 
     if (fishType != FishType::UNSET) {
@@ -425,27 +426,34 @@ void Player::updateCast(uint8_t frame) {
     }
 }
 
-uint8_t Player::getPointsForFish(Fish& fish) {
+uint8_t Player::getPointsForFish(Fish& fish, bool isDeepWater) {
     uint8_t hour = State::getCurrentHour();
+
+    if (isDeepWater && !fish.deepWater) {
+        LOG("fish is not deep water");
+        return 0;
+    }
 
     if (hour < fish.minHour || hour > fish.maxHour) {
         LOG("hour out of range");
         return 0;
     }
 
+    LOGV(cursorX);
     if (cursorX < fish.minX || cursorX > fish.maxX) {
         LOG("x out of range");
         return 0;
     }
 
     if (fish.baitPreferences[static_cast<uint8_t>(currentBait)] == 0) {
+        LOG("fish doesnt like the bait");
         return 0;
     }
 
     return fish.ratio;
 }
 
-FishType Player::getFishThatBit() {
+FishType Player::getFishThatBit(bool isDeepWater) {
     Fish fish;
     uint8_t diceRollIndex = 0;
     uint8_t maxPoints = 0;
@@ -456,7 +464,7 @@ FishType Player::getFishThatBit() {
 
         Fish::loadFish(fishType, fish);
 
-        uint8_t points = getPointsForFish(fish);
+        uint8_t points = getPointsForFish(fish, isDeepWater);
         LOGV(points);
 
         if (points > 0) {

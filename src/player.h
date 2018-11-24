@@ -119,7 +119,7 @@ class Player {
         void moveTo(int16_t newX, int16_t newY, boolean resetPrev = false);
         void undoMove();
 
-        FishType getFishThatBit();
-        uint8_t getPointsForFish(Fish& fish);
+        FishType getFishThatBit(bool isDeepWater);
+        uint8_t getPointsForFish(Fish& fish, bool isDeepWater);
 };
 

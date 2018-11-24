@@ -22,6 +22,7 @@ void Fish::loadFish(FishType fishType, Fish& fish) {
     fish.bmpWidth = pgm_read_byte(offset + 9);
 
     fish.pull = pgm_read_byte(offset + 10);
+    fish.deepWater = pgm_read_byte(offset + 11) == 1;
 
     const int16_t* offset16 = fish_templates_16t + static_cast<int8_t>(fishType) * NUM_16T_PROPS;
 
