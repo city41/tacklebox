@@ -292,7 +292,7 @@ void Player::renderCollection(uint8_t frame) {
             }
 
             renderer.drawNumber(92, startY + spacing * offset + 9, numArray[f]);
-            renderer.drawPlusMask(44, startY + spacing * offset, fishBmp, 0, 0, Invert);
+            renderer.drawOverwrite(44, startY + spacing * offset, fishBmp, 0);
             renderer.drawString(44, startY + spacing * offset + 9, fishString);
         } else {
             renderer.drawOverwrite(44, startY + spacing * offset + 7, questionMark_tiles, 0);
@@ -651,13 +651,11 @@ void Player::renderGetFish(uint8_t frame) {
     renderer.fillRect(x - 12, y, GET_FISH_FRAME_WIDTH - 2, 17, WHITE);
 
 
-    renderer.drawPlusMask(
+    renderer.drawOverwrite(
         x - 13 + (GET_FISH_FRAME_WIDTH / 2 - currentFish.bmpWidth / 2),
         y - 10,
         currentFish.bmp,
-        0,
-        0,
-        Invert
+        0
     );
 
     // TODO: make this an Animation

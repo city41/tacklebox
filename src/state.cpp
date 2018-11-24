@@ -21,7 +21,7 @@ void State::load() {
     } else {
         // start the game at 4pm
         gameState.minute = 16 * 60;
-        gameState.baitCounts[0] = 0;
+        gameState.baitCounts[0] = 100;
         gameState.baitCounts[1] = 0;
         gameState.baitCounts[2] = 0;
         gameState.baitCounts[3] = 0;
@@ -32,7 +32,7 @@ void State::load() {
         gameState.adviceLevel = 0;
 
         for (int8_t i = 0; i < static_cast<int8_t>(FishType::COUNT); ++i) {
-            gameState.acquiredFish[i] = false;
+            gameState.acquiredFish[i] = true;
             gameState.currentFishCount[i] = 0;
             gameState.bestLength[i] = 0;
         }

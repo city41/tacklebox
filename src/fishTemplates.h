@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "maskBitmaps.h"
+#include "nonMaskBitmaps.h"
 
 const uint8_t NUM_U8T_PROPS = 11;
 const uint8_t NUM_16T_PROPS = 6;
@@ -391,7 +391,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(GOLDFISH_string),
-    reinterpret_cast<int16_t>(GOLDFISH_plus_mask),
+    reinterpret_cast<int16_t>(GOLDFISH_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -399,7 +399,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(GUPPY_string),
-    reinterpret_cast<int16_t>(GUPPY_plus_mask),
+    reinterpret_cast<int16_t>(GUPPY_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -407,7 +407,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(MINNOW_string),
-    reinterpret_cast<int16_t>(MINNOW_plus_mask),
+    reinterpret_cast<int16_t>(MINNOW_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -415,7 +415,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(BETA_string),
-    reinterpret_cast<int16_t>(BETA_plus_mask),
+    reinterpret_cast<int16_t>(BETA_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -423,7 +423,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(TROUT_string),
-    reinterpret_cast<int16_t>(TROUT_plus_mask),
+    reinterpret_cast<int16_t>(TROUT_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -431,7 +431,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(BASS_string),
-    reinterpret_cast<int16_t>(BASS_plus_mask),
+    reinterpret_cast<int16_t>(BASS_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -439,7 +439,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(BLUEGILL_string),
-    reinterpret_cast<int16_t>(BLUEGILL_plus_mask),
+    reinterpret_cast<int16_t>(BLUEGILL_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -447,7 +447,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(CATFISH_string),
-    reinterpret_cast<int16_t>(CATFISH_plus_mask),
+    reinterpret_cast<int16_t>(CATFISH_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -455,7 +455,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(FLOUNDER_string),
-    reinterpret_cast<int16_t>(FLOUNDER_plus_mask),
+    reinterpret_cast<int16_t>(FLOUNDER_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -463,7 +463,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(CRAB_string),
-    reinterpret_cast<int16_t>(CRAB_plus_mask),
+    reinterpret_cast<int16_t>(CRAB_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -471,7 +471,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(OCTOPUS_string),
-    reinterpret_cast<int16_t>(OCTOPUS_plus_mask),
+    reinterpret_cast<int16_t>(OCTOPUS_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -479,7 +479,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(GROUPER_string),
-    reinterpret_cast<int16_t>(GROUPER_plus_mask),
+    reinterpret_cast<int16_t>(GROUPER_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -487,7 +487,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(SEAHORSE_string),
-    reinterpret_cast<int16_t>(SEAHORSE_plus_mask),
+    reinterpret_cast<int16_t>(SEAHORSE_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -495,7 +495,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(EEL_string),
-    reinterpret_cast<int16_t>(EEL_plus_mask),
+    reinterpret_cast<int16_t>(EEL_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -503,7 +503,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(SARDINE_string),
-    reinterpret_cast<int16_t>(SARDINE_plus_mask),
+    reinterpret_cast<int16_t>(SARDINE_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -511,7 +511,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(CRAWFISH_string),
-    reinterpret_cast<int16_t>(CRAWFISH_plus_mask),
+    reinterpret_cast<int16_t>(CRAWFISH_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -519,7 +519,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(FANGTOOTH_string),
-    reinterpret_cast<int16_t>(FANGTOOTH_plus_mask),
+    reinterpret_cast<int16_t>(FANGTOOTH_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -527,7 +527,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(LOBSTER_string),
-    reinterpret_cast<int16_t>(LOBSTER_plus_mask),
+    reinterpret_cast<int16_t>(LOBSTER_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -535,7 +535,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(MARLIN_string),
-    reinterpret_cast<int16_t>(MARLIN_plus_mask),
+    reinterpret_cast<int16_t>(MARLIN_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -543,7 +543,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     736, // max X
     reinterpret_cast<int16_t>(SHARK_string),
-    reinterpret_cast<int16_t>(SHARK_plus_mask),
+    reinterpret_cast<int16_t>(SHARK_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -551,7 +551,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     736, // max X
     reinterpret_cast<int16_t>(GRTWHITE_string),
-    reinterpret_cast<int16_t>(GRTWHITE_plus_mask),
+    reinterpret_cast<int16_t>(GRTWHITE_tiles),
     1, // minLength;
     10, // maxLength
 
@@ -559,7 +559,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     368, // min X
     432, // max X
     reinterpret_cast<int16_t>(OLDBOOT_string),
-    reinterpret_cast<int16_t>(OLDBOOT_plus_mask),
+    reinterpret_cast<int16_t>(OLDBOOT_tiles),
     1, // minLength;
     10, // maxLength
 };

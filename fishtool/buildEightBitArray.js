@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 function getFishWidth(name) {
-    const files = fs.readdirSync("./maskPngs");
+    const files = fs.readdirSync("./nonMaskPngs");
     const file = files.find(f => f.startsWith(name));
 
     // GOLDFISH_8x8 -> ['GOLDFISH', '8x8'] -> 8
