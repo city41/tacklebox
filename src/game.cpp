@@ -69,7 +69,7 @@ bool Game::isOnShopDoor() {
         player.dir == UP &&
         player.y <= 20 &&
         (
-            TileFloor::getTileAt(player.x + 8, player.y) == ShopDoor
+            TileFloor::getTileAt(player.x + 8, player.y) == TileDef::ShopDoor
         )
     );
 }
@@ -163,7 +163,7 @@ void Game::renderPlay(uint8_t frame) {
     int16_t centerX = min(max(WIDTH / 2, player.x), MAP_WIDTH_PX - WIDTH / 2);
     int16_t centerY = min(max(HEIGHT / 2, player.y), MAP_HEIGHT_PX - HEIGHT / 2);
 
-    TileFloor::renderCenteredOn(centerX, centerY);
+    TileFloor::renderCenteredOn(centerX, centerY, frame);
 
     // translate the renderer based on the player's location
     // essentially the same as translating a camera in a 3d game
@@ -266,7 +266,7 @@ void Game::renderBoatTravel(uint8_t frame) {
     const int16_t boatX = Boat::x + 2;
     const int16_t boatY = Boat::y + 16;
 
-    TileFloor::renderCenteredOn(boatX, boatY);
+    TileFloor::renderCenteredOn(boatX, boatY, frame);
 
 
     int16_t translateX;
