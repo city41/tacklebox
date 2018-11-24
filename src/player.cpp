@@ -531,13 +531,13 @@ void Player::renderCast(uint8_t frame) {
 
 void Player::updateReel(uint8_t frame) {
     if (frame % 30 == 0) {
-        reelLevel = max(reelLevel - 7, 0);
+        reelLevel = max(reelLevel - currentFish.pull, 0);
     }
 
     if (arduboy.justPressed(A_BUTTON)) {
         Sfx::menuTick();
-        uint8_t pullLevel = State::gameState.hasProPole ? 15 : 10;
-        reelLevel = min(WIDTH - 2, reelLevel + pullLevel);
+        uint8_t playerPull = State::gameState.hasProPole ? 15 : 10;
+        reelLevel = min(WIDTH - 2, reelLevel + playerPull);
     }
 
     if (reelLevel == 0) {

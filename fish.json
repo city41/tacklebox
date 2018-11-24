@@ -11,6 +11,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -25,6 +26,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -39,6 +41,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -53,6 +56,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -67,6 +71,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -81,6 +86,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -95,6 +101,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -109,6 +116,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -123,6 +131,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -137,6 +146,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -151,6 +161,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -165,6 +176,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -179,6 +191,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -193,6 +206,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -207,6 +221,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -221,6 +236,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -235,6 +251,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -249,6 +266,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -263,6 +281,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -277,6 +296,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER", "OCEAN_ISLAND"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -291,6 +311,7 @@
             "activeHours": [0, 23],
             "habitats": ["BEGINNER", "OCEAN_ISLAND"],
             "ratio": 10,
+            "pull": 7,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -305,6 +326,7 @@
             "activeHours": [30, 30],
             "habitats": ["BEGINNER"],
             "ratio": 0,
+            "pull": 7,
             "value": 0,
             "lengths": [1, 10]
         }

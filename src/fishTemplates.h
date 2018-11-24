@@ -3,7 +3,7 @@
 
 #include "maskBitmaps.h"
 
-const uint8_t NUM_U8T_PROPS = 10;
+const uint8_t NUM_U8T_PROPS = 11;
 const uint8_t NUM_16T_PROPS = 6;
 
 
@@ -20,6 +20,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     8, // nameLength
     8, // bmpWidth
+    7, // pull
 
     // GUPPY
     0,  // minHour
@@ -32,6 +33,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     5, // nameLength
     8, // bmpWidth
+    7, // pull
 
     // MINNOW
     0,  // minHour
@@ -44,6 +46,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     6, // nameLength
     4, // bmpWidth
+    7, // pull
 
     // BETA
     0,  // minHour
@@ -56,6 +59,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     4, // nameLength
     8, // bmpWidth
+    7, // pull
 
     // TROUT
     0,  // minHour
@@ -68,6 +72,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     5, // nameLength
     10, // bmpWidth
+    7, // pull
 
     // BASS
     0,  // minHour
@@ -80,6 +85,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     4, // nameLength
     12, // bmpWidth
+    7, // pull
 
     // BLUEGILL
     0,  // minHour
@@ -92,6 +98,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     8, // nameLength
     12, // bmpWidth
+    7, // pull
 
     // CATFISH
     0,  // minHour
@@ -104,6 +111,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     7, // nameLength
     12, // bmpWidth
+    7, // pull
 
     // FLOUNDER
     0,  // minHour
@@ -116,6 +124,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     8, // nameLength
     12, // bmpWidth
+    7, // pull
 
     // CRAB
     0,  // minHour
@@ -128,6 +137,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     4, // nameLength
     12, // bmpWidth
+    7, // pull
 
     // OCTOPUS
     0,  // minHour
@@ -140,6 +150,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     7, // nameLength
     14, // bmpWidth
+    7, // pull
 
     // GROUPER
     0,  // minHour
@@ -152,6 +163,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     7, // nameLength
     16, // bmpWidth
+    7, // pull
 
     // SEAHORSE
     0,  // minHour
@@ -164,6 +176,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     8, // nameLength
     4, // bmpWidth
+    7, // pull
 
     // EEL
     0,  // minHour
@@ -176,6 +189,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     3, // nameLength
     16, // bmpWidth
+    7, // pull
 
     // SARDINE
     0,  // minHour
@@ -188,6 +202,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     7, // nameLength
     5, // bmpWidth
+    7, // pull
 
     // CRAWFISH
     0,  // minHour
@@ -200,6 +215,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     8, // nameLength
     8, // bmpWidth
+    7, // pull
 
     // FANGTOOTH
     0,  // minHour
@@ -212,6 +228,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     9, // nameLength
     12, // bmpWidth
+    7, // pull
 
     // LOBSTER
     0,  // minHour
@@ -224,6 +241,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     7, // nameLength
     11, // bmpWidth
+    7, // pull
 
     // MARLIN
     0,  // minHour
@@ -236,6 +254,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     6, // nameLength
     20, // bmpWidth
+    7, // pull
 
     // SHARK
     0,  // minHour
@@ -248,6 +267,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     5, // nameLength
     24, // bmpWidth
+    7, // pull
 
     // GRTWHITE
     0,  // minHour
@@ -260,6 +280,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     255,  // value
     8, // nameLength
     30, // bmpWidth
+    7, // pull
 
     // OLDBOOT
     30,  // minHour
@@ -272,6 +293,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // value
     7, // nameLength
     6, // bmpWidth
+    7, // pull
 };
 
 

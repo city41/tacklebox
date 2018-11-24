@@ -12,6 +12,7 @@ class Fish {
         uint8_t baitPreferences[static_cast<uint8_t>(BaitType::COUNT)];
         uint8_t ratio;
         uint8_t value;
+        uint8_t pull;
         
         int16_t minX;
         int16_t maxX;

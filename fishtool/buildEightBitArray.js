@@ -21,7 +21,8 @@ module.exports = function buildEightBitArray(fishes) {
     ${fish.ratio},  // ratio
     ${fish.value},  // value
     ${fish.name.length}, // nameLength
-    ${getFishWidth(fish.name)}, // bmpWidth`;
+    ${getFishWidth(fish.name)}, // bmpWidth
+    ${fish.pull}, // pull`;
     });
 
     return `const uint8_t PROGMEM fish_templates_u8t[] = {
