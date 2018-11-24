@@ -194,13 +194,15 @@ void Game::renderPlay(uint8_t frame) {
     }
 
     for (uint8_t s = 0; s < MAX_SIGNS; ++s) {
-        signs[s].render();
+        if (abs(signs[s].y - player.y) < HEIGHT) {
+            signs[s].render();
+        }
     }
 
     Girl::render(frame);
     Boat::render(frame);
 
-    if (!Shop::isOpen()) {
+    if (!Shop::isOpen() && player.y < HEIGHT) {
         renderer.drawOverwrite(16 * 25 - 5, 20, closed_tiles, 0);
     }
 

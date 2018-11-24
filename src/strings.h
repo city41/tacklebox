@@ -345,9 +345,9 @@ const uint8_t signSharkWarning_string[15] PROGMEM = {
 };
 
 
-// "OCEAN FISH SPIT OUT WORMS"
-const uint8_t signOceanFish_string[26] PROGMEM = {
-    25, 13, 15, 11, 24, 0, 16, 19, 29, 18, 0, 29, 26, 19, 30, 0, 25, 31, 30, 0, 33, 25, 28, 23, 29, 0xFF
+// "OCEAN FISH HATE WORMS"
+const uint8_t signOceanFish_string[22] PROGMEM = {
+    25, 13, 15, 11, 24, 0, 16, 19, 29, 18, 0, 18, 11, 30, 15, 0, 33, 25, 28, 23, 29, 0xFF
 };
 
 
