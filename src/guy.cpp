@@ -16,7 +16,8 @@ uint8_t Guy::endingActiveHour = 24;
 void Guy::update(bool isActive, bool justBecameActive) {
     uint8_t hour = State::getCurrentHour();
 
-    Guy::isActive = (isActive && Guy::isActive || State::gameState.canChooseProMode) || (justBecameActive && hour >= startingActiveHour && hour <= endingActiveHour);
+    Guy::isActive = (isActive && Guy::isActive || State::gameState.canChooseProMode) ||
+        (justBecameActive && hour >= startingActiveHour && hour <= endingActiveHour && State::gameState.acquiredFish[static_cast<int8_t>(FishType::OLD_BOOT)]);
 }
 
 void Guy::render(uint8_t frame) {

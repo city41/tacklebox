@@ -63,9 +63,9 @@ const uint8_t save_string[5] PROGMEM = {
 };
 
 
-// "GAME SAVED"
-const uint8_t gameSaved_string[11] PROGMEM = {
-    17, 11, 23, 15, 0, 29, 11, 32, 15, 14, 0xFF
+// "SAVED OK"
+const uint8_t gameSaved_string[9] PROGMEM = {
+    29, 11, 32, 15, 14, 0, 25, 21, 0xFF
 };
 
 
@@ -75,9 +75,9 @@ const uint8_t collection_string[8] PROGMEM = {
 };
 
 
-// "CURRENT QUANTITY"
-const uint8_t quantity_string[17] PROGMEM = {
-    13, 31, 28, 28, 15, 24, 30, 0, 27, 31, 11, 24, 30, 19, 30, 35, 0xFF
+// "CURRENT HAUL"
+const uint8_t quantity_string[13] PROGMEM = {
+    13, 31, 28, 28, 15, 24, 30, 0, 18, 11, 31, 22, 0xFF
 };
 
 
@@ -177,9 +177,9 @@ const uint8_t sellFor_string[18] PROGMEM = {
 };
 
 
-// "HELPFUL ADVICE FOR"
-const uint8_t adviceFor_string[19] PROGMEM = {
-    18, 15, 22, 26, 16, 31, 22, 0, 11, 14, 32, 19, 13, 15, 0, 16, 25, 28, 0xFF
+// "USEFUL ADVICE FOR"
+const uint8_t adviceFor_string[18] PROGMEM = {
+    31, 29, 15, 16, 31, 22, 0, 11, 14, 32, 19, 13, 15, 0, 16, 25, 28, 0xFF
 };
 
 
@@ -327,15 +327,15 @@ const uint8_t girlQuest_string[52] PROGMEM = {
 };
 
 
-// "BUY FANCY BAIT FOR"
-const uint8_t girlSellMeat_string[19] PROGMEM = {
-    12, 31, 35, 0, 16, 11, 24, 13, 35, 0, 12, 11, 19, 30, 0, 16, 25, 28, 0xFF
+// "BUY NICE BAIT FOR"
+const uint8_t girlSellMeat_string[18] PROGMEM = {
+    12, 31, 35, 0, 24, 19, 13, 15, 0, 12, 11, 19, 30, 0, 16, 25, 28, 0xFF
 };
 
 
-// "BRING ME TEN BOOTS\nFOR A NEW WAY"
-const uint8_t guyQuest_string[33] PROGMEM = {
-    12, 28, 19, 24, 17, 0, 23, 15, 0, 30, 15, 24, 0, 12, 25, 25, 30, 29, 40, 16, 25, 28, 0, 11, 0, 24, 15, 33, 0, 33, 11, 35, 0xFF
+// "BRING TEN BOOTS\nFOR A NEW WAY"
+const uint8_t guyQuest_string[30] PROGMEM = {
+    12, 28, 19, 24, 17, 0, 30, 15, 24, 0, 12, 25, 25, 30, 29, 40, 16, 25, 28, 0, 11, 0, 24, 15, 33, 0, 33, 11, 35, 0xFF
 };
 
 
