@@ -19,22 +19,23 @@ void State::load() {
     if (hasUserSaved()) {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
-        gameState.useProMode = true;
+        gameState.canChooseProMode = false;
+        gameState.useProMode = false;
 
         // start the game at 4pm
         gameState.minute = 16 * 60;
-        gameState.baitCounts[0] = 100;
+        gameState.baitCounts[0] = 0;
         gameState.baitCounts[1] = 0;
         gameState.baitCounts[2] = 0;
         gameState.baitCounts[3] = 0;
-        gameState.money = 500;
+        gameState.money = 0;
         gameState.hasProPole = false;
-        gameState.hasOars = true;
+        gameState.hasOars = false;
         gameState.canBuyMeat = false;
         gameState.adviceLevel = 0;
 
         for (int8_t i = 0; i < static_cast<int8_t>(FishType::COUNT); ++i) {
-            gameState.acquiredFish[i] = true;
+            gameState.acquiredFish[i] = false;
             gameState.currentFishCount[i] = 0;
             gameState.bestLength[i] = 0;
         }

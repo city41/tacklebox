@@ -1,6 +1,8 @@
 #ifndef util_h
 #define util_h
 
+#define SERIAL_LOG 0
+
 #include <Arduino.h>
 #include "math.h"
 

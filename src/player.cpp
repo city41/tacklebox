@@ -679,13 +679,13 @@ void Player::renderReel(uint8_t frame) {
     renderer.pushTranslate(0, 0);
 
     // black background to serve as the frame
-    renderer.fillRect(29, HEIGHT - 14, WIDTH - 58, 8, BLACK);
+    renderer.fillRect(29, HEIGHT - 12, WIDTH - 58, 8, BLACK);
 
     // white background to serve as the empty part
-    renderer.fillRect(30, HEIGHT - 13, WIDTH - 60, 6, WHITE);
+    renderer.fillRect(30, HEIGHT - 11, WIDTH - 60, 6, WHITE);
 
     // black progress bar at the current reel level
-    renderer.fillRect(32, HEIGHT - 12, reelLevel / 2, 4, BLACK);
+    renderer.fillRect(32, HEIGHT - 10, reelLevel / 2, 4, BLACK);
 
     renderer.popTranslate();
 }
@@ -741,7 +741,7 @@ void Player::renderReelProMode(uint8_t frame) {
 
     renderer.fillRect(
         32 + currentFish.proWindow / 2,
-        HEIGHT - 16, 
+        HEIGHT - 14, 
         12,
         2,
         frame & 1 ? WHITE : BLACK
@@ -749,7 +749,7 @@ void Player::renderReelProMode(uint8_t frame) {
 
     renderer.fillRect(
         32 + currentFish.proWindow / 2,
-        HEIGHT - 16, 
+        HEIGHT - 14, 
         inProWindowCount / 8,
         2,
         BLACK
