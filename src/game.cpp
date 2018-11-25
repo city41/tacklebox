@@ -14,6 +14,7 @@
 #include "girl.h"
 #include "boat.h"
 #include "util.h"
+#include "dialogUtils.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -115,7 +116,7 @@ void Game::updatePlay(uint8_t frame) {
     Girl::update(isActive, justBecameActive);
 
     if (isOnShopDoor() && Shop::isOpen()) {
-        Shop::onEnter();
+        DialogUtils::reset();
         push(&Game::updateShop, &Game::renderShop);
         return;
     }
@@ -127,7 +128,7 @@ void Game::updatePlay(uint8_t frame) {
     }
 
     if (isTalkingToGirl()) {
-        GirlDialog::onEnter();
+        DialogUtils::reset();
         push(&Game::updateTalkToGirl, &Game::renderTalkToGirl);
         return;
     }

@@ -6,10 +6,10 @@
 #include "fishType.h"
 #include "fish.h"
 #include "state.h"
-#include "animation.h"
 #include "enumUtils.h"
 #include "baitType.h"
 #include "sfx.h"
+#include "dialogUtils.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -20,10 +20,6 @@ Shop::UpdatePtr Shop::currentUpdate = &Shop::updateMainMenu;
 Shop::RenderPtr Shop::currentRender = &Shop::renderMainMenu;
 bool Shop::showAdvice = false;
 
-
-const uint8_t PROGMEM shopOwnerDurations[] = {
-    20, 0, 5, 1, 5, 2, 5, 3, 255
-};
 
 const uint16_t GRUB_PRICE = 1;
 const uint16_t SHRIMP_PRICE = 3;
@@ -60,16 +56,10 @@ const uint8_t* const PROGMEM adviceStrings[] = {
     advice8_string
 };
 
-Animation shopOwnerAnimation(shopOwnerDurations);
-
 bool Shop::isOpen() {
     const uint8_t hour = State::getCurrentHour();
 
     return hour >= 4 && hour <= 24;
-}
-
-void Shop::onEnter() {
-    shopOwnerAnimation.reset();
 }
 
 void Shop::update(uint8_t frame) {
@@ -92,8 +82,6 @@ void Shop::render(uint8_t frame) {
 }
 
 void Shop::updateMainMenu(uint8_t frame) {
-    shopOwnerAnimation.update();
-
     if (arduboy.justPressed(UP_BUTTON)) {
         Shop::mainMenuCurrentRow = prev(Shop::mainMenuCurrentRow);
     }
@@ -120,15 +108,14 @@ void Shop::updateMainMenu(uint8_t frame) {
     }
 }
 
-void renderFrame() {
-    // white frame
-    renderer.fillRect(13, 19, 103, 1, WHITE);
-    renderer.fillRect(116, 20, 1, 42, WHITE);
-    renderer.fillRect(12, 20, 1, 42, WHITE);
-    renderer.fillRect(13, HEIGHT - 2, 103, 1, WHITE);
+const uint8_t MAIN_MENU_STRINGS_COUNT = 4;
 
-    renderer.drawOverwrite(20, 2, shopOwner_tiles, shopOwnerAnimation.currentFrame);
-}
+const uint8_t* const PROGMEM mainMenuStrings[MAIN_MENU_STRINGS_COUNT] = {
+    buy_string,
+    sell_string,
+    advice_string,
+    hours_string
+};
 
 const uint8_t MAIN_MENU_STRINGS_COUNT = 4;
 
@@ -140,7 +127,7 @@ const uint8_t* const PROGMEM mainMenuStrings[MAIN_MENU_STRINGS_COUNT] = {
 };
 
 void Shop::renderMainMenu(uint8_t frame) {
-    renderFrame();
+    DialogUtils::renderFrame(shopOwner_tiles);
 
     const uint8_t startY = 25;
     const uint8_t x = 48;
@@ -220,7 +207,7 @@ void Shop::updateBuy(uint8_t frame) {
 
 
 void Shop::renderBuy(uint8_t frame) {
-    renderFrame();
+    DialogUtils::renderFrame(shopOwner_tiles);
 
     const uint8_t startY = 22;
     
@@ -273,7 +260,7 @@ void Shop::updateSell(uint8_t frame) {
 }
 
 void Shop::renderSell(uint8_t frame) {
-    renderFrame();
+    DialogUtils::renderFrame(shopOwner_tiles);
 
     uint16_t moneyAmount = 0;
 
@@ -327,7 +314,7 @@ void Shop::updateAdvice(uint8_t frame) {
 }
 
 void Shop::renderAdvice(uint8_t frame) {
-    renderFrame();
+    DialogUtils::renderFrame(shopOwner_tiles);
 
     if (State::gameState.adviceLevel == 8 && !showAdvice) {
         renderer.drawString(20, 30, noMoreAdvice_string);
@@ -356,7 +343,7 @@ void Shop::updateHours(uint8_t frame) {
 }
 
 void Shop::renderHours(uint8_t frame) {
-    renderFrame();
+    DialogUtils::renderFrame(shopOwner_tiles);
 
     renderer.drawString(25, 36, openFromTo_string);
 }
