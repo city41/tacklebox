@@ -279,15 +279,15 @@ const uint8_t boatOars_string[5] PROGMEM = {
 };
 
 
-// "OTHERS FISH\nAT DIFF TIMES\nOF THE DAY"
-const uint8_t advice1_string[37] PROGMEM = {
-    25, 30, 18, 15, 28, 29, 0, 16, 19, 29, 18, 40, 11, 30, 0, 14, 19, 16, 16, 0, 30, 19, 23, 15, 29, 40, 25, 16, 0, 30, 18, 15, 0, 14, 11, 35, 0xFF
+// "SOME FISH ARE\nONLY IN\nDEEP WATER"
+const uint8_t advice1_string[33] PROGMEM = {
+    29, 25, 23, 15, 0, 16, 19, 29, 18, 0, 11, 28, 15, 40, 25, 24, 22, 35, 0, 19, 24, 40, 14, 15, 15, 26, 0, 33, 11, 30, 15, 28, 0xFF
 };
 
 
-// "SOME FISH ARE\nONLY IN\nDEEP WATER"
-const uint8_t advice2_string[33] PROGMEM = {
-    29, 25, 23, 15, 0, 16, 19, 29, 18, 0, 11, 28, 15, 40, 25, 24, 22, 35, 0, 19, 24, 40, 14, 15, 15, 26, 0, 33, 11, 30, 15, 28, 0xFF
+// "CHARLIE FISHES\nTHE OCEAN\nAT NIGHT"
+const uint8_t advice2_string[34] PROGMEM = {
+    13, 18, 11, 28, 22, 19, 15, 0, 16, 19, 29, 18, 15, 29, 40, 30, 18, 15, 0, 25, 13, 15, 11, 24, 40, 11, 30, 0, 24, 19, 17, 18, 30, 0xFF
 };
 
 

@@ -277,9 +277,9 @@ void Shop::renderSell(uint8_t frame) {
 }
 
 const uint8_t PROGMEM advicePrices[] = {
-    1,
-    15,
-    135
+    3,
+    30,
+    150
 };
 
 void Shop::updateAdvice(uint8_t frame) {
