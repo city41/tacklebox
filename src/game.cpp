@@ -102,11 +102,11 @@ bool Game::isOnBoat() {
 }
 
 bool Game::isTalkingToGirl() {
-    return overlap(player, Girl::x, Girl::y, 16, 16);
+    return Girl::isActive && overlap(player, Girl::x, Girl::y, 16, 16);
 }
 
 bool Game::isTalkingToGuy() {
-    return overlap(player, Guy::x, Guy::y, 16, 16);
+    return Guy::isActive && overlap(player, Guy::x, Guy::y, 16, 16);
 }
 
 void Game::updatePlay(uint8_t frame) {
