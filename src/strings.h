@@ -279,51 +279,51 @@ const uint8_t boatOars_string[5] PROGMEM = {
 };
 
 
-// "ADVICE 1"
-const uint8_t advice1_string[9] PROGMEM = {
-    11, 14, 32, 19, 13, 15, 0, 2, 0xFF
+// "THERE ARE OTHER\nFISHERS AROUND"
+const uint8_t advice1_string[31] PROGMEM = {
+    30, 18, 15, 28, 15, 0, 11, 28, 15, 0, 25, 30, 18, 15, 28, 40, 16, 19, 29, 18, 15, 28, 29, 0, 11, 28, 25, 31, 24, 14, 0xFF
 };
 
 
-// "ADVICE 2"
-const uint8_t advice2_string[9] PROGMEM = {
-    11, 14, 32, 19, 13, 15, 0, 3, 0xFF
+// "BUY LOW\nSELL HIGH\nMOSTLY INDEX FUNDS"
+const uint8_t advice2_string[37] PROGMEM = {
+    12, 31, 35, 0, 22, 25, 33, 40, 29, 15, 22, 22, 0, 18, 19, 17, 18, 40, 23, 25, 29, 30, 22, 35, 0, 19, 24, 14, 15, 34, 0, 16, 31, 24, 14, 29, 0xFF
 };
 
 
-// "ADVICE 3"
-const uint8_t advice3_string[9] PROGMEM = {
-    11, 14, 32, 19, 13, 15, 0, 4, 0xFF
+// "SOME FISH ARE\nONLY IN\nDEEP WATER"
+const uint8_t advice3_string[33] PROGMEM = {
+    29, 25, 23, 15, 0, 16, 19, 29, 18, 0, 11, 28, 15, 40, 25, 24, 22, 35, 0, 19, 24, 40, 14, 15, 15, 26, 0, 33, 11, 30, 15, 28, 0xFF
 };
 
 
-// "ADVICE 4"
-const uint8_t advice4_string[9] PROGMEM = {
-    11, 14, 32, 19, 13, 15, 0, 5, 0xFF
+// "MORE ADVICE GOES\nHERE\nHI MOM 4\nI LIKE TO FISH"
+const uint8_t advice4_string[46] PROGMEM = {
+    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 5, 40, 19, 0, 22, 19, 21, 15, 0, 30, 25, 0, 16, 19, 29, 18, 0xFF
 };
 
 
-// "ADVICE 5"
-const uint8_t advice5_string[9] PROGMEM = {
-    11, 14, 32, 19, 13, 15, 0, 6, 0xFF
+// "MORE ADVICE GOES\nHERE\nHI MOM 5\nBEER IS GOOD"
+const uint8_t advice5_string[44] PROGMEM = {
+    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 6, 40, 12, 15, 15, 28, 0, 19, 29, 0, 17, 25, 25, 14, 0xFF
 };
 
 
-// "ADVICE 6"
-const uint8_t advice6_string[9] PROGMEM = {
-    11, 14, 32, 19, 13, 15, 0, 7, 0xFF
+// "MORE ADVICE GOES\nHERE\nHI MOM 6\nBONJOUR"
+const uint8_t advice6_string[39] PROGMEM = {
+    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 7, 40, 12, 25, 24, 20, 25, 31, 28, 0xFF
 };
 
 
-// "ADVICE 7"
-const uint8_t advice7_string[9] PROGMEM = {
-    11, 14, 32, 19, 13, 15, 0, 8, 0xFF
+// "MORE ADVICE GOES\nHERE\nHI MOM 7\nDONT EAT YELLOW\nSNOW"
+const uint8_t advice7_string[52] PROGMEM = {
+    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 8, 40, 14, 25, 24, 30, 0, 15, 11, 30, 0, 35, 15, 22, 22, 25, 33, 40, 29, 24, 25, 33, 0xFF
 };
 
 
-// "ADVICE 8"
-const uint8_t advice8_string[9] PROGMEM = {
-    11, 14, 32, 19, 13, 15, 0, 9, 0xFF
+// "MORE ADVICE GOES\nHERE\nHI MOM 8\nROCK ON"
+const uint8_t advice8_string[39] PROGMEM = {
+    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 9, 40, 28, 25, 13, 21, 0, 25, 24, 0xFF
 };
 
 
