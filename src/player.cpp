@@ -311,18 +311,21 @@ void Player::renderCollection(uint8_t frame) {
                     : State::gameState.bestLength
             );
 
-            // show a checkmark if the user has caught the biggest possible fish
-            if (currentCollectionColumn == CollectionColumn::Length) {
-                Fish::loadFish(static_cast<FishType>(f), fish);
+            Fish::loadFish(static_cast<FishType>(f), fish);
 
+            // show a checkmark if the user has caught the biggest possible fish
+            if (currentCollectionColumn == CollectionColumn::Length && fish.type != FishType::OLDBOOT) {
                 if (numArray[f] >= fish.maxLength) {
                     renderer.drawString(88, startY + spacing * offset + 7, checkmark_string);
                 }
             }
 
-            renderer.drawNumber(92, startY + spacing * offset + 9, numArray[f]);
             renderer.drawOverwrite(44, startY + spacing * offset, fishBmp, 0);
             renderer.drawString(44, startY + spacing * offset + 9, fishString);
+
+            if (currentCollectionColumn != CollectionColumn::Length || fish.type != FishType::OLDBOOT) {
+                renderer.drawNumber(92, startY + spacing * offset + 9, numArray[f]);
+            }
         } else {
             renderer.drawOverwrite(44, startY + spacing * offset + 7, questionMark_tiles, 0);
         }
