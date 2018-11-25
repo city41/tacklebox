@@ -279,9 +279,9 @@ const uint8_t boatOars_string[5] PROGMEM = {
 };
 
 
-// "OTHERS FISH\nAT CERTAIN TIMES\nOF THE DAY"
-const uint8_t advice1_string[40] PROGMEM = {
-    25, 30, 18, 15, 28, 29, 0, 16, 19, 29, 18, 40, 11, 30, 0, 13, 15, 28, 30, 11, 19, 24, 0, 30, 19, 23, 15, 29, 40, 25, 16, 0, 30, 18, 15, 0, 14, 11, 35, 0xFF
+// "OTHERS FISH\nAT DIFF TIMES\nOF THE DAY"
+const uint8_t advice1_string[37] PROGMEM = {
+    25, 30, 18, 15, 28, 29, 0, 16, 19, 29, 18, 40, 11, 30, 0, 14, 19, 16, 16, 0, 30, 19, 23, 15, 29, 40, 25, 16, 0, 30, 18, 15, 0, 14, 11, 35, 0xFF
 };
 
 

@@ -28,7 +28,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // minHour
     23,  // maxHour
     1,  // baitPreference WORM
-    1,  // baitPreference GRUB
+    0,  // baitPreference GRUB
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     10,  // ratio
@@ -40,9 +40,9 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     64, // proWindow
 
     // MINNOW
-    12,  // minHour
-    7,  // maxHour
-    1,  // baitPreference WORM
+    0,  // minHour
+    23,  // maxHour
+    0,  // baitPreference WORM
     1,  // baitPreference GRUB
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
@@ -50,7 +50,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     3,  // value
     6, // nameLength
     4, // bmpWidth
-    7, // pull
+    3, // pull
     0, // deepWater
     64, // proWindow
 
@@ -58,7 +58,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     5,  // minHour
     9,  // maxHour
     1,  // baitPreference WORM
-    1,  // baitPreference GRUB
+    0,  // baitPreference GRUB
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     2,  // ratio
@@ -74,28 +74,28 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     23,  // maxHour
     1,  // baitPreference WORM
     1,  // baitPreference GRUB
-    0,  // baitPreference SHRIMP
+    1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
-    10,  // ratio
+    6,  // ratio
     12,  // value
     5, // nameLength
     10, // bmpWidth
     7, // pull
-    0, // deepWater
+    1, // deepWater
     64, // proWindow
 
     // BASS
     3,  // minHour
-    9,  // maxHour
+    11,  // maxHour
     1,  // baitPreference WORM
     1,  // baitPreference GRUB
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     10,  // ratio
-    15,  // value
+    25,  // value
     4, // nameLength
     12, // bmpWidth
-    7, // pull
+    10, // pull
     1, // deepWater
     64, // proWindow
 
@@ -110,74 +110,74 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     15,  // value
     7, // nameLength
     12, // bmpWidth
-    7, // pull
+    16, // pull
     1, // deepWater
     64, // proWindow
 
     // FLOUNDER
     0,  // minHour
     23,  // maxHour
-    1,  // baitPreference WORM
-    1,  // baitPreference GRUB
-    0,  // baitPreference SHRIMP
+    0,  // baitPreference WORM
+    0,  // baitPreference GRUB
+    1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     10,  // ratio
     20,  // value
     8, // nameLength
     12, // bmpWidth
-    7, // pull
+    12, // pull
     0, // deepWater
     64, // proWindow
 
     // CRAB
     0,  // minHour
     23,  // maxHour
-    1,  // baitPreference WORM
+    0,  // baitPreference WORM
     1,  // baitPreference GRUB
-    0,  // baitPreference SHRIMP
+    1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     2,  // ratio
     25,  // value
     4, // nameLength
     12, // bmpWidth
-    7, // pull
+    5, // pull
     0, // deepWater
     64, // proWindow
 
     // OCTOPUS
     18,  // minHour
     23,  // maxHour
-    1,  // baitPreference WORM
+    0,  // baitPreference WORM
     1,  // baitPreference GRUB
-    0,  // baitPreference SHRIMP
+    1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     1,  // ratio
     80,  // value
     7, // nameLength
     14, // bmpWidth
-    7, // pull
+    25, // pull
     0, // deepWater
     64, // proWindow
 
     // GROUPER
     0,  // minHour
     23,  // maxHour
-    1,  // baitPreference WORM
-    1,  // baitPreference GRUB
-    0,  // baitPreference SHRIMP
-    0,  // baitPreference MEAT
+    0,  // baitPreference WORM
+    0,  // baitPreference GRUB
+    1,  // baitPreference SHRIMP
+    1,  // baitPreference MEAT
     4,  // ratio
     10,  // value
     7, // nameLength
     16, // bmpWidth
-    7, // pull
+    18, // pull
     0, // deepWater
     64, // proWindow
 
     // SEAHORSE
     3,  // minHour
     9,  // maxHour
-    1,  // baitPreference WORM
+    0,  // baitPreference WORM
     1,  // baitPreference GRUB
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
@@ -185,16 +185,16 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     4,  // value
     8, // nameLength
     4, // bmpWidth
-    7, // pull
+    2, // pull
     0, // deepWater
     64, // proWindow
 
     // EEL
     0,  // minHour
     23,  // maxHour
-    1,  // baitPreference WORM
+    0,  // baitPreference WORM
     1,  // baitPreference GRUB
-    0,  // baitPreference SHRIMP
+    1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     7,  // ratio
     8,  // value
@@ -207,15 +207,15 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     // SARDINE
     4,  // minHour
     11,  // maxHour
-    1,  // baitPreference WORM
+    0,  // baitPreference WORM
     1,  // baitPreference GRUB
-    0,  // baitPreference SHRIMP
+    1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     10,  // ratio
     2,  // value
     7, // nameLength
     5, // bmpWidth
-    7, // pull
+    4, // pull
     0, // deepWater
     64, // proWindow
 
@@ -230,31 +230,31 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     20,  // value
     8, // nameLength
     8, // bmpWidth
-    7, // pull
+    10, // pull
     0, // deepWater
     64, // proWindow
 
     // FANGTOOTH
     0,  // minHour
     23,  // maxHour
-    1,  // baitPreference WORM
-    1,  // baitPreference GRUB
-    0,  // baitPreference SHRIMP
+    0,  // baitPreference WORM
+    0,  // baitPreference GRUB
+    1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     3,  // ratio
     30,  // value
     9, // nameLength
     12, // bmpWidth
-    10, // pull
+    16, // pull
     1, // deepWater
     64, // proWindow
 
     // LOBSTER
     10,  // minHour
     18,  // maxHour
-    1,  // baitPreference WORM
+    0,  // baitPreference WORM
     1,  // baitPreference GRUB
-    0,  // baitPreference SHRIMP
+    1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     2,  // ratio
     80,  // value
@@ -275,7 +275,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     100,  // value
     6, // nameLength
     20, // bmpWidth
-    7, // pull
+    20, // pull
     1, // deepWater
     64, // proWindow
 
@@ -290,7 +290,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     200,  // value
     5, // nameLength
     24, // bmpWidth
-    7, // pull
+    20, // pull
     1, // deepWater
     64, // proWindow
 
@@ -305,7 +305,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     250,  // value
     8, // nameLength
     30, // bmpWidth
-    7, // pull
+    22, // pull
     1, // deepWater
     64, // proWindow
 
@@ -413,8 +413,8 @@ const uint8_t OLD_BOOT_string[9] PROGMEM = {
 const int16_t PROGMEM fish_templates_16t[] = {
 
     // GOLDFISH
-    96, // min X
-    448, // max X
+    80, // min X
+    432, // max X
     reinterpret_cast<int16_t>(GOLDFISH_string),
     reinterpret_cast<int16_t>(GOLDFISH_tiles),
     3, // minLength;
@@ -422,14 +422,14 @@ const int16_t PROGMEM fish_templates_16t[] = {
 
     // GUPPY
     0, // min X
-    448, // max X
+    432, // max X
     reinterpret_cast<int16_t>(GUPPY_string),
     reinterpret_cast<int16_t>(GUPPY_tiles),
     1, // minLength;
     4, // maxLength
 
     // MINNOW
-    96, // min X
+    80, // min X
     800, // max X
     reinterpret_cast<int16_t>(MINNOW_string),
     reinterpret_cast<int16_t>(MINNOW_tiles),
@@ -437,8 +437,8 @@ const int16_t PROGMEM fish_templates_16t[] = {
     3, // maxLength
 
     // BETA
-    368, // min X
-    448, // max X
+    352, // min X
+    432, // max X
     reinterpret_cast<int16_t>(BETA_string),
     reinterpret_cast<int16_t>(BETA_tiles),
     2, // minLength;
@@ -446,7 +446,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
 
     // TROUT
     0, // min X
-    320, // max X
+    288, // max X
     reinterpret_cast<int16_t>(TROUT_string),
     reinterpret_cast<int16_t>(TROUT_tiles),
     15, // minLength;
@@ -454,7 +454,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
 
     // BASS
     0, // min X
-    320, // max X
+    288, // max X
     reinterpret_cast<int16_t>(BASS_string),
     reinterpret_cast<int16_t>(BASS_tiles),
     20, // minLength;
@@ -462,14 +462,14 @@ const int16_t PROGMEM fish_templates_16t[] = {
 
     // CATFISH
     0, // min X
-    80, // max X
+    64, // max X
     reinterpret_cast<int16_t>(CATFISH_string),
     reinterpret_cast<int16_t>(CATFISH_tiles),
     10, // minLength;
     40, // maxLength
 
     // FLOUNDER
-    592, // min X
+    560, // min X
     800, // max X
     reinterpret_cast<int16_t>(FLOUNDER_string),
     reinterpret_cast<int16_t>(FLOUNDER_tiles),
@@ -477,7 +477,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     40, // maxLength
 
     // CRAB
-    592, // min X
+    560, // min X
     800, // max X
     reinterpret_cast<int16_t>(CRAB_string),
     reinterpret_cast<int16_t>(CRAB_tiles),
@@ -485,7 +485,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     45, // maxLength
 
     // OCTOPUS
-    672, // min X
+    608, // min X
     800, // max X
     reinterpret_cast<int16_t>(OCTOPUS_string),
     reinterpret_cast<int16_t>(OCTOPUS_tiles),
@@ -493,7 +493,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     200, // maxLength
 
     // GROUPER
-    672, // min X
+    608, // min X
     800, // max X
     reinterpret_cast<int16_t>(GROUPER_string),
     reinterpret_cast<int16_t>(GROUPER_tiles),
@@ -501,15 +501,15 @@ const int16_t PROGMEM fish_templates_16t[] = {
     250, // maxLength
 
     // SEAHORSE
-    592, // min X
-    656, // max X
+    560, // min X
+    608, // max X
     reinterpret_cast<int16_t>(SEAHORSE_string),
     reinterpret_cast<int16_t>(SEAHORSE_tiles),
     1, // minLength;
     4, // maxLength
 
     // EEL
-    592, // min X
+    560, // min X
     800, // max X
     reinterpret_cast<int16_t>(EEL_string),
     reinterpret_cast<int16_t>(EEL_tiles),
@@ -517,8 +517,8 @@ const int16_t PROGMEM fish_templates_16t[] = {
     100, // maxLength
 
     // SARDINE
-    592, // min X
-    656, // max X
+    560, // min X
+    608, // max X
     reinterpret_cast<int16_t>(SARDINE_string),
     reinterpret_cast<int16_t>(SARDINE_tiles),
     1, // minLength;
@@ -526,14 +526,14 @@ const int16_t PROGMEM fish_templates_16t[] = {
 
     // CRAWFISH
     0, // min X
-    80, // max X
+    64, // max X
     reinterpret_cast<int16_t>(CRAWFISH_string),
     reinterpret_cast<int16_t>(CRAWFISH_tiles),
     4, // minLength;
     8, // maxLength
 
     // FANGTOOTH
-    672, // min X
+    608, // min X
     800, // max X
     reinterpret_cast<int16_t>(FANGTOOTH_string),
     reinterpret_cast<int16_t>(FANGTOOTH_tiles),
@@ -541,15 +541,15 @@ const int16_t PROGMEM fish_templates_16t[] = {
     30, // maxLength
 
     // LOBSTER
-    592, // min X
-    656, // max X
+    560, // min X
+    800, // max X
     reinterpret_cast<int16_t>(LOBSTER_string),
     reinterpret_cast<int16_t>(LOBSTER_tiles),
     10, // minLength;
     30, // maxLength
 
     // MARLIN
-    672, // min X
+    608, // min X
     800, // max X
     reinterpret_cast<int16_t>(MARLIN_string),
     reinterpret_cast<int16_t>(MARLIN_tiles),
@@ -557,7 +557,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     170, // maxLength
 
     // SHARK
-    672, // min X
+    608, // min X
     800, // max X
     reinterpret_cast<int16_t>(SHARK_string),
     reinterpret_cast<int16_t>(SHARK_tiles),
@@ -565,7 +565,7 @@ const int16_t PROGMEM fish_templates_16t[] = {
     200, // maxLength
 
     // GRTWHITE
-    672, // min X
+    608, // min X
     800, // max X
     reinterpret_cast<int16_t>(GRTWHITE_string),
     reinterpret_cast<int16_t>(GRTWHITE_tiles),
@@ -573,8 +573,8 @@ const int16_t PROGMEM fish_templates_16t[] = {
     250, // maxLength
 
     // OLD BOOT
-    368, // min X
-    448, // max X
+    352, // min X
+    432, // max X
     reinterpret_cast<int16_t>(OLD_BOOT_string),
     reinterpret_cast<int16_t>(OLD_BOOT_tiles),
     1, // minLength;

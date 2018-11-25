@@ -20,7 +20,7 @@ TileDef TileFloor::getTileAt(int16_t x, int16_t y) {
 }
 
 void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId) {   
-    if (isFishable(static_cast<TileDef>(tileId)) || static_cast<TileDef>(tileId) == TileDef::OceanSandBoundary) {
+    if (isFishable(static_cast<TileDef>(tileId))) {
         tileId += WATER_OFFSET * waterAnimationOffset;
     }
 

@@ -28,7 +28,7 @@ void State::load() {
         gameState.baitCounts[1] = 0;
         gameState.baitCounts[2] = 0;
         gameState.baitCounts[3] = 0;
-        gameState.money = 0;
+        gameState.money = 10;
         gameState.hasProPole = false;
         gameState.hasOars = false;
         gameState.canBuyMeat = false;

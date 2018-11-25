@@ -37,9 +37,9 @@ enum class TileDef: uint8_t {
     PondRightBoundary,
     PondInnerCorner,
     Ocean,
+    OceanSandBoundary,
 
     // end - fishable tiles
-    OceanSandBoundary,
     BushWallLeft,
     BushWallRight,
     BushWallTop,
@@ -70,7 +70,7 @@ struct TileFloor {
     }
 
     static bool isFishable(TileDef tile) {
-        return tile >= TileDef::PondLowerLeftCorner && tile <= TileDef::Ocean;
+        return tile >= TileDef::PondLowerLeftCorner && tile <= TileDef::OceanSandBoundary;
     }
 };
 

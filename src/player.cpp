@@ -17,7 +17,7 @@ extern Arduboy2Base arduboy;
 
 const uint8_t PLAYER_VELOCITY = 2;
 const uint8_t CAST_TIMEOUT = 8;
-const uint8_t ANNOUNCE_FISH_COUNT = 120;
+const uint8_t ANNOUNCE_FISH_COUNT = 100;
 
 
 const uint8_t PROGMEM playerSpriteIndexAndMirror[] = {
@@ -480,7 +480,7 @@ void Player::updateCast(uint8_t frame) {
 uint8_t Player::getPointsForFish(Fish& fish, bool isDeepWater) {
     uint8_t hour = State::getCurrentHour();
 
-    if (isDeepWater && !fish.deepWater) {
+    if (isDeepWater != fish.deepWater) {
         LOG("fish is not deep water");
         return 0;
     }
@@ -527,10 +527,7 @@ FishType Player::getFishThatBit(bool isDeepWater) {
         }
     }
 
-
-    // TODO: the +5 is the "no fish bites buffer"
-    // this buffer needs to scale with the size of maxPoints
-    uint8_t roll = random(0, maxPoints + maxPoints * 3);
+    uint8_t roll = random(0, maxPoints + maxPoints);
     
     if (roll >= maxPoints) {
         return FishType::OLD_BOOT;
@@ -819,7 +816,7 @@ void Player::renderGetFish(uint8_t frame) {
 
         if (currentFish.length == currentFish.maxLength) {
             renderer.drawString(
-                    lengthStartX + lengthChars * 5 + 4,
+                    lengthStartX + lengthChars * 5 + 6,
                     y + 26,
                     checkmark_string
                     );

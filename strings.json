@@ -37,7 +37,7 @@
         { "key": "shrimp", "value": "SHRIMP" },
         { "key": "proPole", "value": "PRO POLE" },
         { "key": "boatOars", "value": "OARS" },
-        { "key": "advice1", "value": "OTHERS FISH\nAT CERTAIN TIMES\nOF THE DAY" },
+        { "key": "advice1", "value": "OTHERS FISH\nAT DIFF TIMES\nOF THE DAY" },
         { "key": "advice2", "value": "SOME FISH ARE\nONLY IN\nDEEP WATER" },
         { "key": "advice3", "value": "VISIT\nCITY41.GAMES/FG" },
         { "key": "noMoreAdvice", "value": "YOU KNOW ALL" },
