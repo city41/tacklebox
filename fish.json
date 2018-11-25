@@ -9,13 +9,13 @@
                 "MEAT": 0
             },
             "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
-            "pull": 7,
+            "habitats": ["BEGINNER", "ADVANCED"],
+            "ratio": 5,
+            "pull": 3,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 2,
+            "lengths": [3, 20]
         },
         {
             "name": "GUPPY",
@@ -26,13 +26,13 @@
                 "MEAT": 0
             },
             "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
+            "habitats": ["BEGINNER", "ADVANCED", "CORNER"],
             "ratio": 10,
-            "pull": 7,
+            "pull": 2,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 1,
+            "lengths": [1, 4]
         },
         {
             "name": "MINNOW",
@@ -42,14 +42,14 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
+            "activeHours": [12, 7],
+            "habitats": ["ADVANCED", "OCEAN", "OCEAN_ISLAND"],
             "ratio": 10,
             "pull": 7,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 3,
+            "lengths": [2, 3]
         },
         {
             "name": "BETA",
@@ -59,14 +59,14 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [0, 23],
+            "activeHours": [5, 9],
             "habitats": ["BEGINNER"],
-            "ratio": 10,
-            "pull": 7,
+            "ratio": 2,
+            "pull": 5,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 10,
+            "lengths": [2, 4]
         },
         {
             "name": "TROUT",
@@ -77,13 +77,13 @@
                 "MEAT": 0
             },
             "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
+            "habitats": ["CORNER", "ADVANCED"],
             "ratio": 10,
             "pull": 7,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 12,
+            "lengths": [15, 25]
         },
         {
             "name": "BASS",
@@ -93,14 +93,14 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
+            "activeHours": [3, 9],
+            "habitats": ["CORNER", "ADVANCED"],
             "ratio": 10,
             "pull": 7,
             "proWindow": 64,
-            "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "deepWater": true,
+            "value": 15,
+            "lengths": [20, 40]
         },
         {
             "name": "CATFISH",
@@ -110,14 +110,14 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
+            "activeHours": [12, 20],
+            "habitats": ["CORNER"],
             "ratio": 10,
             "pull": 7,
             "proWindow": 64,
-            "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "deepWater": true,
+            "value": 15,
+            "lengths": [10, 40]
         },
         {
             "name": "FLOUNDER",
@@ -128,13 +128,13 @@
                 "MEAT": 0
             },
             "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
+            "habitats": ["OCEAN", "OCEAN_ISLAND"],
             "ratio": 10,
             "pull": 7,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 20,
+            "lengths": [20, 40]
         },
         {
             "name": "CRAB",
@@ -145,13 +145,13 @@
                 "MEAT": 0
             },
             "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
+            "habitats": ["OCEAN", "OCEAN_ISLAND"],
+            "ratio": 2,
             "pull": 7,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 25,
+            "lengths": [5, 45]
         },
         {
             "name": "OCTOPUS",
@@ -161,14 +161,14 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
+            "activeHours": [18, 23],
+            "habitats": ["OCEAN_ISLAND"],
+            "ratio": 1,
             "pull": 7,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 80,
+            "lengths": [100, 200]
         },
         {
             "name": "GROUPER",
@@ -179,13 +179,13 @@
                 "MEAT": 0
             },
             "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
+            "habitats": ["OCEAN_ISLAND"],
+            "ratio": 4,
             "pull": 7,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 10,
+            "lengths": [50, 250]
         },
         {
             "name": "SEAHORSE",
@@ -195,14 +195,14 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
+            "activeHours": [3, 9],
+            "habitats": ["OCEAN"],
+            "ratio": 8,
             "pull": 7,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 4,
+            "lengths": [1, 4]
         },
         {
             "name": "EEL",
@@ -213,13 +213,13 @@
                 "MEAT": 0
             },
             "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
+            "habitats": ["OCEAN", "OCEAN_ISLAND"],
+            "ratio": 7,
             "pull": 7,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 8,
+            "lengths": [20, 100]
         },
         {
             "name": "SARDINE",
@@ -229,13 +229,13 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
+            "activeHours": [4, 11],
+            "habitats": ["OCEAN"],
             "ratio": 10,
             "pull": 7,
             "proWindow": 64,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 2,
+            "lengths": [1, 4]
         },
         {
             "name": "CRAWFISH",
@@ -245,14 +245,14 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
+            "activeHours": [4, 9],
+            "habitats": ["CORNER"],
+            "ratio": 4,
             "pull": 7,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 20,
+            "lengths": [4, 8]
         },
         {
             "name": "FANGTOOTH",
@@ -263,13 +263,13 @@
                 "MEAT": 0
             },
             "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
-            "pull": 7,
+            "habitats": ["OCEAN_ISLAND"],
+            "ratio": 3,
+            "pull": 10,
             "proWindow": 64,
-            "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "deepWater": true,
+            "value": 30,
+            "lengths": [10, 30]
         },
         {
             "name": "LOBSTER",
@@ -279,65 +279,65 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
+            "activeHours": [10, 18],
+            "habitats": ["OCEAN"],
+            "ratio": 2,
             "pull": 7,
             "proWindow": 64,
             "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 80,
+            "lengths": [10, 30]
         },
         {
             "name": "MARLIN",
             "baitPreference": {
-                "WORM": 1,
-                "GRUB": 1,
-                "SHRIMP": 0,
-                "MEAT": 0
+                "WORM": 0,
+                "GRUB": 0,
+                "SHRIMP": 1,
+                "MEAT": 1
             },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
+            "activeHours": [4, 10],
+            "habitats": ["OCEAN_ISLAND"],
+            "ratio": 2,
             "pull": 7,
             "proWindow": 64,
-            "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
+            "deepWater": true,
+            "value": 100,
+            "lengths": [80, 170]
         },
         {
             "name": "SHARK",
             "baitPreference": {
-                "WORM": 1,
+                "WORM": 0,
                 "GRUB": 0,
                 "SHRIMP": 0,
                 "MEAT": 1
             },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER", "OCEAN_ISLAND"],
-            "ratio": 10,
+            "activeHours": [16, 20],
+            "habitats": ["OCEAN_ISLAND"],
+            "ratio": 2,
             "pull": 7,
             "proWindow": 64,
             "deepWater": true,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 200,
+            "lengths": [100, 200]
         },
         {
             "name": "GRTWHITE",
             "baitPreference": {
-                "WORM": 1,
+                "WORM": 0,
                 "GRUB": 0,
                 "SHRIMP": 0,
                 "MEAT": 1
             },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER", "OCEAN_ISLAND"],
-            "ratio": 10,
+            "activeHours": [18, 23],
+            "habitats": ["OCEAN_ISLAND"],
+            "ratio": 1,
             "pull": 7,
             "proWindow": 64,
             "deepWater": true,
-            "value": 255,
-            "lengths": [1, 10]
+            "value": 250,
+            "lengths": [180, 250]
         },
         {
             "name": "OLD BOOT",
