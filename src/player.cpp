@@ -45,25 +45,27 @@ bool Player::isOnSolidTile() {
  * based on the way the player is facing, start the cursor
  * in front of the player
  */
+const int8_t PROGMEM cursorOffsets[] = {
+    // LEFT
+    -10,   // x
+    8, // y
+    // RIGHT
+    18,
+    8,
+    // UP
+    4,
+    -8,
+    // DOWN
+    4,
+    18
+};
+
 void Player::placeCursorBasedOnDir() {
-    switch (dir) {
-        case UP:
-            cursorX = x + 4;
-            cursorY = y - 8;
-            break;
-        case DOWN:
-            cursorX = x + 4;
-            cursorY = y + 18;
-            break;
-        case LEFT:
-            cursorY = y + 8;
-            cursorX = x - 10;
-            break;
-        case RIGHT:
-            cursorY = y + 8;
-            cursorX = x + 18;
-            break;
-    }
+    const int8_t cursorXOffset = pgm_read_byte(cursorOffsets + dir * 2);
+    const int8_t cursorYOffset = pgm_read_byte(cursorOffsets + dir * 2 + 1);
+
+    cursorX = x + cursorXOffset;
+    cursorY = y + cursorYOffset;
 }
 
 void Player::updateWalk(uint8_t frame) {
@@ -391,6 +393,7 @@ void Player::renderScanning(uint8_t frame) {
     int16_t poleX;
     int16_t poleY;
 
+    // these switch statements use less space than PROGMEM arrays :(
     switch (dir) {
         case LEFT:
             spriteIndex = 4;
