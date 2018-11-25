@@ -1,8 +1,8 @@
 function buildHabitatTd(hour, habitat) {
     const baitObject = hour[habitat];
     const body = Object.keys(baitObject).reduce((str, baitName) => {
-        if (baitObject[baitName]) {
-            return str + baitName[0];
+        if (baitObject[baitName] && baitObject[baitName].count) {
+            return str + baitName[0] + baitObject[baitName].ratio + " ";
         }
         return str;
     }, "");

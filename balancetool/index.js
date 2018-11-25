@@ -24,18 +24,25 @@ function countFishFor(habitat, hour, bait) {
     const habitatName = habitat.replace("_deep", "");
     const isDeep = habitat.includes("_deep");
 
-    return fishData.fish.reduce((count, f) => {
-        if (
-            !!f.deepWater === isDeep &&
-            f.baitPreference[bait] === 1 &&
-            f.habitats.includes(habitatName) &&
-            f.activeHours[0] <= hour &&
-            f.activeHours[1] >= hour
-        ) {
-            return count + 1;
-        }
-        return count;
-    }, 0);
+    const result = fishData.fish.reduce(
+        (buildingObj, f) => {
+            if (
+                !!f.deepWater === isDeep &&
+                f.baitPreference[bait] === 1 &&
+                f.habitats.includes(habitatName) &&
+                f.activeHours[0] <= hour &&
+                f.activeHours[1] >= hour
+            ) {
+                buildingObj.count += 1;
+                buildingObj.ratio += f.ratio;
+            }
+
+            return buildingObj;
+        },
+        { count: 0, ratio: 0 }
+    );
+
+    return result;
 }
 
 hours = hours.map((_, index) => {

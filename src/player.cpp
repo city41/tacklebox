@@ -527,7 +527,9 @@ FishType Player::getFishThatBit(bool isDeepWater) {
         }
     }
 
-    uint8_t roll = random(0, maxPoints + maxPoints);
+    // add a buffer of 2 to get the chance of getting a boot
+    // run the balance tool report to see if 2 is a good ratio
+    uint8_t roll = random(0, maxPoints + 2);
     
     if (roll >= maxPoints) {
         return FishType::OLD_BOOT;
