@@ -23,6 +23,6 @@ enum class FishType: int8_t {
     MARLIN = 18,
     SHARK = 19,
     GRTWHITE = 20,
-    OLDBOOT = 21,
+    OLD_BOOT = 21,
     COUNT = 22
 };

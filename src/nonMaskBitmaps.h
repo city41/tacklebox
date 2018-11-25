@@ -120,7 +120,7 @@ const uint8_t PROGMEM OCTOPUS_tiles[] = {
     0x70,0xc6,0xb8,0xa0,0xee,0x7d,0x77,0x7d,0xae,0xa0,0xa0,0xbc,0x47,0x38,
 };
 
-const uint8_t PROGMEM OLDBOOT_tiles[] = {
+const uint8_t PROGMEM OLD_BOOT_tiles[] = {
     // width, height,
     6, 8,
     // frame 0

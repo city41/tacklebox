@@ -303,7 +303,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     7, // pull
     1, // deepWater
 
-    // OLDBOOT
+    // OLD BOOT
     30,  // minHour
     30,  // maxHour
     0,  // baitPreference WORM
@@ -312,7 +312,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // baitPreference MEAT
     0,  // ratio
     0,  // value
-    7, // nameLength
+    8, // nameLength
     6, // bmpWidth
     7, // pull
     0, // deepWater
@@ -403,8 +403,8 @@ const uint8_t GRTWHITE_string[9] PROGMEM = {
     17, 28, 30, 33, 18, 19, 30, 15, 0xFF
 };
 
-const uint8_t OLDBOOT_string[8] PROGMEM = {
-    25, 22, 14, 12, 25, 25, 30, 0xFF
+const uint8_t OLD_BOOT_string[9] PROGMEM = {
+    25, 22, 14, 0, 12, 25, 25, 30, 0xFF
 };
 
 const int16_t PROGMEM fish_templates_16t[] = {
@@ -577,11 +577,11 @@ const int16_t PROGMEM fish_templates_16t[] = {
     1, // minLength;
     10, // maxLength
 
-    // OLDBOOT
+    // OLD BOOT
     368, // min X
     448, // max X
-    reinterpret_cast<int16_t>(OLDBOOT_string),
-    reinterpret_cast<int16_t>(OLDBOOT_tiles),
+    reinterpret_cast<int16_t>(OLD_BOOT_string),
+    reinterpret_cast<int16_t>(OLD_BOOT_tiles),
     1, // minLength;
     10, // maxLength
 };

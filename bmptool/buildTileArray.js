@@ -149,11 +149,12 @@ module.exports = function buildTileArray(name, tileFile) {
             }
         }
     }
+    const rootName = name.split("_")[0].replace(/ /g, "_");
 
     // Generate the sprite string
     const spriteStringSeed =
         "const uint8_t PROGMEM " +
-        name.split("_")[0] +
+        rootName +
         "_tiles[] = {" +
         "\n    // width, height,\n    " +
         origWidth +
@@ -166,7 +167,7 @@ module.exports = function buildTileArray(name, tileFile) {
 
     const comboStringSeed =
         "const uint8_t PROGMEM " +
-        name.split("_")[0] +
+        rootName +
         "_plus_mask[] = {" +
         "\n    // width, height,\n    " +
         origWidth +

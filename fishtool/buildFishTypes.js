@@ -1,6 +1,6 @@
 module.exports = function buildFishTypes(fishes) {
     const entries = fishes.map((fish, index) => {
-        return `    ${fish.name} = ${index}`;
+        return `    ${fish.name.replace(/ /g, "_")} = ${index}`;
     });
 
     entries.unshift("    UNSET = -1");

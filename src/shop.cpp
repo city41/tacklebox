@@ -117,15 +117,6 @@ const uint8_t* const PROGMEM mainMenuStrings[MAIN_MENU_STRINGS_COUNT] = {
     hours_string
 };
 
-const uint8_t MAIN_MENU_STRINGS_COUNT = 4;
-
-const uint8_t* const PROGMEM mainMenuStrings[MAIN_MENU_STRINGS_COUNT] = {
-    buy_string,
-    sell_string,
-    advice_string,
-    hours_string
-};
-
 void Shop::renderMainMenu(uint8_t frame) {
     DialogUtils::renderFrame(shopOwner_tiles);
 
@@ -265,7 +256,7 @@ void Shop::renderSell(uint8_t frame) {
     uint16_t moneyAmount = 0;
 
     Fish fish;
-    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::OLDBOOT); ++f) {
+    for (uint8_t f = 0; f < static_cast<int8_t>(FishType::OLD_BOOT); ++f) {
         Fish::loadFish(static_cast<FishType>(f), fish);
         moneyAmount += State::gameState.currentFishCount[f] * fish.value;
     }
@@ -273,7 +264,7 @@ void Shop::renderSell(uint8_t frame) {
     if (moneyAmount == 0) {
         const uint8_t* str = youHaveNoFish_string;
 
-        if (State::gameState.currentFishCount[static_cast<int8_t>(FishType::OLDBOOT)] > 0) {
+        if (State::gameState.currentFishCount[static_cast<int8_t>(FishType::OLD_BOOT)] > 0) {
             str = notBuyingBoots_string;
         }
 

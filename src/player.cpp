@@ -314,7 +314,7 @@ void Player::renderCollection(uint8_t frame) {
             Fish::loadFish(static_cast<FishType>(f), fish);
 
             // show a checkmark if the user has caught the biggest possible fish
-            if (currentCollectionColumn == CollectionColumn::Length && fish.type != FishType::OLDBOOT) {
+            if (currentCollectionColumn == CollectionColumn::Length && fish.type != FishType::OLD_BOOT) {
                 if (numArray[f] >= fish.maxLength) {
                     renderer.drawString(88, startY + spacing * offset + 7, checkmark_string);
                 }
@@ -323,7 +323,7 @@ void Player::renderCollection(uint8_t frame) {
             renderer.drawOverwrite(44, startY + spacing * offset, fishBmp, 0);
             renderer.drawString(44, startY + spacing * offset + 9, fishString);
 
-            if (currentCollectionColumn != CollectionColumn::Length || fish.type != FishType::OLDBOOT) {
+            if (currentCollectionColumn != CollectionColumn::Length || fish.type != FishType::OLD_BOOT) {
                 renderer.drawNumber(92, startY + spacing * offset + 9, numArray[f]);
             }
         } else {
@@ -523,7 +523,7 @@ FishType Player::getFishThatBit(bool isDeepWater) {
     uint8_t roll = random(0, maxPoints + maxPoints * 3);
     
     if (roll >= maxPoints) {
-        return FishType::OLDBOOT;
+        return FishType::OLD_BOOT;
     }
 
 
@@ -602,7 +602,7 @@ void Player::updateReel(uint8_t frame) {
 
         announceFishCount = ANNOUNCE_FISH_COUNT;
 
-        if (currentFish.type == FishType::OLDBOOT) {
+        if (currentFish.type == FishType::OLD_BOOT) {
             Sfx::buzz();
         } else {
             Sfx::gotFish();
@@ -708,7 +708,7 @@ void Player::renderGetFish(uint8_t frame) {
     );
 
     // TODO: make this an Animation
-    uint8_t spriteIndex = (announceFishCount > ANNOUNCE_FISH_COUNT - 20 || announceFishCount < 30) ? 8 : currentFish.type == FishType::OLDBOOT ? 10 : 9;
+    uint8_t spriteIndex = (announceFishCount > ANNOUNCE_FISH_COUNT - 20 || announceFishCount < 30) ? 8 : currentFish.type == FishType::OLD_BOOT ? 10 : 9;
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex);
 
     renderer.drawString(
@@ -718,7 +718,7 @@ void Player::renderGetFish(uint8_t frame) {
     );
 
 
-    if (currentFish.type != FishType::OLDBOOT) {
+    if (currentFish.type != FishType::OLD_BOOT) {
         // draw the size of the fish, centered under its name
         // a bit fiddly since the length of the fish can vary
 

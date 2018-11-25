@@ -336,7 +336,7 @@
             "lengths": [1, 10]
         },
         {
-            "name": "OLDBOOT",
+            "name": "OLD BOOT",
             "baitPreference": {
                 "WORM": 0,
                 "GRUB": 0,
