@@ -10,10 +10,8 @@ int16_t Guy::x = 16 * 34;
 int16_t Guy::y = 16 * 20 + 6;
 
 bool Guy::isActive = false;
-/* uint8_t Guy::startingActiveHour = 4; */
-uint8_t Guy::startingActiveHour = 0;
-/* uint8_t Guy::endingActiveHour = 9; */
-uint8_t Guy::endingActiveHour = 23;
+uint8_t Guy::startingActiveHour = 21;
+uint8_t Guy::endingActiveHour = 24;
 
 void Guy::update(bool isActive, bool justBecameActive) {
     uint8_t hour = State::getCurrentHour();
