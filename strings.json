@@ -47,10 +47,8 @@
         { "key": "signOceanFish", "value": "OCEAN FISH HATE WORMS" },
         { "key": "girlQuest", "value": "GIVE ME FIVE\nLOBSTERS AND I WILL\nSELL YOU NICE BAIT" },
         { "key": "girlSellMeat", "value": "BUY FANCY BAIT FOR" },
-        { "key": "guyQuest", "value": "I WILL GIVE YOU\nSOMETHING COOL\nIF YOU BRING ME\nTEN OLD BOOTS" },
-        { "key": "guyRequestBoots", "value": "GIVE ME THOSE BOOTS\nFOR SOMETHING COOL" },
-        { "key": "guyProMode", "value": "SET FISHING MODE" },
-        { "key": "modePro", "value": "PRO" },
-        { "key": "modeCasual", "value": "CASUAL" }
+        { "key": "guyQuest", "value": "BRING ME TEN BOOTS\nFOR A NEW WAY" },
+        { "key": "guyTurnOnProMode", "value": "SET FISHING MODE\nPRO" },
+        { "key": "guyTurnOffProMode", "value": "SET FISHING MODE\nCASUAL" }
     ]
 }

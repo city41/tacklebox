@@ -214,7 +214,11 @@ void Game::renderPlay(uint8_t frame) {
     }
 
     Girl::render(frame);
-    Guy::render(frame);
+
+    if (player.y > 200) {
+        Guy::render(frame);
+    }
+
     Boat::render(frame);
 
     if (!Shop::isOpen() && player.y < HEIGHT) {

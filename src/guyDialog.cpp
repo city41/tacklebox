@@ -17,54 +17,44 @@ extern Arduboy2Base arduboy;
 
 void GuyDialog::update() {
     if (
-        !State::gameState.canBuyMeat &&
+        !State::gameState.canChooseProMode &&
         arduboy.justPressed(A_BUTTON)
     ) {
-        if (State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= 5) {
-            State::decreaseCurrentCount(FishType::LOBSTER, 5);
-            State::gameState.canBuyMeat = true;
+        if (State::gameState.currentFishCount[static_cast<int8_t>(FishType::OLD_BOOT)] >= 10) {
+            State::decreaseCurrentCount(FishType::OLD_BOOT, 10);
+            State::gameState.canChooseProMode = true;
         } else {
             Sfx::buzz();
         }
     }
     else if (
-        State::gameState.canBuyMeat &&
+        State::gameState.canChooseProMode &&
         arduboy.justPressed(A_BUTTON)
     ) {
-        if (State::gameState.money >= MEAT_PRICE) {
-            State::gameState.money -= MEAT_PRICE;
-            State::gameState.baitCounts[static_cast<int8_t>(BaitType::Meat)] += 1;
-        } else {
-            Sfx::buzz();
-        }
+        State::gameState.useProMode = !State::gameState.useProMode;
     }
 }
 
 void GuyDialog::render() {
     DialogUtils::renderFrame(fishingGuyDialog_tiles);
 
-    const uint8_t* str = girlQuest_string;
+    const uint8_t* str = guyQuest_string;
 
-    if (State::gameState.canBuyMeat) {
-        str = girlSellMeat_string;
+    if (State::gameState.canChooseProMode) {
+        if (State::gameState.useProMode) {
+            str = guyTurnOffProMode_string;
+        } else {
+            str = guyTurnOnProMode_string;
+        }
+    } else {
+        // user's current boot count for reference
+        renderer.drawOverwrite(WIDTH - 48, 8, OLD_BOOT_tiles, 0);
+        renderer.drawNumber(WIDTH - 36, 10, State::gameState.currentFishCount[static_cast<int8_t>(FishType::OLD_BOOT)]);
     }
 
-    renderer.drawString(17, 30, str);
+    renderer.drawString(17, 28, str);
 
     renderer.drawOverwrite(54, 50, squareIcon_tiles, 0);
     renderer.drawString(60, 50, ok_string);
-
-    if (State::gameState.canBuyMeat) {
-        renderer.drawPlusMask(43, 39, currencySymbol_plus_mask, 0);
-        renderer.drawNumber(49, 40, MEAT_PRICE);
-        renderer.drawRect(38, 37, 50, 10, WHITE);
-
-        // user's current money in upper corner
-        DialogUtils::renderMoneyInCorner();
-
-        // user's current meat count for reference
-        renderer.drawPlusMask(WIDTH - 48, 8, meat_plus_mask, 0, 0, Invert);
-        renderer.drawNumber(WIDTH - 36, 10, State::gameState.baitCounts[static_cast<int8_t>(BaitType::Meat)]);
-    }
 }
 
