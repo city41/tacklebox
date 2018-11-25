@@ -84,7 +84,7 @@ void State::clearEEPROM() {
 bool State::isDay() {
     uint8_t hour = getCurrentHour();
 
-    return hour >= 5 && hour < 19;
+    return hour >= 5 && hour < 21;
 }
 
 uint8_t State::getCurrentHour() {
