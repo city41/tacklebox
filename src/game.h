@@ -38,6 +38,9 @@ class Game {
         void update(uint8_t frame);
         void render(uint8_t frame);
 
+        void updateLogo(uint8_t frame);
+        void renderLogo(uint8_t frame);
+
         void updateTitle(uint8_t frame);
         void renderTitle(uint8_t frame);
 
@@ -59,10 +62,10 @@ class Game {
         Game(): 
             player(),
             prevUpdate(NULL),
-            currentUpdate(&Game::updateTitle),
+            currentUpdate(&Game::updateLogo),
             nextUpdate(NULL),
             prevRender(NULL),
-            currentRender(&Game::renderTitle),
+            currentRender(&Game::renderLogo),
             nextRender(NULL),
             titleCount(0),
             seconds(0),

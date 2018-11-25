@@ -18,11 +18,14 @@ extern Arduboy2Base arduboy;
 void GirlDialog::update() {
     if (
         !State::gameState.canBuyMeat &&
-        State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= 5 &&
         arduboy.justPressed(A_BUTTON)
     ) {
-        State::decreaseCurrentCount(FishType::LOBSTER, 5);
-        State::gameState.canBuyMeat = true;
+        if (State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= 5) {
+            State::decreaseCurrentCount(FishType::LOBSTER, 5);
+            State::gameState.canBuyMeat = true;
+        } else {
+            Sfx::buzz();
+        }
     }
     else if (
         State::gameState.canBuyMeat &&

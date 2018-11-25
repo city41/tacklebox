@@ -41,6 +41,16 @@ void Game::pop() {
     nextRender = prevRender;
 }
 
+void Game::updateLogo(uint8_t frame) {
+    if (frame == 60) {
+        push(&Game::updateTitle, &Game::renderTitle);
+    }
+}
+
+void Game::renderLogo(uint8_t frame) {
+    renderer.drawOverwrite(WIDTH / 2 - 8, HEIGHT / 2 - 4, city41Logo_tiles, 0);
+}
+
 void Game::updateTitle(uint8_t frame) {
     titleCount += 1;
     if (titleCount == 120) {
@@ -50,7 +60,6 @@ void Game::updateTitle(uint8_t frame) {
 
 void Game::renderTitle(uint8_t frame) {
     renderer.drawOverwrite(17, 16, logo_tiles, 0);
-    renderer.drawOverwrite(WIDTH - 24, HEIGHT - 8, city41Logo_tiles, 0);
 }
 
 bool isOnScreen(int16_t refX, int16_t refY, int16_t x, int16_t y) {
