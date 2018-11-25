@@ -25,7 +25,7 @@ const uint16_t GRUB_PRICE = 1;
 const uint16_t SHRIMP_PRICE = 3;
 const uint16_t PRO_POLE_PRICE = 200;
 const uint16_t OARS_PRICE = 400;
-const int8_t MAX_ADVICE_LEVEL = 5;
+const int8_t MAX_ADVICE_LEVEL = 3;
 
 const uint8_t BUY_MENU_ITEMS_COUNT = 4;
 const uint8_t BUY_MENU_ITEM_PROPS_COUNT = 3;
@@ -49,8 +49,7 @@ const uint8_t* const PROGMEM adviceStrings[] = {
     NULL,
     advice1_string,
     advice2_string,
-    advice3_string,
-    advice4_string
+    advice3_string
 };
 
 bool Shop::isOpen() {
@@ -277,18 +276,26 @@ void Shop::renderSell(uint8_t frame) {
     renderer.drawString(60, 50, ok_string);
 }
 
+const uint8_t PROGMEM advicePrices[] = {
+    1,
+    15,
+    135
+};
+
 void Shop::updateAdvice(uint8_t frame) {
     if (arduboy.justPressed(B_BUTTON)) {
         Shop::currentUpdate = &Shop::updateMainMenu;
         Shop::currentRender = &Shop::renderMainMenu;
     }
 
+    uint8_t advicePrice = static_cast<uint8_t>(pgm_read_byte(advicePrices + State::gameState.adviceLevel));
+
     if (!showAdvice && arduboy.justPressed(A_BUTTON)) {
         if (
             State::gameState.adviceLevel < MAX_ADVICE_LEVEL &&
-            State::gameState.money >= (1 << State::gameState.adviceLevel)
+            State::gameState.money >= advicePrice
         ) {
-            State::gameState.money -= (1 << State::gameState.adviceLevel);
+            State::gameState.money -= advicePrice;
 
             State::gameState.adviceLevel += 1;
             showAdvice = true;
@@ -309,12 +316,12 @@ void Shop::renderAdvice(uint8_t frame) {
         const uint8_t* str = static_cast<const uint8_t*>(pgm_read_ptr(adviceStrings + State::gameState.adviceLevel));
         renderer.drawString(20, 30, str);
     } else {
-        uint16_t moneyAmount = (1 << State::gameState.adviceLevel);
+        uint8_t advicePrice = static_cast<uint8_t>(pgm_read_byte(advicePrices + State::gameState.adviceLevel));
 
         renderer.drawString(20, 30, adviceFor_string);
 
         renderer.drawPlusMask(43, 39, currencySymbol_plus_mask, 0);
-        renderer.drawNumber(49, 40, moneyAmount);
+        renderer.drawNumber(49, 40, advicePrice);
         renderer.drawRect(38, 37, 50, 10, WHITE);
 
         renderer.drawOverwrite(54, 50, squareIcon_tiles, 0);

@@ -129,15 +129,15 @@ const uint8_t ok_string[3] PROGMEM = {
 };
 
 
-// "SOUND *"
-const uint8_t sfxOn_string[8] PROGMEM = {
-    29, 25, 31, 24, 14, 0, 37, 0xFF
+// "SFX *"
+const uint8_t sfxOn_string[6] PROGMEM = {
+    29, 16, 34, 0, 37, 0xFF
 };
 
 
-// "SOUND"
-const uint8_t sfxOff_string[6] PROGMEM = {
-    29, 25, 31, 24, 14, 0xFF
+// "SFX"
+const uint8_t sfxOff_string[4] PROGMEM = {
+    29, 16, 34, 0xFF
 };
 
 
@@ -279,33 +279,27 @@ const uint8_t boatOars_string[5] PROGMEM = {
 };
 
 
-// "THERE ARE OTHER\nFISHERS AROUND"
-const uint8_t advice1_string[31] PROGMEM = {
-    30, 18, 15, 28, 15, 0, 11, 28, 15, 0, 25, 30, 18, 15, 28, 40, 16, 19, 29, 18, 15, 28, 29, 0, 11, 28, 25, 31, 24, 14, 0xFF
-};
-
-
-// "BUY LOW\nSELL HIGH\nMOSTLY INDEX FUNDS"
-const uint8_t advice2_string[37] PROGMEM = {
-    12, 31, 35, 0, 22, 25, 33, 40, 29, 15, 22, 22, 0, 18, 19, 17, 18, 40, 23, 25, 29, 30, 22, 35, 0, 19, 24, 14, 15, 34, 0, 16, 31, 24, 14, 29, 0xFF
+// "OTHERS FISH\nAT CERTAIN TIMES\nOF THE DAY"
+const uint8_t advice1_string[40] PROGMEM = {
+    25, 30, 18, 15, 28, 29, 0, 16, 19, 29, 18, 40, 11, 30, 0, 13, 15, 28, 30, 11, 19, 24, 0, 30, 19, 23, 15, 29, 40, 25, 16, 0, 30, 18, 15, 0, 14, 11, 35, 0xFF
 };
 
 
 // "SOME FISH ARE\nONLY IN\nDEEP WATER"
-const uint8_t advice3_string[33] PROGMEM = {
+const uint8_t advice2_string[33] PROGMEM = {
     29, 25, 23, 15, 0, 16, 19, 29, 18, 0, 11, 28, 15, 40, 25, 24, 22, 35, 0, 19, 24, 40, 14, 15, 15, 26, 0, 33, 11, 30, 15, 28, 0xFF
 };
 
 
-// "CITY41.GAMES/FG"
-const uint8_t advice4_string[16] PROGMEM = {
-    13, 19, 30, 35, 5, 2, 38, 17, 11, 23, 15, 29, 39, 16, 17, 0xFF
+// "VISIT\nCITY41.GAMES/FG"
+const uint8_t advice3_string[22] PROGMEM = {
+    32, 19, 29, 19, 30, 40, 13, 19, 30, 35, 5, 2, 38, 17, 11, 23, 15, 29, 39, 16, 17, 0xFF
 };
 
 
-// "YOU KNOW IT ALL"
-const uint8_t noMoreAdvice_string[16] PROGMEM = {
-    35, 25, 31, 0, 21, 24, 25, 33, 0, 19, 30, 0, 11, 22, 22, 0xFF
+// "YOU KNOW ALL"
+const uint8_t noMoreAdvice_string[13] PROGMEM = {
+    35, 25, 31, 0, 21, 24, 25, 33, 0, 11, 22, 22, 0xFF
 };
 
 
