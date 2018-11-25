@@ -34,9 +34,3 @@ void DialogUtils::renderMoneyInCorner() {
     renderer.drawNumber(WIDTH - 36, 1, State::gameState.money);
 }
 
-void DialogUtils::renderBaitInCorner(BaitType baitType, uint8_t x) {
-    const uint8_t* bmp = static_cast<const uint8_t*>(pgm_read_ptr(baitBitmaps + static_cast<int8_t>(baitType)));
-
-    renderer.drawPlusMask(x, 8, bmp, 0, 0, Invert);
-    renderer.drawNumber(x + 12, 10, State::gameState.baitCounts[static_cast<int8_t>(baitType)]);
-}

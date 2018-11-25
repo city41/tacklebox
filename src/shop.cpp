@@ -67,8 +67,7 @@ void Shop::render(uint8_t frame) {
     Shop::currentRender(frame);
 
     // user's current money in upper corner
-    renderer.drawPlusMask(WIDTH - 42, 0, currencySymbol_plus_mask, 0);
-    renderer.drawNumber(WIDTH - 36, 1, State::gameState.money);
+    DialogUtils::renderMoneyInCorner();
 
     // user's current grub and shrimp count for reference
     renderer.drawPlusMask(WIDTH - 70, 8, grub_plus_mask, 0, 0, Invert);

@@ -7,6 +7,5 @@ struct DialogUtils {
     static void reset();
     static void renderFrame(const uint8_t* bmp);
     static void renderMoneyInCorner();
-    static void renderBaitInCorner(BaitType baitType, uint8_t x);
 };
 

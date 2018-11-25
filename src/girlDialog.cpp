@@ -69,8 +69,7 @@ void GirlDialog::render() {
         renderer.drawRect(38, 37, 50, 10, WHITE);
 
         // user's current money in upper corner
-        renderer.drawPlusMask(WIDTH - 42, 0, currencySymbol_plus_mask, 0);
-        renderer.drawNumber(WIDTH - 36, 1, State::gameState.money);
+        DialogUtils::renderMoneyInCorner();
 
         // user's current meat count for reference
         renderer.drawPlusMask(WIDTH - 48, 8, meat_plus_mask, 0, 0, Invert);
