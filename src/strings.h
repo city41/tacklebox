@@ -1,7 +1,7 @@
 #ifndef strings_h
 #define strings_h
 
-const uint8_t NEW_LINE = 40;
+const uint8_t NEW_LINE = 42;
 
 const uint8_t PROGMEM font_tiles[] =  {
     // width, height
@@ -46,6 +46,8 @@ const uint8_t PROGMEM font_tiles[] =  {
     0xb6,0x72,0xb4,0xd6,
     // '.' and '/'
     0x7f,0xb7,0xdf,0xef,
+    // ',' and '!'
+    0xff,0x47,0xfb,0xff,
 };
 
 const uint8_t PROGMEM font_tiles_upper_mask[] = {
@@ -129,21 +131,21 @@ const uint8_t ok_string[3] PROGMEM = {
 };
 
 
-// "SFX *"
-const uint8_t sfxOn_string[6] PROGMEM = {
-    29, 16, 34, 0, 37, 0xFF
+// "SOUND *"
+const uint8_t sfxOn_string[8] PROGMEM = {
+    29, 25, 31, 24, 14, 0, 37, 0xFF
 };
 
 
-// "SFX"
-const uint8_t sfxOff_string[4] PROGMEM = {
-    29, 16, 34, 0xFF
+// "SOUND"
+const uint8_t sfxOff_string[6] PROGMEM = {
+    29, 25, 31, 24, 14, 0xFF
 };
 
 
-// "OPEN 4AM\nTO MIDNIGHT"
-const uint8_t openFromTo_string[21] PROGMEM = {
-    25, 26, 15, 24, 0, 5, 11, 23, 40, 30, 25, 0, 23, 19, 14, 24, 19, 17, 18, 30, 0xFF
+// "OPEN 4AM\nTO MIDNIGHT\nEVERY DAY"
+const uint8_t openFromTo_string[31] PROGMEM = {
+    25, 26, 15, 24, 0, 5, 11, 23, 42, 30, 25, 0, 23, 19, 14, 24, 19, 17, 18, 30, 42, 15, 32, 15, 28, 35, 0, 14, 11, 35, 0xFF
 };
 
 
@@ -185,13 +187,13 @@ const uint8_t adviceFor_string[18] PROGMEM = {
 
 // "YOU HAVE NO FISH\nTO SELL"
 const uint8_t youHaveNoFish_string[25] PROGMEM = {
-    35, 25, 31, 0, 18, 11, 32, 15, 0, 24, 25, 0, 16, 19, 29, 18, 40, 30, 25, 0, 29, 15, 22, 22, 0xFF
+    35, 25, 31, 0, 18, 11, 32, 15, 0, 24, 25, 0, 16, 19, 29, 18, 42, 30, 25, 0, 29, 15, 22, 22, 0xFF
 };
 
 
 // "I AM NOT BUYING\nTHOSE CRUSTY BOOTS"
 const uint8_t notBuyingBoots_string[35] PROGMEM = {
-    19, 0, 11, 23, 0, 24, 25, 30, 0, 12, 31, 35, 19, 24, 17, 40, 30, 18, 25, 29, 15, 0, 13, 28, 31, 29, 30, 35, 0, 12, 25, 25, 30, 29, 0xFF
+    19, 0, 11, 23, 0, 24, 25, 30, 0, 12, 31, 35, 19, 24, 17, 42, 30, 18, 25, 29, 15, 0, 13, 28, 31, 29, 30, 35, 0, 12, 25, 25, 30, 29, 0xFF
 };
 
 
@@ -281,19 +283,19 @@ const uint8_t boatOars_string[5] PROGMEM = {
 
 // "SOME FISH ARE\nONLY IN\nDEEP WATER"
 const uint8_t advice1_string[33] PROGMEM = {
-    29, 25, 23, 15, 0, 16, 19, 29, 18, 0, 11, 28, 15, 40, 25, 24, 22, 35, 0, 19, 24, 40, 14, 15, 15, 26, 0, 33, 11, 30, 15, 28, 0xFF
+    29, 25, 23, 15, 0, 16, 19, 29, 18, 0, 11, 28, 15, 42, 25, 24, 22, 35, 0, 19, 24, 42, 14, 15, 15, 26, 0, 33, 11, 30, 15, 28, 0xFF
 };
 
 
-// "CHARLIE FISHES\nTHE OCEAN\nAT NIGHT"
+// "CHARLIE FISHES\nTHE OCEAN AT NIGHT"
 const uint8_t advice2_string[34] PROGMEM = {
-    13, 18, 11, 28, 22, 19, 15, 0, 16, 19, 29, 18, 15, 29, 40, 30, 18, 15, 0, 25, 13, 15, 11, 24, 40, 11, 30, 0, 24, 19, 17, 18, 30, 0xFF
+    13, 18, 11, 28, 22, 19, 15, 0, 16, 19, 29, 18, 15, 29, 42, 30, 18, 15, 0, 25, 13, 15, 11, 24, 0, 11, 30, 0, 24, 19, 17, 18, 30, 0xFF
 };
 
 
 // "VISIT\nCITY41.GAMES/FG"
 const uint8_t advice3_string[22] PROGMEM = {
-    32, 19, 29, 19, 30, 40, 13, 19, 30, 35, 5, 2, 38, 17, 11, 23, 15, 29, 39, 16, 17, 0xFF
+    32, 19, 29, 19, 30, 42, 13, 19, 30, 35, 5, 2, 38, 17, 11, 23, 15, 29, 39, 16, 17, 0xFF
 };
 
 
@@ -309,9 +311,15 @@ const uint8_t signGameManual_string[26] PROGMEM = {
 };
 
 
-// "WARNING SHARKS"
-const uint8_t signSharkWarning_string[15] PROGMEM = {
-    33, 11, 28, 24, 19, 24, 17, 0, 29, 18, 11, 28, 21, 29, 0xFF
+// "WARNING SHARKS!"
+const uint8_t signSharkWarning_string[16] PROGMEM = {
+    33, 11, 28, 24, 19, 24, 17, 0, 29, 18, 11, 28, 21, 29, 41, 0xFF
+};
+
+
+// "OCTOPUS TOO!"
+const uint8_t signOctoWarning_string[13] PROGMEM = {
+    25, 13, 30, 25, 26, 31, 29, 0, 30, 25, 25, 41, 0xFF
 };
 
 
@@ -323,31 +331,37 @@ const uint8_t signOceanFish_string[22] PROGMEM = {
 
 // "GIVE ME FIVE\nLOBSTERS AND I WILL\nSELL YOU NICE BAIT"
 const uint8_t girlQuest_string[52] PROGMEM = {
-    17, 19, 32, 15, 0, 23, 15, 0, 16, 19, 32, 15, 40, 22, 25, 12, 29, 30, 15, 28, 29, 0, 11, 24, 14, 0, 19, 0, 33, 19, 22, 22, 40, 29, 15, 22, 22, 0, 35, 25, 31, 0, 24, 19, 13, 15, 0, 12, 11, 19, 30, 0xFF
+    17, 19, 32, 15, 0, 23, 15, 0, 16, 19, 32, 15, 42, 22, 25, 12, 29, 30, 15, 28, 29, 0, 11, 24, 14, 0, 19, 0, 33, 19, 22, 22, 42, 29, 15, 22, 22, 0, 35, 25, 31, 0, 24, 19, 13, 15, 0, 12, 11, 19, 30, 0xFF
 };
 
 
-// "BUY NICE BAIT FOR"
-const uint8_t girlSellMeat_string[18] PROGMEM = {
-    12, 31, 35, 0, 24, 19, 13, 15, 0, 12, 11, 19, 30, 0, 16, 25, 28, 0xFF
+// "BUY PRIMO BAIT FOR"
+const uint8_t girlSellMeat_string[19] PROGMEM = {
+    12, 31, 35, 0, 26, 28, 19, 23, 25, 0, 12, 11, 19, 30, 0, 16, 25, 28, 0xFF
 };
 
 
 // "BRING TEN BOOTS\nFOR A NEW WAY"
 const uint8_t guyQuest_string[30] PROGMEM = {
-    12, 28, 19, 24, 17, 0, 30, 15, 24, 0, 12, 25, 25, 30, 29, 40, 16, 25, 28, 0, 11, 0, 24, 15, 33, 0, 33, 11, 35, 0xFF
+    12, 28, 19, 24, 17, 0, 30, 15, 24, 0, 12, 25, 25, 30, 29, 42, 16, 25, 28, 0, 11, 0, 24, 15, 33, 0, 33, 11, 35, 0xFF
 };
 
 
 // "SET FISHING MODE\nPRO"
 const uint8_t guyTurnOnProMode_string[21] PROGMEM = {
-    29, 15, 30, 0, 16, 19, 29, 18, 19, 24, 17, 0, 23, 25, 14, 15, 40, 26, 28, 25, 0xFF
+    29, 15, 30, 0, 16, 19, 29, 18, 19, 24, 17, 0, 23, 25, 14, 15, 42, 26, 28, 25, 0xFF
 };
 
 
 // "SET FISHING MODE\nCASUAL"
 const uint8_t guyTurnOffProMode_string[24] PROGMEM = {
-    29, 15, 30, 0, 16, 19, 29, 18, 19, 24, 17, 0, 23, 25, 14, 15, 40, 13, 11, 29, 31, 11, 22, 0xFF
+    29, 15, 30, 0, 16, 19, 29, 18, 19, 24, 17, 0, 23, 25, 14, 15, 42, 13, 11, 29, 31, 11, 22, 0xFF
+};
+
+
+// "THIS IS MY SPOT, BACK OFF!"
+const uint8_t lucyWarning_string[27] PROGMEM = {
+    30, 18, 19, 29, 0, 19, 29, 0, 23, 35, 0, 29, 26, 25, 30, 40, 0, 12, 11, 13, 21, 0, 25, 16, 16, 41, 0xFF
 };
 
 #endif

@@ -12,9 +12,9 @@
         { "key": "yes", "value": "YES" },
         { "key": "no", "value": "NO" },
         { "key": "ok", "value": "OK" },
-        { "key": "sfxOn", "value": "SFX *" },
-        { "key": "sfxOff", "value": "SFX" },
-        { "key": "openFromTo", "value": "OPEN 4AM\nTO MIDNIGHT" },
+        { "key": "sfxOn", "value": "SOUND *" },
+        { "key": "sfxOff", "value": "SOUND" },
+        { "key": "openFromTo", "value": "OPEN 4AM\nTO MIDNIGHT\nEVERY DAY" },
         { "key": "buy", "value": "BUY" },
         { "key": "sell", "value": "SELL" },
         { "key": "advice", "value": "ADVICE" },
@@ -38,16 +38,19 @@
         { "key": "proPole", "value": "PRO POLE" },
         { "key": "boatOars", "value": "OARS" },
         { "key": "advice1", "value": "SOME FISH ARE\nONLY IN\nDEEP WATER" },
-        { "key": "advice2", "value": "CHARLIE FISHES\nTHE OCEAN\nAT NIGHT" },
+        { "key": "advice2", "value": "CHARLIE FISHES\nTHE OCEAN AT NIGHT" },
         { "key": "advice3", "value": "VISIT\nCITY41.GAMES/FG" },
         { "key": "noMoreAdvice", "value": "YOU KNOW ALL" },
         { "key": "signGameManual", "value": "HELP AT CITY41.GAMES/TBOX" },
-        { "key": "signSharkWarning", "value": "WARNING SHARKS" },
+        { "key": "signSharkWarning", "value": "WARNING SHARKS!" },
+        { "key": "signOctoWarning", "value": "OCTOPUS TOO!" },
         { "key": "signOceanFish", "value": "OCEAN FISH HATE WORMS" },
         { "key": "girlQuest", "value": "GIVE ME FIVE\nLOBSTERS AND I WILL\nSELL YOU NICE BAIT" },
-        { "key": "girlSellMeat", "value": "BUY NICE BAIT FOR" },
+        { "key": "girlSellMeat", "value": "BUY PRIMO BAIT FOR" },
         { "key": "guyQuest", "value": "BRING TEN BOOTS\nFOR A NEW WAY" },
         { "key": "guyTurnOnProMode", "value": "SET FISHING MODE\nPRO" },
-        { "key": "guyTurnOffProMode", "value": "SET FISHING MODE\nCASUAL" }
+        { "key": "guyTurnOffProMode", "value": "SET FISHING MODE\nCASUAL" },
+        { "key": "lucyWarning", "value": "THIS IS MY SPOT, BACK OFF!" }
+
     ]
 }

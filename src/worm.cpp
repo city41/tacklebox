@@ -9,7 +9,7 @@ extern Arduboy2Base arduboy;
 void Worm::update(uint8_t frame, bool isActive, bool justBecameActive) {
 
     if (justBecameActive && !isSpawned) {
-        const uint8_t randomRange = State::isDay() ? 6 : 2;
+        const uint8_t randomRange = State::isDay() ? 4 : 2;
 
         isSpawned = random(0, randomRange) == 0;
 

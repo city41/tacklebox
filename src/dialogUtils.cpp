@@ -7,12 +7,7 @@
 extern Renderer renderer;
 
 void DialogUtils::renderFrame(const uint8_t* bmp) {
-    // white frame
-    renderer.fillRect(13, 19, 103, 1, WHITE);
-    renderer.fillRect(116, 20, 1, 42, WHITE);
-    renderer.fillRect(12, 20, 1, 42, WHITE);
-    renderer.fillRect(13, HEIGHT - 2, 103, 1, WHITE);
-
+    renderer.drawRect(12, 19, 105, 43);
     renderer.drawOverwrite(20, 2, bmp, 0);
 }
 
