@@ -6,7 +6,7 @@
 
 extern Renderer renderer;
 
-int16_t Guy::x = 16 * 36;
+int16_t Guy::x = 16 * 34;
 int16_t Guy::y = 16 * 20 + 6;
 
 bool Guy::isActive = false;

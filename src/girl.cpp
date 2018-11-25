@@ -6,7 +6,7 @@
 
 extern Renderer renderer;
 
-int16_t Girl::x = 16 * 5;
+int16_t Girl::x = 16 * 4;
 int16_t Girl::y = 16 * 1 + 6;
 
 bool Girl::isActive = false;

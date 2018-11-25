@@ -6,8 +6,8 @@
 
 extern Renderer renderer;
 
-const int16_t BEACH_DOCK_X = 16 * 37;
-const int16_t ISLAND_DOCK_X = 16 * 41 - 8;
+const int16_t BEACH_DOCK_X = 16 * 35;
+const int16_t ISLAND_DOCK_X = 16 * 39 - 8;
 
 int16_t Boat::x = BEACH_DOCK_X;
 int16_t Boat::y = 16 * 12 - 7;
