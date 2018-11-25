@@ -141,9 +141,9 @@ const uint8_t sfxOff_string[6] PROGMEM = {
 };
 
 
-// "SHOP HOURS\n4AM TO MIDNIGHT"
-const uint8_t openFromTo_string[27] PROGMEM = {
-    29, 18, 25, 26, 0, 18, 25, 31, 28, 29, 40, 5, 11, 23, 0, 30, 25, 0, 23, 19, 14, 24, 19, 17, 18, 30, 0xFF
+// "OPEN 4AM\nTO MIDNIGHT"
+const uint8_t openFromTo_string[21] PROGMEM = {
+    25, 26, 15, 24, 0, 5, 11, 23, 40, 30, 25, 0, 23, 19, 14, 24, 19, 17, 18, 30, 0xFF
 };
 
 
@@ -183,9 +183,9 @@ const uint8_t adviceFor_string[19] PROGMEM = {
 };
 
 
-// "YOU HAVE NO FISH\nTO SELL ME"
-const uint8_t youHaveNoFish_string[28] PROGMEM = {
-    35, 25, 31, 0, 18, 11, 32, 15, 0, 24, 25, 0, 16, 19, 29, 18, 40, 30, 25, 0, 29, 15, 22, 22, 0, 23, 15, 0xFF
+// "YOU HAVE NO FISH\nTO SELL"
+const uint8_t youHaveNoFish_string[25] PROGMEM = {
+    35, 25, 31, 0, 18, 11, 32, 15, 0, 24, 25, 0, 16, 19, 29, 18, 40, 30, 25, 0, 29, 15, 22, 22, 0xFF
 };
 
 
@@ -297,9 +297,9 @@ const uint8_t advice3_string[33] PROGMEM = {
 };
 
 
-// "MORE ADVICE GOES\nHERE\nHI MOM 4\nI LIKE TO FISH"
-const uint8_t advice4_string[46] PROGMEM = {
-    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 5, 40, 19, 0, 22, 19, 21, 15, 0, 30, 25, 0, 16, 19, 29, 18, 0xFF
+// "CITY41.GAMES/FG"
+const uint8_t advice4_string[16] PROGMEM = {
+    13, 19, 30, 35, 5, 2, 38, 17, 11, 23, 15, 29, 39, 16, 17, 0xFF
 };
 
 

@@ -10,6 +10,7 @@
 #include "fishTemplates.h"
 #include "enumUtils.h"
 #include "world.h"
+#include "boat.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -34,6 +35,8 @@ void Player::reset() {
     moveTo(STARTING_X, STARTING_Y);
     currentBait = BaitType::Worm;
     currentCollectionRow = 0;
+    Boat::currentDock = Dock::Beach;
+    Boat::x = BEACH_DOCK_X;
 }
 
 bool Player::isOnSolidTile() {
@@ -237,7 +240,7 @@ void Player::updateAreYouSure(uint8_t frame) {
         if (areYouSure) {
             State::clearEEPROM();
             State::load();
-            moveTo(STARTING_X, STARTING_Y);
+            reset();
             currentUpdate = &Player::updateWalk;
             currentRender = &Player::renderWalk;
         } else {

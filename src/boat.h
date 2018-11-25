@@ -2,6 +2,9 @@
 
 #include <Arduino.h>
 
+const int16_t BEACH_DOCK_X = 16 * 35;
+const int16_t ISLAND_DOCK_X = 16 * 39 - 8;
+
 enum class Dock {
     Beach,
     Island,
