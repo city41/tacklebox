@@ -30,7 +30,7 @@ const sixteenBitData = buildSixteenBitArray(fishJson.fish);
 const constants = `
 #include "nonMaskBitmaps.h"
 
-const uint8_t NUM_U8T_PROPS = 12;
+const uint8_t NUM_U8T_PROPS = 13;
 const uint8_t NUM_16T_PROPS = 6;
 `;
 

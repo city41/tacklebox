@@ -24,6 +24,8 @@ void Fish::loadFish(FishType fishType, Fish& fish) {
     fish.pull = pgm_read_byte(offset + 10);
     fish.deepWater = pgm_read_byte(offset + 11) == 1;
 
+    fish.proWindow = pgm_read_byte(offset + 12);
+
     const int16_t* offset16 = fish_templates_16t + static_cast<int8_t>(fishType) * NUM_16T_PROPS;
 
     fish.minX = pgm_read_word(offset16);

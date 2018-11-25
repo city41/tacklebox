@@ -303,30 +303,6 @@ const uint8_t advice4_string[46] PROGMEM = {
 };
 
 
-// "MORE ADVICE GOES\nHERE\nHI MOM 5\nBEER IS GOOD"
-const uint8_t advice5_string[44] PROGMEM = {
-    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 6, 40, 12, 15, 15, 28, 0, 19, 29, 0, 17, 25, 25, 14, 0xFF
-};
-
-
-// "MORE ADVICE GOES\nHERE\nHI MOM 6\nBONJOUR"
-const uint8_t advice6_string[39] PROGMEM = {
-    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 7, 40, 12, 25, 24, 20, 25, 31, 28, 0xFF
-};
-
-
-// "MORE ADVICE GOES\nHERE\nHI MOM 7\nDONT EAT YELLOW\nSNOW"
-const uint8_t advice7_string[52] PROGMEM = {
-    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 8, 40, 14, 25, 24, 30, 0, 15, 11, 30, 0, 35, 15, 22, 22, 25, 33, 40, 29, 24, 25, 33, 0xFF
-};
-
-
-// "MORE ADVICE GOES\nHERE\nHI MOM 8\nROCK ON"
-const uint8_t advice8_string[39] PROGMEM = {
-    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 9, 40, 28, 25, 13, 21, 0, 25, 24, 0xFF
-};
-
-
 // "YOU KNOW IT ALL"
 const uint8_t noMoreAdvice_string[16] PROGMEM = {
     35, 25, 31, 0, 21, 24, 25, 33, 0, 19, 30, 0, 11, 22, 22, 0xFF

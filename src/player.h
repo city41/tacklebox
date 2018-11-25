@@ -59,6 +59,9 @@ class Player {
         FishDiceRoll fishDiceRoll[MAX_FISH_IN_ROLL];
         uint8_t announceFishCount;
 
+        uint8_t inProWindowCount;
+        uint8_t proReelTime;
+
         UpdatePtr currentUpdate;
         RenderPtr currentRender;
 
@@ -110,6 +113,9 @@ class Player {
 
         void updateReel(uint8_t frame);
         void renderReel(uint8_t frame);
+
+        void updateReelProMode(uint8_t frame);
+        void renderReelProMode(uint8_t frame);
 
         void updateGetFish(uint8_t frame);
         void renderGetFish(uint8_t frame);

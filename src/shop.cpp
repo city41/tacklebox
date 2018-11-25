@@ -25,6 +25,7 @@ const uint16_t GRUB_PRICE = 1;
 const uint16_t SHRIMP_PRICE = 3;
 const uint16_t PRO_POLE_PRICE = 200;
 const uint16_t OARS_PRICE = 400;
+const int8_t MAX_ADVICE_LEVEL = 5;
 
 const uint8_t BUY_MENU_ITEMS_COUNT = 4;
 const uint8_t BUY_MENU_ITEM_PROPS_COUNT = 3;
@@ -49,11 +50,7 @@ const uint8_t* const PROGMEM adviceStrings[] = {
     advice1_string,
     advice2_string,
     advice3_string,
-    advice4_string,
-    advice5_string,
-    advice6_string,
-    advice7_string,
-    advice8_string
+    advice4_string
 };
 
 bool Shop::isOpen() {
@@ -289,7 +286,7 @@ void Shop::updateAdvice(uint8_t frame) {
 
     if (!showAdvice && arduboy.justPressed(A_BUTTON)) {
         if (
-            State::gameState.adviceLevel < 8 &&
+            State::gameState.adviceLevel < MAX_ADVICE_LEVEL &&
             State::gameState.money >= (1 << State::gameState.adviceLevel)
         ) {
             State::gameState.money -= (1 << State::gameState.adviceLevel);
@@ -307,7 +304,7 @@ void Shop::updateAdvice(uint8_t frame) {
 void Shop::renderAdvice(uint8_t frame) {
     DialogUtils::renderFrame(shopOwner_tiles);
 
-    if (State::gameState.adviceLevel == 8 && !showAdvice) {
+    if (State::gameState.adviceLevel == MAX_ADVICE_LEVEL && !showAdvice) {
         renderer.drawString(20, 30, noMoreAdvice_string);
     } else if (showAdvice) {
         const uint8_t* str = static_cast<const uint8_t*>(pgm_read_ptr(adviceStrings + State::gameState.adviceLevel));
