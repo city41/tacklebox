@@ -103,23 +103,6 @@
             "lengths": [1, 10]
         },
         {
-            "name": "BLUEGILL",
-            "baitPreference": {
-                "WORM": 1,
-                "GRUB": 1,
-                "SHRIMP": 0,
-                "MEAT": 0
-            },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
-            "pull": 7,
-            "proWindow": 64,
-            "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
-        },
-        {
             "name": "CATFISH",
             "baitPreference": {
                 "WORM": 1,

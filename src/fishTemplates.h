@@ -99,21 +99,6 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0, // deepWater
     64, // proWindow
 
-    // BLUEGILL
-    0,  // minHour
-    23,  // maxHour
-    1,  // baitPreference WORM
-    1,  // baitPreference GRUB
-    0,  // baitPreference SHRIMP
-    0,  // baitPreference MEAT
-    10,  // ratio
-    255,  // value
-    8, // nameLength
-    12, // bmpWidth
-    7, // pull
-    0, // deepWater
-    64, // proWindow
-
     // CATFISH
     0,  // minHour
     23,  // maxHour
@@ -365,10 +350,6 @@ const uint8_t BASS_string[5] PROGMEM = {
     12, 11, 29, 29, 0xFF
 };
 
-const uint8_t BLUEGILL_string[9] PROGMEM = {
-    12, 22, 31, 15, 17, 19, 22, 22, 0xFF
-};
-
 const uint8_t CATFISH_string[8] PROGMEM = {
     13, 11, 30, 16, 19, 29, 18, 0xFF
 };
@@ -476,14 +457,6 @@ const int16_t PROGMEM fish_templates_16t[] = {
     448, // max X
     reinterpret_cast<int16_t>(BASS_string),
     reinterpret_cast<int16_t>(BASS_tiles),
-    1, // minLength;
-    10, // maxLength
-
-    // BLUEGILL
-    368, // min X
-    448, // max X
-    reinterpret_cast<int16_t>(BLUEGILL_string),
-    reinterpret_cast<int16_t>(BLUEGILL_tiles),
     1, // minLength;
     10, // maxLength
 
