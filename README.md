@@ -10,6 +10,8 @@ The game is almost done. There's still a couple features to build yet. But the m
 
 ## Screenshots and Gifs
 
+![bear's tackle shop](https://raw.githubusercontent.com/city41/tacklebox/master/media/bearsTackle.png)
+
 ![buy in the shop](https://raw.githubusercontent.com/city41/tacklebox/master/media/buyInTheShop.png)
 
 ![fishing at night](https://raw.githubusercontent.com/city41/tacklebox/master/media/fishingAtNight.png)
