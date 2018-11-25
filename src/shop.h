@@ -28,7 +28,6 @@ struct Shop {
     static RenderPtr currentRender;
 
     static bool isOpen();
-    static void onEnter();
 
     static void update(uint8_t frame);
     static void render(uint8_t frame);

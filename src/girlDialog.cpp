@@ -3,12 +3,12 @@
 #include "renderer.h"
 #include "nonMaskBitmaps.h"
 #include "maskBitmaps.h"
-#include "animation.h"
 #include "strings.h"
 #include "state.h"
 #include "fishType.h"
 #include "baitType.h"
 #include "sfx.h"
+#include "dialogUtils.h"
 
 const uint8_t MEAT_PRICE = 10;
 
@@ -20,30 +20,7 @@ extern Arduboy2Base arduboy;
  * factor this down to a common Dialog class that both can use
  */
 
-
-const uint8_t PROGMEM fishingGirlDurations[] = {
-    20, 0, 5, 1, 5, 2, 5, 3, 255
-};
-
-Animation fishingGirlDialogAnimation(fishingGirlDurations);
-
-void renderGirlFrame() {
-    // white frame
-    renderer.fillRect(13, 19, 103, 1, WHITE);
-    renderer.fillRect(116, 20, 1, 42, WHITE);
-    renderer.fillRect(12, 20, 1, 42, WHITE);
-    renderer.fillRect(13, HEIGHT - 2, 103, 1, WHITE);
-
-    renderer.drawOverwrite(20, 2, fishingGirlDialog_tiles, fishingGirlDialogAnimation.currentFrame);
-}
-
-void GirlDialog::onEnter() {
-    fishingGirlDialogAnimation.reset();
-}
-
 void GirlDialog::update() {
-    fishingGirlDialogAnimation.update();
-
     if (
         !State::gameState.canBuyMeat &&
         State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= 5 &&
@@ -66,7 +43,7 @@ void GirlDialog::update() {
 }
 
 void GirlDialog::render() {
-    renderGirlFrame();
+    DialogUtils::renderFrame(fishingGirlDialog_tiles);
 
     const uint8_t* str = girlQuest_string;
 
