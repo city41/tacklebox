@@ -12,6 +12,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -28,6 +29,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -44,6 +46,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -60,6 +63,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -76,6 +80,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -92,22 +97,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
-            "deepWater": false,
-            "value": 255,
-            "lengths": [1, 10]
-        },
-        {
-            "name": "BLUEGILL",
-            "baitPreference": {
-                "WORM": 1,
-                "GRUB": 1,
-                "SHRIMP": 0,
-                "MEAT": 0
-            },
-            "activeHours": [0, 23],
-            "habitats": ["BEGINNER"],
-            "ratio": 10,
-            "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -124,6 +114,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -140,6 +131,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -156,6 +148,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -172,6 +165,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -188,6 +182,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -204,6 +199,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -220,6 +216,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -236,6 +233,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "value": 255,
             "lengths": [1, 10]
         },
@@ -251,6 +249,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -267,6 +266,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -283,6 +283,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -299,6 +300,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 255,
             "lengths": [1, 10]
@@ -315,6 +317,7 @@
             "habitats": ["BEGINNER", "OCEAN_ISLAND"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": true,
             "value": 255,
             "lengths": [1, 10]
@@ -331,6 +334,7 @@
             "habitats": ["BEGINNER", "OCEAN_ISLAND"],
             "ratio": 10,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": true,
             "value": 255,
             "lengths": [1, 10]
@@ -347,6 +351,7 @@
             "habitats": ["BEGINNER"],
             "ratio": 0,
             "pull": 7,
+            "proWindow": 64,
             "deepWater": false,
             "value": 0,
             "lengths": [1, 10]

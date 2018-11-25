@@ -303,30 +303,6 @@ const uint8_t advice4_string[46] PROGMEM = {
 };
 
 
-// "MORE ADVICE GOES\nHERE\nHI MOM 5\nBEER IS GOOD"
-const uint8_t advice5_string[44] PROGMEM = {
-    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 6, 40, 12, 15, 15, 28, 0, 19, 29, 0, 17, 25, 25, 14, 0xFF
-};
-
-
-// "MORE ADVICE GOES\nHERE\nHI MOM 6\nBONJOUR"
-const uint8_t advice6_string[39] PROGMEM = {
-    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 7, 40, 12, 25, 24, 20, 25, 31, 28, 0xFF
-};
-
-
-// "MORE ADVICE GOES\nHERE\nHI MOM 7\nDONT EAT YELLOW\nSNOW"
-const uint8_t advice7_string[52] PROGMEM = {
-    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 8, 40, 14, 25, 24, 30, 0, 15, 11, 30, 0, 35, 15, 22, 22, 25, 33, 40, 29, 24, 25, 33, 0xFF
-};
-
-
-// "MORE ADVICE GOES\nHERE\nHI MOM 8\nROCK ON"
-const uint8_t advice8_string[39] PROGMEM = {
-    23, 25, 28, 15, 0, 11, 14, 32, 19, 13, 15, 0, 17, 25, 15, 29, 40, 18, 15, 28, 15, 40, 18, 19, 0, 23, 25, 23, 0, 9, 40, 28, 25, 13, 21, 0, 25, 24, 0xFF
-};
-
-
 // "YOU KNOW IT ALL"
 const uint8_t noMoreAdvice_string[16] PROGMEM = {
     35, 25, 31, 0, 21, 24, 25, 33, 0, 19, 30, 0, 11, 22, 22, 0xFF
@@ -366,6 +342,36 @@ const uint8_t girlRequestLobsters_string[52] PROGMEM = {
 // "BUY FANCY BAIT FOR"
 const uint8_t girlSellMeat_string[19] PROGMEM = {
     12, 31, 35, 0, 16, 11, 24, 13, 35, 0, 12, 11, 19, 30, 0, 16, 25, 28, 0xFF
+};
+
+
+// "I WILL GIVE YOU\nSOMETHING COOL\nIF YOU BRING ME\nTEN OLD BOOTS"
+const uint8_t guyQuest_string[61] PROGMEM = {
+    19, 0, 33, 19, 22, 22, 0, 17, 19, 32, 15, 0, 35, 25, 31, 40, 29, 25, 23, 15, 30, 18, 19, 24, 17, 0, 13, 25, 25, 22, 40, 19, 16, 0, 35, 25, 31, 0, 12, 28, 19, 24, 17, 0, 23, 15, 40, 30, 15, 24, 0, 25, 22, 14, 0, 12, 25, 25, 30, 29, 0xFF
+};
+
+
+// "GIVE ME THOSE BOOTS\nFOR SOMETHING COOL"
+const uint8_t guyRequestBoots_string[39] PROGMEM = {
+    17, 19, 32, 15, 0, 23, 15, 0, 30, 18, 25, 29, 15, 0, 12, 25, 25, 30, 29, 40, 16, 25, 28, 0, 29, 25, 23, 15, 30, 18, 19, 24, 17, 0, 13, 25, 25, 22, 0xFF
+};
+
+
+// "SET FISHING MODE"
+const uint8_t guyProMode_string[17] PROGMEM = {
+    29, 15, 30, 0, 16, 19, 29, 18, 19, 24, 17, 0, 23, 25, 14, 15, 0xFF
+};
+
+
+// "PRO"
+const uint8_t modePro_string[4] PROGMEM = {
+    26, 28, 25, 0xFF
+};
+
+
+// "CASUAL"
+const uint8_t modeCasual_string[7] PROGMEM = {
+    13, 11, 29, 31, 11, 22, 0xFF
 };
 
 #endif

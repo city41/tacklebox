@@ -9,9 +9,11 @@
 #include "hud.h"
 #include "shop.h"
 #include "girlDialog.h"
+#include "guyDialog.h"
 #include "worms.h"
 #include "signs.h"
 #include "girl.h"
+#include "guy.h"
 #include "boat.h"
 #include "util.h"
 #include "dialogUtils.h"
@@ -91,8 +93,11 @@ bool Game::isOnBoat() {
 }
 
 bool Game::isTalkingToGirl() {
-    return player.dir == UP &&
-        overlap(player, Girl::x, Girl::y, 16, 16);
+    return overlap(player, Girl::x, Girl::y, 16, 16);
+}
+
+bool Game::isTalkingToGuy() {
+    return overlap(player, Guy::x, Guy::y, 16, 16);
 }
 
 void Game::updatePlay(uint8_t frame) {
@@ -115,8 +120,11 @@ void Game::updatePlay(uint8_t frame) {
     bool justBecameActive = isActive && !isOnScreen(player.prevX, player.prevY, Girl::x, Girl::y);
     Girl::update(isActive, justBecameActive);
 
+    isActive = isOnScreen(player.x, player.y, Guy::x, Guy::y);
+    justBecameActive = isActive && !isOnScreen(player.prevX, player.prevY, Guy::x, Guy::y);
+    Guy::update(isActive, justBecameActive);
+
     if (isOnShopDoor() && Shop::isOpen()) {
-        DialogUtils::reset();
         push(&Game::updateShop, &Game::renderShop);
         return;
     }
@@ -128,8 +136,14 @@ void Game::updatePlay(uint8_t frame) {
     }
 
     if (isTalkingToGirl()) {
-        DialogUtils::reset();
+        player.undoMove();
         push(&Game::updateTalkToGirl, &Game::renderTalkToGirl);
+        return;
+    }
+
+    if (isTalkingToGuy()) {
+        player.undoMove();
+        push(&Game::updateTalkToGuy, &Game::renderTalkToGuy);
         return;
     }
 
@@ -200,6 +214,7 @@ void Game::renderPlay(uint8_t frame) {
     }
 
     Girl::render(frame);
+    Guy::render(frame);
     Boat::render(frame);
 
     if (!Shop::isOpen() && player.y < HEIGHT) {
@@ -236,7 +251,6 @@ void Game::renderShop(uint8_t frame) {
 
 void Game::updateTalkToGirl(uint8_t frame) {
     if (arduboy.justPressed(B_BUTTON)) {
-        player.moveTo(player.x, player.y + 16);
         pop();
     } else {
         GirlDialog::update();
@@ -245,6 +259,18 @@ void Game::updateTalkToGirl(uint8_t frame) {
 
 void Game::renderTalkToGirl(uint8_t frame) {
     GirlDialog::render();
+}
+
+void Game::updateTalkToGuy(uint8_t frame) {
+    if (arduboy.justPressed(B_BUTTON)) {
+        pop();
+    } else {
+        GuyDialog::update();
+    }
+}
+
+void Game::renderTalkToGuy(uint8_t frame) {
+    GuyDialog::render();
 }
 
 void Game::updateBoatTravel(uint8_t frame) {

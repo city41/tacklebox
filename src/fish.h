@@ -14,6 +14,7 @@ class Fish {
         uint8_t value;
         uint8_t pull;
         bool deepWater;
+        uint8_t proWindow;
         
         int16_t minX;
         int16_t maxX;

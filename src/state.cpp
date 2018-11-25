@@ -19,49 +19,52 @@ void State::load() {
     if (hasUserSaved()) {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
-        // start the game at 4pm
-            gameState.minute = 16 * 60;
-            gameState.baitCounts[0] = 100;
-            gameState.baitCounts[1] = 0;
-            gameState.baitCounts[2] = 0;
-            gameState.baitCounts[3] = 0;
-            gameState.money = 500;
-            gameState.hasProPole = false;
-            gameState.hasOars = true;
-            gameState.canBuyMeat = false;
-            gameState.adviceLevel = 0;
+        gameState.canChooseProMode = false;
+        gameState.useProMode = false;
 
-            for (int8_t i = 0; i < static_cast<int8_t>(FishType::COUNT); ++i) {
-                gameState.acquiredFish[i] = true;
-                gameState.currentFishCount[i] = 0;
-                gameState.bestLength[i] = 0;
-            }
+        // start the game at 4pm
+        gameState.minute = 16 * 60;
+        gameState.baitCounts[0] = 0;
+        gameState.baitCounts[1] = 0;
+        gameState.baitCounts[2] = 0;
+        gameState.baitCounts[3] = 0;
+        gameState.money = 0;
+        gameState.hasProPole = false;
+        gameState.hasOars = true;
+        gameState.canBuyMeat = false;
+        gameState.adviceLevel = 0;
+
+        for (int8_t i = 0; i < static_cast<int8_t>(FishType::COUNT); ++i) {
+            gameState.acquiredFish[i] = true;
+            gameState.currentFishCount[i] = 0;
+            gameState.bestLength[i] = 0;
         }
     }
+}
 
-    void State::setFishAcquired(FishType fishType) {
-        gameState.acquiredFish[static_cast<int8_t>(fishType)] = true;
-    }
+void State::setFishAcquired(FishType fishType) {
+    gameState.acquiredFish[static_cast<int8_t>(fishType)] = true;
+}
 
-    void State::incrementCurrentCount(FishType fishType) {
-        gameState.currentFishCount[static_cast<int8_t>(fishType)] += 1;
-    }
+void State::incrementCurrentCount(FishType fishType) {
+    gameState.currentFishCount[static_cast<int8_t>(fishType)] += 1;
+}
 
-    void State::decreaseCurrentCount(FishType fishType, uint8_t count) {
-        gameState.currentFishCount[static_cast<int8_t>(fishType)] -= count;
-    }
+void State::decreaseCurrentCount(FishType fishType, uint8_t count) {
+    gameState.currentFishCount[static_cast<int8_t>(fishType)] -= count;
+}
 
-    void State::setFishLength(Fish& fish) {
-        int8_t index = static_cast<int8_t>(fish.type);
-        int16_t currentLength = gameState.bestLength[index];
-        gameState.bestLength[index] = max(currentLength, fish.length);
-    }
+void State::setFishLength(Fish& fish) {
+    int8_t index = static_cast<int8_t>(fish.type);
+    int16_t currentLength = gameState.bestLength[index];
+    gameState.bestLength[index] = max(currentLength, fish.length);
+}
 
-    bool State::sellAllFish() {
-        Fish fish;
-        bool soldSomething = false;
+bool State::sellAllFish() {
+    Fish fish;
+    bool soldSomething = false;
 
-        for (uint8_t f = 0; f < static_cast<uint8_t>(FishType::OLD_BOOT); ++f) {
+    for (uint8_t f = 0; f < static_cast<uint8_t>(FishType::OLD_BOOT); ++f) {
         Fish::loadFish(static_cast<FishType>(f), fish);
 
         soldSomething = soldSomething || gameState.currentFishCount[f] > 0;

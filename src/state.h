@@ -9,6 +9,8 @@ const uint8_t GAME_ID = 90;
 const uint8_t EEPROM_START = 64;
 
 struct GameState {
+    bool canChooseProMode;
+    bool useProMode;
     uint16_t minute;
     uint8_t baitCounts[4];
     uint16_t money;

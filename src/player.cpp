@@ -462,8 +462,15 @@ void Player::updateCast(uint8_t frame) {
         Fish::loadFish(fishType, currentFish);
         reelLevel = WIDTH / 2;
 
-        currentUpdate = &Player::updateReel;
-        currentRender = &Player::renderReel;
+        if (State::gameState.useProMode) {
+            inProWindowCount = 0;
+            proReelTime = 0;
+            currentUpdate = &Player::updateReelProMode;
+            currentRender = &Player::renderReelProMode;
+        } else {
+            currentUpdate = &Player::updateReel;
+            currentRender = &Player::renderReel;
+        }
     }
 }
 
@@ -613,6 +620,7 @@ void Player::updateReel(uint8_t frame) {
     }
 }
 
+
 void Player::renderReel(uint8_t frame) {
     uint8_t spriteIndex;
     uint8_t poleIndex = 1;
@@ -671,13 +679,81 @@ void Player::renderReel(uint8_t frame) {
     renderer.pushTranslate(0, 0);
 
     // black background to serve as the frame
-    renderer.fillRect(29, HEIGHT - 14, WIDTH - 58, 8, BLACK);
+    renderer.fillRect(29, HEIGHT - 12, WIDTH - 58, 8, BLACK);
 
     // white background to serve as the empty part
-    renderer.fillRect(30, HEIGHT - 13, WIDTH - 60, 6, WHITE);
+    renderer.fillRect(30, HEIGHT - 11, WIDTH - 60, 6, WHITE);
 
     // black progress bar at the current reel level
-    renderer.fillRect(32, HEIGHT - 12, reelLevel / 2, 4, BLACK);
+    renderer.fillRect(32, HEIGHT - 10, reelLevel / 2, 4, BLACK);
+
+    renderer.popTranslate();
+}
+
+void Player::updateReelProMode(uint8_t frame) {
+
+    if (frame % 30 == 0) {
+        proReelTime = min(proReelTime + 1, 100);
+        reelLevel = max(reelLevel - currentFish.pull - proReelTime, 0);
+    }
+
+    if (arduboy.justPressed(A_BUTTON)) {
+        Sfx::menuTick();
+        uint8_t playerPull = 10;
+        reelLevel = min(WIDTH - 2, reelLevel + playerPull);
+    }
+
+    if (reelLevel == 0) {
+        currentUpdate = &Player::updateWalk;
+        currentRender = &Player::renderWalk;
+        Sfx::buzz();
+    } else if (reelLevel >= currentFish.proWindow && reelLevel <= currentFish.proWindow + 24) {
+        inProWindowCount += 1;
+
+        if (inProWindowCount == 96) {
+            State::setFishAcquired(currentFish.type);
+            State::incrementCurrentCount(currentFish.type);
+
+            currentFish.rollForLength();
+
+            State::setFishLength(currentFish);
+
+            announceFishCount = ANNOUNCE_FISH_COUNT;
+
+            if (currentFish.type == FishType::OLD_BOOT) {
+                Sfx::buzz();
+            } else {
+                Sfx::gotFish();
+            }
+
+            currentUpdate = &Player::updateGetFish;
+            currentRender = &Player::renderGetFish;
+        }
+    } else {
+        inProWindowCount = 0;
+    }
+}
+
+void Player::renderReelProMode(uint8_t frame) {
+    renderReel(frame);
+
+    renderer.pushTranslate(0, 0);
+
+    renderer.fillRect(
+        32 + currentFish.proWindow / 2,
+        HEIGHT - 14, 
+        12,
+        2,
+        frame & 1 ? WHITE : BLACK
+    );
+
+    renderer.fillRect(
+        32 + currentFish.proWindow / 2,
+        HEIGHT - 14, 
+        inProWindowCount / 8,
+        2,
+        BLACK
+    );
 
     renderer.popTranslate();
 }

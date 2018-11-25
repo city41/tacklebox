@@ -1,4 +1,4 @@
-#include "girlDialog.h"
+#include "guyDialog.h"
 #include <Arduboy2.h>
 #include "renderer.h"
 #include "nonMaskBitmaps.h"
@@ -15,7 +15,7 @@ const uint8_t MEAT_PRICE = 10;
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
 
-void GirlDialog::update() {
+void GuyDialog::update() {
     if (
         !State::gameState.canBuyMeat &&
         State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= 5 &&
@@ -37,8 +37,8 @@ void GirlDialog::update() {
     }
 }
 
-void GirlDialog::render() {
-    DialogUtils::renderFrame(fishingGirlDialog_tiles);
+void GuyDialog::render() {
+    DialogUtils::renderFrame(fishingGuyDialog_tiles);
 
     const uint8_t* str = girlQuest_string;
 
