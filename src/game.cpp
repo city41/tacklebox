@@ -66,7 +66,6 @@ bool overlap(Player& player, const int16_t otherX, const int16_t otherY, const i
 
 bool Game::isOnShopDoor() {
     return (    
-        player.dir == UP &&
         player.y <= 20 &&
         (
             TileFloor::getTileAt(player.x + 8, player.y) == TileDef::ShopDoor

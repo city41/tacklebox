@@ -130,6 +130,15 @@ void renderFrame() {
     renderer.drawOverwrite(20, 2, shopOwner_tiles, shopOwnerAnimation.currentFrame);
 }
 
+const uint8_t MAIN_MENU_STRINGS_COUNT = 4;
+
+const uint8_t* const PROGMEM mainMenuStrings[MAIN_MENU_STRINGS_COUNT] = {
+    buy_string,
+    sell_string,
+    advice_string,
+    hours_string
+};
+
 void Shop::renderMainMenu(uint8_t frame) {
     renderFrame();
 
@@ -138,10 +147,10 @@ void Shop::renderMainMenu(uint8_t frame) {
     const uint8_t spacing = 9;
 
     renderer.drawOverwrite(x - 6, startY + static_cast<uint8_t>(Shop::mainMenuCurrentRow) * spacing, squareIcon_tiles, 0);
-    renderer.drawString(x, startY + spacing * 0, buy_string);
-    renderer.drawString(x, startY + spacing * 1, sell_string);
-    renderer.drawString(x, startY + spacing * 2, advice_string);
-    renderer.drawString(x, startY + spacing * 3, hours_string);
+
+    for (uint8_t m = 0; m < MAIN_MENU_STRINGS_COUNT; ++m) {
+        renderer.drawString(x, startY + spacing * m, static_cast<const uint8_t*>(pgm_read_ptr(mainMenuStrings + m)));
+    }
 }
 
 void buy(BuyMenu itemToBuy) {
