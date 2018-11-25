@@ -21,7 +21,7 @@
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
 
-const uint8_t SECONDS_PER_MINUTE = 1;
+const uint8_t SECONDS_PER_TWO_MINUTES = 1;
 const uint16_t MINUTES_IN_A_DAY = 24 * 60;
 
 /**
@@ -113,9 +113,9 @@ void Game::updatePlay(uint8_t frame) {
     if (frame == 60) {
         seconds += 1;
 
-        if (seconds == SECONDS_PER_MINUTE) {
+        if (seconds == SECONDS_PER_TWO_MINUTES) {
             seconds = 0;
-            State::gameState.minute += 1;
+            State::gameState.minute += 2;
 
             if (State::gameState.minute == MINUTES_IN_A_DAY) {
                 State::gameState.minute = 0;
