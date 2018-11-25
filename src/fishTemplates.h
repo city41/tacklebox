@@ -280,8 +280,8 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     64, // proWindow
 
     // SHARK
-    16,  // minHour
-    20,  // maxHour
+    0,  // minHour
+    13,  // maxHour
     0,  // baitPreference WORM
     0,  // baitPreference GRUB
     0,  // baitPreference SHRIMP
@@ -295,7 +295,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     64, // proWindow
 
     // GRTWHITE
-    18,  // minHour
+    13,  // minHour
     23,  // maxHour
     0,  // baitPreference WORM
     0,  // baitPreference GRUB

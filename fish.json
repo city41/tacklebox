@@ -313,7 +313,7 @@
                 "SHRIMP": 0,
                 "MEAT": 1
             },
-            "activeHours": [16, 20],
+            "activeHours": [0, 13],
             "habitats": ["OCEAN_ISLAND"],
             "ratio": 2,
             "pull": 20,
@@ -330,7 +330,7 @@
                 "SHRIMP": 0,
                 "MEAT": 1
             },
-            "activeHours": [18, 23],
+            "activeHours": [13, 23],
             "habitats": ["OCEAN_ISLAND"],
             "ratio": 1,
             "pull": 22,
