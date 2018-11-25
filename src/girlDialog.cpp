@@ -42,21 +42,14 @@ void GirlDialog::render() {
 
     const uint8_t* str = girlQuest_string;
 
-    if (
-        !State::gameState.canBuyMeat &&
-        State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= 5
-    ) {
-        str = girlRequestLobsters_string;
-    }
-
     if (State::gameState.canBuyMeat) {
         str = girlSellMeat_string;
     }
 
-    renderer.drawString(17, 30, str);
+    renderer.drawString(17, 24, str);
 
-    renderer.drawOverwrite(54, 50, squareIcon_tiles, 0);
-    renderer.drawString(60, 50, ok_string);
+    renderer.drawOverwrite(54, 54, squareIcon_tiles, 0);
+    renderer.drawString(60, 54, ok_string);
 
     if (State::gameState.canBuyMeat) {
         renderer.drawPlusMask(43, 39, currencySymbol_plus_mask, 0);
@@ -69,6 +62,9 @@ void GirlDialog::render() {
         // user's current meat count for reference
         renderer.drawPlusMask(WIDTH - 48, 8, meat_plus_mask, 0, 0, Invert);
         renderer.drawNumber(WIDTH - 36, 10, State::gameState.baitCounts[static_cast<int8_t>(BaitType::Meat)]);
+    } else {
+        renderer.drawOverwrite(WIDTH - 48, 8, LOBSTER_tiles, 0);
+        renderer.drawNumber(WIDTH - 33, 10, State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)]);
     }
 }
 

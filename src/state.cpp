@@ -39,6 +39,8 @@ void State::load() {
             gameState.currentFishCount[i] = 0;
             gameState.bestLength[i] = 0;
         }
+
+        gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] = 8;
     }
 }
 

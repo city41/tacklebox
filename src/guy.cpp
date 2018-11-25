@@ -24,7 +24,7 @@ void Guy::update(bool isActive, bool justBecameActive) {
 void Guy::render(uint8_t frame) {
     if (isActive) {
         renderer.drawPlusMask(x, y, fishingGuy_plus_mask, 0);
-        renderer.drawPlusMask(x + 10, y, fishingPole_plus_mask, 0);
+        renderer.drawPlusMask(x + 12, y, fishingPole_plus_mask, 0);
         renderer.drawOverwrite(x + 34, y + 5, bobber_tiles, static_cast<uint8_t>(frame > 30), 0, Xor);
     }
 }

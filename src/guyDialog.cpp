@@ -18,11 +18,14 @@ extern Arduboy2Base arduboy;
 void GuyDialog::update() {
     if (
         !State::gameState.canBuyMeat &&
-        State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= 5 &&
         arduboy.justPressed(A_BUTTON)
     ) {
-        State::decreaseCurrentCount(FishType::LOBSTER, 5);
-        State::gameState.canBuyMeat = true;
+        if (State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= 5) {
+            State::decreaseCurrentCount(FishType::LOBSTER, 5);
+            State::gameState.canBuyMeat = true;
+        } else {
+            Sfx::buzz();
+        }
     }
     else if (
         State::gameState.canBuyMeat &&
@@ -41,13 +44,6 @@ void GuyDialog::render() {
     DialogUtils::renderFrame(fishingGuyDialog_tiles);
 
     const uint8_t* str = girlQuest_string;
-
-    if (
-        !State::gameState.canBuyMeat &&
-        State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= 5
-    ) {
-        str = girlRequestLobsters_string;
-    }
 
     if (State::gameState.canBuyMeat) {
         str = girlSellMeat_string;
