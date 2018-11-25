@@ -268,26 +268,8 @@ void Game::renderBoatTravel(uint8_t frame) {
     TileFloor::renderCenteredOn(boatX, boatY, frame);
 
 
-    int16_t translateX;
-    int16_t translateY;
-
-    // TODO: this only needs to account for the right side of the map
-    if (boatX < WIDTH / 2) {
-        translateX = 0;
-    } else if (boatX > MAP_WIDTH_PX - WIDTH / 2) {
-        translateX = WIDTH - MAP_WIDTH_PX;
-    } else {
-        translateX = -boatX + WIDTH / 2;
-    }
-
-    if (boatY < HEIGHT / 2) {
-        translateY = 0;
-    } else if (boatY > MAP_HEIGHT_PX - HEIGHT / 2) {
-        translateY = HEIGHT - MAP_HEIGHT_PX;
-    } else {
-        translateY = -boatY + HEIGHT / 2;
-    }
-
+    int16_t translateX = -boatX + WIDTH / 2;
+    int16_t translateY = -boatY + HEIGHT / 2;
     renderer.translateX = translateX;
     renderer.translateY = translateY;
 
