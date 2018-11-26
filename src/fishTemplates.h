@@ -31,7 +31,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // baitPreference GRUB
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
-    10,  // ratio
+    8,  // ratio
     1,  // value
     5, // nameLength
     8, // bmpWidth
@@ -46,7 +46,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     1,  // baitPreference GRUB
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
-    10,  // ratio
+    8,  // ratio
     3,  // value
     6, // nameLength
     4, // bmpWidth
@@ -56,13 +56,13 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
 
     // BETA
     5,  // minHour
-    9,  // maxHour
+    15,  // maxHour
     1,  // baitPreference WORM
     0,  // baitPreference GRUB
     0,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
-    2,  // ratio
-    10,  // value
+    3,  // ratio
+    30,  // value
     4, // nameLength
     8, // bmpWidth
     5, // pull
@@ -196,7 +196,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     1,  // baitPreference GRUB
     1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
-    7,  // ratio
+    6,  // ratio
     8,  // value
     3, // nameLength
     16, // bmpWidth
@@ -211,7 +211,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     1,  // baitPreference GRUB
     1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
-    10,  // ratio
+    8,  // ratio
     2,  // value
     7, // nameLength
     5, // bmpWidth
@@ -242,7 +242,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
     3,  // ratio
-    30,  // value
+    40,  // value
     9, // nameLength
     12, // bmpWidth
     16, // pull
@@ -256,7 +256,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     1,  // baitPreference GRUB
     1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
-    2,  // ratio
+    3,  // ratio
     80,  // value
     7, // nameLength
     11, // bmpWidth
@@ -271,7 +271,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // baitPreference GRUB
     1,  // baitPreference SHRIMP
     1,  // baitPreference MEAT
-    2,  // ratio
+    3,  // ratio
     100,  // value
     6, // nameLength
     20, // bmpWidth

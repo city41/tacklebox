@@ -143,9 +143,9 @@ const uint8_t sfxOff_string[6] PROGMEM = {
 };
 
 
-// "OPEN 4AM\nTO MIDNIGHT\nEVERY DAY"
-const uint8_t openFromTo_string[31] PROGMEM = {
-    25, 26, 15, 24, 0, 5, 11, 23, 42, 30, 25, 0, 23, 19, 14, 24, 19, 17, 18, 30, 42, 15, 32, 15, 28, 35, 0, 14, 11, 35, 0xFF
+// "OPEN 4AM\nTO MIDNIGHT"
+const uint8_t openFromTo_string[21] PROGMEM = {
+    25, 26, 15, 24, 0, 5, 11, 23, 42, 30, 25, 0, 23, 19, 14, 24, 19, 17, 18, 30, 0xFF
 };
 
 
@@ -317,9 +317,9 @@ const uint8_t signSharkWarning_string[16] PROGMEM = {
 };
 
 
-// "OCTOPUS TOO!"
-const uint8_t signOctoWarning_string[13] PROGMEM = {
-    25, 13, 30, 25, 26, 31, 29, 0, 30, 25, 25, 41, 0xFF
+// "OCTOPUS TOO"
+const uint8_t signOctoWarning_string[12] PROGMEM = {
+    25, 13, 30, 25, 26, 31, 29, 0, 30, 25, 25, 0xFF
 };
 
 
@@ -341,9 +341,9 @@ const uint8_t girlSellMeat_string[19] PROGMEM = {
 };
 
 
-// "BRING TEN BOOTS\nFOR A NEW WAY"
-const uint8_t guyQuest_string[30] PROGMEM = {
-    12, 28, 19, 24, 17, 0, 30, 15, 24, 0, 12, 25, 25, 30, 29, 42, 16, 25, 28, 0, 11, 0, 24, 15, 33, 0, 33, 11, 35, 0xFF
+// "BRING TEN BOOTS\nFOR A NEW WAY\nTO FISH"
+const uint8_t guyQuest_string[38] PROGMEM = {
+    12, 28, 19, 24, 17, 0, 30, 15, 24, 0, 12, 25, 25, 30, 29, 42, 16, 25, 28, 0, 11, 0, 24, 15, 33, 0, 33, 11, 35, 42, 30, 25, 0, 16, 19, 29, 18, 0xFF
 };
 
 

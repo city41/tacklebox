@@ -754,7 +754,7 @@ void Player::renderReelProMode(uint8_t frame) {
         HEIGHT - 14, 
         inProWindowCount / 8,
         2,
-        BLACK
+        State::isDay() ? BLACK : WHITE
     );
 
     renderer.popTranslate();
