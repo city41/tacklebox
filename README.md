@@ -33,4 +33,6 @@ The website still needs to be built. The game refers to the website twice, so it
 
 ![viewing your collection](https://raw.githubusercontent.com/city41/tacklebox/master/media/collectionMenu.gif)
 
+![talking to Lucy](https://raw.githubusercontent.com/city41/tacklebox/master/media/lucy.png)
+
 ![fishing](https://raw.githubusercontent.com/city41/tacklebox/master/media/catchGoldfish.gif)
