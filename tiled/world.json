@@ -20,18 +20,6 @@
          "objects":[
                 {
                  "height":0,
-                 "id":236,
-                 "name":"worm spawn",
-                 "point":true,
-                 "rotation":0,
-                 "type":"WORM_SPAWN",
-                 "visible":true,
-                 "width":0,
-                 "x":275.167,
-                 "y":319.8333
-                }, 
-                {
-                 "height":0,
                  "id":238,
                  "name":"worm spawn",
                  "point":true,
@@ -39,7 +27,7 @@
                  "type":"WORM_SPAWN",
                  "visible":true,
                  "width":0,
-                 "x":389.333,
+                 "x":361.999666666667,
                  "y":292
                 }, 
                 {

@@ -131,15 +131,15 @@ const uint8_t ok_string[3] PROGMEM = {
 };
 
 
-// "SOUND *"
-const uint8_t sfxOn_string[8] PROGMEM = {
-    29, 25, 31, 24, 14, 0, 37, 0xFF
+// "SFX *"
+const uint8_t sfxOn_string[6] PROGMEM = {
+    29, 16, 34, 0, 37, 0xFF
 };
 
 
-// "SOUND"
-const uint8_t sfxOff_string[6] PROGMEM = {
-    29, 25, 31, 24, 14, 0xFF
+// "SFX"
+const uint8_t sfxOff_string[4] PROGMEM = {
+    29, 16, 34, 0xFF
 };
 
 
@@ -287,9 +287,9 @@ const uint8_t advice1_string[33] PROGMEM = {
 };
 
 
-// "CHARLIE FISHES\nTHE OCEAN AT NIGHT"
-const uint8_t advice2_string[34] PROGMEM = {
-    13, 18, 11, 28, 22, 19, 15, 0, 16, 19, 29, 18, 15, 29, 42, 30, 18, 15, 0, 25, 13, 15, 11, 24, 0, 11, 30, 0, 24, 19, 17, 18, 30, 0xFF
+// "JAKE FISHES\nTHE OCEAN AT NIGHT"
+const uint8_t advice2_string[31] PROGMEM = {
+    20, 11, 21, 15, 0, 16, 19, 29, 18, 15, 29, 42, 30, 18, 15, 0, 25, 13, 15, 11, 24, 0, 11, 30, 0, 24, 19, 17, 18, 30, 0xFF
 };
 
 

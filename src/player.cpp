@@ -16,7 +16,7 @@ extern Renderer renderer;
 extern Arduboy2Base arduboy;
 
 const uint8_t PLAYER_VELOCITY = 2;
-const uint8_t CAST_TIMEOUT = 8;
+const uint8_t CAST_TIMEOUT = 10;
 const uint8_t ANNOUNCE_FISH_COUNT = 100;
 
 
@@ -527,10 +527,16 @@ FishType Player::getFishThatBit(bool isDeepWater) {
         }
     }
 
-    // add a buffer of 2 to get the chance of getting a boot
-    // run the balance tool report to see if 2 is a good ratio
-    uint8_t roll = random(0, maxPoints + 2);
-    
+    if (maxPoints == 0) {
+        return FishType::UNSET;
+    }
+
+    uint8_t roll = random(0, maxPoints + 30);
+
+    if (roll >= maxPoints && roll < maxPoints + 27) {
+        return FishType::UNSET;
+    }
+
     if (roll >= maxPoints) {
         return FishType::OLD_BOOT;
     }
@@ -694,15 +700,14 @@ void Player::renderReel(uint8_t frame) {
 
 void Player::updateReelProMode(uint8_t frame) {
 
-    if (frame % 30 == 0) {
-        proReelTime = min(proReelTime + 1, 100);
+    if (frame % 20 == 0) {
+        proReelTime = min(proReelTime + 1, 30);
         reelLevel = max(reelLevel - currentFish.pull - proReelTime, 0);
     }
 
-    if (arduboy.justPressed(A_BUTTON)) {
+    if (arduboy.pressed(A_BUTTON)) {
         Sfx::menuTick();
-        uint8_t playerPull = 10;
-        reelLevel = min(WIDTH - 2, reelLevel + playerPull);
+        reelLevel = min(WIDTH - 2, reelLevel + 2);
     }
 
     if (reelLevel == 0) {

@@ -29,10 +29,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="entities">
-  <object id="236" name="worm spawn" type="WORM_SPAWN" x="275.167" y="319.833">
-   <point/>
-  </object>
-  <object id="238" name="worm spawn" type="WORM_SPAWN" x="389.333" y="292">
+  <object id="238" name="worm spawn" type="WORM_SPAWN" x="362" y="292">
    <point/>
   </object>
   <object id="239" name="worm spawn" type="WORM_SPAWN" x="147.333" y="171">
