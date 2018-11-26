@@ -191,9 +191,9 @@ const uint8_t youHaveNoFish_string[25] PROGMEM = {
 };
 
 
-// "I AM NOT BUYING\nTHOSE CRUSTY BOOTS"
-const uint8_t notBuyingBoots_string[35] PROGMEM = {
-    19, 0, 11, 23, 0, 24, 25, 30, 0, 12, 31, 35, 19, 24, 17, 42, 30, 18, 25, 29, 15, 0, 13, 28, 31, 29, 30, 35, 0, 12, 25, 25, 30, 29, 0xFF
+// "I AM NOT BUYING\nTHOSE BOOTS"
+const uint8_t notBuyingBoots_string[28] PROGMEM = {
+    19, 0, 11, 23, 0, 24, 25, 30, 0, 12, 31, 35, 19, 24, 17, 42, 30, 18, 25, 29, 15, 0, 12, 25, 25, 30, 29, 0xFF
 };
 
 

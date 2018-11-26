@@ -213,7 +213,9 @@ void Game::renderPlay(uint8_t frame) {
     renderer.translateY = translateY;
 
     for (uint8_t w = 0; w < MAX_WORMS; ++w) {
-        worms[w].render(frame);
+        if (abs(worms[w].y - player.y) < HEIGHT) {
+            worms[w].render(frame);
+        }
     }
 
     for (uint8_t s = 0; s < MAX_SIGNS; ++s) {
