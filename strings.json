@@ -45,9 +45,9 @@
         { "key": "signSharkWarning", "value": "WARNING SHARKS!" },
         { "key": "signOctoWarning", "value": "OCTOPUS TOO" },
         { "key": "signOceanFish", "value": "OCEAN FISH HATE WORMS" },
-        { "key": "girlQuest", "value": "GIVE ME FIVE\nLOBSTERS AND I WILL\nSELL YOU NICE BAIT" },
+        { "key": "girlQuest", "value": "BRING ME THREE\nLOBSTERS AND I WILL\nSELL YOU NICE BAIT" },
         { "key": "girlSellMeat", "value": "BUY PRIMO BAIT FOR" },
-        { "key": "guyQuest", "value": "BRING TEN BOOTS\nFOR A NEW WAY\nTO FISH" },
+        { "key": "guyQuest", "value": "BRING ME TEN BOOTS\nFOR A NEW WAY\nTO FISH" },
         { "key": "guyTurnOnProMode", "value": "SET FISHING MODE\nPRO" },
         { "key": "guyTurnOffProMode", "value": "SET FISHING MODE\nCASUAL" },
         { "key": "lucyWarning", "value": "THIS IS MY SPOT, BACK OFF!" }

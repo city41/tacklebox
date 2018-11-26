@@ -329,9 +329,9 @@ const uint8_t signOceanFish_string[22] PROGMEM = {
 };
 
 
-// "GIVE ME FIVE\nLOBSTERS AND I WILL\nSELL YOU NICE BAIT"
-const uint8_t girlQuest_string[52] PROGMEM = {
-    17, 19, 32, 15, 0, 23, 15, 0, 16, 19, 32, 15, 42, 22, 25, 12, 29, 30, 15, 28, 29, 0, 11, 24, 14, 0, 19, 0, 33, 19, 22, 22, 42, 29, 15, 22, 22, 0, 35, 25, 31, 0, 24, 19, 13, 15, 0, 12, 11, 19, 30, 0xFF
+// "BRING ME THREE\nLOBSTERS AND I WILL\nSELL YOU NICE BAIT"
+const uint8_t girlQuest_string[54] PROGMEM = {
+    12, 28, 19, 24, 17, 0, 23, 15, 0, 30, 18, 28, 15, 15, 42, 22, 25, 12, 29, 30, 15, 28, 29, 0, 11, 24, 14, 0, 19, 0, 33, 19, 22, 22, 42, 29, 15, 22, 22, 0, 35, 25, 31, 0, 24, 19, 13, 15, 0, 12, 11, 19, 30, 0xFF
 };
 
 
@@ -341,9 +341,9 @@ const uint8_t girlSellMeat_string[19] PROGMEM = {
 };
 
 
-// "BRING TEN BOOTS\nFOR A NEW WAY\nTO FISH"
-const uint8_t guyQuest_string[38] PROGMEM = {
-    12, 28, 19, 24, 17, 0, 30, 15, 24, 0, 12, 25, 25, 30, 29, 42, 16, 25, 28, 0, 11, 0, 24, 15, 33, 0, 33, 11, 35, 42, 30, 25, 0, 16, 19, 29, 18, 0xFF
+// "BRING ME TEN BOOTS\nFOR A NEW WAY\nTO FISH"
+const uint8_t guyQuest_string[41] PROGMEM = {
+    12, 28, 19, 24, 17, 0, 23, 15, 0, 30, 15, 24, 0, 12, 25, 25, 30, 29, 42, 16, 25, 28, 0, 11, 0, 24, 15, 33, 0, 33, 11, 35, 42, 30, 25, 0, 16, 19, 29, 18, 0xFF
 };
 
 

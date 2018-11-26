@@ -121,7 +121,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // baitPreference GRUB
     1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
-    10,  // ratio
+    8,  // ratio
     20,  // value
     8, // nameLength
     12, // bmpWidth
@@ -130,8 +130,8 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     58, // proWindow
 
     // CRAB
-    0,  // minHour
-    23,  // maxHour
+    10,  // minHour
+    16,  // maxHour
     0,  // baitPreference WORM
     1,  // baitPreference GRUB
     1,  // baitPreference SHRIMP
@@ -241,7 +241,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // baitPreference GRUB
     1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
-    3,  // ratio
+    4,  // ratio
     40,  // value
     9, // nameLength
     12, // bmpWidth
@@ -250,19 +250,19 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     68, // proWindow
 
     // LOBSTER
-    10,  // minHour
-    18,  // maxHour
+    4,  // minHour
+    20,  // maxHour
     0,  // baitPreference WORM
-    1,  // baitPreference GRUB
+    0,  // baitPreference GRUB
     1,  // baitPreference SHRIMP
     0,  // baitPreference MEAT
-    3,  // ratio
+    5,  // ratio
     80,  // value
     7, // nameLength
     11, // bmpWidth
     5, // pull
     0, // deepWater
-    60, // proWindow
+    80, // proWindow
 
     // MARLIN
     4,  // minHour
@@ -277,11 +277,11 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     20, // bmpWidth
     7, // pull
     1, // deepWater
-    70, // proWindow
+    75, // proWindow
 
     // SHARK
     0,  // minHour
-    13,  // maxHour
+    14,  // maxHour
     0,  // baitPreference WORM
     0,  // baitPreference GRUB
     0,  // baitPreference SHRIMP
@@ -305,9 +305,9 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     250,  // value
     8, // nameLength
     30, // bmpWidth
-    9, // pull
+    8, // pull
     1, // deepWater
-    82, // proWindow
+    95, // proWindow
 
     // OLD BOOT
     30,  // minHour
@@ -320,7 +320,7 @@ const uint8_t PROGMEM fish_templates_u8t[] = {
     0,  // value
     8, // nameLength
     6, // bmpWidth
-    4, // pull
+    3, // pull
     0, // deepWater
     64, // proWindow
 };

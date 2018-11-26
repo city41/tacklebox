@@ -231,7 +231,7 @@ void Game::renderPlay(uint8_t frame) {
     Boat::render(frame);
 
     if (!Shop::isOpen() && player.y < HEIGHT) {
-        renderer.drawOverwrite(16 * 25 - 5, 20, closed_tiles, 0);
+        renderer.drawOverwrite(16 * 24 - 5, 20, closed_tiles, 0);
     }
 
     player.render(frame);

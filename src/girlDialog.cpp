@@ -11,6 +11,7 @@
 #include "dialogUtils.h"
 
 const uint8_t MEAT_PRICE = 10;
+const uint8_t NEEDED_LOBSTER_COUNT = 3;
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -20,8 +21,8 @@ void GirlDialog::update() {
         !State::gameState.canBuyMeat &&
         arduboy.justPressed(A_BUTTON)
     ) {
-        if (State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= 5) {
-            State::decreaseCurrentCount(FishType::LOBSTER, 5);
+        if (State::gameState.currentFishCount[static_cast<int8_t>(FishType::LOBSTER)] >= NEEDED_LOBSTER_COUNT) {
+            State::decreaseCurrentCount(FishType::LOBSTER, NEEDED_LOBSTER_COUNT);
             State::gameState.canBuyMeat = true;
         } else {
             Sfx::buzz();
@@ -34,6 +35,7 @@ void GirlDialog::update() {
         if (State::gameState.money >= MEAT_PRICE) {
             State::gameState.money -= MEAT_PRICE;
             State::gameState.baitCounts[static_cast<int8_t>(BaitType::Meat)] += 1;
+            Sfx::purchase();
         } else {
             Sfx::buzz();
         }

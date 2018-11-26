@@ -11,6 +11,7 @@
 #include "dialogUtils.h"
 
 const uint8_t MEAT_PRICE = 10;
+const uint8_t NEEDED_BOOT_COUNT = 10;
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -20,8 +21,8 @@ void GuyDialog::update() {
         !State::gameState.canChooseProMode &&
         arduboy.justPressed(A_BUTTON)
     ) {
-        if (State::gameState.currentFishCount[static_cast<int8_t>(FishType::OLD_BOOT)] >= 10) {
-            State::decreaseCurrentCount(FishType::OLD_BOOT, 10);
+        if (State::gameState.currentFishCount[static_cast<int8_t>(FishType::OLD_BOOT)] >= NEEDED_BOOT_COUNT) {
+            State::decreaseCurrentCount(FishType::OLD_BOOT, NEEDED_BOOT_COUNT);
             State::gameState.canChooseProMode = true;
         } else {
             Sfx::buzz();
