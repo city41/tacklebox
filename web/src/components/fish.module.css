@@ -1,0 +1,17 @@
+.fish {
+    min-width: 400px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 20px;
+}
+
+.fishImage {
+    width: auto;
+    height: 100%;
+    image-rendering: pixelated;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+}

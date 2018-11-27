@@ -1,13 +1,22 @@
 {
   "nodes": {
     "SitePage /dev-404-page/": {
+      "jsonName": "dev-404-page-5f9",
+      "internalComponentName": "ComponentDev404Page",
       "path": "/dev-404-page/",
+      "component": "/home/matt/dev/tacklebox/web/.cache/dev-404-page.js",
+      "componentChunkName": "component---cache-dev-404-page-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin dev-404-page",
+      "pluginCreatorId": "Plugin dev-404-page",
+      "componentPath": "/home/matt/dev/tacklebox/web/.cache/dev-404-page.js",
       "id": "SitePage /dev-404-page/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "f91d29e10ba680b413138cf9ed86e655",
+        "contentDigest": "eea9f4f3034b3567b45909ce8cc0e720",
+        "description": "Plugin dev-404-page",
         "owner": "internal-data-bridge"
       }
     },
@@ -723,35 +732,17 @@
           "description": "A fishing adventure game for the Arduboy"
         }
       },
+      "port": "8000",
+      "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-11-27T02:47:39.431Z",
+      "buildTime": "2018-11-27T03:11:14.044Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "5f88e00e33689c75bb32434bb547ddde",
+        "contentDigest": "07e7296b4fc8327f968693c31c1e844e",
         "type": "Site",
-        "owner": "internal-data-bridge"
-      }
-    },
-    "SitePage /offline-plugin-app-shell-fallback/": {
-      "jsonName": "offline-plugin-app-shell-fallback-a30",
-      "internalComponentName": "ComponentOfflinePluginAppShellFallback",
-      "path": "/offline-plugin-app-shell-fallback/",
-      "component": "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js",
-      "componentChunkName": "component---node-modules-gatsby-plugin-offline-app-shell-js",
-      "context": {},
-      "pluginCreator___NODE": "Plugin gatsby-plugin-offline",
-      "pluginCreatorId": "Plugin gatsby-plugin-offline",
-      "componentPath": "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js",
-      "id": "SitePage /offline-plugin-app-shell-fallback/",
-      "parent": "SOURCE",
-      "children": [],
-      "internal": {
-        "type": "SitePage",
-        "contentDigest": "32db5e7f7ed6c4bdd6e0ddaed870a2e6",
-        "description": "Plugin gatsby-plugin-offline",
         "owner": "internal-data-bridge"
       }
     },
@@ -831,6 +822,26 @@
       "internal": {
         "type": "SitePage",
         "contentDigest": "53990d64b2905b7f4ab7ed369c181e1d",
+        "description": "Plugin gatsby-plugin-page-creator",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /fg/": {
+      "jsonName": "fg-58a",
+      "internalComponentName": "ComponentFg",
+      "path": "/fg/",
+      "component": "/home/matt/dev/tacklebox/web/src/pages/fg/index.js",
+      "componentChunkName": "component---src-pages-fg-index-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin gatsby-plugin-page-creator",
+      "pluginCreatorId": "Plugin gatsby-plugin-page-creator",
+      "componentPath": "/home/matt/dev/tacklebox/web/src/pages/fg/index.js",
+      "id": "SitePage /fg/",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "7fecc1372b1e6c8929a5b759349c27be",
         "description": "Plugin gatsby-plugin-page-creator",
         "owner": "internal-data-bridge"
       }
@@ -1031,7 +1042,8 @@
     "tbox-help-7c6": "991/path---tbox-help-7-c-6-f28-NZuapzHg3X9TaN1iIixfv1W23E",
     "tbox-4c3": "521/path---tbox-4-c-3-e71-NZuapzHg3X9TaN1iIixfv1W23E",
     "sq--src-components-tacklebox-layout-js": 1816906826,
-    "sq--src-components-ardynia-layout-js": 2881195132
+    "sq--src-components-ardynia-layout-js": 2881195132,
+    "fg-58a": "293/path---fg-58-a-d61-NZuapzHg3X9TaN1iIixfv1W23E"
   },
   "components": {
     "/home/matt/dev/tacklebox/web/src/pages/404.js": {
@@ -1078,9 +1090,13 @@
       "query": "",
       "componentPath": "/home/matt/dev/tacklebox/web/src/pages/tbox/index.js"
     },
-    "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js": {
+    "/home/matt/dev/tacklebox/web/.cache/dev-404-page.js": {
       "query": "",
-      "componentPath": "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js"
+      "componentPath": "/home/matt/dev/tacklebox/web/.cache/dev-404-page.js"
+    },
+    "/home/matt/dev/tacklebox/web/src/pages/fg/index.js": {
+      "query": "",
+      "componentPath": "/home/matt/dev/tacklebox/web/src/pages/fg/index.js"
     }
   },
   "staticQueryComponents": {
