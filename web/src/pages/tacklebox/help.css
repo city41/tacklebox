@@ -1,5 +1,5 @@
 .help h2 {
-    margin-top: 40px;
+    margin-top: 100px;
 }
 
 .controlsContainer {
@@ -14,4 +14,14 @@
 
 .controlsContainer img {
     vertical-align: middle;
+}
+
+.howToFish {
+    max-width: 400px;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #dcf2dd;
+    color: black;
 }

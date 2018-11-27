@@ -20,7 +20,7 @@ void State::load() {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
         gameState.canChooseProMode = false;
-        gameState.useProMode = false;
+        gameState.useProMode = true;
 
         // start the game at 4pm
         gameState.minute = 16 * 60;
