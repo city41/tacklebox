@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 import Helmet from "react-helmet";
 import Layout from "../../components/tackleboxLayout";
 import Fish from "../../components/fish";
@@ -14,13 +15,21 @@ class FishGuide extends React.Component {
         super(props);
 
         this.state = {
-            agreedToNotTell: true,
-            okWithSpoilers: true
+            agreedToNotTell: false,
+            okWithSpoilers: false
         };
     }
 
     render() {
         const { agreedToNotTell, okWithSpoilers } = this.state;
+
+        const agreeToNotTellClasses = classnames("agreement", {
+            agreed: agreedToNotTell
+        });
+
+        const okWithSpoilersClasses = classnames("agreement", {
+            agreed: okWithSpoilers
+        });
 
         let pageBody = null;
 
@@ -38,7 +47,7 @@ class FishGuide extends React.Component {
             pageBody = (
                 <div>
                     <h1>Please check these to see the guide</h1>
-                    <div>
+                    <div className={agreeToNotTellClasses}>
                         <input
                             onClick={() =>
                                 this.setState({ agreedToNotTell: true })
@@ -47,7 +56,7 @@ class FishGuide extends React.Component {
                         />
                         I won't tell other players about this page
                     </div>
-                    <div>
+                    <div className={okWithSpoilersClasses}>
                         <input
                             onClick={() =>
                                 this.setState({ okWithSpoilers: true })

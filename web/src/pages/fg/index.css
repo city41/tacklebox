@@ -17,3 +17,12 @@
 .fg .fish {
     margin-bottom: 40px;
 }
+
+.fg .agreement {
+    padding: 10px;
+}
+
+.fg .agreement.agreed {
+    background-color: #dcf2dd;
+    color: black;
+}
