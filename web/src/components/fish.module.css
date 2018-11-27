@@ -1,7 +1,7 @@
 .fish {
     min-width: 400px;
     display: grid;
-    grid-template-columns: 128px 512px;
+    grid-template-columns: 138px 512px;
     column-gap: 20px;
 }
 
