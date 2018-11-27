@@ -53,8 +53,8 @@ void GirlDialog::render() {
 
     renderer.drawString(17, 24, str);
 
-    renderer.drawOverwrite(54, 54, squareIcon_tiles, 0);
-    renderer.drawString(60, 54, ok_string);
+    renderer.drawOverwrite(54, 52, squareIcon_tiles, 0);
+    renderer.drawString(60, 52, ok_string);
 
     if (State::gameState.canBuyMeat) {
         renderer.drawPlusMask(43, 39, currencySymbol_plus_mask, 0);
