@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 import tackleboxImg from "../images/tackleboxTitle.png";
 import ardyniaImg from "../images/ardyniaTitle.png";
 
+import "../components/layout.css";
 import style from "index.module.css";
 
 const RootIndexPage = () => (
