@@ -545,8 +545,8 @@
       "ssrAPIs": [],
       "pluginFilepath": "/home/matt/dev/tacklebox/web",
       "packageJson": {
-        "name": "Ardynia",
-        "description": "An adventure game for the Arduboy",
+        "name": "city41.games",
+        "description": "Games for the Arduboy",
         "version": "1.0.0",
         "keywords": [
           "arduboy",
@@ -725,12 +725,12 @@
       },
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-11-27T02:11:40.713Z",
+      "buildTime": "2018-11-27T02:30:13.555Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "2a9562a25b4f3e102639ca206be97ede",
+        "contentDigest": "c181c46dff1f42576cb750296944715a",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -998,7 +998,7 @@
   },
   "status": {
     "plugins": {},
-    "PLUGINS_HASH": "13efec4b6de75c3e4ec7494ea5d8e3ae"
+    "PLUGINS_HASH": "47f0256e9fd66faa950cf8762abbe033"
   },
   "componentDataDependencies": {
     "nodes": {
@@ -1034,6 +1034,10 @@
     "sq--src-components-ardynia-layout-js": 2881195132
   },
   "components": {
+    "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js": {
+      "query": "",
+      "componentPath": "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js"
+    },
     "/home/matt/dev/tacklebox/web/src/pages/404.js": {
       "query": "",
       "componentPath": "/home/matt/dev/tacklebox/web/src/pages/404.js"
@@ -1077,10 +1081,6 @@
     "/home/matt/dev/tacklebox/web/src/pages/tbox/index.js": {
       "query": "",
       "componentPath": "/home/matt/dev/tacklebox/web/src/pages/tbox/index.js"
-    },
-    "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js": {
-      "query": "",
-      "componentPath": "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js"
     }
   },
   "staticQueryComponents": {

@@ -6,7 +6,7 @@ import { StaticQuery, graphql } from "gatsby";
 
 import Header from "./header";
 import "./layout.css";
-const titleImageUrl = "http://www.ardynia.com/title.png";
+const titleImageUrl = "https://city41.games/ardyniaTitle.png";
 
 const PAGES = [
     { url: "/ardynia", label: "home" },
@@ -35,15 +35,15 @@ const Layout = ({ className, children }) => {
             render={data => (
                 <>
                     <Helmet
-                        title={data.site.siteMetadata.title}
+                        title={data.site.siteMetadata.ardynia.title}
                         meta={[
                             {
                                 name: "description",
-                                content: data.site.siteMetadata.title
+                                content: data.site.siteMetadata.ardynia.title
                             },
                             {
                                 name: "keywords",
-                                content: data.site.siteMetadata.keywords
+                                content: data.site.siteMetadata.ardynia.keywords
                             },
                             {
                                 name: "twitter:card",
@@ -51,15 +51,17 @@ const Layout = ({ className, children }) => {
                             },
                             {
                                 name: "twitter:site",
-                                content: data.site.siteMetadata.twitterHandle
+                                content:
+                                    data.site.siteMetadata.ardynia.twitterHandle
                             },
                             {
                                 name: "twitter:title",
-                                content: data.site.siteMetadata.title
+                                content: data.site.siteMetadata.ardynia.title
                             },
                             {
                                 name: "twitter:description",
-                                content: data.site.siteMetadata.description
+                                content:
+                                    data.site.siteMetadata.ardynia.description
                             },
                             {
                                 name: "twitter:image",
@@ -67,7 +69,7 @@ const Layout = ({ className, children }) => {
                             },
                             {
                                 name: "og:title",
-                                content: data.site.siteMetadata.title
+                                content: data.site.siteMetadata.ardynia.title
                             },
                             {
                                 name: "og:type",
@@ -75,11 +77,12 @@ const Layout = ({ className, children }) => {
                             },
                             {
                                 name: "og:url",
-                                content: "http://www.ardynia.com"
+                                content: "https://city41.games/ardynia"
                             },
                             {
                                 name: "og:description",
-                                content: data.site.siteMetadata.description
+                                content:
+                                    data.site.siteMetadata.ardynia.description
                             },
                             {
                                 name: "og:image",
@@ -87,7 +90,7 @@ const Layout = ({ className, children }) => {
                             },
                             {
                                 name: "og:title",
-                                content: data.site.siteMetadata.title
+                                content: data.site.siteMetadata.ardynia.title
                             }
                         ]}
                     >

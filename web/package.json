@@ -1,6 +1,6 @@
 {
-  "name": "Ardynia",
-  "description": "An adventure game for the Arduboy",
+  "name": "city41.games",
+  "description": "Games for the Arduboy",
   "version": "1.0.0",
   "author": "Matt Greer <matt.e.greer@gmail.com>",
   "dependencies": {
