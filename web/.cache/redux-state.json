@@ -725,12 +725,12 @@
       },
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-11-27T06:31:18.015Z",
+      "buildTime": "2018-11-27T07:18:57.708Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "80f5d0e64eac4a52ec0132e563934e98",
+        "contentDigest": "49df0b1bc9054c9e820be2e05d8ac1df",
         "type": "Site",
         "owner": "internal-data-bridge"
       }

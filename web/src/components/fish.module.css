@@ -19,6 +19,7 @@
 .imgContainer {
     width: 128px;
     align-self: center;
+    margin-right: 10px;
 }
 
 .imgContainer img {
