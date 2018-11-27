@@ -28,7 +28,9 @@ function getActiveFrom(hours) {
         const startTime = startHour > 12 ? startHour - 12 : startHour;
         const endTime = endHour > 12 ? endHour - 12 : endHour;
 
-        const start = `${startTime}${(startHourIsPm && "pm") || "am"}`;
+        const start = `${startTime === 0 ? "12" : startTime}${(startHourIsPm &&
+            "pm") ||
+            "am"}`;
         const end = `${endTime}${(endHourIsPm && "pm") || "am"}`;
 
         return `from ${start} to ${end}`;
