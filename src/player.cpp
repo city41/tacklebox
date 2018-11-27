@@ -541,14 +541,16 @@ FishType Player::getFishThatBit(bool isDeepWater) {
         return FishType::OLD_BOOT;
     }
 
+    return FishType::LOBSTER;
 
-    uint8_t currentPoints = 0;
-    for (uint8_t fr = 0; fr < candidateFishes; ++fr) {
-        if (roll >= currentPoints && roll < currentPoints + fishDiceRoll[fr].points) {
-            return fishDiceRoll[fr].type;
-        }
-        currentPoints += fishDiceRoll[fr].points;
-    }
+
+    /* uint8_t currentPoints = 0; */
+    /* for (uint8_t fr = 0; fr < candidateFishes; ++fr) { */
+    /*     if (roll >= currentPoints && roll < currentPoints + fishDiceRoll[fr].points) { */
+    /*         return fishDiceRoll[fr].type; */
+    /*     } */
+    /*     currentPoints += fishDiceRoll[fr].points; */
+    /* } */
 }
 
 void Player::renderCast(uint8_t frame) {

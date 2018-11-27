@@ -25,7 +25,7 @@ void State::load() {
         // start the game at 4pm
         gameState.minute = 16 * 60;
         gameState.baitCounts[0] = 0;
-        gameState.baitCounts[1] = 0;
+        gameState.baitCounts[1] = 8;
         gameState.baitCounts[2] = 0;
         gameState.baitCounts[3] = 0;
         gameState.money = 10;
@@ -39,6 +39,15 @@ void State::load() {
             gameState.currentFishCount[i] = 0;
             gameState.bestLength[i] = 0;
         }
+
+        gameState.acquiredFish[10] = true;
+        gameState.currentFishCount[10] = 9;
+
+        gameState.acquiredFish[13] = true;
+        gameState.currentFishCount[13] = 5;
+
+        gameState.acquiredFish[15] = true;
+        gameState.currentFishCount[15] = 3;
     }
 }
 
