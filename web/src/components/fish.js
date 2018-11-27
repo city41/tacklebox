@@ -1,4 +1,6 @@
 import React from "react";
+import classnames from "classnames";
+import Habitats from "./habitats";
 
 import styles from "fish.module.css";
 
@@ -33,25 +35,33 @@ function getActiveFrom(hours) {
     }
 }
 
-export default ({ data }) => {
+export default ({ className, data }) => {
+    const classes = classnames(className, styles.fish);
+
     return (
-        <div className={styles.fish}>
-            <img
-                className={styles.fishImage}
-                src={`/fishImages/${data.name}.png`}
-                alt={data.name}
-            />
-            <div className={styles.data}>
+        <div className={classes}>
+            <div className={styles.nameAndImage}>
                 <h4>{data.name}</h4>
-                <div>habitats {data.habitats.join(", ").toLowerCase()}</div>
-                <div>likes: {getLikes(data.baitPreference)}</div>
-                <div>active {getActiveFrom(data.activeHours)}</div>
-                <div>
-                    size range: {data.lengths[0]}
-                    cm to {data.lengths[1]}
-                    cm{" "}
+                <div className={styles.imgContainer}>
+                    <img
+                        className={styles[data.name]}
+                        src={`/fishImages/${data.name}.png`}
+                        alt={data.name}
+                    />
                 </div>
-                <div>value: ${data.value} </div>
+            </div>
+            <div className={styles.data}>
+                <Habitats habitats={data.habitats} />
+                <div className={styles.stats}>
+                    <div>active {getActiveFrom(data.activeHours)}</div>
+                    <div>likes: {getLikes(data.baitPreference)}</div>
+                    <div>
+                        size range: {data.lengths[0]}
+                        cm to {data.lengths[1]}
+                        cm{" "}
+                    </div>
+                    <div>value: ${data.value} </div>
+                </div>
             </div>
         </div>
     );

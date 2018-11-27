@@ -1,0 +1,19 @@
+.habitats {
+    display: grid;
+    grid-template-columns: repeat(3, 128px);
+    grid-template-rows: auto auto;
+    column-gap: 20px;
+    align-items: center;
+}
+
+.foundIn {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+.habitats img {
+    grid-row: 2;
+    width: 128px;
+    height: auto;
+}

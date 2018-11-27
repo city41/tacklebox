@@ -1,22 +1,13 @@
 {
   "nodes": {
     "SitePage /dev-404-page/": {
-      "jsonName": "dev-404-page-5f9",
-      "internalComponentName": "ComponentDev404Page",
       "path": "/dev-404-page/",
-      "component": "/home/matt/dev/tacklebox/web/.cache/dev-404-page.js",
-      "componentChunkName": "component---cache-dev-404-page-js",
-      "context": {},
-      "pluginCreator___NODE": "Plugin dev-404-page",
-      "pluginCreatorId": "Plugin dev-404-page",
-      "componentPath": "/home/matt/dev/tacklebox/web/.cache/dev-404-page.js",
       "id": "SitePage /dev-404-page/",
       "parent": "SOURCE",
       "children": [],
       "internal": {
         "type": "SitePage",
-        "contentDigest": "eea9f4f3034b3567b45909ce8cc0e720",
-        "description": "Plugin dev-404-page",
+        "contentDigest": "f91d29e10ba680b413138cf9ed86e655",
         "owner": "internal-data-bridge"
       }
     },
@@ -732,17 +723,35 @@
           "description": "A fishing adventure game for the Arduboy"
         }
       },
-      "port": "8000",
-      "host": "localhost",
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-11-27T03:11:14.044Z",
+      "buildTime": "2018-11-27T04:33:01.814Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "07e7296b4fc8327f968693c31c1e844e",
+        "contentDigest": "2a1a9a025016dc7ea1f051e0d969b8bb",
         "type": "Site",
+        "owner": "internal-data-bridge"
+      }
+    },
+    "SitePage /offline-plugin-app-shell-fallback/": {
+      "jsonName": "offline-plugin-app-shell-fallback-a30",
+      "internalComponentName": "ComponentOfflinePluginAppShellFallback",
+      "path": "/offline-plugin-app-shell-fallback/",
+      "component": "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js",
+      "componentChunkName": "component---node-modules-gatsby-plugin-offline-app-shell-js",
+      "context": {},
+      "pluginCreator___NODE": "Plugin gatsby-plugin-offline",
+      "pluginCreatorId": "Plugin gatsby-plugin-offline",
+      "componentPath": "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js",
+      "id": "SitePage /offline-plugin-app-shell-fallback/",
+      "parent": "SOURCE",
+      "children": [],
+      "internal": {
+        "type": "SitePage",
+        "contentDigest": "32db5e7f7ed6c4bdd6e0ddaed870a2e6",
+        "description": "Plugin gatsby-plugin-offline",
         "owner": "internal-data-bridge"
       }
     },
@@ -1090,13 +1099,13 @@
       "query": "",
       "componentPath": "/home/matt/dev/tacklebox/web/src/pages/tbox/index.js"
     },
-    "/home/matt/dev/tacklebox/web/.cache/dev-404-page.js": {
-      "query": "",
-      "componentPath": "/home/matt/dev/tacklebox/web/.cache/dev-404-page.js"
-    },
     "/home/matt/dev/tacklebox/web/src/pages/fg/index.js": {
       "query": "",
       "componentPath": "/home/matt/dev/tacklebox/web/src/pages/fg/index.js"
+    },
+    "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js": {
+      "query": "",
+      "componentPath": "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js"
     }
   },
   "staticQueryComponents": {

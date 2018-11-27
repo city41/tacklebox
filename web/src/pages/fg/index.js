@@ -1,4 +1,5 @@
 import React from "react";
+import Helmet from "react-helmet";
 import Layout from "../../components/tackleboxLayout";
 import Fish from "../../components/fish";
 
@@ -29,7 +30,7 @@ class FishGuide extends React.Component {
                     {fishData.fish
                         .filter(f => f.name !== "OLD BOOT")
                         .map(fish => (
-                            <Fish data={fish} />
+                            <Fish className="fish" data={fish} />
                         ))}
                 </React.Fragment>
             );
@@ -60,15 +61,23 @@ class FishGuide extends React.Component {
         }
 
         return (
-            <Layout className="fg">
-                <img
-                    className="titleImage"
-                    src={fgLogoImg}
-                    alt="Fish Guide Logo"
-                />
-                <div className="guideContainer">{pageBody}</div>
-                <p>&copy;2018 Matt Greer</p>
-            </Layout>
+            <>
+                <Helmet>
+                    <meta
+                        name="viewport"
+                        content="width=device-width, initial-scale=1"
+                    />
+                </Helmet>
+                <Layout className="fg">
+                    <img
+                        className="titleImage"
+                        src={fgLogoImg}
+                        alt="Fish Guide Logo"
+                    />
+                    <div className="guideContainer">{pageBody}</div>
+                    <p>&copy;2018 Matt Greer</p>
+                </Layout>
+            </>
         );
     }
 }

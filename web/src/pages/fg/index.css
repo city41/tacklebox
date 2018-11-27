@@ -1,8 +1,3 @@
-.fg p {
-    margin-top: 40px;
-    max-width: 442px;
-}
-
 .fg .titleImage {
     width: 500%;
     height: 500%;
@@ -19,9 +14,6 @@
     justify-items: center;
 }
 
-@media (max-width: 800px) {
-    .fg .mediaContainer {
-        grid-template-columns: 260px;
-        grid-template-rows: auto auto auto auto;
-    }
+.fg .fish {
+    margin-bottom: 40px;
 }
