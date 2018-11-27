@@ -53,7 +53,7 @@ export default ({ className, data }) => {
                 </div>
             </div>
             <div className={styles.data}>
-                <Habitats habitats={data.habitats} />
+                <Habitats habitats={data.habitats} deepWater={data.deepWater} />
                 <div className={styles.stats}>
                     <div>active {getActiveFrom(data.activeHours)}</div>
                     <div>likes: {getLikes(data.baitPreference)}</div>

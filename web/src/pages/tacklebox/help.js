@@ -50,7 +50,7 @@ const HelpPage = () => (
 
             <h2>How to fish: pro mode</h2>
             <div className="alert">
-                Pro mode is not availabe at first, you might need to talk to
+                Pro mode is not available at first, you might need to talk to
                 someone to get it enabled (hint hint)
             </div>
             <p>Pro fishing is a bit trickier.</p>
