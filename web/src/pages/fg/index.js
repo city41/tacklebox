@@ -72,12 +72,9 @@ class FishGuide extends React.Component {
         return (
             <>
                 <Helmet>
-                    <meta
-                        name="viewport"
-                        content="width=device-width, initial-scale=1"
-                    />
+                    <meta name="viewport" content="initial-scale=0.3" />
                 </Helmet>
-                <Layout className="fg">
+                <Layout className="fg" noHelmet={true}>
                     <img
                         className="titleImage"
                         src={fgLogoImg}

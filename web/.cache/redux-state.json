@@ -725,12 +725,12 @@
       },
       "pathPrefix": "",
       "polyfill": true,
-      "buildTime": "2018-11-27T04:38:59.932Z",
+      "buildTime": "2018-11-27T04:53:32.194Z",
       "id": "Site",
       "parent": "SOURCE",
       "children": [],
       "internal": {
-        "contentDigest": "ae15d08690d7e8bd070b89bbc2197420",
+        "contentDigest": "529fce8326b7c3d0ca8dc73bf0f24c59",
         "type": "Site",
         "owner": "internal-data-bridge"
       }
@@ -1055,6 +1055,10 @@
     "fg-58a": "293/path---fg-58-a-d61-NZuapzHg3X9TaN1iIixfv1W23E"
   },
   "components": {
+    "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js": {
+      "query": "",
+      "componentPath": "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js"
+    },
     "/home/matt/dev/tacklebox/web/src/pages/404.js": {
       "query": "",
       "componentPath": "/home/matt/dev/tacklebox/web/src/pages/404.js"
@@ -1070,6 +1074,10 @@
     "/home/matt/dev/tacklebox/web/src/pages/ardynia/index.js": {
       "query": "",
       "componentPath": "/home/matt/dev/tacklebox/web/src/pages/ardynia/index.js"
+    },
+    "/home/matt/dev/tacklebox/web/src/pages/fg/index.js": {
+      "query": "",
+      "componentPath": "/home/matt/dev/tacklebox/web/src/pages/fg/index.js"
     },
     "/home/matt/dev/tacklebox/web/src/pages/index.js": {
       "query": "",
@@ -1098,14 +1106,6 @@
     "/home/matt/dev/tacklebox/web/src/pages/tbox/index.js": {
       "query": "",
       "componentPath": "/home/matt/dev/tacklebox/web/src/pages/tbox/index.js"
-    },
-    "/home/matt/dev/tacklebox/web/src/pages/fg/index.js": {
-      "query": "",
-      "componentPath": "/home/matt/dev/tacklebox/web/src/pages/fg/index.js"
-    },
-    "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js": {
-      "query": "",
-      "componentPath": "/home/matt/dev/tacklebox/web/node_modules/gatsby-plugin-offline/app-shell.js"
     }
   },
   "staticQueryComponents": {

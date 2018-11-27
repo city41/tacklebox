@@ -43,22 +43,22 @@
         grid-template-rows: auto auto auto auto;
     }
 
-    .crossWater {
+    .catchLobster {
         grid-column: 1;
         grid-row: 1;
     }
 
-    .goIntoDungeon {
+    .collectionMenu {
         grid-column: 1;
         grid-row: 2;
     }
 
-    .inGameMenu {
+    .bearsTackle {
         grid-column: 1;
         grid-row: 3;
     }
 
-    .attackBlob {
+    .buyInTheShop {
         grid-column: 1;
         grid-row: 4;
     }
