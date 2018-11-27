@@ -1,8 +1,7 @@
 .habitats {
     display: grid;
-    grid-template-columns: repeat(3, 128px);
+    grid-template-columns: repeat(3, 148px);
     grid-template-rows: auto auto;
-    column-gap: 20px;
     align-items: center;
 }
 
@@ -16,4 +15,9 @@
     grid-row: 2;
     width: 128px;
     height: auto;
+    margin-right: 20px;
+}
+
+.habitats img:last-child {
+    margin-right: 0;
 }
