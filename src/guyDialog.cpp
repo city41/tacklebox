@@ -11,7 +11,7 @@
 #include "dialogUtils.h"
 
 const uint8_t MEAT_PRICE = 10;
-const uint8_t NEEDED_BOOT_COUNT = 10;
+const uint8_t NEEDED_BOOT_COUNT = 4;
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
