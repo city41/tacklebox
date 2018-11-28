@@ -133,9 +133,13 @@ void Game::updatePlay(uint8_t frame) {
     justBecameActive = isActive && !isOnScreen(player.prevX, player.prevY, Guy::x, Guy::y);
     Guy::update(isActive, justBecameActive);
 
-    if (isOnShopDoor() && Shop::isOpen()) {
-        push(&Game::updateShop, &Game::renderShop);
-        return;
+    if (isOnShopDoor()) {
+        if (Shop::isOpen()) {
+            push(&Game::updateShop, &Game::renderShop);
+            return;
+        } else {
+            player.undoMove();
+        }
     }
 
     if (isOnBoat() && State::gameState.hasOars) {
