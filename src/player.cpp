@@ -193,10 +193,10 @@ void Player::renderMenu(uint8_t frame) {
 
     // bait
     const uint8_t baitY = 4;
-    renderer.drawPlusMask(2, baitY, wormIcon_plus_mask, 0, 0, Invert);
-    renderer.drawPlusMask(12, baitY, grub_plus_mask, 0, 0, Invert);
-    renderer.drawPlusMask(22, baitY, shrimp_plus_mask, 0, 0, Invert);
-    renderer.drawPlusMask(32, baitY, meat_plus_mask, 0, 0, Invert);
+    renderer.drawOverwrite(2, baitY, wormIcon_tiles, 0);
+    renderer.drawOverwrite(12, baitY, grub_tiles, 0);
+    renderer.drawOverwrite(22, baitY, shrimp_tiles, 0);
+    renderer.drawOverwrite(32, baitY, meat_tiles, 0);
 
     // bait cursor
     renderer.drawOverwrite(4 + static_cast<int8_t>(currentBait) * 10, baitY + 10,  squareIcon_tiles, 0);

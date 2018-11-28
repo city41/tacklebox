@@ -65,7 +65,7 @@ void GirlDialog::render() {
         DialogUtils::renderMoneyInCorner();
 
         // user's current meat count for reference
-        renderer.drawPlusMask(WIDTH - 48, 8, meat_plus_mask, 0, 0, Invert);
+        renderer.drawOverwrite(WIDTH - 48, 8, meat_tiles, 0);
         renderer.drawNumber(WIDTH - 36, 10, State::gameState.baitCounts[static_cast<int8_t>(BaitType::Meat)]);
     } else {
         renderer.drawOverwrite(WIDTH - 48, 8, LOBSTER_tiles, 0);

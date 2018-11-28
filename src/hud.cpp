@@ -4,17 +4,11 @@
 #include "strings.h"
 #include "nonMaskBitmaps.h"
 #include "maskBitmaps.h"
+#include "baitBitmaps.h"
 
 extern Renderer renderer;
 
 const uint8_t clockY = 2;
-
-const uint8_t* const PROGMEM baitBmps[] = {
-    wormIcon_plus_mask,
-    grub_plus_mask,
-    shrimp_plus_mask,
-    meat_plus_mask
-};
 
 void drawClock() {
     uint8_t hour = State::gameState.minute / 60;
@@ -51,9 +45,9 @@ void drawClock() {
 void Hud::render(Player& player) {
     renderer.fillRect(0, 0, 64, 9, BLACK);
 
-    const uint8_t* baitBmp = reinterpret_cast<const uint8_t*>(pgm_read_ptr(baitBmps + static_cast<int8_t>(player.currentBait)));
+    const uint8_t* baitBmp = static_cast<const uint8_t*>(pgm_read_ptr(baitBitmaps + static_cast<int8_t>(player.currentBait)));
 
-    renderer.drawPlusMask(4, 0, baitBmp, 0, 0, Invert);
+    renderer.drawOverwrite(4, 0, baitBmp, 0, 0);
     renderer.drawNumber(15, clockY, State::gameState.baitCounts[static_cast<int8_t>(player.currentBait)]);
 
     drawClock();

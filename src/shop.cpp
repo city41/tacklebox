@@ -31,16 +31,16 @@ const uint8_t BUY_MENU_ITEMS_COUNT = 4;
 const uint8_t BUY_MENU_ITEM_PROPS_COUNT = 3;
 
 const uint16_t PROGMEM buyMenuItems[BUY_MENU_ITEMS_COUNT * BUY_MENU_ITEM_PROPS_COUNT] = {
-    reinterpret_cast<int16_t>(grub_plus_mask),
+    reinterpret_cast<int16_t>(grub_tiles),
     reinterpret_cast<int16_t>(grub_string),
     GRUB_PRICE,
-    reinterpret_cast<int16_t>(shrimp_plus_mask),
+    reinterpret_cast<int16_t>(shrimp_tiles),
     reinterpret_cast<int16_t>(shrimp_string),
     SHRIMP_PRICE,
-    reinterpret_cast<int16_t>(proPole_plus_mask),
+    reinterpret_cast<int16_t>(proPole_tiles),
     reinterpret_cast<int16_t>(proPole_string),
     PRO_POLE_PRICE,
-    reinterpret_cast<int16_t>(boatOar_plus_mask),
+    reinterpret_cast<int16_t>(boatOar_tiles),
     reinterpret_cast<int16_t>(boatOars_string),
     OARS_PRICE
 };
@@ -69,10 +69,10 @@ void Shop::render(uint8_t frame) {
     DialogUtils::renderMoneyInCorner();
 
     // user's current grub and shrimp count for reference
-    renderer.drawPlusMask(WIDTH - 70, 8, grub_plus_mask, 0, 0, Invert);
+    renderer.drawOverwrite(WIDTH - 70, 8, grub_tiles, 0);
     renderer.drawNumber(WIDTH - 58, 10, State::gameState.baitCounts[static_cast<int8_t>(BaitType::Grub)]);
 
-    renderer.drawPlusMask(WIDTH - 40, 8, shrimp_plus_mask, 0, 0, Invert);
+    renderer.drawOverwrite(WIDTH - 40, 8, shrimp_tiles, 0);
     renderer.drawNumber(WIDTH - 28, 10, State::gameState.baitCounts[static_cast<int8_t>(BaitType::Shrimp)]);
 }
 
@@ -205,7 +205,7 @@ void Shop::renderBuy(uint8_t frame) {
 
         // icon
         const uint8_t* bmp = reinterpret_cast<const uint8_t*>(pgm_read_ptr(buyMenuItems + i * BUY_MENU_ITEM_PROPS_COUNT));
-        renderer.drawPlusMask(startX, y, bmp, 0, 0, Invert);
+        renderer.drawOverwrite(startX, y, bmp, 0);
 
         // name
         const uint8_t* str = reinterpret_cast<const uint8_t*>(pgm_read_ptr(buyMenuItems + i * BUY_MENU_ITEM_PROPS_COUNT + 1));

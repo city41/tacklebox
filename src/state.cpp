@@ -39,15 +39,6 @@ void State::load() {
             gameState.currentFishCount[i] = 0;
             gameState.bestLength[i] = 0;
         }
-
-        gameState.acquiredFish[10] = true;
-        gameState.currentFishCount[10] = 9;
-
-        gameState.acquiredFish[13] = true;
-        gameState.currentFishCount[13] = 5;
-
-        gameState.acquiredFish[15] = true;
-        gameState.currentFishCount[15] = 3;
     }
 }
 

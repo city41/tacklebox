@@ -1,10 +1,10 @@
 #pragma once
 #include <Arduino.h>
-#include "maskBitmaps.h"
+#include "nonMaskBitmaps.h"
 
-const uint8_t* const baitBitmaps[] = {
-    wormIcon_plus_mask,
-    grub_plus_mask,
-    shrimp_plus_mask,
-    meat_plus_mask
+const uint8_t* const PROGMEM baitBitmaps[] = {
+    wormIcon_tiles,
+    grub_tiles,
+    shrimp_tiles,
+    meat_tiles
 };
