@@ -541,6 +541,8 @@ FishType Player::getFishThatBit(bool isDeepWater) {
         return FishType::OLD_BOOT;
     }
 
+    return FishType::SEAHORSE;
+
     uint8_t currentPoints = 0;
     for (uint8_t fr = 0; fr < candidateFishes; ++fr) {
         if (roll >= currentPoints && roll < currentPoints + fishDiceRoll[fr].points) {

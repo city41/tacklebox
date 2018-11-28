@@ -341,9 +341,9 @@ const uint8_t girlSellMeat_string[19] PROGMEM = {
 };
 
 
-// "BRING ME TEN BOOTS\nFOR A NEW WAY\nTO FISH"
-const uint8_t guyQuest_string[41] PROGMEM = {
-    12, 28, 19, 24, 17, 0, 23, 15, 0, 30, 15, 24, 0, 12, 25, 25, 30, 29, 42, 16, 25, 28, 0, 11, 0, 24, 15, 33, 0, 33, 11, 35, 42, 30, 25, 0, 16, 19, 29, 18, 0xFF
+// "BRING ME FOUR BOOTS\nFOR A NEW WAY\nTO FISH"
+const uint8_t guyQuest_string[42] PROGMEM = {
+    12, 28, 19, 24, 17, 0, 23, 15, 0, 16, 25, 31, 28, 0, 12, 25, 25, 30, 29, 42, 16, 25, 28, 0, 11, 0, 24, 15, 33, 0, 33, 11, 35, 42, 30, 25, 0, 16, 19, 29, 18, 0xFF
 };
 
 

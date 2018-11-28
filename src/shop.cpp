@@ -198,7 +198,7 @@ void Shop::renderBuy(uint8_t frame) {
     const uint8_t startY = 22;
     
     const uint8_t startX = 24;
-    const uint8_t spacing = 10;
+    const uint8_t spacing = 9;
 
     for (uint8_t i = 0; i < BUY_MENU_ITEMS_COUNT; ++i) {
         const uint8_t y = startY + spacing * i;

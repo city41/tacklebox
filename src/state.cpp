@@ -20,12 +20,12 @@ void State::load() {
         EEPROM.get(EEPROM_START + 1, gameState);
     } else {
         gameState.canChooseProMode = false;
-        gameState.useProMode = true;
+        gameState.useProMode = false;
 
         // start the game at 4pm
         gameState.minute = 16 * 60;
         gameState.baitCounts[0] = 0;
-        gameState.baitCounts[1] = 8;
+        gameState.baitCounts[1] = 0;
         gameState.baitCounts[2] = 0;
         gameState.baitCounts[3] = 0;
         gameState.money = 10;

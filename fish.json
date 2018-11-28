@@ -12,7 +12,7 @@
             "habitats": ["BEGINNER", "ADVANCED"],
             "ratio": 5,
             "pull": 3,
-            "proWindow": 64,
+            "proWindow": 54,
             "deepWater": false,
             "value": 2,
             "lengths": [3, 20]
@@ -43,8 +43,8 @@
                 "MEAT": 0
             },
             "activeHours": [0, 23],
-            "habitats": ["ADVANCED", "OCEAN", "OCEAN_ISLAND"],
-            "ratio": 8,
+            "habitats": ["OCEAN", "OCEAN_ISLAND"],
+            "ratio": 6,
             "pull": 3,
             "proWindow": 64,
             "deepWater": false,
@@ -59,11 +59,11 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [5, 15],
+            "activeHours": [0, 23],
             "habitats": ["BEGINNER"],
             "ratio": 3,
             "pull": 4,
-            "proWindow": 74,
+            "proWindow": 80,
             "deepWater": false,
             "value": 30,
             "lengths": [2, 4]
@@ -97,7 +97,7 @@
             "habitats": ["CORNER", "ADVANCED"],
             "ratio": 10,
             "pull": 5,
-            "proWindow": 60,
+            "proWindow": 50,
             "deepWater": true,
             "value": 25,
             "lengths": [20, 40]
@@ -131,7 +131,7 @@
             "habitats": ["OCEAN", "OCEAN_ISLAND"],
             "ratio": 8,
             "pull": 4,
-            "proWindow": 58,
+            "proWindow": 50,
             "deepWater": false,
             "value": 20,
             "lengths": [20, 40]
@@ -148,7 +148,7 @@
             "habitats": ["OCEAN", "OCEAN_ISLAND"],
             "ratio": 2,
             "pull": 3,
-            "proWindow": 64,
+            "proWindow": 70,
             "deepWater": false,
             "value": 25,
             "lengths": [5, 45]
@@ -161,7 +161,7 @@
                 "SHRIMP": 1,
                 "MEAT": 0
             },
-            "activeHours": [18, 23],
+            "activeHours": [12, 23],
             "habitats": ["OCEAN_ISLAND"],
             "ratio": 1,
             "pull": 8,
@@ -195,11 +195,11 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [3, 9],
+            "activeHours": [3, 12],
             "habitats": ["OCEAN"],
             "ratio": 8,
             "pull": 1,
-            "proWindow": 64,
+            "proWindow": 50,
             "deepWater": false,
             "value": 4,
             "lengths": [1, 4]
@@ -245,7 +245,7 @@
                 "SHRIMP": 0,
                 "MEAT": 0
             },
-            "activeHours": [4, 9],
+            "activeHours": [0, 9],
             "habitats": ["CORNER"],
             "ratio": 4,
             "pull": 6,
@@ -279,9 +279,9 @@
                 "SHRIMP": 1,
                 "MEAT": 0
             },
-            "activeHours": [4, 20],
+            "activeHours": [0, 23],
             "habitats": ["OCEAN", "OCEAN_ISLAND"],
-            "ratio": 5,
+            "ratio": 4,
             "pull": 5,
             "proWindow": 80,
             "deepWater": false,
