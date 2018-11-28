@@ -22,7 +22,7 @@ const IndexPage = () => (
         </p>
 
         <a
-            href="https://github.com/city41/tacklebox/releases/tag/1.0.2"
+            href="https://github.com/city41/tacklebox/releases"
             className="downloadHere"
         >
             Download Here
