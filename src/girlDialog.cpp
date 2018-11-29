@@ -32,7 +32,8 @@ void GirlDialog::update() {
         State::gameState.canBuyMeat &&
         arduboy.justPressed(A_BUTTON)
     ) {
-        if (State::gameState.money >= MEAT_PRICE) {
+        if (State::gameState.money >= MEAT_PRICE &&
+            State::gameState.baitCounts[static_cast<int8_t>(BaitType::Meat)] < 99) {
             State::gameState.money -= MEAT_PRICE;
             State::gameState.baitCounts[static_cast<int8_t>(BaitType::Meat)] += 1;
             Sfx::purchase();

@@ -131,7 +131,8 @@ void buy(BuyMenu itemToBuy) {
 
     switch (itemToBuy) {
         case BuyMenu::Grub:
-            if (State::gameState.money >= GRUB_PRICE) {
+            if (State::gameState.money >= GRUB_PRICE &&
+                State::gameState.baitCounts[static_cast<int8_t>(BaitType::Grub)] < 99) {
                 State::gameState.money -= GRUB_PRICE;
                 State::gameState.baitCounts[static_cast<int8_t>(BaitType::Grub)] += 1;
             } else {
@@ -139,7 +140,8 @@ void buy(BuyMenu itemToBuy) {
             }
             break;
         case BuyMenu::Shrimp:
-            if (State::gameState.money >= SHRIMP_PRICE) {
+            if (State::gameState.money >= SHRIMP_PRICE &&
+                State::gameState.baitCounts[static_cast<int8_t>(BaitType::Shrimp)] < 99) {
                 State::gameState.money -= SHRIMP_PRICE;
                 State::gameState.baitCounts[static_cast<int8_t>(BaitType::Shrimp)] += 1;
             } else {
