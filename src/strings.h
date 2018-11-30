@@ -364,4 +364,10 @@ const uint8_t lucyWarning_string[27] PROGMEM = {
     30, 18, 19, 29, 0, 19, 29, 0, 23, 35, 0, 29, 26, 25, 30, 40, 0, 12, 11, 13, 21, 0, 25, 16, 16, 41, 0xFF
 };
 
+
+// "YOU HAVE NO BAIT!"
+const uint8_t noBait_string[18] PROGMEM = {
+    35, 25, 31, 0, 18, 11, 32, 15, 0, 24, 25, 0, 12, 11, 19, 30, 41, 0xFF
+};
+
 #endif

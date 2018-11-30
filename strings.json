@@ -50,7 +50,7 @@
         { "key": "guyQuest", "value": "BRING ME FOUR BOOTS\nFOR A NEW WAY\nTO FISH" },
         { "key": "guyTurnOnProMode", "value": "SET FISHING MODE\nPRO" },
         { "key": "guyTurnOffProMode", "value": "SET FISHING MODE\nCASUAL" },
-        { "key": "lucyWarning", "value": "THIS IS MY SPOT, BACK OFF!" }
-
+        { "key": "lucyWarning", "value": "THIS IS MY SPOT, BACK OFF!" },
+        { "key": "noBait", "value": "YOU HAVE NO BAIT!" }
     ]
 }

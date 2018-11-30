@@ -17,6 +17,7 @@
 #include "boat.h"
 #include "util.h"
 #include "dialogUtils.h"
+#include "toast.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -176,13 +177,8 @@ void Game::updatePlay(uint8_t frame) {
     for (uint8_t s = 0; s < MAX_SIGNS; ++s) {
         if (overlap(player, signs[s].x, signs[s].y, 12, 6)) {
             player.undoMove();
-            currentSignMessage = signs[s].message;
-            currentSignMessageCount = 150;
+            Toast::toast(signs[s].message);
         }
-    }
-
-    if (currentSignMessageCount > 0) {
-        currentSignMessageCount -= 1;
     }
 }
 
@@ -246,13 +242,7 @@ void Game::renderPlay(uint8_t frame) {
     renderer.translateY = 0;
     Hud::render(player);
 
-    if (currentSignMessageCount > 0) {
-        renderer.translateX = 0;
-        renderer.translateY = 0;
-        renderer.fillRect(0, HEIGHT - 6, WIDTH, 6, BLACK);
-        renderer.drawString(1, HEIGHT - 5, currentSignMessage);
-    }
-
+    Toast::render();
 }
 
 void Game::updateShop(uint8_t frame) {

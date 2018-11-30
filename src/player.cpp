@@ -11,6 +11,7 @@
 #include "enumUtils.h"
 #include "world.h"
 #include "boat.h"
+#include "toast.h"
 
 extern Renderer renderer;
 extern Arduboy2Base arduboy;
@@ -72,13 +73,18 @@ void Player::placeCursorBasedOnDir() {
 }
 
 void Player::updateWalk(uint8_t frame) {
-    if (State::gameState.baitCounts[static_cast<int8_t>(currentBait)] > 0 && arduboy.pressed(A_BUTTON)) {
-        placeCursorBasedOnDir();
+    if (arduboy.pressed(A_BUTTON)) {
+        if (State::gameState.baitCounts[static_cast<int8_t>(currentBait)] > 0) {
+            placeCursorBasedOnDir();
 
-        currentUpdate = &Player::updateScanning;
-        currentRender = &Player::renderScanning;
-        return;
+            currentUpdate = &Player::updateScanning;
+            currentRender = &Player::renderScanning;
+            return;
+        } else {
+            Toast::toast(noBait_string, 50);
+        }
     }
+
 
     if (arduboy.justPressed(B_BUTTON)) {
         areYouSure = false;
@@ -130,13 +136,6 @@ void Player::renderWalk(uint8_t frame) {
     }
 
     renderer.drawPlusMask(x, y, player_plus_mask, spriteIndex, mirror);
-
-    if (saveToastCount > 0) {
-        saveToastCount -= 1;
-        renderer.pushTranslate(0, 0);
-        renderer.fillRect(0, HEIGHT - 5, WIDTH, 5, BLACK);
-        renderer.drawString(0, HEIGHT - 4, gameSaved_string);
-    }
 }
 
 void Player::updateMenu(uint8_t frame) {
@@ -171,7 +170,7 @@ void Player::updateMenu(uint8_t frame) {
                 break;
             case MenuRow::SAVE:
                 State::saveToEEPROM();
-                saveToastCount = 60;
+                Toast::toast(gameSaved_string, 90);
                 currentUpdate = &Player::updateWalk;
                 currentRender = &Player::renderWalk;
                 break;

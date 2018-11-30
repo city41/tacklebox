@@ -22,9 +22,6 @@ class Game {
         uint8_t titleCount;
         uint8_t seconds;     // actual seconds. 1 game hour = SECONDS_PER_HOUR real seconds
 
-        const uint8_t* currentSignMessage;
-        uint8_t currentSignMessageCount;
-
         bool isOnShopDoor();
         bool isOnBoat();
         bool isTalkingToGirl();
@@ -68,9 +65,7 @@ class Game {
             currentRender(&Game::renderLogo),
             nextRender(NULL),
             titleCount(0),
-            seconds(0),
-            currentSignMessage(NULL),
-            currentSignMessageCount(0)
+            seconds(0)
         {
             State::load();
         }

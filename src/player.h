@@ -50,7 +50,6 @@ class Player {
         uint8_t reelLevel;
         MenuRow menuRow;
         bool areYouSure;
-        uint8_t saveToastCount;
         int8_t currentCollectionRow;
         CollectionColumn currentCollectionColumn;
 
@@ -76,7 +75,6 @@ class Player {
             castCount(0),
             reelLevel(0),
             menuRow(MenuRow::COLLECTION),
-            saveToastCount(0),
             currentCollectionRow(0),
             currentCollectionColumn(CollectionColumn::Quantity),
             areYouSure(false),
