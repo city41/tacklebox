@@ -12,11 +12,12 @@ const uint8_t WATER_OFFSET = 28;
 uint8_t TileFloor::waterAnimationOffset = 0;
 
 TileDef TileFloor::getTileAt(int16_t x, int16_t y) {
-    int16_t tileX = x / TILE_SIZE;
-    int16_t tileY = y / TILE_SIZE;
-    int16_t firstTileIndex = tileY * MAP_WIDTH_TILES + tileX;
+    return static_cast<TileDef>(world_getTileAt(x, y));
+    /* int16_t tileX = x / TILE_SIZE; */
+    /* int16_t tileY = y / TILE_SIZE; */
+    /* int16_t firstTileIndex = tileY * MAP_WIDTH_TILES + tileX; */
 
-    return (TileDef)pgm_read_byte(world_map + firstTileIndex);
+    /* return (TileDef)pgm_read_byte(world_map + firstTileIndex); */
 }
 
 void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId) {   
@@ -46,7 +47,7 @@ void TileFloor::renderCenteredOn(int16_t x, int16_t y, uint8_t frame) {
         for (uint8_t tx = 0; tx < 9; ++tx) {
             int16_t ti = firstTileIndex + additionalRows + tx;
 
-            int16_t tileId = pgm_read_byte(world_map + ti);
+            uint8_t tileId = static_cast<uint8_t>(getTileAt(tx, ty));
             renderTile(tx * TILE_SIZE - shiftX, ty * TILE_SIZE - shiftY, tileId);
         }
     }

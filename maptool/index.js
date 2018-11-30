@@ -46,8 +46,8 @@ function createWormsFile(tiledJson, outDir) {
     }
 }
 
-function createHeaderFile(tiledJson, baseName, outDir) {
-    const mapArrayString = buildMapArray(
+function createSourceFiles(tiledJson, baseName, outDir) {
+    const mapSrc = buildMapArray(
         baseName,
         findLayer(tiledJson.layers, "data"),
         tiledJson.tilewidth
@@ -61,16 +61,16 @@ function createHeaderFile(tiledJson, baseName, outDir) {
         );
     }
 
-    const pragma = "#pragma once";
-
-    const finalFile = pragma + "\n\n" + mapArrayString;
-
     if (outDir) {
-        const destPath = path.join(outDir, baseName + ".h");
-        fs.writeFileSync(destPath, finalFile);
-        console.log("wrote: ", destPath);
+        const destHeaderPath = path.join(outDir, baseName + ".h");
+        fs.writeFileSync(destHeaderPath, mapSrc.headerSrc);
+        console.log("wrote: ", destHeaderPath);
+
+        const destCppPath = path.join(outDir, baseName + ".cpp");
+        fs.writeFileSync(destCppPath, mapSrc.cppSrc);
+        console.log("wrote: ", destCppPath);
     } else {
-        console.log(finalFile);
+        console.log('provide outDir please');
     }
 }
 
@@ -99,7 +99,7 @@ tiledJsonFiles.forEach(file => {
         console.log("about to process", fullPath);
         const tiledJson = require(fullPath);
         const baseName = path.basename(file, ".json");
-        createHeaderFile(tiledJson, baseName, outDir);
+        createSourceFiles(tiledJson, baseName, outDir);
         createWormsFile(tiledJson, outDir);
     }
 });
