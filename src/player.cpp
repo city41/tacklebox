@@ -350,6 +350,7 @@ void Player::updateScanning(uint8_t frame) {
             castCount = 0;
 
             State::gameState.baitCounts[static_cast<int8_t>(currentBait)] -= 1;
+            dir = determineDirection(x, y, cursorX, cursorY, dir);
 
             currentUpdate = &Player::updateCast;
             currentRender = &Player::renderCast;
@@ -845,20 +846,26 @@ void Player::onGetWorm(Worm& worm) {
 }
 
 Direction Player::determineDirection(int16_t px, int16_t py, int16_t x, int16_t y, Direction prevDir) {
+
     if (px == x && py == y) {
         return prevDir;
     }
 
-    if (px == x) {
-        if (py > y) {
-            return UP;
-        }
-        return DOWN;
-    } else {
-        if (px > x) {
+    int16_t diffX = x - px;
+    int16_t diffY = y - py;
+
+    if (abs(diffX) > abs(diffY)) {
+        if (diffX < 0) {
             return LEFT;
+        } else {
+            return RIGHT;
         }
-        return RIGHT;
+    } else {
+        if (diffY < 0) {
+            return UP;
+        } else {
+            return DOWN;
+        }
     }
 }
 
