@@ -1,11 +1,15 @@
-const RL1 = 0x10;
-const RL2 = 0x20;
+const RL1 = 0x40;
+const RL2 = 0x80;
 
 function rleCompress(data, runLength1, runLength2) {
     let i = 0;
     let compressedData = [];
 
     while(i < data.length) {
+        if (data[i] >= RL2) {
+            throw new Error('tile data goes beyond 0x3F, cant compress it');
+        }
+
         let n = i;
         while (data[n] === data[i] && n < data.length) {
             ++n;

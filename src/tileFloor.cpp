@@ -17,19 +17,21 @@ TileDef TileFloor::getTileAt(int16_t x, int16_t y) {
     int16_t targetTileIndex = tileY * MAP_WIDTH_TILES + tileX;
 
     int16_t i = 0;
+    int16_t expandedIndex = 0;
 
     while (i < WORLD_DATA_LENGTH) {
         const uint8_t iData = pgm_read_byte(world_map + i);
-        bool jumpBy5 = iData & RL1;
-        bool jumpBy3 = iData & RL2;
+        bool jumpByRL1 = static_cast<bool>(iData & RL1);
+        bool jumpByRL2 = static_cast<bool>(iData & RL2);
 
-        int16_t nextI = jumpBy5 ? i + 5 : jumpBy3 ? i + 3 : i + 1;
+        int16_t nextExpandedIndex = jumpByRL1 ? (expandedIndex + RL1_LENGTH) : jumpByRL2 ? (expandedIndex + RL2_LENGTH) : expandedIndex + 1;
 
-        if (targetTileIndex >= i && targetTileIndex < nextI) {
-            return static_cast<TileDef>(iData & 0x3F);
+        if (targetTileIndex >= expandedIndex && targetTileIndex < nextExpandedIndex) {
+            return static_cast<TileDef>(iData & (~(RL1 | RL2)));
         }
 
-        i = nextI;
+        i += 1;
+        expandedIndex = nextExpandedIndex;
     }
 }
 
