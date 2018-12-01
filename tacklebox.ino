@@ -6,6 +6,7 @@
 #include "src/renderer.h"
 #include "src/util.h"
 #include "src/sfx.h"
+#include "src/tileFloor.h"
 
 Arduboy2Base arduboy;
 
@@ -23,6 +24,9 @@ void setup() {
     delay(1500);
     LOG("setup done");
 #endif
+
+    TileDef tile = TileFloor::getTileAt(34, 0);
+    LOGV(static_cast<uint8_t>(tile));
 }
 
 uint8_t loopCounter = 1;

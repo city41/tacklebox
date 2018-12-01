@@ -55,15 +55,10 @@ void TileFloor::renderCenteredOn(int16_t x, int16_t y, uint8_t frame) {
     int16_t shiftX = x % TILE_SIZE;
     int16_t shiftY = y % TILE_SIZE;
 
-
-    for (uint8_t ty = 0; ty < 5; ++ty) {
-        int16_t additionalRows = ty * MAP_WIDTH_TILES;
-
-        for (uint8_t tx = 0; tx < 9; ++tx) {
-            int16_t ti = firstTileIndex + additionalRows + tx;
-
-            int16_t tileId = pgm_read_byte(world_map + ti);
-            renderTile(tx * TILE_SIZE - shiftX, ty * TILE_SIZE - shiftY, tileId);
+    for (int16_t ty = tileY; ty < tileY + 5; ++ty) {
+        for (int16_t tx = tileX; tx < tileX + 9; ++tx) {
+            uint8_t tileId = static_cast<uint8_t>(getTileAt(tx * TILE_SIZE, ty * TILE_SIZE));
+            renderTile((tx - tileX) * TILE_SIZE - shiftX, (ty - tileY) * TILE_SIZE - shiftY, tileId);
         }
     }
 }

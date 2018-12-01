@@ -31,17 +31,17 @@ const uint8_t BUY_MENU_ITEMS_COUNT = 4;
 const uint8_t BUY_MENU_ITEM_PROPS_COUNT = 3;
 
 const uint16_t PROGMEM buyMenuItems[BUY_MENU_ITEMS_COUNT * BUY_MENU_ITEM_PROPS_COUNT] = {
-    reinterpret_cast<int16_t>(grub_tiles),
-    reinterpret_cast<int16_t>(grub_string),
+    reinterpret_cast<uint16_t>(grub_tiles),
+    reinterpret_cast<uint16_t>(grub_string),
     GRUB_PRICE,
-    reinterpret_cast<int16_t>(shrimp_tiles),
-    reinterpret_cast<int16_t>(shrimp_string),
+    reinterpret_cast<uint16_t>(shrimp_tiles),
+    reinterpret_cast<uint16_t>(shrimp_string),
     SHRIMP_PRICE,
-    reinterpret_cast<int16_t>(proPole_tiles),
-    reinterpret_cast<int16_t>(proPole_string),
+    reinterpret_cast<uint16_t>(proPole_tiles),
+    reinterpret_cast<uint16_t>(proPole_string),
     PRO_POLE_PRICE,
-    reinterpret_cast<int16_t>(boatOar_tiles),
-    reinterpret_cast<int16_t>(boatOars_string),
+    reinterpret_cast<uint16_t>(boatOar_tiles),
+    reinterpret_cast<uint16_t>(boatOars_string),
     OARS_PRICE
 };
 
