@@ -14,9 +14,23 @@ uint8_t TileFloor::waterAnimationOffset = 0;
 TileDef TileFloor::getTileAt(int16_t x, int16_t y) {
     int16_t tileX = x / TILE_SIZE;
     int16_t tileY = y / TILE_SIZE;
-    int16_t firstTileIndex = tileY * MAP_WIDTH_TILES + tileX;
+    int16_t targetTileIndex = tileY * MAP_WIDTH_TILES + tileX;
 
-    return (TileDef)pgm_read_byte(world_map + firstTileIndex);
+    int16_t i = 0;
+
+    while (i < WORLD_DATA_LENGTH) {
+        const uint8_t iData = pgm_read_byte(world_map + i);
+        bool jumpBy5 = iData & RL1;
+        bool jumpBy3 = iData & RL2;
+
+        int16_t nextI = jumpBy5 ? i + 5 : jumpBy3 ? i + 3 : i + 1;
+
+        if (targetTileIndex >= i && targetTileIndex < nextI) {
+            return static_cast<TileDef>(iData & 0x3F);
+        }
+
+        i = nextI;
+    }
 }
 
 void TileFloor::renderTile(int16_t x, int16_t y, uint8_t tileId) {   
