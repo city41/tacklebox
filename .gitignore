@@ -35,3 +35,4 @@ build-leonardo/
 
 web/node_modules/
 web/public
+web/.cache
