@@ -1,3 +1,35 @@
+Tackle Box's License and Distribution/Usage Guidelines
+===================================================
+
+The source code that makes up Tackle Box, including the C++ code in the src directory
+and the JavaScript code in the various tools directories is licensed under the MIT
+license. The license is included below. Feel free to use the source code for any
+purpose, commercial or not.
+
+
+
+The graphics and imagery is not licensed for public use. This includes the files
+in the maskPngs and nonMaskPngs directories. You are free to use it privately
+for learning purposes, but it may not be used in any derivative work.
+
+GRAPHICS EXCEPTION
+==================
+These files were created or based on work by Miloslav Číž and are licensed by him
+- nonMaskPngs/sign_14x16.png
+- the tree, grass, walking stones and rock tiles in nonMaskPngs/map_16x16.png
+
+His repository is here: https://gitlab.com/drummyfish/ArduRPG
+
+
+
+
+You are free to distribute the complete game to anyone, as long as you:
+* do not alter it in any way.
+* include a credit to Matt Greer and preferably a link to this repo
+* do not charge money for it
+
+
+
 The MIT License (MIT)
 
 Copyright (c) 2018 Matt Greer
